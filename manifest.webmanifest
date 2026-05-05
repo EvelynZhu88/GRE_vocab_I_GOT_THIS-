@@ -1,0 +1,10 @@
+{
+  "name": "GRE Vocab — I Got This",
+  "short_name": "GRE Vocab",
+  "description": "Spaced-repetition vocabulary trainer with reading passages.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0b132b",
+  "theme_color": "#0b132b",
+  "icons": []
+}
