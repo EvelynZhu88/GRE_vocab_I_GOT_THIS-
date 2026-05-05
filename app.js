@@ -1,31 +1,40 @@
-/* GRE Vocab — single-page app
- * Storage:
- *   localStorage['gre.progress'] -> { [key]: { ef, interval, reps, due, lapses, last } }
- *     key = `${listNum}::${word.toLowerCase()}`
- *   localStorage['gre.settings'] -> { currentList, sessionSize, mixRatio, direction }
+/* GRE Vocab — single-page app with hash routing
  *
- * SRS: SM-2 (Anki-flavored 4-button: Again/Hard/Good/Easy mapping to q=0/3/4/5)
+ * Routes:
+ *   #/                       Lists overview (home)
+ *   #/list/N                 List N detail (Words / Test / Passages)
+ *   #/list/N/words           Browse all words in list N
+ *   #/list/N/test            Unit test for list N
+ *   #/list/N/passages        Passage list for list N
+ *   #/list/N/passages/I      Read passage I
+ *   #/list/N/passages/I/quiz Comprehension quiz for passage I
+ *   #/review                 Cumulative spaced-repetition review
+ *   #/stats                  Stats overview
+ *
+ * Storage:
+ *   gre.progress -> { [listN::word]: { ef, interval, reps, due, lapses, last } }
+ *   gre.units    -> { [listN]: { tested, lastScore, lastTested } }
+ *   gre.settings -> { unitTestSize, reviewSize, mixRatio }
  */
 
 const DAY = 86400000;
 const STORE_KEY = 'gre.progress';
+const UNITS_KEY = 'gre.units';
 const SETTINGS_KEY = 'gre.settings';
-const DEFAULT_SETTINGS = {
-  currentList: 1,
-  sessionSize: 20,
-  mixRatio: 0.3,        // fraction of session pulled from earlier lists' due pile
-  direction: 'en2zh',   // 'en2zh' shows English, asks for Chinese (default for native CN speaker)
+const DEFAULTS = {
+  unitTestSize: 20,
+  reviewSize: 20,
+  mixRatio: 0.35,
 };
 
 let VOCAB = null;
 let PASSAGES = null;
-let SETTINGS = loadSettings();
-let PROGRESS = loadProgress();
-let CURRENT_QUIZ = null;
-let CURRENT_PASSAGE = null;
+let SETTINGS = loadJson(SETTINGS_KEY, DEFAULTS);
+let PROGRESS = loadJson(STORE_KEY, {});
+let UNITS = loadJson(UNITS_KEY, {});
 
-const $ = (sel, root = document) => root.querySelector(sel);
-const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 
 // --- bootstrap ---
 async function init() {
@@ -35,492 +44,777 @@ async function init() {
       fetch('passages.json').then(r => r.json()).catch(() => ({})),
     ]);
   } catch (e) {
-    $('#view').innerHTML = `<div class="quiz-empty"><h2>Couldn't load vocab</h2><p>${e}</p></div>`;
+    $('#view').innerHTML = `<div class="empty-state"><h2>Couldn't load data</h2><p>${escHtml(String(e))}</p></div>`;
     return;
   }
-  buildListPicker();
-  bindTabs();
-  render();
+  window.addEventListener('hashchange', router);
+  $('#backBtn').addEventListener('click', () => history.back());
+  if (!location.hash) location.hash = '#/';
+  router();
 }
 
-function loadProgress() {
-  try { return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; }
-  catch { return {}; }
+// --- storage helpers ---
+function loadJson(k, fallback) {
+  try { return Object.assign({}, fallback, JSON.parse(localStorage.getItem(k)) || {}); }
+  catch { return { ...fallback }; }
 }
-function saveProgress() { localStorage.setItem(STORE_KEY, JSON.stringify(PROGRESS)); }
+function save(k, v) { localStorage.setItem(k, JSON.stringify(v)); }
+function saveProgress() { save(STORE_KEY, PROGRESS); }
+function saveUnits() { save(UNITS_KEY, UNITS); }
 
-function loadSettings() {
-  try {
-    const s = JSON.parse(localStorage.getItem(SETTINGS_KEY)) || {};
-    return Object.assign({}, DEFAULT_SETTINGS, s);
-  } catch { return { ...DEFAULT_SETTINGS }; }
-}
-function saveSettings() { localStorage.setItem(SETTINGS_KEY, JSON.stringify(SETTINGS)); }
-
-function key(listNum, word) {
-  return `${listNum}::${word.toLowerCase()}`;
-}
-function getCard(listNum, word) {
-  const k = key(listNum, word);
-  if (!PROGRESS[k]) {
-    PROGRESS[k] = { ef: 2.5, interval: 0, reps: 0, due: 0, lapses: 0, last: 0 };
-  }
+function key(n, w) { return `${n}::${w.toLowerCase()}`; }
+function getCard(n, w) {
+  const k = key(n, w);
+  if (!PROGRESS[k]) PROGRESS[k] = { ef: 2.5, interval: 0, reps: 0, due: 0, lapses: 0, last: 0 };
   return PROGRESS[k];
 }
-function isFresh(card) { return card.reps === 0; }
-function isMature(card) { return card.interval >= 21; }
-function isLearning(card) { return card.reps > 0 && card.interval < 21; }
+function isFresh(c) { return c.reps === 0 && c.last === 0; }
+function isMature(c) { return c.interval >= 21; }
+function isLearning(c) { return !isFresh(c) && !isMature(c); }
+function isDue(c) { return c.due <= Date.now(); }
 
-// --- SM-2 update ---
-function rateCard(listNum, word, q) {
-  const card = getCard(listNum, word);
+// --- SM-2 ---
+function rateCard(n, w, q) {
+  const c = getCard(n, w);
   if (q < 3) {
-    card.reps = 0;
-    card.interval = 1;
-    card.lapses += 1;
+    c.reps = 0;
+    c.interval = 1;
+    c.lapses += 1;
   } else {
-    if (card.reps === 0) card.interval = 1;
-    else if (card.reps === 1) card.interval = 6;
-    else card.interval = Math.round(card.interval * card.ef);
-    card.reps += 1;
+    if (c.reps === 0) c.interval = 1;
+    else if (c.reps === 1) c.interval = 6;
+    else c.interval = Math.round(c.interval * c.ef);
+    c.reps += 1;
   }
-  card.ef = Math.max(1.3, card.ef + (0.1 - (5 - q) * (0.08 + (5 - q) * 0.02)));
-  card.last = Date.now();
-  card.due = Date.now() + card.interval * DAY;
+  c.ef = Math.max(1.3, c.ef + (0.1 - (5 - q) * (0.08 + (5 - q) * 0.02)));
+  c.last = Date.now();
+  c.due = Date.now() + c.interval * DAY;
   saveProgress();
 }
 
-// --- list picker / tabs ---
-function buildListPicker() {
-  const sel = $('#listPicker');
-  const lists = Object.keys(VOCAB).sort((a, b) => +a - +b);
-  for (const n of lists) {
-    const opt = document.createElement('option');
-    opt.value = n;
-    opt.textContent = `${n}  (${VOCAB[n].length})`;
-    sel.appendChild(opt);
-  }
-  sel.value = String(SETTINGS.currentList);
-  sel.addEventListener('change', () => {
-    SETTINGS.currentList = +sel.value;
-    saveSettings();
-    render();
-  });
-}
-
-function bindTabs() {
-  $$('.tab').forEach(t => {
-    t.addEventListener('click', () => {
-      $$('.tab').forEach(x => x.classList.remove('active'));
-      t.classList.add('active');
-      render();
-    });
-  });
-}
-
-function activeMode() {
-  return $('.tab.active')?.dataset.mode || 'browse';
-}
-
-// --- top-level render ---
-function render() {
-  const mode = activeMode();
-  if (mode === 'browse') return renderBrowse();
-  if (mode === 'quiz') return renderQuizStart();
-  if (mode === 'read') return renderReadList();
-  if (mode === 'stats') return renderStats();
-}
-
-// --- BROWSE ---
-function renderBrowse() {
-  const num = SETTINGS.currentList;
-  const words = VOCAB[String(num)] || [];
-  const summary = computeListSummary(num);
-  const html = [];
-  html.push(`<div class="browse-summary">
-    <span><b>${words.length}</b> words</span>
-    <span><b>${summary.fresh}</b> new</span>
-    <span><b>${summary.learning}</b> learning</span>
-    <span><b>${summary.mature}</b> mature</span>
-    <span><b>${summary.due}</b> due now</span>
-  </div>`);
+// --- summary helpers ---
+function listSummary(n) {
+  const words = VOCAB[String(n)] || [];
+  let fresh = 0, learning = 0, mature = 0, due = 0;
   for (const w of words) {
-    const card = getCard(num, w.word);
-    const tag = tagFor(card);
+    const c = getCard(n, w.word);
+    if (isFresh(c)) fresh++;
+    else if (isMature(c)) mature++;
+    else learning++;
+    if (!isFresh(c) && isDue(c)) due++;
+  }
+  return { total: words.length, fresh, learning, mature, due };
+}
+
+function activeListNumbers() {
+  // A list is "active" if its unit has been tested OR has any non-fresh card
+  const active = new Set();
+  for (const n of Object.keys(VOCAB)) {
+    if (UNITS[n]?.tested) { active.add(+n); continue; }
+    for (const w of VOCAB[n]) {
+      const c = getCard(+n, w.word);
+      if (!isFresh(c)) { active.add(+n); break; }
+    }
+  }
+  return [...active].sort((a, b) => a - b);
+}
+
+// --- routing ---
+function parseRoute() {
+  const h = location.hash.replace(/^#/, '') || '/';
+  const segs = h.split('/').filter(Boolean);
+  return segs;
+}
+
+function router() {
+  const segs = parseRoute();
+  const back = $('#backBtn');
+  back.hidden = segs.length === 0;
+  // Highlight bottom nav
+  $$('.nav-link').forEach(a => a.classList.remove('active'));
+  if (segs.length === 0) $('.nav-link[data-route="lists"]').classList.add('active');
+  else if (segs[0] === 'review') $('.nav-link[data-route="review"]').classList.add('active');
+  else if (segs[0] === 'stats') $('.nav-link[data-route="stats"]').classList.add('active');
+  else if (segs[0] === 'list') $('.nav-link[data-route="lists"]').classList.add('active');
+
+  // Dispatch
+  if (segs.length === 0) return renderLists();
+  if (segs[0] === 'review') return renderReview();
+  if (segs[0] === 'stats') return renderStats();
+  if (segs[0] === 'list') {
+    const n = +segs[1];
+    if (!VOCAB[String(n)]) return notFound();
+    if (segs.length === 2) return renderListDetail(n);
+    if (segs[2] === 'words') return renderWords(n);
+    if (segs[2] === 'test') return renderUnitTest(n);
+    if (segs[2] === 'passages') {
+      if (segs.length === 3) return renderPassageList(n);
+      const i = +segs[3];
+      if (segs.length === 4) return renderPassage(n, i);
+      if (segs[4] === 'quiz') return renderPassageQuiz(n, i);
+    }
+  }
+  return notFound();
+}
+
+function notFound() {
+  setHeader('Not found');
+  $('#view').innerHTML = `<div class="empty-state"><h2>Page not found</h2><p><a class="btn-secondary" href="#/">Go home</a></p></div>`;
+}
+
+function setHeader(title, rightHtml = '') {
+  $('#headerTitle').textContent = title;
+  $('#topbarRight').innerHTML = rightHtml;
+}
+
+// =====================================================
+// VIEW: Lists overview
+// =====================================================
+function renderLists() {
+  setHeader('GRE Vocab');
+  const lists = Object.keys(VOCAB).sort((a, b) => +a - +b);
+  let totalMature = 0, totalLearning = 0, totalFresh = 0, totalWords = 0;
+  const html = [];
+  // top summary
+  for (const n of lists) {
+    const s = listSummary(+n);
+    totalMature += s.mature; totalLearning += s.learning; totalFresh += s.fresh; totalWords += s.total;
+  }
+  html.push(`<div class="lists-summary">
+    <div class="summary-card"><div class="v">${totalMature}</div><div class="l">Mature</div></div>
+    <div class="summary-card"><div class="v">${totalLearning}</div><div class="l">Learning</div></div>
+    <div class="summary-card"><div class="v">${totalWords - totalMature - totalLearning}</div><div class="l">New</div></div>
+  </div>`);
+  html.push('<div class="lists-grid">');
+  for (const n of lists) {
+    const s = listSummary(+n);
+    const tested = !!UNITS[n]?.tested;
+    const known = s.mature + s.learning;
+    const pct = s.total ? Math.round((known / s.total) * 100) : 0;
+    const badge = tested
+      ? `<span class="badge tested">tested ${Math.round((UNITS[n].lastScore || 0) * 100)}%</span>`
+      : (known > 0 ? `<span class="badge">started</span>` : `<span class="badge">new</span>`);
+    html.push(`<a class="list-card ${tested ? 'tested' : ''}" href="#/list/${n}">
+      <div class="num"><span class="n">List ${n}</span>${badge}</div>
+      <div class="total">${s.total} words</div>
+      <div class="progress"><div style="width:${pct}%"></div></div>
+      <div class="progress-meta"><span>${known}/${s.total} learned</span><span>${pct}%</span></div>
+    </a>`);
+  }
+  html.push('</div>');
+  $('#view').innerHTML = html.join('');
+}
+
+// =====================================================
+// VIEW: List detail
+// =====================================================
+function renderListDetail(n) {
+  setHeader(`List ${n}`);
+  const s = listSummary(n);
+  const known = s.mature + s.learning;
+  const pct = s.total ? Math.round((known / s.total) * 100) : 0;
+  const tested = !!UNITS[n]?.tested;
+  const passages = (PASSAGES[String(n)] || []);
+  const passagesAvailable = passages.length > 0;
+
+  const html = `
+    <div class="list-detail-header">
+      <div class="title">List ${n}</div>
+      <div class="subtitle">${s.total} words · ${known} learned · ${s.due} due ${tested ? `· last test ${Math.round(UNITS[n].lastScore * 100)}%` : ''}</div>
+      <div class="progress"><div style="width:${pct}%"></div></div>
+      <div class="progress-meta"><span>${known}/${s.total}</span><span>${pct}%</span></div>
+    </div>
+    <div class="action-grid">
+      <a class="action-card" href="#/list/${n}/words">
+        <div class="icon">≡</div>
+        <div class="body">
+          <div class="title">Words</div>
+          <div class="desc">Browse all ${s.total} words with meanings.</div>
+        </div>
+      </a>
+      <a class="action-card" href="#/list/${n}/test">
+        <div class="icon">✎</div>
+        <div class="body">
+          <div class="title">Unit Test</div>
+          <div class="desc">${SETTINGS.unitTestSize}-question test on this list.</div>
+        </div>
+      </a>
+      <a class="action-card ${passagesAvailable ? '' : 'disabled'}" href="#/list/${n}/passages">
+        <div class="icon">📖</div>
+        <div class="body">
+          <div class="title">Passages</div>
+          <div class="desc">${passagesAvailable ? `${passages.length} reading passages with comprehension questions.` : 'Passages not yet available for this list.'}</div>
+        </div>
+      </a>
+    </div>
+  `;
+  $('#view').innerHTML = html;
+}
+
+// =====================================================
+// VIEW: Browse words
+// =====================================================
+function renderWords(n) {
+  setHeader(`List ${n} · Words`);
+  const words = VOCAB[String(n)];
+  const html = [];
+  for (const w of words) {
+    const c = getCard(n, w.word);
     html.push(`<div class="word-card">
-      <div class="head"><span class="word">${esc(w.word)}</span><span class="ipa">${esc(w.ipa)}</span></div>
-      <div class="zh">${esc(w.def_zh)}</div>
-      <div class="en">${esc(w.def_en)}</div>
-      ${w.synonym ? `<div class="syn">≈ ${esc(w.synonym)}</div>` : ''}
-      ${w.ex_en ? `<div class="ex">${esc(w.ex_en)}<div class="ex-zh">${esc(w.ex_zh)}</div></div>` : ''}
-      <div class="stats">${tag}</div>
+      <div class="head"><span class="word">${escHtml(w.word)}</span><span class="ipa">${escHtml(w.ipa)}</span></div>
+      <div class="zh">${escHtml(w.def_zh)}</div>
+      <div class="en">${escHtml(w.def_en)}</div>
+      ${w.synonym ? `<div class="syn">≈ ${escHtml(w.synonym)}</div>` : ''}
+      ${w.ex_en ? `<div class="ex">${escHtml(w.ex_en)}<div class="ex-zh">${escHtml(w.ex_zh)}</div></div>` : ''}
+      <div class="row-bottom">${tagFor(c)}<span>${c.last ? new Date(c.last).toLocaleDateString() : ''}</span></div>
     </div>`);
   }
   $('#view').innerHTML = html.join('');
 }
 
-function tagFor(card) {
-  const now = Date.now();
-  if (isFresh(card)) return `<span class="tag fresh">new</span>`;
-  if (isMature(card)) return `<span class="tag mature">mature · ${card.interval}d</span>`;
-  if (isLearning(card)) return `<span class="tag learning">learning · ${card.interval}d</span>`;
-  return `<span class="tag">${card.interval}d</span>`;
+function tagFor(c) {
+  if (isFresh(c)) return `<span class="tag fresh">new</span>`;
+  if (isMature(c)) return `<span class="tag mature">mature · ${c.interval}d</span>`;
+  if (isLearning(c)) return `<span class="tag learning">learning · ${c.interval}d</span>`;
+  return `<span class="tag">${c.interval}d</span>`;
 }
 
-function computeListSummary(num) {
-  const words = VOCAB[String(num)] || [];
-  let fresh = 0, learning = 0, mature = 0, due = 0;
-  const now = Date.now();
-  for (const w of words) {
-    const c = getCard(num, w.word);
-    if (isFresh(c)) fresh++;
-    else if (isMature(c)) mature++;
-    else learning++;
-    if (c.due <= now) due++;
-  }
-  return { fresh, learning, mature, due };
+// =====================================================
+// VIEW: Unit Test
+// =====================================================
+function renderUnitTest(n) {
+  setHeader(`List ${n} · Unit Test`);
+  const words = VOCAB[String(n)] || [];
+  const size = Math.min(SETTINGS.unitTestSize, words.length);
+  // Pick a random sample, weighted slightly toward unseen words
+  const pool = shuffle([...words]);
+  const session = pool.slice(0, size);
+  startUnitTest(n, session);
 }
 
-// --- QUIZ ---
-function renderQuizStart() {
-  const num = SETTINGS.currentList;
-  const session = buildSession(num, SETTINGS.sessionSize);
-  if (session.length === 0) {
-    $('#view').innerHTML = `<div class="quiz-empty">
-      <h2>All caught up!</h2>
-      <p>No cards due in list ${num} right now. Try Browse or Read mode, or come back later.</p>
-      <button class="btn-primary" id="forceNew">Study new words anyway</button>
-    </div>`;
-    $('#forceNew').addEventListener('click', () => startQuiz(buildSession(num, SETTINGS.sessionSize, true)));
-    return;
-  }
-  startQuiz(session);
-}
-
-function buildSession(currentNum, size, forceNew = false) {
-  const now = Date.now();
-  const currentList = (VOCAB[String(currentNum)] || []).map(w => ({ list: currentNum, w }));
-  const earlierLists = [];
-  for (let i = 1; i < currentNum; i++) {
-    for (const w of VOCAB[String(i)] || []) earlierLists.push({ list: i, w });
-  }
-
-  const isDue = ({ list, w }) => {
-    const c = getCard(list, w.word);
-    return c.due <= now;
-  };
-  const dueScore = ({ list, w }) => {
-    const c = getCard(list, w.word);
-    if (isFresh(c)) return 1;       // fresh = high priority
-    return Math.max(0, (now - c.due) / DAY); // overdue days
-  };
-
-  let dueCurrent = currentList.filter(isDue);
-  let dueOld = earlierLists.filter(isDue);
-  if (forceNew && dueCurrent.length === 0) {
-    dueCurrent = currentList.slice();
-  }
-
-  // Sort by overdue priority, fresh first
-  dueCurrent.sort((a, b) => dueScore(b) - dueScore(a));
-  dueOld.sort((a, b) => dueScore(b) - dueScore(a));
-
-  const oldQuota = Math.min(Math.floor(size * SETTINGS.mixRatio), dueOld.length);
-  const curQuota = Math.min(size - oldQuota, dueCurrent.length);
-  const finalOldQuota = Math.min(size - curQuota, dueOld.length);
-
-  const session = [...dueCurrent.slice(0, curQuota), ...dueOld.slice(0, finalOldQuota)];
-  shuffle(session);
-  return session;
-}
-
-function startQuiz(session) {
-  CURRENT_QUIZ = {
-    session,
+function startUnitTest(n, session) {
+  const state = {
+    n,
+    qs: session.map(w => buildTestQ(n, w)),
     idx: 0,
-    correct: 0,
-    wrong: 0,
-    answered: false,
+    answers: [],   // {word, correct, picked}
   };
-  renderQuizCard();
+  renderUnitTestQ(state);
 }
 
-function renderQuizCard() {
-  const q = CURRENT_QUIZ;
-  if (!q || q.idx >= q.session.length) return finishQuiz();
-  const { list, w } = q.session[q.idx];
-  const card = getCard(list, w.word);
-  const dir = SETTINGS.direction;
-
-  // Build distractors
-  const pool = pickDistractors(list, w, 3);
-  const options = shuffle([w, ...pool]);
-
-  const promptHtml = dir === 'en2zh'
-    ? `<div class="prompt-label">What does it mean?</div>
-       <div class="prompt">${esc(w.word)}</div>
-       <div class="ipa">${esc(w.ipa || '')}</div>`
-    : `<div class="prompt-label">Which English word?</div>
-       <div class="prompt">${esc(w.def_zh)}</div>`;
-
-  const optionHtml = options.map((o, i) => {
-    const text = dir === 'en2zh' ? o.def_zh : o.word;
-    return `<button data-i="${i}" data-correct="${o.word === w.word ? '1' : '0'}">${esc(text)}</button>`;
-  }).join('');
-
-  const listLabel = list === SETTINGS.currentList
-    ? `list ${list}`
-    : `<span style="color:var(--warn)">↺ list ${list}</span>`;
-
-  const html = `
-    <div class="quiz-stage">
-      <div class="quiz-progress">
-        <span class="pill">${q.idx + 1} / ${q.session.length}</span>
-        <span class="pill">${listLabel}</span>
-        <span class="pill">✓ ${q.correct} · ✗ ${q.wrong}</span>
-      </div>
-      <div class="quiz-card ${dir === 'zh2en' ? 'zh-prompt' : ''}">${promptHtml}</div>
-      <div class="quiz-options">${optionHtml}</div>
-      <div class="quiz-reveal" id="reveal" style="display:none"></div>
-      <div class="quiz-grade" id="grade" style="display:none">
-        <button data-grade="0">Again</button>
-        <button data-grade="3">Hard</button>
-        <button data-grade="4">Good</button>
-        <button data-grade="5">Easy</button>
-      </div>
-    </div>`;
-  $('#view').innerHTML = html;
-
-  $$('.quiz-options button').forEach(btn => {
-    btn.addEventListener('click', () => onQuizAnswer(btn, w, list));
-  });
+function buildTestQ(n, w) {
+  // 50/50 between en->zh and zh->en
+  const dir = Math.random() < 0.5 ? 'en2zh' : 'zh2en';
+  const distractors = pickDistractors(n, w, 3, dir);
+  const opts = shuffle([w, ...distractors]);
+  return { w, dir, opts };
 }
 
-function pickDistractors(list, target, n) {
-  // Prefer same list, fall back to nearby lists
-  const pool = (VOCAB[String(list)] || []).filter(w => w.word !== target.word && w.def_zh);
-  shuffle(pool);
-  const chosen = pool.slice(0, n);
-  if (chosen.length < n) {
-    const all = Object.values(VOCAB).flat().filter(w => w.word !== target.word && w.def_zh);
+function pickDistractors(n, target, k, dir) {
+  // For en2zh, distractors are other words' Chinese meanings
+  // For zh2en, distractors are other English words
+  const candidates = (VOCAB[String(n)] || []).filter(x =>
+    x.word !== target.word && (dir === 'en2zh' ? x.def_zh : x.word) && x.def_zh !== target.def_zh
+  );
+  shuffle(candidates);
+  const chosen = candidates.slice(0, k);
+  if (chosen.length < k) {
+    const all = Object.values(VOCAB).flat().filter(x =>
+      x.word !== target.word && (dir === 'en2zh' ? x.def_zh : x.word) && x.def_zh !== target.def_zh
+    );
     shuffle(all);
-    for (const w of all) {
-      if (chosen.length >= n) break;
-      if (!chosen.includes(w)) chosen.push(w);
+    for (const x of all) {
+      if (chosen.length >= k) break;
+      if (!chosen.includes(x)) chosen.push(x);
     }
   }
   return chosen;
 }
 
-function onQuizAnswer(btn, w, list) {
-  const q = CURRENT_QUIZ;
-  if (q.answered) return;
-  q.answered = true;
-  const correct = btn.dataset.correct === '1';
-  q.lastCorrect = correct;
-  if (correct) q.correct++; else q.wrong++;
+function renderUnitTestQ(state) {
+  if (state.idx >= state.qs.length) return finishUnitTest(state);
+  const q = state.qs[state.idx];
+  const w = q.w;
+  const total = state.qs.length;
+  const pct = Math.round((state.idx / total) * 100);
 
-  $$('.quiz-options button').forEach(b => {
+  const promptHtml = q.dir === 'en2zh'
+    ? `<div class="prompt-label">What does this mean?</div>
+       <div class="prompt">${escHtml(w.word)}</div>
+       <div class="ipa">${escHtml(w.ipa || '')}</div>`
+    : `<div class="prompt-label">Which English word?</div>
+       <div class="prompt">${escHtml(w.def_zh)}</div>`;
+
+  const optsHtml = q.opts.map((o, i) => {
+    const text = q.dir === 'en2zh' ? o.def_zh : o.word;
+    const isCorrect = o.word === w.word;
+    return `<button data-i="${i}" data-correct="${isCorrect ? '1' : '0'}">${escHtml(text)}</button>`;
+  }).join('');
+
+  $('#view').innerHTML = `
+    <div class="quiz-stage">
+      <div class="quiz-progress-bar"><div style="width:${pct}%"></div></div>
+      <div class="quiz-meta">
+        <span class="pill">Q ${state.idx + 1} / ${total}</span>
+        <span class="pill">List ${state.n}</span>
+      </div>
+      <div class="quiz-card ${q.dir === 'zh2en' ? 'zh-prompt' : ''}">${promptHtml}</div>
+      <div class="quiz-options" id="opts">${optsHtml}</div>
+      <div class="quiz-reveal" id="reveal" hidden></div>
+      <div class="quiz-next" id="nextWrap" hidden>
+        <button class="btn-primary" id="nextBtn">${state.idx + 1 >= total ? 'See results' : 'Next →'}</button>
+      </div>
+    </div>
+  `;
+  $$('#opts button').forEach(btn => {
+    btn.addEventListener('click', () => onUnitAnswer(state, q, btn));
+  });
+}
+
+function onUnitAnswer(state, q, btn) {
+  const correct = btn.dataset.correct === '1';
+  state.answers.push({
+    w: q.w,
+    correct,
+    picked: btn.textContent,
+    dir: q.dir,
+  });
+  $$('#opts button').forEach(b => {
     b.classList.add('disabled');
     if (b.dataset.correct === '1') b.classList.add('correct');
     else if (b === btn) b.classList.add('wrong');
   });
 
+  // Update SRS for this word
+  rateCard(state.n, q.w.word, correct ? 4 : 0);
+
   // Reveal
   const reveal = $('#reveal');
-  reveal.style.display = 'block';
+  reveal.hidden = false;
   reveal.innerHTML = `
-    <div><b>${esc(w.word)}</b> ${esc(w.ipa || '')}</div>
-    <div>${esc(w.def_en)}</div>
-    <div>${esc(w.def_zh)}</div>
-    ${w.synonym ? `<div class="syn">≈ ${esc(w.synonym)}</div>` : ''}
-    ${w.ex_en ? `<div class="ex">${esc(w.ex_en)}<div>${esc(w.ex_zh)}</div></div>` : ''}
+    <div class="word">${escHtml(q.w.word)} <span style="color:var(--muted);font-weight:normal">${escHtml(q.w.ipa || '')}</span></div>
+    <div>${escHtml(q.w.def_zh)}</div>
+    <div style="color:var(--muted);font-size:13px;margin-top:4px">${escHtml(q.w.def_en)}</div>
+    ${q.w.ex_en ? `<div class="ex">${escHtml(q.w.ex_en)}<br>${escHtml(q.w.ex_zh)}</div>` : ''}
   `;
-  const grade = $('#grade');
-  grade.style.display = 'grid';
-  $$('#grade button').forEach(g => {
-    g.addEventListener('click', () => {
-      const quality = +g.dataset.grade;
-      // If they got it wrong, force quality <= 2 even if they tap "Good"
-      const final = !correct ? Math.min(quality, 2) : quality;
-      rateCard(list, w.word, final);
-      q.idx++;
-      q.answered = false;
-      renderQuizCard();
-    });
+  $('#nextWrap').hidden = false;
+  $('#nextBtn').addEventListener('click', () => {
+    state.idx += 1;
+    renderUnitTestQ(state);
   });
 }
 
-function finishQuiz() {
-  const q = CURRENT_QUIZ;
-  CURRENT_QUIZ = null;
-  const total = q.correct + q.wrong;
-  const pct = total ? Math.round((q.correct / total) * 100) : 0;
-  $('#view').innerHTML = `
-    <div class="quiz-empty">
-      <h2>Session complete</h2>
-      <p>${q.correct} correct out of ${total} (${pct}%)</p>
-      <p style="margin-top:12px">
-        <button class="btn-primary" id="again">Another session</button>
-        <button class="btn-secondary" id="back">Browse list</button>
-      </p>
-    </div>`;
-  $('#again').addEventListener('click', () => renderQuizStart());
-  $('#back').addEventListener('click', () => {
-    $$('.tab').forEach(x => x.classList.remove('active'));
-    $('.tab[data-mode="browse"]').classList.add('active');
-    render();
-  });
+function finishUnitTest(state) {
+  const total = state.qs.length;
+  const correct = state.answers.filter(a => a.correct).length;
+  const score = correct / total;
+
+  // Mark unit as tested
+  if (!UNITS[state.n]) UNITS[state.n] = {};
+  UNITS[state.n].tested = true;
+  UNITS[state.n].lastScore = score;
+  UNITS[state.n].lastTested = Date.now();
+  saveUnits();
+
+  setHeader(`List ${state.n} · Results`);
+  const pct = Math.round(score * 100);
+  const html = [];
+  html.push(`<div class="results">
+    <div class="score">${pct}%</div>
+    <div class="breakdown">${correct} of ${total} correct</div>
+    <div class="actions">
+      <a class="btn-primary" href="#/list/${state.n}/test">Retake test</a>
+      <a class="btn-secondary" href="#/list/${state.n}">Back to list</a>
+      <a class="btn-secondary" href="#/review">Mixed review</a>
+    </div>
+  </div>`);
+
+  const wrong = state.answers.filter(a => !a.correct);
+  if (wrong.length) {
+    html.push(`<div class="section-heading">Missed (${wrong.length})</div>`);
+    html.push('<div class="results-list">');
+    for (const a of wrong) {
+      html.push(`<div class="results-row miss">
+        <div class="head"><span class="w">${escHtml(a.w.word)}</span><span class="gloss">${escHtml(a.w.def_zh)}</span></div>
+        <div class="your">your answer: ${escHtml(a.picked)}</div>
+      </div>`);
+    }
+    html.push('</div>');
+  }
+
+  const right = state.answers.filter(a => a.correct);
+  if (right.length) {
+    html.push(`<div class="section-heading">Correct (${right.length})</div>`);
+    html.push('<div class="results-list">');
+    for (const a of right) {
+      html.push(`<div class="results-row hit">
+        <div class="head"><span class="w">${escHtml(a.w.word)}</span><span class="gloss">${escHtml(a.w.def_zh)}</span></div>
+      </div>`);
+    }
+    html.push('</div>');
+  }
+  $('#view').innerHTML = html.join('');
 }
 
-// --- READ ---
-function renderReadList() {
-  const num = SETTINGS.currentList;
-  const list = (PASSAGES && PASSAGES[String(num)]) || [];
-  if (list.length === 0) {
-    $('#view').innerHTML = `<div class="quiz-empty">
-      <h2>No passages yet</h2>
-      <p>Reading passages for list ${num} haven't been written yet.</p>
+// =====================================================
+// VIEW: Cumulative Review
+// =====================================================
+function renderReview() {
+  setHeader('Mixed Review');
+  const active = activeListNumbers();
+  if (active.length === 0) {
+    $('#view').innerHTML = `<div class="empty-state">
+      <h2>No lists active yet</h2>
+      <p>Take at least one Unit Test to start cumulative review.</p>
+      <a class="btn-primary" href="#/">Pick a list</a>
     </div>`;
     return;
   }
-  CURRENT_PASSAGE = null;
+
+  const session = buildReviewSession(active, SETTINGS.reviewSize);
+  if (session.length === 0) {
+    $('#view').innerHTML = `<div class="empty-state">
+      <h2>All caught up</h2>
+      <p>No words from your active lists are due right now.</p>
+      <p>Active: lists ${active.join(', ')}.</p>
+      <a class="btn-secondary" href="#/">Back to lists</a>
+    </div>`;
+    return;
+  }
+  startReview(session, active);
+}
+
+function buildReviewSession(activeLists, size) {
+  const now = Date.now();
+  const due = [];
+  for (const n of activeLists) {
+    for (const w of VOCAB[String(n)]) {
+      const c = getCard(n, w.word);
+      if (isFresh(c)) continue;     // skip never-tested words in review
+      if (c.due > now) continue;    // not due yet
+      due.push({ n, w, overdue: (now - c.due) / DAY });
+    }
+  }
+  due.sort((a, b) => b.overdue - a.overdue);
+  return due.slice(0, size);
+}
+
+function startReview(session, active) {
+  const state = {
+    qs: session.map(({ n, w }) => ({ n, ...buildTestQ(n, w) })),
+    idx: 0,
+    answers: [],
+    isReview: true,
+    activeLists: active,
+  };
+  renderReviewQ(state);
+}
+
+function renderReviewQ(state) {
+  if (state.idx >= state.qs.length) return finishReview(state);
+  const q = state.qs[state.idx];
+  const w = q.w;
+  const pct = Math.round((state.idx / state.qs.length) * 100);
+
+  const promptHtml = q.dir === 'en2zh'
+    ? `<div class="prompt-label">What does this mean?</div>
+       <div class="prompt">${escHtml(w.word)}</div>
+       <div class="ipa">${escHtml(w.ipa || '')}</div>`
+    : `<div class="prompt-label">Which English word?</div>
+       <div class="prompt">${escHtml(w.def_zh)}</div>`;
+
+  const optsHtml = q.opts.map((o, i) => {
+    const text = q.dir === 'en2zh' ? o.def_zh : o.word;
+    const isCorrect = o.word === w.word;
+    return `<button data-i="${i}" data-correct="${isCorrect ? '1' : '0'}">${escHtml(text)}</button>`;
+  }).join('');
+
+  $('#view').innerHTML = `
+    <div class="quiz-stage">
+      <div class="quiz-progress-bar"><div style="width:${pct}%"></div></div>
+      <div class="quiz-meta">
+        <span class="pill">Q ${state.idx + 1} / ${state.qs.length}</span>
+        <span class="pill">↺ list ${q.n}</span>
+      </div>
+      <div class="quiz-card ${q.dir === 'zh2en' ? 'zh-prompt' : ''}">${promptHtml}</div>
+      <div class="quiz-options" id="opts">${optsHtml}</div>
+      <div class="quiz-reveal" id="reveal" hidden></div>
+      <div class="quiz-next" id="nextWrap" hidden>
+        <button class="btn-primary" id="nextBtn">${state.idx + 1 >= state.qs.length ? 'Finish' : 'Next →'}</button>
+      </div>
+    </div>
+  `;
+  $$('#opts button').forEach(btn => {
+    btn.addEventListener('click', () => onReviewAnswer(state, q, btn));
+  });
+}
+
+function onReviewAnswer(state, q, btn) {
+  const correct = btn.dataset.correct === '1';
+  state.answers.push({ n: q.n, w: q.w, correct, picked: btn.textContent });
+  $$('#opts button').forEach(b => {
+    b.classList.add('disabled');
+    if (b.dataset.correct === '1') b.classList.add('correct');
+    else if (b === btn) b.classList.add('wrong');
+  });
+  rateCard(q.n, q.w.word, correct ? 4 : 0);
+  $('#reveal').hidden = false;
+  $('#reveal').innerHTML = `
+    <div class="word">${escHtml(q.w.word)}</div>
+    <div>${escHtml(q.w.def_zh)}</div>
+    <div style="color:var(--muted);font-size:13px;margin-top:4px">${escHtml(q.w.def_en)}</div>
+  `;
+  $('#nextWrap').hidden = false;
+  $('#nextBtn').addEventListener('click', () => {
+    state.idx += 1;
+    renderReviewQ(state);
+  });
+}
+
+function finishReview(state) {
+  const total = state.qs.length;
+  const correct = state.answers.filter(a => a.correct).length;
+  const pct = total ? Math.round((correct / total) * 100) : 0;
+  setHeader('Review · Results');
+  const wrong = state.answers.filter(a => !a.correct);
+  const html = [];
+  html.push(`<div class="results">
+    <div class="score">${pct}%</div>
+    <div class="breakdown">${correct} of ${total} correct · ${state.activeLists.length} lists in pool</div>
+    <div class="actions">
+      <a class="btn-primary" href="#/review">Another round</a>
+      <a class="btn-secondary" href="#/">Back to lists</a>
+    </div>
+  </div>`);
+  if (wrong.length) {
+    html.push(`<div class="section-heading">Missed</div><div class="results-list">`);
+    for (const a of wrong) {
+      html.push(`<div class="results-row miss">
+        <div class="head"><span class="w">${escHtml(a.w.word)}</span><span class="gloss">${escHtml(a.w.def_zh)} <em style="color:var(--muted)">· list ${a.n}</em></span></div>
+      </div>`);
+    }
+    html.push('</div>');
+  }
+  $('#view').innerHTML = html.join('');
+}
+
+// =====================================================
+// VIEW: Passage list
+// =====================================================
+function renderPassageList(n) {
+  setHeader(`List ${n} · Passages`);
+  const list = PASSAGES[String(n)] || [];
+  if (list.length === 0) {
+    $('#view').innerHTML = `<div class="empty-state">
+      <h2>No passages yet</h2>
+      <p>Reading passages haven't been written for list ${n} yet.</p>
+      <a class="btn-secondary" href="#/list/${n}">Back to list</a>
+    </div>`;
+    return;
+  }
   const html = ['<div class="passage-list">'];
   list.forEach((p, i) => {
-    const targets = (p.targets || []).length;
-    html.push(`<div class="passage-item" data-i="${i}">
-      <h3>${i + 1}. ${esc(p.title)}</h3>
-      <div class="meta">${targets} target words · ~${approxWordCount(p.text)} words</div>
-    </div>`);
+    const wc = (p.text || '').split(/\s+/).filter(Boolean).length;
+    const qcount = (p.questions || []).length;
+    html.push(`<a class="passage-item" href="#/list/${n}/passages/${i}">
+      <h3>${i + 1}. ${escHtml(p.title)}</h3>
+      <div class="meta">${(p.targets || []).length} target words · ~${wc} words · ${qcount} questions</div>
+    </a>`);
   });
   html.push('</div>');
   $('#view').innerHTML = html.join('');
-  $$('.passage-item').forEach(el => {
-    el.addEventListener('click', () => openPassage(+el.dataset.i));
-  });
 }
 
-function approxWordCount(t) {
-  return (t || '').split(/\s+/).filter(Boolean).length;
-}
+// =====================================================
+// VIEW: Read passage
+// =====================================================
+function renderPassage(n, i) {
+  const passage = (PASSAGES[String(n)] || [])[i];
+  if (!passage) return notFound();
+  setHeader(`List ${n} · Reading ${i + 1}`);
 
-function openPassage(i) {
-  const num = SETTINGS.currentList;
-  const passage = (PASSAGES[String(num)] || [])[i];
-  if (!passage) return;
-  CURRENT_PASSAGE = passage;
-
-  // Build target lookup, include earlier-list review words appearing in text
   const wordIndex = buildGlobalWordIndex();
   const targetSet = new Set((passage.targets || []).map(t => t.toLowerCase()));
-
-  const rendered = highlightPassage(passage.text, wordIndex, targetSet, num);
+  const rendered = highlightPassage(passage.text, wordIndex, targetSet, n);
 
   $('#view').innerHTML = `
-    <div class="passage-reader">
-      <h2>${esc(passage.title)}</h2>
+    <article class="passage-reader">
+      <h2>${escHtml(passage.title)}</h2>
       <div class="passage-text">${rendered}</div>
-      <div class="passage-back">
-        <button class="btn-secondary" id="backList">← All passages</button>
+      <div class="passage-actions">
+        <a class="btn-secondary" href="#/list/${n}/passages">All passages</a>
+        ${(passage.questions || []).length ? `<a class="btn-primary" href="#/list/${n}/passages/${i}/quiz">Take comprehension quiz →</a>` : ''}
       </div>
-    </div>
-    <div id="popover" class="popover">
-      <button class="pop-close">×</button>
-      <div class="pop-word"></div>
-      <div class="pop-zh"></div>
-      <div class="pop-en"></div>
-    </div>
+    </article>
   `;
-  $('#backList').addEventListener('click', renderReadList);
-  bindPassageInteractions();
+  bindPassageInteractions(wordIndex);
 }
 
 function buildGlobalWordIndex() {
-  // Map lowercase word -> { list, entry }
   const idx = new Map();
-  for (const [list, words] of Object.entries(VOCAB)) {
+  for (const [n, words] of Object.entries(VOCAB)) {
     for (const w of words) {
       const k = w.word.toLowerCase();
-      if (!idx.has(k)) idx.set(k, { list: +list, w });
+      if (!idx.has(k)) idx.set(k, { n: +n, w });
     }
   }
   return idx;
 }
 
 function highlightPassage(text, wordIndex, targetSet, currentList) {
-  // Tokenize on word boundaries; preserve original spacing/punct.
-  // Use a regex that captures words including hyphens and apostrophes.
+  // Process line-by-line so we preserve newlines
+  const lines = text.split('\n');
   const re = /([A-Za-z][A-Za-z'\-]*)/g;
-  return text.replace(re, (match) => {
-    const lower = match.toLowerCase();
-    // Check exact match or simple stem match (strip trailing s/ed/ing/ly/'s/es)
-    const candidates = [lower, ...stemVariants(lower)];
-    let hit = null;
-    for (const c of candidates) {
-      if (wordIndex.has(c)) { hit = wordIndex.get(c); break; }
-    }
-    if (!hit) return match;
-    const isTarget = targetSet.has(hit.w.word.toLowerCase());
-    const isReview = !isTarget && hit.list !== currentList;
-    if (!isTarget && !isReview) return match;
-    const cls = isReview ? 'target review' : 'target';
-    const key = hit.w.word;
-    return `<mark class="${cls}" data-key="${esc(key)}">${match}</mark>`;
-  });
+  return lines.map(line =>
+    line.replace(re, (match) => {
+      const lower = match.toLowerCase();
+      const candidates = [lower, ...stemVariants(lower)];
+      let hit = null;
+      for (const c of candidates) {
+        if (wordIndex.has(c)) { hit = wordIndex.get(c); break; }
+      }
+      if (!hit) return match;
+      const isTarget = targetSet.has(hit.w.word.toLowerCase());
+      const isReview = !isTarget && hit.n !== currentList;
+      if (!isTarget && !isReview) return match;
+      const cls = isReview ? 'target review' : 'target';
+      return `<mark class="${cls}" data-key="${escAttr(hit.w.word)}">${match}</mark>`;
+    })
+  ).join('\n');
 }
 
 function stemVariants(word) {
   const v = [];
-  // Strip common suffixes
-  const suf = [/'s$/, /s$/, /es$/, /ed$/, /d$/, /ing$/, /ly$/, /ies$/, /ied$/];
+  const suf = [/'s$/, /ies$/, /ied$/, /es$/, /ed$/, /ing$/, /ly$/, /s$/, /d$/];
   for (const s of suf) {
     if (s.test(word)) v.push(word.replace(s, ''));
   }
-  // Try doubling consonant removal: "running" -> "runn" -> "run"
-  if (/[a-z]ing$/.test(word)) v.push(word.replace(/ing$/, ''));
-  // -ies -> -y
   if (/ies$/.test(word)) v.push(word.replace(/ies$/, 'y'));
-  // -ied -> -y
   if (/ied$/.test(word)) v.push(word.replace(/ied$/, 'y'));
+  if (/[a-z]ing$/.test(word)) v.push(word.replace(/ing$/, 'e'));
   return v;
 }
 
-function bindPassageInteractions() {
-  const idx = buildGlobalWordIndex();
+function bindPassageInteractions(wordIndex) {
   const pop = $('#popover');
+  const close = () => { pop.hidden = true; };
   $$('mark.target').forEach(m => {
     m.addEventListener('click', (e) => {
       e.stopPropagation();
       const k = m.dataset.key.toLowerCase();
-      const info = idx.get(k);
+      const info = wordIndex.get(k);
       if (!info) return;
       pop.querySelector('.pop-word').textContent = `${info.w.word}  ${info.w.ipa || ''}`;
       pop.querySelector('.pop-zh').textContent = info.w.def_zh || '';
       pop.querySelector('.pop-en').textContent = info.w.def_en || '';
+      pop.hidden = false;
       const r = m.getBoundingClientRect();
-      const top = Math.min(window.innerHeight - 160, r.bottom + 8);
-      const left = Math.max(8, Math.min(window.innerWidth - 290, r.left));
+      const popW = 280;
+      const popH = pop.offsetHeight || 140;
+      const top = Math.min(window.innerHeight - popH - 16, Math.max(60, r.bottom + 6));
+      const left = Math.max(8, Math.min(window.innerWidth - popW - 8, r.left));
       pop.style.top = top + 'px';
       pop.style.left = left + 'px';
-      pop.classList.add('show');
     });
   });
-  pop.querySelector('.pop-close').addEventListener('click', () => pop.classList.remove('show'));
+  pop.querySelector('.pop-close').onclick = close;
   document.addEventListener('click', (e) => {
-    if (!pop.contains(e.target) && !e.target.matches('mark.target')) pop.classList.remove('show');
+    if (!pop.contains(e.target) && !e.target.closest('mark.target')) close();
   });
 }
 
-// --- STATS ---
+// =====================================================
+// VIEW: Passage comprehension quiz
+// =====================================================
+function renderPassageQuiz(n, i) {
+  const passage = (PASSAGES[String(n)] || [])[i];
+  if (!passage || !(passage.questions || []).length) return notFound();
+  setHeader(`Reading ${i + 1} · Quiz`);
+
+  const qs = passage.questions;
+  const html = [];
+  html.push(`<div class="comp-quiz">`);
+  qs.forEach((q, qi) => {
+    html.push(`<div class="comp-q" data-i="${qi}">
+      <div class="q-text">${qi + 1}. ${escHtml(q.q)}</div>
+      <div class="q-options">
+        ${q.opts.map((opt, oi) => `
+          <label data-i="${oi}">
+            <input type="radio" name="q${qi}" value="${oi}">
+            <span class="letter">${String.fromCharCode(65 + oi)}</span>
+            <span>${escHtml(opt)}</span>
+          </label>
+        `).join('')}
+      </div>
+      <div class="q-explain" hidden></div>
+    </div>`);
+  });
+  html.push(`</div>`);
+  html.push(`<div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">
+    <button class="btn-primary" id="submitQuiz">Submit answers</button>
+    <a class="btn-secondary" href="#/list/${n}/passages/${i}">Back to passage</a>
+  </div>`);
+  $('#view').innerHTML = html.join('');
+
+  // Selection state
+  $$('.comp-q .q-options label').forEach(label => {
+    label.addEventListener('click', (e) => {
+      const parent = label.closest('.q-options');
+      $$('label', parent).forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      label.querySelector('input').checked = true;
+    });
+  });
+
+  $('#submitQuiz').addEventListener('click', () => gradePassageQuiz(n, i, qs));
+}
+
+function gradePassageQuiz(n, i, qs) {
+  let correct = 0;
+  qs.forEach((q, qi) => {
+    const card = $(`.comp-q[data-i="${qi}"]`);
+    const labels = $$('label', card);
+    const selected = labels.find(l => l.classList.contains('selected'));
+    const pickedI = selected ? +selected.dataset.i : -1;
+    labels.forEach(l => {
+      const oi = +l.dataset.i;
+      if (oi === q.ans) l.classList.add('correct');
+      else if (oi === pickedI) l.classList.add('wrong');
+      l.classList.remove('selected');
+    });
+    if (pickedI === q.ans) correct++;
+    if (q.why) {
+      const ex = $('.q-explain', card);
+      ex.hidden = false;
+      ex.innerHTML = `<b>${pickedI === q.ans ? 'Correct.' : 'Why ' + String.fromCharCode(65 + q.ans) + '.'}</b> ${escHtml(q.why)}`;
+    }
+  });
+  const summary = document.createElement('div');
+  summary.className = 'results';
+  summary.style.marginTop = '16px';
+  summary.innerHTML = `
+    <div class="score">${Math.round((correct / qs.length) * 100)}%</div>
+    <div class="breakdown">${correct} of ${qs.length} correct</div>
+    <div class="actions">
+      <a class="btn-secondary" href="#/list/${n}/passages/${i}">Re-read</a>
+      <a class="btn-secondary" href="#/list/${n}/passages">More passages</a>
+    </div>
+  `;
+  $('#submitQuiz').replaceWith(summary);
+}
+
+// =====================================================
+// VIEW: Stats
+// =====================================================
 function renderStats() {
+  setHeader('Stats');
   const lists = Object.keys(VOCAB).sort((a, b) => +a - +b);
-  let fresh = 0, learning = 0, mature = 0, due = 0, total = 0;
-  const now = Date.now();
+  let mature = 0, learning = 0, fresh = 0, due = 0, total = 0;
   const perList = lists.map(n => {
-    const s = computeListSummary(+n);
-    fresh += s.fresh; learning += s.learning; mature += s.mature; due += s.due;
-    total += VOCAB[n].length;
-    return { n, ...s };
+    const s = listSummary(+n);
+    mature += s.mature; learning += s.learning; fresh += s.fresh; due += s.due;
+    total += s.total;
+    return { n, ...s, tested: !!UNITS[n]?.tested, score: UNITS[n]?.lastScore };
   });
   const html = [];
   html.push(`<div class="stats-grid">
@@ -529,26 +823,34 @@ function renderStats() {
     <div class="stat-card"><div class="label">New</div><div class="value">${fresh}</div></div>
     <div class="stat-card"><div class="label">Due now</div><div class="value">${due}</div></div>
   </div>`);
-  html.push(`<div class="stats-list">`);
+  html.push(`<div class="section-heading">Per list</div><div class="stats-list">`);
   for (const r of perList) {
-    html.push(`<div class="row"><span>List ${r.n}</span><span class="num">m ${r.mature} · l ${r.learning} · n ${r.fresh}  ·  due ${r.due}</span></div>`);
+    const known = r.mature + r.learning;
+    const pct = r.total ? Math.round((known / r.total) * 100) : 0;
+    html.push(`<div class="stats-row">
+      <span class="num">List ${r.n}</span>
+      <div class="bar"><div style="width:${pct}%"></div></div>
+      <span class="pct">${pct}%</span>
+    </div>`);
   }
   html.push('</div>');
-  html.push(`<div style="margin-top:18px">
+  html.push(`<div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
     <button class="btn-secondary" id="resetBtn">Reset all progress</button>
   </div>`);
   $('#view').innerHTML = html.join('');
   $('#resetBtn').addEventListener('click', () => {
-    if (confirm('This will erase all your study progress. Continue?')) {
-      PROGRESS = {};
-      saveProgress();
+    if (confirm('This erases all study progress and unit-test results. Continue?')) {
+      PROGRESS = {}; UNITS = {};
+      saveProgress(); saveUnits();
       toast('Progress reset.');
-      render();
+      router();
     }
   });
 }
 
-// --- helpers ---
+// =====================================================
+// helpers
+// =====================================================
 function shuffle(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -556,10 +858,11 @@ function shuffle(arr) {
   }
   return arr;
 }
-function esc(s) {
+function escHtml(s) {
   return String(s ?? '').replace(/[&<>"']/g, c =>
     ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
+function escAttr(s) { return escHtml(s); }
 let toastT;
 function toast(msg) {
   const t = $('#toast');

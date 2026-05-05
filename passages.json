@@ -3,81 +3,808 @@
     {
       "title": "The Querulous Critic",
       "targets": ["querulous", "finicky", "exhaustive", "complimentary", "captivate", "milieu", "loathe", "contrive", "satire", "trenchant", "scintillating", "tempestuous", "exceptional", "patronize", "disdain", "vacuous", "haphazard", "ponderous"],
-      "text": "Margot Hayes had built her career on being querulous. As the city's most feared restaurant critic, she was famously finicky — a single under-seasoned scallop could trigger an exhaustive thousand-word evisceration. Chefs both feared her and craved her rare complimentary review, knowing that her praise could captivate an entire dining milieu overnight.\n\nShe loathed the new wave of theme restaurants that had begun to crowd the downtown scene. They were, she contrived to argue in her column, an elaborate satire of dining itself. Her trenchant review of one such place — a thirty-course tasting menu served in near-darkness — became the most-shared piece of food writing of the year. \"The cuisine is not exceptional,\" she wrote, \"merely tempestuous and self-important; the menu reads like a scintillating party trick performed by someone who has run out of jokes.\"\n\nHer rivals accused her of being too eager to patronize establishments she had decided to disdain before tasting a single dish. They claimed her judgments were vacuous, the haphazard prejudices of a woman who had not cooked a meal herself in twenty years. Margot ignored them. She had a ponderous dossier of evidence — receipts, menus, photographs — proving that every star she had ever given or withheld had been earned by the kitchen, not granted by her mood.\n\nWhat her critics never understood was that, beneath the venom, Margot still believed that a perfect plate of food was possible. She kept a battered notebook in her purse, filled with descriptions of meals from her childhood: her grandmother's stew, a peach eaten on a roadside in Provence. When a kitchen produced something that captivated her in the same way, she wrote about it with an unguarded warmth that surprised her readers. The querulous tone vanished. The trenchant pen softened. For one column, at least, she was simply a woman who had been moved by something exceptional, and who wanted everyone to know."
+      "text": "Margot Hayes had built her career on being querulous. As the city's most feared restaurant critic, she was famously finicky — a single under-seasoned scallop could trigger an exhaustive thousand-word evisceration. Chefs both feared her and craved her rare complimentary review, knowing that her praise could captivate an entire dining milieu overnight.\n\nShe loathed the new wave of theme restaurants that had begun to crowd the downtown scene. They were, she contrived to argue in her column, an elaborate satire of dining itself. Her trenchant review of one such place — a thirty-course tasting menu served in near-darkness — became the most-shared piece of food writing of the year. \"The cuisine is not exceptional,\" she wrote, \"merely tempestuous and self-important; the menu reads like a scintillating party trick performed by someone who has run out of jokes.\"\n\nHer rivals accused her of being too eager to patronize establishments she had decided to disdain before tasting a single dish. They claimed her judgments were vacuous, the haphazard prejudices of a woman who had not cooked a meal herself in twenty years. Margot ignored them. She had a ponderous dossier of evidence — receipts, menus, photographs — proving that every star she had ever given or withheld had been earned by the kitchen, not granted by her mood.\n\nWhat her critics never understood was that, beneath the venom, Margot still believed that a perfect plate of food was possible. She kept a battered notebook in her purse, filled with descriptions of meals from her childhood: her grandmother's stew, a peach eaten on a roadside in Provence. When a kitchen produced something that captivated her in the same way, she wrote about it with an unguarded warmth that surprised her readers. The querulous tone vanished. The trenchant pen softened. For one column, at least, she was simply a woman who had been moved by something exceptional, and who wanted everyone to know.",
+      "questions": [
+        {
+          "q": "Which of the following best captures the primary purpose of the passage?",
+          "opts": [
+            "To denounce restaurant critics for relying on personal taste rather than objective standards.",
+            "To complicate a one-sided picture of a critic by revealing the conviction that motivates her severity.",
+            "To argue that finicky reviewers are essential to the survival of high-end restaurants.",
+            "To compare the careers of food critics from two different generations."
+          ],
+          "ans": 1,
+          "why": "The passage opens with Margot's reputation for being querulous and trenchant, then in the final paragraph reveals her enduring belief that perfection is possible — complicating, rather than simply endorsing or condemning, her image."
+        },
+        {
+          "q": "It can be inferred from the passage that Margot's rivals interpret her judgments as",
+          "opts": [
+            "carefully reasoned but excessively harsh.",
+            "rooted in nostalgia rather than current standards.",
+            "arbitrary verdicts dressed up as principled criticism.",
+            "the predictable output of a self-promoting brand."
+          ],
+          "ans": 2,
+          "why": "Her rivals call her judgments \"vacuous\" and \"haphazard prejudices,\" implying not that she is too strict but that her verdicts are arbitrary masquerading as criticism."
+        },
+        {
+          "q": "In the final paragraph, the word \"unguarded\" most nearly means",
+          "opts": [
+            "unprotected from attack.",
+            "lacking in technical skill.",
+            "without the usual reserve or defense.",
+            "casual to the point of carelessness."
+          ],
+          "ans": 2,
+          "why": "The passage contrasts Margot's habitual venom with a warmth that breaks through her usual defensive posture; \"unguarded\" here means \"without the usual reserve.\""
+        }
+      ]
     },
     {
       "title": "The Heretic of Bremen",
       "targets": ["heresy", "allegiance", "condemn", "proselytize", "forsake", "nefarious", "sacrosanct", "divisive", "restrain", "prosecute", "lament", "aver", "forthright", "indecorous", "deferential", "renegade", "morbid", "trenchant", "ill-advised"],
-      "text": "Brother Anselm had not set out to commit heresy. He had begun, as countless monks before him, by simply asking what allegiance a devout man owed to a corrupt bishop. The bishop, he came to believe, used his office to amass property and proselytize on behalf of nobles who paid him handsomely for the privilege. To condemn this, Anselm thought, was not heresy at all but the plain duty of a Christian.\n\nThe abbey, however, did not see it that way. When Anselm refused to forsake his pamphlets — small, trenchant tracts that named the bishop's most nefarious bargains — he was first restrained, then quietly prosecuted in the abbey's own court. The verdict was foregone. The bishop's name was sacrosanct, and any voice that questioned it was, by definition, divisive.\n\nAnselm's friends begged him to recant. \"Be more deferential,\" one whispered through the cell window the night before his sentencing. \"Aver that you were misled. They will accept anything, so long as you do not appear to have meant it.\" But Anselm was forthright by temperament, and the years of quiet study had only sharpened that disposition. He could not, he said, pretend to a regret he did not feel; that would be the truly indecorous act.\n\nWhen the verdict came, the abbey called him a renegade. He was stripped of his robes and led, in the morbid pageant such occasions required, through the city to the cathedral steps. Some in the crowd jeered. Others wept. Many, his friends would later say, lamented in private what they could not protest in public.\n\nAnselm himself bore the spectacle with a quiet that struck onlookers as either saintly or ill-advised, depending on their politics. He had said what he meant to say. The pamphlets, smuggled out by sympathetic novices, had already begun their slow work in the cities of the north. Whether or not he survived the week, the trenchant question he had asked of the bishop would now be asked, in time, of every bishop in the realm."
+      "text": "Brother Anselm had not set out to commit heresy. He had begun, as countless monks before him, by simply asking what allegiance a devout man owed to a corrupt bishop. The bishop, he came to believe, used his office to amass property and proselytize on behalf of nobles who paid him handsomely for the privilege. To condemn this, Anselm thought, was not heresy at all but the plain duty of a Christian.\n\nThe abbey, however, did not see it that way. When Anselm refused to forsake his pamphlets — small, trenchant tracts that named the bishop's most nefarious bargains — he was first restrained, then quietly prosecuted in the abbey's own court. The verdict was foregone. The bishop's name was sacrosanct, and any voice that questioned it was, by definition, divisive.\n\nAnselm's friends begged him to recant. \"Be more deferential,\" one whispered through the cell window the night before his sentencing. \"Aver that you were misled. They will accept anything, so long as you do not appear to have meant it.\" But Anselm was forthright by temperament, and the years of quiet study had only sharpened that disposition. He could not, he said, pretend to a regret he did not feel; that would be the truly indecorous act.\n\nWhen the verdict came, the abbey called him a renegade. He was stripped of his robes and led, in the morbid pageant such occasions required, through the city to the cathedral steps. Some in the crowd jeered. Others wept. Many, his friends would later say, lamented in private what they could not protest in public.\n\nAnselm himself bore the spectacle with a quiet that struck onlookers as either saintly or ill-advised, depending on their politics. He had said what he meant to say. The pamphlets, smuggled out by sympathetic novices, had already begun their slow work in the cities of the north. Whether or not he survived the week, the trenchant question he had asked of the bishop would now be asked, in time, of every bishop in the realm.",
+      "questions": [
+        {
+          "q": "The author's attitude toward Anselm is best described as",
+          "opts": [
+            "sympathetic but skeptical of his strategic choices.",
+            "respectful of his integrity and the durability of his ideas.",
+            "critical of the political naivety that led to his downfall.",
+            "neutral, presenting the events without favor."
+          ],
+          "ans": 1,
+          "why": "The closing emphasis on the slow work of his pamphlets and the questions that would now be asked of every bishop signals respect for both his integrity and the long reach of his argument."
+        },
+        {
+          "q": "Which of the following best describes the function of the third paragraph (\"Anselm's friends...\")?",
+          "opts": [
+            "It introduces the legal arguments Anselm uses in his defense.",
+            "It dramatizes the social pressure to recant and clarifies why Anselm refuses.",
+            "It shifts the passage from history into allegory.",
+            "It establishes the abbey's official position on heresy."
+          ],
+          "ans": 1,
+          "why": "The friend's plea (\"Be more deferential...\") is the social pressure; Anselm's refusal — that he could not feign a regret he did not feel — clarifies the principled basis of his position."
+        },
+        {
+          "q": "It can be inferred that the abbey's verdict against Anselm was determined primarily by",
+          "opts": [
+            "the strength of evidence regarding his actual beliefs.",
+            "the political need to protect the bishop from public criticism.",
+            "the testimony of fellow monks at the trial.",
+            "the abbey's own prior commitments on doctrinal matters."
+          ],
+          "ans": 1,
+          "why": "The passage states the bishop's name was \"sacrosanct\" and any questioning of it was, by definition, divisive — meaning the verdict followed from the political need to shield the bishop, not from doctrinal analysis."
+        }
+      ]
     },
     {
       "title": "Against Rote",
       "targets": ["rote", "ritualize", "regimen", "exhaustive", "innate", "tractable", "enhance", "haphazard", "routine", "compile", "baffle", "ponderous", "vacuous", "inhibit", "passive", "external", "preclude", "inadvertent", "outdo", "wide-ranging", "spontaneous"],
-      "text": "Every generation of educators rediscovers, with apparent surprise, that learning by rote does not produce understanding. We ritualize the disappointment in journal articles, panel discussions, and the occasional exhaustive policy review, only to send children back into the same desks the following autumn. The regimen of memorization persists not because anyone defends it on its merits but because no one has yet contrived a tractable replacement that could be implemented at scale.\n\nThe research is wide-ranging and, by now, almost embarrassing in its consistency. Children who memorize multiplication tables without grasping the underlying ideas can recite the answers but cannot enhance their performance on novel problems by even a small margin. Their knowledge is, in the most literal sense, external — it sits beside their thinking rather than informing it. When a problem is presented in haphazard or unfamiliar terms, the rote student is baffled; the student who understood is merely slowed.\n\nWhy, then, do we cling to a method that even its defenders concede is ponderous and often vacuous? Part of the answer is institutional inertia. A test that asks for memorized facts is easy to grade; a test that probes understanding is not. Part of the answer is also a misplaced belief — sometimes spoken, more often inadvertent — that drilling somehow inhibits laziness. In fact, drilling tends to produce passive students who wait to be told what to do next, the precise opposite of the spontaneous engagement that actual learning requires.\n\nNone of this is to argue that practice is unnecessary. A pianist who has never run her scales will not outdo herself in concert. But the practice that matters is the kind that builds, gradually, an innate sense of how the parts fit together. Rote drill, by contrast, can preclude that synthesis: a student who has memorized the answer is no longer obliged to think about the question.\n\nWe will not abolish rote learning by writing one more report. We will abolish it only when we are willing to compile, slowly and patiently, the curricula that make a different approach possible — and to grade them, and ourselves, by what students can actually do."
+      "text": "Every generation of educators rediscovers, with apparent surprise, that learning by rote does not produce understanding. We ritualize the disappointment in journal articles, panel discussions, and the occasional exhaustive policy review, only to send children back into the same desks the following autumn. The regimen of memorization persists not because anyone defends it on its merits but because no one has yet contrived a tractable replacement that could be implemented at scale.\n\nThe research is wide-ranging and, by now, almost embarrassing in its consistency. Children who memorize multiplication tables without grasping the underlying ideas can recite the answers but cannot enhance their performance on novel problems by even a small margin. Their knowledge is, in the most literal sense, external — it sits beside their thinking rather than informing it. When a problem is presented in haphazard or unfamiliar terms, the rote student is baffled; the student who understood is merely slowed.\n\nWhy, then, do we cling to a method that even its defenders concede is ponderous and often vacuous? Part of the answer is institutional inertia. A test that asks for memorized facts is easy to grade; a test that probes understanding is not. Part of the answer is also a misplaced belief — sometimes spoken, more often inadvertent — that drilling somehow inhibits laziness. In fact, drilling tends to produce passive students who wait to be told what to do next, the precise opposite of the spontaneous engagement that actual learning requires.\n\nNone of this is to argue that practice is unnecessary. A pianist who has never run her scales will not outdo herself in concert. But the practice that matters is the kind that builds, gradually, an innate sense of how the parts fit together. Rote drill, by contrast, can preclude that synthesis: a student who has memorized the answer is no longer obliged to think about the question.\n\nWe will not abolish rote learning by writing one more report. We will abolish it only when we are willing to compile, slowly and patiently, the curricula that make a different approach possible — and to grade them, and ourselves, by what students can actually do.",
+      "questions": [
+        {
+          "q": "Which of the following best states the central argument of the passage?",
+          "opts": [
+            "Practice is unnecessary for genuine learning to occur.",
+            "Educators have failed to gather sufficient research on memorization.",
+            "Rote learning persists because of institutional convenience, not because it works.",
+            "Memorization should be abolished and replaced with project-based instruction."
+          ],
+          "ans": 2,
+          "why": "The passage repeatedly attributes rote's persistence to inertia, ease of grading, and inadvertent assumptions — not to its educational merits."
+        },
+        {
+          "q": "The author distinguishes between two kinds of practice in the fourth paragraph in order to",
+          "opts": [
+            "concede that some forms of practice can be valuable while still arguing against rote.",
+            "demonstrate that musicians and students cannot be compared directly.",
+            "qualify an earlier claim that all repetition is harmful.",
+            "introduce a new policy proposal not previously discussed."
+          ],
+          "ans": 0,
+          "why": "The pianist analogy concedes that practice (running scales) matters, but distinguishes it from rote drill — a concession that strengthens, rather than undercuts, the central argument."
+        },
+        {
+          "q": "In the second paragraph, the word \"external\" is used to suggest that rote-acquired knowledge",
+          "opts": [
+            "is taught by sources outside the school.",
+            "exists alongside the student's thinking without informing it.",
+            "is visible only on standardized tests.",
+            "depends on conditions outside the student's control."
+          ],
+          "ans": 1,
+          "why": "The passage explicitly contrasts knowledge that \"sits beside\" thinking with knowledge that informs it — \"external\" is the metaphor for the former."
+        }
+      ]
     },
     {
       "title": "The Plummet",
       "targets": ["amass", "plummet", "calamity", "conjecture", "fluctuate", "prosecute", "renegade", "atomize", "rescind", "abet", "fungible", "unconscionable", "harrow", "forsake", "euphoria", "nefarious", "ambiguous", "cardinal", "indiscriminate", "menace", "stagger"],
-      "text": "By the time the markets opened on Monday, the calamity was a foregone conclusion. The investment firm Halpern & Reach had spent a decade amassing a portfolio so leveraged, and so ambiguous in its disclosures, that even the regulators tasked with oversight had been content to look the other way. When prices began to fluctuate violently the previous Friday, the firm's traders had been ordered, on the cardinal authority of the founder himself, to keep buying. By Sunday night, the value of the firm's positions had begun to plummet.\n\nIn the post-mortems that followed, much was made of how indiscriminate the firm's trades had been in the final hours. A renegade analyst, fired three months earlier for raising concerns, would later aver to congressional investigators that the executives had known the strategy was unconscionable but had abet­ted it anyway, in the euphoria of a long bull run. They had treated capital as fungible — money was money, no matter where it came from — and had quietly forsaken the conservative limits the firm's charter had once imposed.\n\nProsecutors moved quickly. Within a week they had charged three executives with fraud and another two with the more nefarious offense of obstructing the investigation. Defense lawyers conjectured, with some justification, that the cases had been hastily assembled, but the public mood was not in a forgiving register. The collapse had harrowed an entire generation of small investors who had trusted the firm with their savings, and the menace of further failures elsewhere in the sector had begun to atomize what little confidence remained in the industry.\n\nIn the aftermath, the regulator rescinded several rules that had quietly been weakened over the previous decade and announced a wide-ranging review of the rest. Critics pointed out that this would not, by itself, prevent the next collapse; the next collapse, they argued, was already gestating in some other firm whose name no one yet knew. But for the moment the public seemed willing to accept staggered reforms over none at all, and the markets, after their brief plummet, began the slow, uneven work of climbing back."
+      "text": "By the time the markets opened on Monday, the calamity was a foregone conclusion. The investment firm Halpern & Reach had spent a decade amassing a portfolio so leveraged, and so ambiguous in its disclosures, that even the regulators tasked with oversight had been content to look the other way. When prices began to fluctuate violently the previous Friday, the firm's traders had been ordered, on the cardinal authority of the founder himself, to keep buying. By Sunday night, the value of the firm's positions had begun to plummet.\n\nIn the post-mortems that followed, much was made of how indiscriminate the firm's trades had been in the final hours. A renegade analyst, fired three months earlier for raising concerns, would later aver to congressional investigators that the executives had known the strategy was unconscionable but had abetted it anyway, in the euphoria of a long bull run. They had treated capital as fungible — money was money, no matter where it came from — and had quietly forsaken the conservative limits the firm's charter had once imposed.\n\nProsecutors moved quickly. Within a week they had charged three executives with fraud and another two with the more nefarious offense of obstructing the investigation. Defense lawyers conjectured, with some justification, that the cases had been hastily assembled, but the public mood was not in a forgiving register. The collapse had harrowed an entire generation of small investors who had trusted the firm with their savings, and the menace of further failures elsewhere in the sector had begun to atomize what little confidence remained in the industry.\n\nIn the aftermath, the regulator rescinded several rules that had quietly been weakened over the previous decade and announced a wide-ranging review of the rest. Critics pointed out that this would not, by itself, prevent the next collapse; the next collapse, they argued, was already gestating in some other firm whose name no one yet knew. But for the moment the public seemed willing to accept staggered reforms over none at all, and the markets, after their brief plummet, began the slow, uneven work of climbing back.",
+      "questions": [
+        {
+          "q": "The passage suggests that the regulators' failure to act earlier was primarily a matter of",
+          "opts": [
+            "insufficient legal authority to investigate the firm.",
+            "willful inattention rather than ignorance of the risks.",
+            "disagreement among regulators about the firm's strategy.",
+            "deliberate corruption by individual officials."
+          ],
+          "ans": 1,
+          "why": "The passage states that regulators \"had been content to look the other way\" — wording that implies awareness paired with willful inattention rather than ignorance or disagreement."
+        },
+        {
+          "q": "The author's tone in the final paragraph is best characterized as",
+          "opts": [
+            "triumphant.",
+            "alarmed.",
+            "guardedly skeptical.",
+            "openly cynical."
+          ],
+          "ans": 2,
+          "why": "The author notes the reforms but immediately points out that critics doubt they will prevent the next collapse — a guarded skepticism rather than triumph or open cynicism."
+        },
+        {
+          "q": "In context, the firm's treatment of capital as \"fungible\" most directly implies that the firm",
+          "opts": [
+            "was unable to track the source of any particular dollar.",
+            "ignored conservative limits on what kinds of capital it would accept.",
+            "passed funds through multiple jurisdictions to evade taxes.",
+            "rewarded executives with shares rather than cash."
+          ],
+          "ans": 1,
+          "why": "The passage glosses fungibility with the explanation \"money was money, no matter where it came from,\" linking it directly to the abandonment of conservative source-of-capital limits."
+        }
+      ]
     },
     {
       "title": "Forthright in the Forest",
-      "targets": ["forthright", "arboreal", "spontaneous", "captivate", "milieu", "serendipity", "scintillating", "poignant", "simultaneous", "robust", "ooze", "fluctuate", "innate", "exceptional", "haphazard", "captivate", "regimen", "external"],
-      "text": "I have never been forthright about how much I dislike the city. My friends, accustomed to my urbane milieu — the gallery openings, the late dinners, the scintillating arguments over wine — would not have believed me had I told them. So when I finally took a week to walk in the old-growth forest that my grandmother had loved, I told no one. I left on a Tuesday morning with a pack and a battered field guide, and arrived, by a small piece of serendipity, at the trailhead just as the sun broke through the cloud.\n\nWhat captivated me first was the sheer arboreal scale of the place. The hemlocks I had read about as a child in her books were not abstract any more; they were cathedrals. The bark was ridged and damp, oozing the slow sap that has always struck me as the forest's quiet way of bleeding. The trunks fluctuated subtly in girth as I walked, robust where the soil ran deep, slimmer where the rock was close to the surface. Every fifty feet there was something exceptional that, in a museum, would have drawn a reverent crowd; here, it was simply Tuesday.\n\nI had brought no regimen. I had told myself, half in jest, that I would be spontaneous for the first time in years. Each evening I made camp wherever the day had left me, in a haphazard but contented fashion. I cooked simple food. I wrote little. The mountain, the trees, and the stream were enough; the external world I had left behind seemed, for the first time in a decade, optional.\n\nOn the fifth night, walking back toward my tent at dusk, I came across a deer drinking at the stream. It looked up at me with what I can only describe as a poignant calm — neither alarmed nor curious, merely present. We stood, simultaneous and silent, for what must have been a full minute. Then it turned and walked into the brush.\n\nWhatever innate part of me had been quietly starving in the city ate well that week. I have not been the same since."
+      "targets": ["forthright", "arboreal", "spontaneous", "captivate", "milieu", "serendipity", "scintillating", "poignant", "simultaneous", "robust", "ooze", "fluctuate", "innate", "exceptional", "haphazard", "regimen", "external"],
+      "text": "I have never been forthright about how much I dislike the city. My friends, accustomed to my urbane milieu — the gallery openings, the late dinners, the scintillating arguments over wine — would not have believed me had I told them. So when I finally took a week to walk in the old-growth forest that my grandmother had loved, I told no one. I left on a Tuesday morning with a pack and a battered field guide, and arrived, by a small piece of serendipity, at the trailhead just as the sun broke through the cloud.\n\nWhat captivated me first was the sheer arboreal scale of the place. The hemlocks I had read about as a child in her books were not abstract any more; they were cathedrals. The bark was ridged and damp, oozing the slow sap that has always struck me as the forest's quiet way of bleeding. The trunks fluctuated subtly in girth as I walked, robust where the soil ran deep, slimmer where the rock was close to the surface. Every fifty feet there was something exceptional that, in a museum, would have drawn a reverent crowd; here, it was simply Tuesday.\n\nI had brought no regimen. I had told myself, half in jest, that I would be spontaneous for the first time in years. Each evening I made camp wherever the day had left me, in a haphazard but contented fashion. I cooked simple food. I wrote little. The mountain, the trees, and the stream were enough; the external world I had left behind seemed, for the first time in a decade, optional.\n\nOn the fifth night, walking back toward my tent at dusk, I came across a deer drinking at the stream. It looked up at me with what I can only describe as a poignant calm — neither alarmed nor curious, merely present. We stood, simultaneous and silent, for what must have been a full minute. Then it turned and walked into the brush.\n\nWhatever innate part of me had been quietly starving in the city ate well that week. I have not been the same since.",
+      "questions": [
+        {
+          "q": "The narrator's friends, as described in the first paragraph, are most likely to be surprised by the trip because",
+          "opts": [
+            "they share the narrator's aversion to wilderness and would not have approved.",
+            "they associate the narrator with an urban world that the trip implicitly rejects.",
+            "they had been told the narrator was visiting family during the same week.",
+            "they had previously offered to accompany the narrator on similar trips."
+          ],
+          "ans": 1,
+          "why": "The narrator's \"urbane milieu\" is presented as the friends' image of him; the trip silently rejects that milieu, which is precisely what the friends would not have expected."
+        },
+        {
+          "q": "The encounter with the deer in the fourth paragraph functions primarily as",
+          "opts": [
+            "an example of the dangers of walking alone in the forest.",
+            "a moment that crystallizes the trip's emotional effect on the narrator.",
+            "a contrast with the narrator's earlier description of the forest as cathedral-like.",
+            "evidence that the narrator's grandmother had taught him to read animal behavior."
+          ],
+          "ans": 1,
+          "why": "The deer episode is the turning point that the final paragraph (\"I have not been the same since\") refers back to — it crystallizes, rather than illustrates a danger or contrast."
+        },
+        {
+          "q": "In the third paragraph, the word \"external\" is used to describe the city as",
+          "opts": [
+            "harmful to the narrator's physical health.",
+            "geographically distant from the forest.",
+            "no longer essential to the narrator's sense of self.",
+            "incompatible with the narrator's professional obligations."
+          ],
+          "ans": 2,
+          "why": "The narrator says the external world had become \"optional,\" meaning the city is no longer essential to the narrator's identity — not that it is harmful or merely far away."
+        }
+      ]
     }
   ],
   "2": [
     {
       "title": "The Detective's Apprentice",
       "targets": ["skullduggery", "deduce", "fraudulent", "exonerate", "monitor", "contumacious", "felony", "impudent", "apprentice", "ponder", "eloquent", "stalwart", "definite", "obscure", "esteem", "concise", "approbation", "rebuff", "captious", "callow", "studied", "perforce"],
-      "text": "When I was hired as Detective Marsh's apprentice, I assumed I would learn how to spot a felony at a glance. Instead, for the first three months, I learned only how to wait. Marsh was a stalwart but obscure figure in the city's police hierarchy — too senior to be ignored, too contumacious to be promoted — and he had earned the reputation of solving the cases his colleagues had given up on. He treated me at first with a captious indifference that stung, although I now realize it was simply the studied detachment of a man who had been disappointed by apprentices before.\n\n\"Do not deduce too eagerly,\" he told me on my first day, when I had ventured a callow theory about a fraudulent insurance claim. \"You sound impudent. The witness has not even been allowed to speak yet.\" I felt the rebuff sharply, but in time I came to esteem the discipline behind it. Marsh's method was to monitor each case patiently, to ponder the small inconsistencies, and to refuse to commit to a definite conclusion until the evidence demanded one. His final reports were eloquent and concise — usually no more than two pages — and the prosecutors who received them spoke of his work with the kind of approbation usually reserved for surgeons.\n\nThe case that perforce earned my respect involved a clerk accused of embezzling from his employer. The evidence appeared damning: missing funds, a forged signature, a witness who had seen the clerk leaving the office at an odd hour. Marsh, however, had noticed something nobody else had: the dates of the alleged skullduggery did not align with the clerk's work schedule. Two of the supposed thefts had occurred while the clerk was attending his mother's funeral in another county. A definite alibi, properly checked, was enough to exonerate him within a week.\n\nThe true thief, when Marsh finally identified him, turned out to be the very supervisor who had made the original accusation. \"Notice,\" Marsh said quietly, as we walked back to the station, \"how often the loudest voice in the room is the one with the most to hide.\""
+      "text": "When I was hired as Detective Marsh's apprentice, I assumed I would learn how to spot a felony at a glance. Instead, for the first three months, I learned only how to wait. Marsh was a stalwart but obscure figure in the city's police hierarchy — too senior to be ignored, too contumacious to be promoted — and he had earned the reputation of solving the cases his colleagues had given up on. He treated me at first with a captious indifference that stung, although I now realize it was simply the studied detachment of a man who had been disappointed by apprentices before.\n\n\"Do not deduce too eagerly,\" he told me on my first day, when I had ventured a callow theory about a fraudulent insurance claim. \"You sound impudent. The witness has not even been allowed to speak yet.\" I felt the rebuff sharply, but in time I came to esteem the discipline behind it. Marsh's method was to monitor each case patiently, to ponder the small inconsistencies, and to refuse to commit to a definite conclusion until the evidence demanded one. His final reports were eloquent and concise — usually no more than two pages — and the prosecutors who received them spoke of his work with the kind of approbation usually reserved for surgeons.\n\nThe case that perforce earned my respect involved a clerk accused of embezzling from his employer. The evidence appeared damning: missing funds, a forged signature, a witness who had seen the clerk leaving the office at an odd hour. Marsh, however, had noticed something nobody else had: the dates of the alleged skullduggery did not align with the clerk's work schedule. Two of the supposed thefts had occurred while the clerk was attending his mother's funeral in another county. A definite alibi, properly checked, was enough to exonerate him within a week.\n\nThe true thief, when Marsh finally identified him, turned out to be the very supervisor who had made the original accusation. \"Notice,\" Marsh said quietly, as we walked back to the station, \"how often the loudest voice in the room is the one with the most to hide.\"",
+      "questions": [
+        {
+          "q": "The narrator's attitude toward Marsh shifts most clearly from",
+          "opts": [
+            "admiration to disillusionment.",
+            "stung resistance to earned respect.",
+            "indifference to professional rivalry.",
+            "deference to friendly familiarity."
+          ],
+          "ans": 1,
+          "why": "Early on the narrator feels Marsh's captious indifference \"stung\"; by the embezzlement case the narrator describes a respect that was \"perforce earned\" — a clear shift from stung resistance to earned respect."
+        },
+        {
+          "q": "Marsh's method, as described in the second paragraph, is best characterized as",
+          "opts": [
+            "intuitive and quick to commit to conclusions.",
+            "patient, evidence-driven, and reluctant to commit prematurely.",
+            "primarily reliant on intimidating witnesses.",
+            "focused on the social standing of suspects."
+          ],
+          "ans": 1,
+          "why": "The passage describes Marsh as monitoring cases patiently, pondering inconsistencies, and refusing definite conclusions until evidence demands them — i.e., patient and evidence-driven."
+        },
+        {
+          "q": "Marsh's closing line — about the loudest voice having the most to hide — most directly serves to",
+          "opts": [
+            "warn the narrator against verbosity in police reports.",
+            "explain why he had earlier ignored the supervisor's complaints.",
+            "generalize the lesson of the case into a working principle of investigation.",
+            "rebuke the narrator for asking too many questions."
+          ],
+          "ans": 2,
+          "why": "The supervisor was the loudest accuser and turned out to be the thief; Marsh extracts a general investigative principle from this specific case."
+        }
+      ]
     },
     {
       "title": "An Evening at the Theater",
       "targets": ["eloquent", "hackneyed", "bathetic", "apropos", "admirable", "ponder", "stalwart", "lachrymose", "paean", "approbation", "chagrin", "rebuff", "vault", "discharge", "incorporate", "abate", "studied", "concise", "obscure", "fraudulent"],
-      "text": "The new production of \"The Wintering\" had been advertised as a definitive paean to working-class endurance, and the critics, on opening night, had behaved as though contractually obliged to confirm this. By intermission, however, my chagrin had become difficult to disguise. Each soliloquy was more lachrymose than the last; the dialogue, presented as eloquent, was in fact stuffed with hackneyed metaphors that even the most stalwart playgoer would have found tiresome.\n\nI tried to ponder why the production had received such universal approbation in the morning papers. The set was admirable, certainly — a vaulted brick interior that suggested both a chapel and a factory floor — and the lead actress had an apropos gravity in her movements. But the script was a kind of bathetic exercise, lurching between solemnity and sentimentality without ever quite earning either. By the third act, when the patriarch finally discharged his decades of grief in a monologue that would not abate, I had begun to wonder whether the play had been written by a committee determined to incorporate every theme it could think of, lest any reviewer be neglected.\n\nWalking home, I tried to be fair. The actors were not at fault. The director had done what could be done with the material. And it would have been an obscure act of cruelty, perhaps even a fraudulent reading of the evening, to deny that some moments — a quiet domestic scene in the second act, a single concise gesture from the youngest player — had been genuinely moving.\n\nStill, I could not, in good conscience, write the rave review my editor had clearly hoped for. I drafted, instead, a measured rebuff: an assessment of what the play attempted, what it achieved, and what it might have been had its author trusted the audience to feel without being told what to feel. I sent the piece off at midnight. By breakfast, three other critics had filed similarly equivocal notices. The producers, I gather, were not pleased; but the play, to its credit, had begun to earn the studied attention that mere universal praise could never have given it."
+      "text": "The new production of \"The Wintering\" had been advertised as a definitive paean to working-class endurance, and the critics, on opening night, had behaved as though contractually obliged to confirm this. By intermission, however, my chagrin had become difficult to disguise. Each soliloquy was more lachrymose than the last; the dialogue, presented as eloquent, was in fact stuffed with hackneyed metaphors that even the most stalwart playgoer would have found tiresome.\n\nI tried to ponder why the production had received such universal approbation in the morning papers. The set was admirable, certainly — a vaulted brick interior that suggested both a chapel and a factory floor — and the lead actress had an apropos gravity in her movements. But the script was a kind of bathetic exercise, lurching between solemnity and sentimentality without ever quite earning either. By the third act, when the patriarch finally discharged his decades of grief in a monologue that would not abate, I had begun to wonder whether the play had been written by a committee determined to incorporate every theme it could think of, lest any reviewer be neglected.\n\nWalking home, I tried to be fair. The actors were not at fault. The director had done what could be done with the material. And it would have been an obscure act of cruelty, perhaps even a fraudulent reading of the evening, to deny that some moments — a quiet domestic scene in the second act, a single concise gesture from the youngest player — had been genuinely moving.\n\nStill, I could not, in good conscience, write the rave review my editor had clearly hoped for. I drafted, instead, a measured rebuff: an assessment of what the play attempted, what it achieved, and what it might have been had its author trusted the audience to feel without being told what to feel. I sent the piece off at midnight. By breakfast, three other critics had filed similarly equivocal notices. The producers, I gather, were not pleased; but the play, to its credit, had begun to earn the studied attention that mere universal praise could never have given it.",
+      "questions": [
+        {
+          "q": "The author's central complaint about the play is that it",
+          "opts": [
+            "addresses a topic unsuitable for the contemporary stage.",
+            "tries too hard to instruct the audience's emotional response instead of trusting it.",
+            "depends on actors who lack the necessary training.",
+            "contains explicit political messages that distract from the drama."
+          ],
+          "ans": 1,
+          "why": "The author's drafted review faults the script for failing to \"trust the audience to feel without being told what to feel\" — that is the central complaint."
+        },
+        {
+          "q": "Which of the following best describes the function of the third paragraph?",
+          "opts": [
+            "It introduces evidence that contradicts the author's central judgment.",
+            "It tempers the criticism by acknowledging genuine merits before reaching a verdict.",
+            "It pivots the passage to a discussion of the director's previous work.",
+            "It accuses the morning critics of writing in bad faith."
+          ],
+          "ans": 1,
+          "why": "The author concedes that some moments were genuinely moving and credits the actors and director — tempering, rather than reversing, the verdict."
+        },
+        {
+          "q": "In the final paragraph, the phrase \"studied attention\" most nearly refers to attention that is",
+          "opts": [
+            "rehearsed in advance for academic purposes.",
+            "limited to a specialized audience of theater students.",
+            "considered and deliberate rather than reflexively flattering.",
+            "skeptical of any positive judgment whatsoever."
+          ],
+          "ans": 2,
+          "why": "The phrase contrasts with \"mere universal praise,\" so it means careful, considered attention — not academic, specialized, or relentlessly skeptical."
+        }
+      ]
     },
     {
       "title": "The Apprenticeship of an Archaeologist",
       "targets": ["antiquity", "artifact", "embed", "accrete", "glean", "obscure", "perpendicular", "apprentice", "incorporate", "ponder", "definite", "esteem", "stanch", "deduce", "envisage", "unceasing", "potent", "substantial", "long", "monitor", "vault", "subordinate"],
-      "text": "By her second summer at the dig, Mira had stopped envisioning herself as a romantic figure brushing dust from antiquity. She had become an apprentice to the work itself — the unceasing scraping, the careful measurement, the long hours embedded in trenches that yielded little. The pleasures of the job, when they came, were small and slow to accrete: a sherd of glazed pottery whose pattern matched a known type from a hundred miles north; a definite layer of charcoal that suggested a fire two thousand years older than the village above.\n\nHer supervisor, Dr. Halloran, esteemed patience above any other quality in his crew, and he was disinclined to incorporate flashy interpretations into his published work. \"We do not deduce more than the artifact will support,\" he liked to say, half-amused, half-warning. \"That is a habit you should monitor in yourself.\" His own writing was concise and obscure to all but other specialists, and yet, in the small world of Bronze Age scholarship, he was potently respected.\n\nMira had longed, at first, for some substantial discovery — a vaulted tomb, a workshop preserved beneath a collapsed roof, the kind of find that filled the museum's exhibits. Instead, she had spent two months in a perpendicular trench three meters deep, gleaning small fragments from the brown clay. She had learned to record them with a fine paintbrush, to staunch any impulse to remove an object before its position had been photographed and triangulated. The position, Halloran had told her, was almost always more important than the object itself.\n\nThen, on a Thursday morning so ordinary that she would later struggle to describe it, her trowel struck something hard. She brushed away the soil with the practiced caution of an apprentice who had been corrected too many times to make the wrong move now. Beneath her hand was the rim of a small bronze cup, and beside it, a second piece — a finger of the same alloy, embedded perpendicular to the rim. She did not call out. She raised her hand, the agreed signal, and waited for Halloran to come and ponder it with her, in the slow and subordinate manner the work itself had taught her."
+      "text": "By her second summer at the dig, Mira had stopped envisioning herself as a romantic figure brushing dust from antiquity. She had become an apprentice to the work itself — the unceasing scraping, the careful measurement, the long hours embedded in trenches that yielded little. The pleasures of the job, when they came, were small and slow to accrete: a sherd of glazed pottery whose pattern matched a known type from a hundred miles north; a definite layer of charcoal that suggested a fire two thousand years older than the village above.\n\nHer supervisor, Dr. Halloran, esteemed patience above any other quality in his crew, and he was disinclined to incorporate flashy interpretations into his published work. \"We do not deduce more than the artifact will support,\" he liked to say, half-amused, half-warning. \"That is a habit you should monitor in yourself.\" His own writing was concise and obscure to all but other specialists, and yet, in the small world of Bronze Age scholarship, he was potently respected.\n\nMira had longed, at first, for some substantial discovery — a vaulted tomb, a workshop preserved beneath a collapsed roof, the kind of find that filled the museum's exhibits. Instead, she had spent two months in a perpendicular trench three meters deep, gleaning small fragments from the brown clay. She had learned to record them with a fine paintbrush, to staunch any impulse to remove an object before its position had been photographed and triangulated. The position, Halloran had told her, was almost always more important than the object itself.\n\nThen, on a Thursday morning so ordinary that she would later struggle to describe it, her trowel struck something hard. She brushed away the soil with the practiced caution of an apprentice who had been corrected too many times to make the wrong move now. Beneath her hand was the rim of a small bronze cup, and beside it, a second piece — a finger of the same alloy, embedded perpendicular to the rim. She did not call out. She raised her hand, the agreed signal, and waited for Halloran to come and ponder it with her, in the slow and subordinate manner the work itself had taught her.",
+      "questions": [
+        {
+          "q": "The passage's primary contrast is between",
+          "opts": [
+            "Mira's training and the more rigorous training of her peers.",
+            "Halloran's published work and his behavior in the field.",
+            "Mira's romantic image of archaeology and the discipline the work actually requires.",
+            "the value of artifacts and the value of the trenches that contain them."
+          ],
+          "ans": 2,
+          "why": "The passage opens by saying Mira had stopped envisioning herself romantically and frames her summer as an apprenticeship in patience — the central contrast is romantic image vs. actual discipline."
+        },
+        {
+          "q": "Halloran's claim that \"the position was almost always more important than the object itself\" is best understood as",
+          "opts": [
+            "a humorous deflection of Mira's ambition.",
+            "an objection to museum displays of looted artifacts.",
+            "an assertion that context, not isolated objects, produces archaeological knowledge.",
+            "a personal preference inconsistent with mainstream practice."
+          ],
+          "ans": 2,
+          "why": "Halloran's caution against rushing to remove objects, paired with the emphasis on photographs and triangulation, makes this a methodological claim about context as the source of knowledge."
+        },
+        {
+          "q": "Mira's restraint at the moment of her discovery (\"She did not call out\") is most directly an expression of",
+          "opts": [
+            "fear that the object might be damaged by exposure to air.",
+            "internalized professional habits acquired during her apprenticeship.",
+            "an attempt to claim the find for herself privately.",
+            "uncertainty about whether the object was authentic."
+          ],
+          "ans": 1,
+          "why": "The passage explicitly attributes her quiet to \"the slow and subordinate manner the work itself had taught her\" — internalized professional habit."
+        }
+      ]
     },
     {
       "title": "The Coterie",
       "targets": ["coterie", "vicarious", "assent", "accede", "sociable", "esteem", "approbation", "chagrin", "rebuff", "exclusive", "patronize", "definite", "tacit", "innovative", "commonplace", "studied", "ponder", "designate", "long", "subordinate", "captious"],
-      "text": "From the outside, the coterie that gathered at Reuben's apartment every Thursday evening looked exclusive in the most vicarious sense — the sort of small, sociable circle that exists in the imagination of anyone who has not yet been invited to join one. They were writers, mostly, with a few editors and a graduate student who had been designated, by tacit agreement, the group's unofficial scribe. They esteemed each other's work, sometimes excessively. They drank cheap wine and quoted novels nobody outside the room had read.\n\nWhen I was first invited, by a friend who had been promoted into the circle the year before, I felt the chagrin of being patronized before anyone had spoken to me. Reuben, the host, gave me what I now understand was the standard greeting for a newcomer: a studied warmth that was almost, but not quite, sincere. The others assented when he praised my last short story; one of them ventured a captious aside that I could not tell, at the time, was meant as a compliment.\n\nIn the months that followed, I found myself acceding to invitations I had once thought I would rebuff. The conversations could be innovative — genuinely so — when the subject moved past the commonplace gossip of small magazines and into the unfinished drafts circulating among us. There was a definite pleasure in being read attentively by people who had earned each other's approbation over years.\n\nBut I came to ponder, as the seasons turned, what the coterie was for. We did not, by any reasonable measure, write better because of it. We sometimes wrote less, because the long hours of conversation displaced the longer hours of work. The exclusive feeling of belonging was, I came to suspect, a subordinate pleasure that we mistook for a primary one. The friendships were real; the literary community we believed ourselves to be was, more often, a flattering reflection.\n\nI have not gone back since the spring. I still see Reuben occasionally, at readings, and we are sociable in the way old colleagues are. But I write, now, in the quieter chair I had abandoned for him, and the pages, I think, are the better for it."
+      "text": "From the outside, the coterie that gathered at Reuben's apartment every Thursday evening looked exclusive in the most vicarious sense — the sort of small, sociable circle that exists in the imagination of anyone who has not yet been invited to join one. They were writers, mostly, with a few editors and a graduate student who had been designated, by tacit agreement, the group's unofficial scribe. They esteemed each other's work, sometimes excessively. They drank cheap wine and quoted novels nobody outside the room had read.\n\nWhen I was first invited, by a friend who had been promoted into the circle the year before, I felt the chagrin of being patronized before anyone had spoken to me. Reuben, the host, gave me what I now understand was the standard greeting for a newcomer: a studied warmth that was almost, but not quite, sincere. The others assented when he praised my last short story; one of them ventured a captious aside that I could not tell, at the time, was meant as a compliment.\n\nIn the months that followed, I found myself acceding to invitations I had once thought I would rebuff. The conversations could be innovative — genuinely so — when the subject moved past the commonplace gossip of small magazines and into the unfinished drafts circulating among us. There was a definite pleasure in being read attentively by people who had earned each other's approbation over years.\n\nBut I came to ponder, as the seasons turned, what the coterie was for. We did not, by any reasonable measure, write better because of it. We sometimes wrote less, because the long hours of conversation displaced the longer hours of work. The exclusive feeling of belonging was, I came to suspect, a subordinate pleasure that we mistook for a primary one. The friendships were real; the literary community we believed ourselves to be was, more often, a flattering reflection.\n\nI have not gone back since the spring. I still see Reuben occasionally, at readings, and we are sociable in the way old colleagues are. But I write, now, in the quieter chair I had abandoned for him, and the pages, I think, are the better for it.",
+      "questions": [
+        {
+          "q": "The narrator ultimately concludes that the coterie",
+          "opts": [
+            "had betrayed its founding principles after a few years.",
+            "offered genuine friendship but mistook belonging for productive community.",
+            "harmed the literary careers of its members through pettiness.",
+            "had been, on the whole, exactly what it appeared to be."
+          ],
+          "ans": 1,
+          "why": "The narrator says the friendships were real but the \"literary community\" was \"a flattering reflection\" — i.e., real friendship paired with a mistaken sense of community."
+        },
+        {
+          "q": "The phrase \"vicarious sense\" in the first paragraph implies that the coterie's exclusivity exists primarily",
+          "opts": [
+            "in the imagination of those outside it rather than in any actual gatekeeping practice.",
+            "as a strict membership criterion enforced by Reuben.",
+            "in the pages of the small magazines its members edit.",
+            "as a financial arrangement among the wealthier members."
+          ],
+          "ans": 0,
+          "why": "The passage explicitly defines the vicarious exclusivity as something \"that exists in the imagination of anyone who has not yet been invited\" — i.e., projected from outside."
+        },
+        {
+          "q": "Which of the following best describes the function of the fourth paragraph (\"But I came to ponder...\")?",
+          "opts": [
+            "It introduces a counterargument the narrator will later refute.",
+            "It marks the narrator's reassessment that drives the conclusion.",
+            "It shifts the passage's tone from satire to nostalgia.",
+            "It defends Reuben from an unstated accusation."
+          ],
+          "ans": 1,
+          "why": "The fourth paragraph introduces the reassessment (\"what the coterie was for\") that motivates the narrator's withdrawal in the final paragraph."
+        }
+      ]
     },
     {
       "title": "Birds in the Cold Months",
       "targets": ["avian", "roost", "daredevil", "stanch", "abate", "perforce", "untoward", "invertebrate", "quench", "paean", "robust", "long", "substantial", "envisage", "monitor", "unceasing", "disperse", "impermanent", "potent", "somnolent", "burdensome"],
-      "text": "Naturalists who study avian behavior in the cold months have long observed that flocks behave very differently in winter than in any other season. The robust energy of breeding territory disputes is gone; in its place comes a more muted, almost somnolent rhythm of feeding, roosting, and the impermanent gatherings that form and disperse with the changing wind. To an inattentive observer it looks like very little is happening. To a careful watcher, the cold months are the most instructive period of the year.\n\nIn high-latitude regions, the burden of survival is considerable. Insects and other invertebrate prey have largely vanished, and a small bird must, perforce, find substantial caloric replacement among seeds, berries, and the occasional unwary mouse. Some species respond by becoming what one ornithologist has called \"avian daredevils,\" venturing far higher into bare branches than they would in summer in order to glean the last frostbitten fruit. Others — the chickadees in particular — pursue an almost unceasing pattern of micro-foraging, monitoring every crevice in the bark for hidden food.\n\nWhen the weather is at its most untoward, even these strategies abate, and survival depends instead on the communal warmth of a well-chosen roost. A dozen small bodies pressed into the cavity of a single dead pine can stanch an alarming amount of heat loss, enough to envisage a bird through a fifteen-degree night that would, in solitude, almost certainly kill it. The birds disperse again at first light to feed; the roost is impermanent, and yet potent, and yet absolutely essential.\n\nNone of this would matter to the casual reader were it not for one further observation. The birds that survive the winter, year after year, are not the most aggressive or the most flashy. They are the ones who long ago learned how to share a roost, when to forage, and how to quench their need for heat through cooperation rather than competition. It is, in its quiet way, a paean to the patient virtues — not a story of survival of the fittest, but of survival of the most cooperative. And it is told, every January, in any patch of woods cold enough to listen."
+      "text": "Naturalists who study avian behavior in the cold months have long observed that flocks behave very differently in winter than in any other season. The robust energy of breeding territory disputes is gone; in its place comes a more muted, almost somnolent rhythm of feeding, roosting, and the impermanent gatherings that form and disperse with the changing wind. To an inattentive observer it looks like very little is happening. To a careful watcher, the cold months are the most instructive period of the year.\n\nIn high-latitude regions, the burden of survival is considerable. Insects and other invertebrate prey have largely vanished, and a small bird must, perforce, find substantial caloric replacement among seeds, berries, and the occasional unwary mouse. Some species respond by becoming what one ornithologist has called \"avian daredevils,\" venturing far higher into bare branches than they would in summer in order to glean the last frostbitten fruit. Others — the chickadees in particular — pursue an almost unceasing pattern of micro-foraging, monitoring every crevice in the bark for hidden food.\n\nWhen the weather is at its most untoward, even these strategies abate, and survival depends instead on the communal warmth of a well-chosen roost. A dozen small bodies pressed into the cavity of a single dead pine can stanch an alarming amount of heat loss, enough to envisage a bird through a fifteen-degree night that would, in solitude, almost certainly kill it. The birds disperse again at first light to feed; the roost is impermanent, and yet potent, and yet absolutely essential.\n\nNone of this would matter to the casual reader were it not for one further observation. The birds that survive the winter, year after year, are not the most aggressive or the most flashy. They are the ones who long ago learned how to share a roost, when to forage, and how to quench their need for heat through cooperation rather than competition. It is, in its quiet way, a paean to the patient virtues — not a story of survival of the fittest, but of survival of the most cooperative. And it is told, every January, in any patch of woods cold enough to listen.",
+      "questions": [
+        {
+          "q": "The author's argument depends crucially on a contrast between",
+          "opts": [
+            "high-latitude and low-latitude bird populations.",
+            "an apparent winter quietness and the demanding adaptations it conceals.",
+            "ornithologists who study cooperation and those who study competition.",
+            "the survival rates of solitary and pair-bonded birds."
+          ],
+          "ans": 1,
+          "why": "The first paragraph notes that to an inattentive observer little is happening; the rest of the passage details the demanding adaptations a careful observer can see."
+        },
+        {
+          "q": "Which of the following best states the passage's broader claim?",
+          "opts": [
+            "Cold weather selects for aggression more strongly than mild weather does.",
+            "Communal roosting is the only adaptation that matters in winter.",
+            "Winter survival illustrates that cooperation, not competition, is the more powerful adaptive strategy.",
+            "Songbirds in winter behave essentially the same way they do in summer."
+          ],
+          "ans": 2,
+          "why": "The closing paragraph explicitly reframes \"survival of the fittest\" as \"survival of the most cooperative\" — the broader claim."
+        },
+        {
+          "q": "In context, the word \"untoward\" most nearly means",
+          "opts": [
+            "unpleasant in a minor way.",
+            "unfavorable or harsh.",
+            "unanticipated by forecasters.",
+            "unfamiliar to the species in question."
+          ],
+          "ans": 1,
+          "why": "Untoward weather is the kind that even foraging strategies can't cope with, requiring communal roosting — i.e., harsh or unfavorable, not merely unfamiliar or unforecast."
+        }
+      ]
     }
   ],
   "3": [
     {
       "title": "The Election",
-      "targets": ["electorate", "decry", "vanguard", "contentious", "eminent", "pronounced", "eulogize", "invective", "discredit", "perspicuous", "expediency", "implement", "incentive", "prominent", "advent", "purveyor", "discursive", "unfettered", "wary", "savvy", "improvise", "pan", "discredit", "wanting"],
-      "text": "By the third month of the campaign, the electorate had grown wary of every politician on the ballot. Each candidate had been the prominent vanguard of some contentious cause earlier in their career, and each had, in time, watched that cause become an embarrassment. The eminent senator who had once eulogized free trade was now its loudest critic; the savvy mayor who had built her brand on environmental advocacy had quietly retreated to a more discursive position.\n\nThe debates were, on the surface, a pronounced exercise in invective. Each candidate took turns to decry the other's record, to pan their proposals, and to discredit their funding. The audience clapped on cue. But the more attentive observers noticed that the actual disagreements had become surprisingly narrow. On the fundamental questions of economic policy, both candidates had, perforce, accepted the same constraints; they were left to improvise distinctions over secondary measures and matters of expediency.\n\nAt one point a young reporter, weary of the rehearsed exchanges, asked the more eminent of the two candidates whether her platform amounted to anything that had not, in some form, been implemented before. The candidate paused — visibly, for a moment — and then offered a perspicuous answer that briefly elevated the evening. She said that her plan was, on its face, modest; that the incentive structure was familiar; but that the advent of new technologies had made several long-standing problems newly tractable, and that her administration would treat them with an unfettered seriousness that previous administrations had been wanting in.\n\nIt was, by far, the most candid moment of the night. Her opponent, after a beat of his own, conceded the point and moved to common ground for the first time. The cable purveyors of outrage on either side were briefly without material. The next morning, a column in the leading paper observed that the campaign had, almost despite itself, finally begun in earnest — that the electorate, having seen what an honest exchange could look like, would now be less tolerant of the alternatives. Whether that hope proved warranted would be settled, as such hopes always are, at the ballot box."
+      "targets": ["electorate", "decry", "vanguard", "contentious", "eminent", "pronounced", "eulogize", "invective", "discredit", "perspicuous", "expediency", "implement", "incentive", "prominent", "advent", "purveyor", "discursive", "unfettered", "wary", "savvy", "improvise", "pan", "wanting"],
+      "text": "By the third month of the campaign, the electorate had grown wary of every politician on the ballot. Each candidate had been the prominent vanguard of some contentious cause earlier in their career, and each had, in time, watched that cause become an embarrassment. The eminent senator who had once eulogized free trade was now its loudest critic; the savvy mayor who had built her brand on environmental advocacy had quietly retreated to a more discursive position.\n\nThe debates were, on the surface, a pronounced exercise in invective. Each candidate took turns to decry the other's record, to pan their proposals, and to discredit their funding. The audience clapped on cue. But the more attentive observers noticed that the actual disagreements had become surprisingly narrow. On the fundamental questions of economic policy, both candidates had, perforce, accepted the same constraints; they were left to improvise distinctions over secondary measures and matters of expediency.\n\nAt one point a young reporter, weary of the rehearsed exchanges, asked the more eminent of the two candidates whether her platform amounted to anything that had not, in some form, been implemented before. The candidate paused — visibly, for a moment — and then offered a perspicuous answer that briefly elevated the evening. She said that her plan was, on its face, modest; that the incentive structure was familiar; but that the advent of new technologies had made several long-standing problems newly tractable, and that her administration would treat them with an unfettered seriousness that previous administrations had been wanting in.\n\nIt was, by far, the most candid moment of the night. Her opponent, after a beat of his own, conceded the point and moved to common ground for the first time. The cable purveyors of outrage on either side were briefly without material. The next morning, a column in the leading paper observed that the campaign had, almost despite itself, finally begun in earnest — that the electorate, having seen what an honest exchange could look like, would now be less tolerant of the alternatives. Whether that hope proved warranted would be settled, as such hopes always are, at the ballot box.",
+      "questions": [
+        {
+          "q": "The passage's central observation about the campaign is that",
+          "opts": [
+            "the candidates' policy positions had drifted very far apart.",
+            "loud disagreement had concealed a much narrower set of real disagreements.",
+            "the press had failed to cover the most important policy debates.",
+            "voter turnout was likely to be unusually low."
+          ],
+          "ans": 1,
+          "why": "The second paragraph contrasts the surface invective with the narrowness of actual disagreement; this is the central observation."
+        },
+        {
+          "q": "The senator's pause before answering the young reporter is best read as",
+          "opts": [
+            "a tactical delay designed to wait for cues from her staff.",
+            "a moment in which a rehearsed answer is briefly set aside.",
+            "evidence that she did not understand the question.",
+            "a sign of agreement with her opponent's earlier remarks."
+          ],
+          "ans": 1,
+          "why": "The pause precedes her unusually candid answer, the \"most candid moment of the night\" — implying a rehearsed reply was momentarily set aside."
+        },
+        {
+          "q": "The author's tone in the closing sentence is best characterized as",
+          "opts": [
+            "triumphant.",
+            "cautiously hopeful, with awareness that hopes can be disappointed.",
+            "openly cynical about the electorate's capacity for judgment.",
+            "indifferent to the eventual outcome."
+          ],
+          "ans": 1,
+          "why": "The author notes a hope that the electorate will demand more honesty but immediately concedes such hopes are decided at the ballot box — cautiously hopeful, with realism."
+        }
+      ]
     },
     {
       "title": "The House on the Hill",
       "targets": ["ramshackle", "musty", "unkempt", "abrade", "vapid", "evanescent", "transitory", "archetypical", "prominent", "sanctuary", "pedestrian", "patrimony", "rear", "kinship", "ponder", "deleterious", "inert", "long", "purveyor", "obscure", "noxious", "soporific"],
-      "text": "The house had stood on the hill for a hundred and twenty years, and for at least the last fifty of them it had been visibly ramshackle. The shingles were unkempt, the porch sagged where a beam had rotted through, and the windows on the north side had been so abraded by storms that the panes were cloudy with the residue of two centuries of weather. From the road, it was an archetypical haunted house — an obscure silhouette behind a screen of overgrown sumac.\n\nMy aunt Frances had grown up in it. She insisted, against all the evidence, that the house was not merely a sanctuary in her memory but a continuing one in her present, and that the family's reluctance to maintain it amounted to a slow betrayal of patrimony. \"The musty smell,\" she would tell my father, \"is not deleterious. It is the smell of a house that has been allowed to breathe.\" My father, who taught chemistry at the community college, did not share this view. The mold, he explained patiently, was potentially noxious, and the house's prominent water damage suggested structural problems that no sentiment could repair.\n\nWhen I visited the summer after Frances's death, I found that I, too, could not be a wholly pedestrian observer. The house was not, of course, a sanctuary in any practical sense. Its rooms were inert, soporific, and full of objects whose significance I had no way of decoding. But there was a kinship I had not expected to feel — a sense, faint but definite, that the house was the last visible site of the people who had reared the people who had reared me. To stand in the kitchen was to ponder a long line of women who had stood there before, none of whom I had met.\n\nThat sense was evanescent, of course; it lasted only as long as I stayed in the house. By the time I had driven back to the city, the impression had begun to dissolve into the more transitory sensations of ordinary life. But I went home different than I had arrived. I had not become a purveyor of family piety; my father's appraisal of the building remained, on its merits, correct. I had simply learned what Frances had been trying to say. The house was vapid as architecture and noxious as plumbing — and still, somehow, it had been ours."
+      "text": "The house had stood on the hill for a hundred and twenty years, and for at least the last fifty of them it had been visibly ramshackle. The shingles were unkempt, the porch sagged where a beam had rotted through, and the windows on the north side had been so abraded by storms that the panes were cloudy with the residue of two centuries of weather. From the road, it was an archetypical haunted house — an obscure silhouette behind a screen of overgrown sumac.\n\nMy aunt Frances had grown up in it. She insisted, against all the evidence, that the house was not merely a sanctuary in her memory but a continuing one in her present, and that the family's reluctance to maintain it amounted to a slow betrayal of patrimony. \"The musty smell,\" she would tell my father, \"is not deleterious. It is the smell of a house that has been allowed to breathe.\" My father, who taught chemistry at the community college, did not share this view. The mold, he explained patiently, was potentially noxious, and the house's prominent water damage suggested structural problems that no sentiment could repair.\n\nWhen I visited the summer after Frances's death, I found that I, too, could not be a wholly pedestrian observer. The house was not, of course, a sanctuary in any practical sense. Its rooms were inert, soporific, and full of objects whose significance I had no way of decoding. But there was a kinship I had not expected to feel — a sense, faint but definite, that the house was the last visible site of the people who had reared the people who had reared me. To stand in the kitchen was to ponder a long line of women who had stood there before, none of whom I had met.\n\nThat sense was evanescent, of course; it lasted only as long as I stayed in the house. By the time I had driven back to the city, the impression had begun to dissolve into the more transitory sensations of ordinary life. But I went home different than I had arrived. I had not become a purveyor of family piety; my father's appraisal of the building remained, on its merits, correct. I had simply learned what Frances had been trying to say. The house was vapid as architecture and noxious as plumbing — and still, somehow, it had been ours.",
+      "questions": [
+        {
+          "q": "The narrator's view of the house at the end of the passage is best described as",
+          "opts": [
+            "a full conversion to Frances's romantic interpretation.",
+            "an acknowledgment of its emotional significance without retreat from its physical condition.",
+            "a sober rejection of all sentimental claims about old buildings.",
+            "an argument for restoring the house to its original state."
+          ],
+          "ans": 1,
+          "why": "The narrator says the father's structural appraisal remains correct, yet still recognizes what Frances meant — affirming the emotional significance without disputing the physical condition."
+        },
+        {
+          "q": "The contrast between Frances and the narrator's father in the second paragraph illustrates",
+          "opts": [
+            "a generational dispute about ownership of the house.",
+            "two ways of defining what counts as the house's true condition.",
+            "Frances's resentment of the father's profession.",
+            "the father's plan to demolish the house."
+          ],
+          "ans": 1,
+          "why": "Frances treats the smell as the breath of a living place; the father reads it as a chemical hazard. They are competing definitions of what counts as the house's true condition."
+        },
+        {
+          "q": "In the third paragraph, the narrator's description of standing in the kitchen primarily serves to",
+          "opts": [
+            "establish the kitchen as the most-used room in the house.",
+            "introduce a previously unmentioned aunt.",
+            "convey the experience of suddenly feeling kinship with prior generations.",
+            "criticize the house's poor lighting."
+          ],
+          "ans": 2,
+          "why": "The kitchen scene is the moment in which the narrator's unexpected sense of kinship with prior generations crystallizes."
+        }
+      ]
     },
     {
       "title": "The Reluctant Pianist",
       "targets": ["lackadaisical", "plodding", "dexterous", "proficient", "improvise", "humility", "theatrical", "pan", "interweave", "nugatory", "soporific", "incentive", "wary", "studied", "savvy", "obscure", "fad", "convivial", "advent", "long", "monitor", "shortcoming"],
-      "text": "Daniel had been called a proficient pianist for as long as he could remember, and he had always been wary of the compliment. To be called dexterous, to be called proficient, was to be told, in a polite register, that one had not yet been called brilliant. By his late twenties, he had begun to suspect that he never would be. His teachers, the few who were honest, had monitored his progress with what he came to understand as a studied patience; they were waiting for an electricity that, year by year, had failed to advent.\n\nThe critics had not been kind. After one early recital, a column in the city paper had panned his Schubert as plodding and his Liszt as soporific. The review had not been wrong, although it had been more theatrical in its disappointment than the performance had warranted. Daniel had spent a week in something close to lackadaisical depression, then, with characteristic humility, had returned to the practice room.\n\nWhat saved him, eventually, was the discovery — late, by the standards of his profession — that he could improvise. He had been raised in the obscure but rigorous tradition of straight classical performance, where improvisation was treated, when treated at all, as a faintly disreputable fad. But a convivial jazz pianist he met one summer, while playing in a small festival orchestra, had spent an evening teaching him the basic structures of left-hand voicing. By the end of that night, Daniel could interweave melodies he had played a thousand times with new harmonies of his own.\n\nThe shift was not nugatory; it changed how he heard everything. The shortcomings he had once felt as a performer — a certain rigidity, an unwillingness to take risks — turned out to have been the byproducts of training that had given him no incentive to take them. Once the incentive existed, the risks became, if not natural, at least possible.\n\nHe never became a touring soloist. He never set out to. But the small recitals he gave in the cafés of the city, where he would interweave Bach and an unsavory blues progression and improvise for forty minutes at a stretch, drew the kind of devoted, savvy audience that the larger halls had never given him. Plodding, somebody had once written. He laughed about it, now, and played on."
+      "text": "Daniel had been called a proficient pianist for as long as he could remember, and he had always been wary of the compliment. To be called dexterous, to be called proficient, was to be told, in a polite register, that one had not yet been called brilliant. By his late twenties, he had begun to suspect that he never would be. His teachers, the few who were honest, had monitored his progress with what he came to understand as a studied patience; they were waiting for an electricity that, year by year, had failed to advent.\n\nThe critics had not been kind. After one early recital, a column in the city paper had panned his Schubert as plodding and his Liszt as soporific. The review had not been wrong, although it had been more theatrical in its disappointment than the performance had warranted. Daniel had spent a week in something close to lackadaisical depression, then, with characteristic humility, had returned to the practice room.\n\nWhat saved him, eventually, was the discovery — late, by the standards of his profession — that he could improvise. He had been raised in the obscure but rigorous tradition of straight classical performance, where improvisation was treated, when treated at all, as a faintly disreputable fad. But a convivial jazz pianist he met one summer, while playing in a small festival orchestra, had spent an evening teaching him the basic structures of left-hand voicing. By the end of that night, Daniel could interweave melodies he had played a thousand times with new harmonies of his own.\n\nThe shift was not nugatory; it changed how he heard everything. The shortcomings he had once felt as a performer — a certain rigidity, an unwillingness to take risks — turned out to have been the byproducts of training that had given him no incentive to take them. Once the incentive existed, the risks became, if not natural, at least possible.\n\nHe never became a touring soloist. He never set out to. But the small recitals he gave in the cafés of the city, where he would interweave Bach and an unsavory blues progression and improvise for forty minutes at a stretch, drew the kind of devoted, savvy audience that the larger halls had never given him. Plodding, somebody had once written. He laughed about it, now, and played on.",
+      "questions": [
+        {
+          "q": "The passage suggests that the limitations of Daniel's earlier performances were due primarily to",
+          "opts": [
+            "a lack of innate musical talent.",
+            "a training regime that gave him no reason to take interpretive risks.",
+            "physical weaknesses in his technique that he never overcame.",
+            "a deliberate choice to avoid Liszt and Schubert."
+          ],
+          "ans": 1,
+          "why": "The fourth paragraph explicitly attributes his rigidity and risk-aversion to training that \"had given him no incentive\" to take risks — an institutional limitation, not an innate one."
+        },
+        {
+          "q": "The encounter with the jazz pianist functions in the passage as",
+          "opts": [
+            "a digression that ultimately distracts from Daniel's classical career.",
+            "a turning point that reframes his perceived shortcomings as solvable.",
+            "evidence that classical training is uniformly harmful.",
+            "an example of an unreliable mentor figure."
+          ],
+          "ans": 1,
+          "why": "The encounter precedes the recasting of Daniel's shortcomings as products of training, which the new approach can address — making it the turning point of the narrative."
+        },
+        {
+          "q": "In context, the word \"savvy\" in the final paragraph most nearly describes an audience that is",
+          "opts": [
+            "wealthy enough to support struggling musicians.",
+            "perceptive enough to recognize what Daniel is doing.",
+            "willing to listen patiently to plodding performances.",
+            "loyal to a particular café rather than to the music."
+          ],
+          "ans": 1,
+          "why": "The audience contrasts with those at \"larger halls\"; what they bring is perceptiveness — the ability to recognize what Daniel is doing — not wealth or patience."
+        }
+      ]
     },
     {
       "title": "Aunt Vera's House",
       "targets": ["kinship", "patrimony", "rear", "acquaintance", "sanctuary", "convivial", "savvy", "snappish", "martinet", "autonomy", "betoken", "advent", "humility", "inherent", "wary", "constrict", "tonic", "improvise", "unfettered", "long", "anathema", "scenario", "boon", "soothsayer"],
-      "text": "Aunt Vera was not, by any standard, a martinet. She was strict only in the small ways that befit a woman who had reared three children alone in a city where the rent had risen every year of her adult life. To outsiders she could appear snappish. To the children of the family — to me, and to my cousins, and eventually to the children of my cousins — her house was a sanctuary, and the days we spent there were a tonic against the constricted, scheduled life of our school years.\n\nThe house itself was modest. The kitchen always smelled of the cinnamon and bay her mother had taught her to use; the front room held a piano that had not been tuned in twenty years but on which I learned, badly, to improvise lullabies for my younger cousin. There was an inherent unfettered quality to the time we spent there — not chaotic, not undisciplined, but characterized by an autonomy that we had nowhere else as children. Vera did not micromanage, and did not patronize.\n\nWhat she gave us, I now understand, was patrimony of a particular kind: the savvy of someone who had survived the city without losing her humility. She told stories with the offhand authority of an acquaintance who had outlived most of the people in them. She had been, in her younger days, a kind of unofficial soothsayer for the neighborhood, although she would have laughed at the word. A boon for any teenager in the family was an afternoon at her kitchen table, where the scenario you were facing — at school, at home, with friends — could be talked through over tea, without judgment, but also without softening.\n\nWhen Vera died, the kinship she had built around her did not dissolve, exactly, but it became less convivial without her. Family gatherings had been, since I was a child, anchored at her table. Without it, we were wary of trying to host them ourselves; the comparison was anathema, and would always have lost. Her advent into any room had been the signal, however quietly betokened, that the evening could begin. Without her, we have not yet figured out what the new signal is supposed to be."
+      "text": "Aunt Vera was not, by any standard, a martinet. She was strict only in the small ways that befit a woman who had reared three children alone in a city where the rent had risen every year of her adult life. To outsiders she could appear snappish. To the children of the family — to me, and to my cousins, and eventually to the children of my cousins — her house was a sanctuary, and the days we spent there were a tonic against the constricted, scheduled life of our school years.\n\nThe house itself was modest. The kitchen always smelled of the cinnamon and bay her mother had taught her to use; the front room held a piano that had not been tuned in twenty years but on which I learned, badly, to improvise lullabies for my younger cousin. There was an inherent unfettered quality to the time we spent there — not chaotic, not undisciplined, but characterized by an autonomy that we had nowhere else as children. Vera did not micromanage, and did not patronize.\n\nWhat she gave us, I now understand, was patrimony of a particular kind: the savvy of someone who had survived the city without losing her humility. She told stories with the offhand authority of an acquaintance who had outlived most of the people in them. She had been, in her younger days, a kind of unofficial soothsayer for the neighborhood, although she would have laughed at the word. A boon for any teenager in the family was an afternoon at her kitchen table, where the scenario you were facing — at school, at home, with friends — could be talked through over tea, without judgment, but also without softening.\n\nWhen Vera died, the kinship she had built around her did not dissolve, exactly, but it became less convivial without her. Family gatherings had been, since I was a child, anchored at her table. Without it, we were wary of trying to host them ourselves; the comparison was anathema, and would always have lost. Her advent into any room had been the signal, however quietly betokened, that the evening could begin. Without her, we have not yet figured out what the new signal is supposed to be.",
+      "questions": [
+        {
+          "q": "The passage's central claim about Aunt Vera is that she",
+          "opts": [
+            "was the wealthiest member of an otherwise poor family.",
+            "passed on a kind of inheritance that consisted of judgment and presence rather than property.",
+            "had been a professional fortune-teller before becoming a homemaker.",
+            "deliberately raised her nieces and nephews instead of her own children."
+          ],
+          "ans": 1,
+          "why": "The third paragraph defines her gift as \"patrimony of a particular kind\" — savvy, humility, judgment — explicitly distinguishing it from material inheritance."
+        },
+        {
+          "q": "The narrator describes Vera as not a martinet in order to",
+          "opts": [
+            "warn the reader against assumptions made from her snappish first impression.",
+            "compare her favorably to other relatives in the family.",
+            "introduce a debate among the cousins about her parenting.",
+            "establish that she lacked any rules in the household."
+          ],
+          "ans": 0,
+          "why": "The opening clarification that Vera could seem snappish but was not actually a martinet preempts the reader's likely first impression."
+        },
+        {
+          "q": "The closing image — \"we have not yet figured out what the new signal is supposed to be\" — most directly conveys",
+          "opts": [
+            "the family's hope of finding a new matriarch.",
+            "the lasting absence created by the loss of Vera's particular role.",
+            "the narrator's intention to leave the family.",
+            "the family's regret at not having recorded Vera's stories."
+          ],
+          "ans": 1,
+          "why": "The image expresses an unfilled gap left by Vera's particular convening role — the lasting absence she has left, not a search for a successor."
+        }
+      ]
     },
     {
       "title": "After the Vaccine",
-      "targets": ["advent", "unprecedented", "materialize", "implement", "inherent", "latent", "eradicate", "counterforce", "acclimate", "incubate", "prominent", "deleterious", "noxious", "tonic", "envisage", "potent", "substantial", "studied", "monitor", "implement", "expediency", "wary", "diffuse"],
-      "text": "The advent of the new vaccine had been described, in the prominent journals, as unprecedented — a phrase the journals tend to reach for somewhat too easily, and which in this case happened to be earned. For the first time, a single dose appeared to induce a substantial, durable immunity against a disease that had, for two decades, evaded every previous attempt to eradicate it. Whether the early results would materialize as a global counterforce against the disease was a question that public health agencies were now, with studied caution, trying to answer.\n\nThe inherent challenge was logistics. A potent vaccine that cannot be implemented at scale is, in epidemiological terms, no better than a noxious idea. The new product had to be manufactured in volumes that the existing infrastructure could not, at present, sustain; it had to be shipped at low temperatures that few clinics in the most affected regions could reliably provide; and it had to be administered by health workers who would themselves need to be trained in what was, despite the appearance of simplicity, a non-trivial procedure.\n\nNone of this was a reason for despair. The deleterious history of vaccine deployment in earlier decades was well-known to every senior figure in the field, and the lessons had, slowly, been incorporated into more recent campaigns. The latent question — and it was one that planners had begun to envisage publicly for the first time in months — was whether the public would acclimate to the new vaccination program quickly enough to incubate the disease's decline before another mutation occurred.\n\nIn the press conferences that followed, the agency's director was wary of any expediency that might trade short-term coverage for long-term confidence. \"We will not rush,\" she said, in a phrase that was widely diffused on social media and which served, for many viewers, as a tonic after years of contradictory messaging. \"We will be fast. There is a difference.\" She did not, on the day, monitor the room for applause. There was none. The audience was, instead, very quiet, in the way audiences are when something serious has been said clearly. It was a small thing, and it was also, in its way, the beginning of the next decade."
+      "targets": ["advent", "unprecedented", "materialize", "implement", "inherent", "latent", "eradicate", "counterforce", "acclimate", "incubate", "prominent", "deleterious", "noxious", "tonic", "envisage", "potent", "substantial", "studied", "monitor", "expediency", "wary", "diffuse"],
+      "text": "The advent of the new vaccine had been described, in the prominent journals, as unprecedented — a phrase the journals tend to reach for somewhat too easily, and which in this case happened to be earned. For the first time, a single dose appeared to induce a substantial, durable immunity against a disease that had, for two decades, evaded every previous attempt to eradicate it. Whether the early results would materialize as a global counterforce against the disease was a question that public health agencies were now, with studied caution, trying to answer.\n\nThe inherent challenge was logistics. A potent vaccine that cannot be implemented at scale is, in epidemiological terms, no better than a noxious idea. The new product had to be manufactured in volumes that the existing infrastructure could not, at present, sustain; it had to be shipped at low temperatures that few clinics in the most affected regions could reliably provide; and it had to be administered by health workers who would themselves need to be trained in what was, despite the appearance of simplicity, a non-trivial procedure.\n\nNone of this was a reason for despair. The deleterious history of vaccine deployment in earlier decades was well-known to every senior figure in the field, and the lessons had, slowly, been incorporated into more recent campaigns. The latent question — and it was one that planners had begun to envisage publicly for the first time in months — was whether the public would acclimate to the new vaccination program quickly enough to incubate the disease's decline before another mutation occurred.\n\nIn the press conferences that followed, the agency's director was wary of any expediency that might trade short-term coverage for long-term confidence. \"We will not rush,\" she said, in a phrase that was widely diffused on social media and which served, for many viewers, as a tonic after years of contradictory messaging. \"We will be fast. There is a difference.\" She did not, on the day, monitor the room for applause. There was none. The audience was, instead, very quiet, in the way audiences are when something serious has been said clearly. It was a small thing, and it was also, in its way, the beginning of the next decade.",
+      "questions": [
+        {
+          "q": "The passage suggests that the central obstacle to ending the disease is",
+          "opts": [
+            "the absence of any effective vaccine for it.",
+            "scientific uncertainty about how the disease spreads.",
+            "the gap between an effective product and the infrastructure needed to deploy it.",
+            "public refusal to accept any vaccination program."
+          ],
+          "ans": 2,
+          "why": "The second paragraph names logistics — manufacturing, cold-chain shipping, trained workers — as the inherent challenge once the vaccine itself works."
+        },
+        {
+          "q": "The director's distinction between \"not rush\" and \"be fast\" is best understood as",
+          "opts": [
+            "a rhetorical evasion meant to delay implementation.",
+            "an effort to preserve credibility while still committing to urgency.",
+            "an admission that the vaccine is not yet ready.",
+            "a technical specification of dosing schedules."
+          ],
+          "ans": 1,
+          "why": "The director's wariness about expediency that trades short-term coverage for long-term confidence shows the distinction is meant to preserve credibility while still committing to speed."
+        },
+        {
+          "q": "The author's use of the word \"unprecedented\" in the first sentence is best described as",
+          "opts": [
+            "uncritical adoption of the journals' enthusiastic language.",
+            "qualified endorsement, noting both that journals overuse the word and that it fits in this case.",
+            "ironic dismissal of the vaccine's novelty.",
+            "a direct quotation from the agency director."
+          ],
+          "ans": 1,
+          "why": "The author calls out that journals overuse \"unprecedented\" but says here it is earned — a qualified endorsement that both flags overuse and accepts the present claim."
+        }
+      ]
+    }
+  ],
+  "4": [
+    {
+      "title": "The Virtuoso",
+      "targets": ["virtuoso", "prodigious", "peerless", "embolden", "embrace", "surrender", "intoxicate", "frenzy", "exacting", "drudgery", "compelling", "gratify", "revel", "attune", "design", "frugal", "parsimonious", "humiliate", "composed", "tender", "predicament", "honor", "enfeeble"],
+      "text": "By the time Anya was twelve, she had been called a virtuoso so often that the word had ceased to embolden her and had begun, instead, to constrict her. Her teachers, well-meaning to a fault, spoke of her prodigious technique and her peerless ear; her parents, more guardedly, hoped she would embrace the discipline that would let her keep both. Anya, for her part, oscillated between two states. In the first, she could revel in the music: a piece would intoxicate her, and the audience's silence at the end of a phrase would gratify her in a way she had no other access to. In the second, the practice room was nothing but drudgery — exacting, parsimonious in its rewards, and increasingly difficult to surrender to.\n\nThe predicament came to a head in her fifteenth year, at a competition her teachers had assured her she would win. She did not win. She came in third, behind a Russian boy whose tone was less refined than hers but whose presence on stage was more compelling, and a Korean girl whose accuracy was, on the day, peerless. Anya did not weep in front of the audience; she walked off composed, the way she had been taught. In her hotel room afterward, she could not be tender with herself. She did not feel humiliated, exactly. She felt enfeebled — as though the design of her training had been to make her excellent at something she had now, for the first time, glimpsed the limits of.\n\nIt would have been honorable to surrender there, and many of her contemporaries did. Anya did neither. Over the months that followed she made a small adjustment that her teachers, at first, found alarming. She began to play less like a contestant and more like a listener. She slowed her tempi. She practiced fewer hours a day, and made every hour count. The frenzy that had characterized her preparation gave way to a frugal, attuned attention: she now noticed when a phrase had been overworked, and she had, for the first time, the patience to leave it alone.\n\nWhen she returned to the stage a year later, the change was not flashy. The reviewers said her playing was \"more honest.\" Her teachers, who had worried, now used the word with relief. Anya herself, when asked what had changed, did not have a satisfying answer. The music, she said, had stopped being a performance about her, and had begun, very slowly, to be a conversation she was having with it.",
+      "questions": [
+        {
+          "q": "Which of the following best states the central change Anya undergoes?",
+          "opts": [
+            "She abandons classical music in favor of an alternative genre.",
+            "She replaces a focused practice schedule with one that is more relaxed and unstructured.",
+            "She shifts from playing as performance directed outward to playing as attention directed at the music itself.",
+            "She concedes that her parents and teachers were correct about discipline all along."
+          ],
+          "ans": 2,
+          "why": "Anya's closing remark frames the change exactly: the music has stopped being \"a performance about her\" and become a \"conversation\" — i.e., attention directed at the music."
+        },
+        {
+          "q": "The author's description of Anya as \"enfeebled\" rather than \"humiliated\" after the competition is most likely intended to",
+          "opts": [
+            "suggest that she had no genuine emotional reaction to losing.",
+            "draw a precise distinction between public shame and a more interior depletion.",
+            "imply that she had been physically ill on the day of the competition.",
+            "indicate that she had been mistreated by the judges."
+          ],
+          "ans": 1,
+          "why": "The contrast distinguishes outward humiliation from a quieter sense of having reached the limit of her training — a precise interior distinction."
+        },
+        {
+          "q": "In the third paragraph, the phrase \"frugal, attuned attention\" most directly contrasts with",
+          "opts": [
+            "the casual indifference of her contemporaries.",
+            "the wealthy lifestyle her competition winnings would later support.",
+            "the frenzied, undifferentiated practice that had preceded her loss.",
+            "the orchestral demands of her concerto repertoire."
+          ],
+          "ans": 2,
+          "why": "The same paragraph contrasts her new attention with the \"frenzy that had characterized her preparation,\" which was undifferentiated practice."
+        }
+      ]
+    },
+    {
+      "title": "The Astringent Critic",
+      "targets": ["astringent", "dogmatic", "mawkish", "facetious", "defame", "undercut", "demonize", "intoxicate", "compelling", "brusque", "truculent", "irritate", "evince", "peerless", "purview", "vexation", "self-serving", "byword", "commendation", "erroneous", "wayward"],
+      "text": "Among the small community of film critics who still wrote for print magazines, Lillian Park was a byword for the astringent review. Her sentences were short. Her judgments were brusque. She did not, as a rule, embrace the dogmatic position any movement in criticism happened to hold at the time, and her irritation with the more mawkish tendencies of her colleagues was famous. \"A film,\" she had written in one frequently quoted line, \"is not improved by being defended in tears.\"\n\nHer detractors accused her of being self-serving — of cultivating a brand of severity for the attention it brought rather than the truths it discovered. Some went so far as to claim that she defamed working directors out of personal animus, and that her facetious asides about lesser-known cinema served only to demonize a school of filmmaking she had failed to understand. None of this was strictly accurate, although the kernel of the complaint was not erroneous. Lillian was vexed easily, and a film that wasted her time could undercut her composure for an evening.\n\nWhat her detractors missed was that she was equally capable of commendation. When a film genuinely moved her — and the threshold was, admittedly, peerless — she could write about it with a clarity that intoxicated even readers who normally found her truculent. Her review of a small Iranian documentary became, against all expectation, the most-shared piece of film writing of that year. The praise was not lavish. It was, instead, compelling: each clause earned the next, until the reader, who might never have seen the film, felt obliged to seek it out.\n\nLillian herself was, in person, surprisingly difficult to provoke. She did not consider her writing within the purview of public dispute; once a piece was published, she had no further interest in defending it. The wayward letters that arrived in response — sometimes admiring, often furious — went into a drawer, unopened. \"If a sentence cannot stand by itself,\" she said, in the only public lecture she ever agreed to give, \"then it does not deserve a defender.\" The audience, expecting a more theatrical figure, did not know what to do with this. She left the stage to a vexation of polite, uncertain applause.",
+      "questions": [
+        {
+          "q": "The passage's account of Lillian most directly challenges the assumption that",
+          "opts": [
+            "harsh critics are also harsh in person and uniformly negative in their writing.",
+            "film criticism has lost its public audience.",
+            "negative reviews are more widely read than positive ones.",
+            "directors should respond to critics through interviews."
+          ],
+          "ans": 0,
+          "why": "The passage shows Lillian is hard to provoke in person and capable of moving commendation, complicating the stereotype of the harsh critic as uniformly harsh."
+        },
+        {
+          "q": "Which of the following best characterizes the function of the second paragraph (\"Her detractors accused...\")?",
+          "opts": [
+            "It dismisses critics of Lillian as motivated entirely by jealousy.",
+            "It sets up a charge that the rest of the passage partially concedes and partially refutes.",
+            "It introduces a second critic whose work will be compared to Lillian's.",
+            "It explains why Lillian later left the profession."
+          ],
+          "ans": 1,
+          "why": "The third paragraph concedes irritability while showing she is also capable of moving praise — a partial concession and partial refutation of the second-paragraph charge."
+        },
+        {
+          "q": "Lillian's remark \"If a sentence cannot stand by itself, then it does not deserve a defender\" is best understood as",
+          "opts": [
+            "a literary aphorism quoted from another writer.",
+            "an expression of indifference to whether her writing communicates anything.",
+            "a principled reason for her refusal to engage with public reaction.",
+            "a complaint about the editing she has received from her magazine."
+          ],
+          "ans": 2,
+          "why": "The remark explains, in her own voice, why the wayward letters go unopened — a principled reason for not engaging with public reaction."
+        }
+      ]
+    },
+    {
+      "title": "The Spartan Farmer",
+      "targets": ["spartan", "frugal", "parsimonious", "employ", "drudgery", "onerous", "prodigious", "antedate", "embolden", "balk", "foresee", "predicament", "surrender", "decimate", "embrace", "available", "agrarian", "tender", "staunch", "compelling", "engender", "honor", "champion"],
+      "text": "Henry Bayliss had been a farmer for forty-three years, and in that time he had developed a reputation, in the small agrarian county where he lived, for being not merely frugal but parsimonious. He drove a truck older than several of his neighbors. He bought no machinery he could not foresee a clear use for. He balked, every season, at the kind of speculative purchase that emboldened younger farmers to take on debt. The drudgery of running a smallholding the old-fashioned way did not, he told anyone who asked, feel onerous to him; the available alternatives, he had decided long ago, were worse.\n\nThe summer of the drought tested even his Spartan habits. The prodigious heat decimated three-quarters of the corn before July; the soybeans surrendered shortly afterward. Henry had, of course, foreseen the predicament more clearly than most: his irrigation strategy antedated the local extension office's recommendations by a decade, and he had quietly stockpiled feed in the years when neighbors had laughed at him for it. Even so, when his oldest fields turned brown by the second week of August, he stood at their edge for a long while in the kind of silence that, in a farmer of his temperament, took the place of grief.\n\nWhat he did not do was complain. He employed his nephew for the haying that did happen, paid him fairly, and embraced the longer days the smaller harvest would impose. The county newspaper, hunting for stories of agricultural collapse, sent a reporter to interview him. She was hoping for a compelling lament; what she got was a tender but unsentimental description of soil moisture and the cost of replacement seed.\n\nThe story, when it appeared, was less dramatic than the editor had wanted, but it engendered an unexpected response. Letters came in from readers who had felt, for years, that the more theatrical accounts of rural decline were not quite their own experience. One letter, from a retired farmer two counties over, championed Henry's example as the staunchest case for a kind of farming that did not need its own hardship to be honored. Henry, predictably, did not write back. He was not in the business of being a model. He was in the business of getting through to October.",
+      "questions": [
+        {
+          "q": "The passage suggests that Henry's frugality is",
+          "opts": [
+            "a personal eccentricity unrelated to his farming practice.",
+            "a deliberate strategy that helped him weather an environmental crisis.",
+            "a habit forced on him by recent financial losses.",
+            "an expression of religious belief shared by other farmers in the area."
+          ],
+          "ans": 1,
+          "why": "The second paragraph credits his early irrigation strategy and stockpiled feed for getting him through the drought — frugality as deliberate strategy."
+        },
+        {
+          "q": "The reporter's expectation that she would get a \"compelling lament\" most directly highlights",
+          "opts": [
+            "Henry's inability to express emotion publicly.",
+            "the gap between the media's expected story and Henry's actual response.",
+            "the reporter's unfamiliarity with corn farming.",
+            "the editor's intention to defame the family."
+          ],
+          "ans": 1,
+          "why": "The contrast between what the reporter wanted (a lament) and what she got (an unsentimental, technical account) is exactly the gap between expected story and actual response."
+        },
+        {
+          "q": "The retired farmer's letter, as described in the final paragraph, suggests that Henry's example is read by some readers as",
+          "opts": [
+            "evidence that small farms cannot survive without subsidies.",
+            "a critique of agricultural science.",
+            "a quiet alternative to dramatic accounts of rural decline.",
+            "a personal attack on younger farmers in the region."
+          ],
+          "ans": 2,
+          "why": "The retired farmer champions Henry's example as a kind of farming \"that did not need its own hardship to be honored\" — an alternative to dramatic narratives of decline."
+        }
+      ]
+    },
+    {
+      "title": "The Imposter",
+      "targets": ["imposter", "self-serving", "gawky", "balk", "undercut", "surrender", "gratify", "embrace", "license", "apt", "prefigure", "wayward", "evince", "facetious", "compelling", "brusque", "humiliate", "tender", "annotate", "appreciate", "covet", "byword", "predicament"],
+      "text": "Hannah was a competent litigator. Her colleagues said so without any of the facetious undertones such judgments often carry. She prepared more thoroughly than the partners expected; she was apt with witnesses; she had, by her fifth year at the firm, become a quiet byword for solid second-chair work in trials that tended to be high-stakes. None of this kept her from feeling, almost daily, like an imposter.\n\nThe predicament, she would have admitted to anyone who asked, was hers more than her firm's. Her colleagues did not undermine her. Her supervisors did not, in any visible way, undercut her. Her billing was respected; her annotated case briefs were sometimes circulated as models. And yet she balked, every time, at the kind of self-serving advocacy that rising lawyers were supposed to embrace. To covet a client of her own — to ask for one — felt to her like a small humiliation she had not yet given herself license to risk.\n\nWhat changed, in her sixth year, was not a new kind of confidence. It was the realization that the wayward feeling she had treated as evidence of incompetence was actually evidence of something else. A senior partner, more tender than she had expected him to be capable of, told her over coffee one afternoon that she had spent five years gathering exactly the kind of competence that the partners coveted in junior associates. \"You are not an imposter,\" he said, with an unusually compelling brusqueness. \"You are an exceptionally well-prepared lawyer who has not yet given herself permission to behave like one.\"\n\nThe conversation did not, on its own, dissolve the feeling. Hannah did not, in any dramatic sense, surrender her sense of being out of place. She did, however, begin to evince, in small ways, the confidence the partner had urged on her. She asked for a client of her own. She asked, the following month, for a second. The first time she stood up in court alone, the gawky discomfort she had prefigured was indeed there. But beneath it, she could feel, distinctly for the first time, the much steadier ground of the work itself. The feeling did not gratify so much as it simply held — and, for that morning, that was enough.",
+      "questions": [
+        {
+          "q": "The passage suggests that Hannah's primary obstacle has been",
+          "opts": [
+            "a lack of substantive competence in courtroom settings.",
+            "an unsupportive professional environment that withheld her opportunities.",
+            "an internal reluctance to claim the role her preparation had earned her.",
+            "a series of public failures earlier in her career."
+          ],
+          "ans": 2,
+          "why": "The second paragraph rules out external undermining; the obstacle is described as \"hers more than her firm's\" — internal reluctance to claim the role she has earned."
+        },
+        {
+          "q": "The senior partner's remark that Hannah is \"an exceptionally well-prepared lawyer who has not yet given herself permission\" functions in the passage primarily to",
+          "opts": [
+            "reframe her self-assessment so she can take action without first resolving her doubts.",
+            "warn her against further preparation, which he sees as wasteful.",
+            "introduce a competing partner who will later challenge her.",
+            "reveal that she has been judged harshly by the firm's leadership."
+          ],
+          "ans": 0,
+          "why": "The third paragraph specifies that the conversation did not dissolve the feeling but allowed her to begin acting confidently — a reframing that decouples action from resolution of doubt."
+        },
+        {
+          "q": "The closing description — that the feeling \"did not gratify so much as it simply held\" — most directly conveys",
+          "opts": [
+            "Hannah's disappointment in the experience of trying her first case.",
+            "a quiet, unspectacular form of self-trust beneath the surface anxiety.",
+            "the firm's failure to celebrate her milestone publicly.",
+            "the lingering presence of an external imposter."
+          ],
+          "ans": 1,
+          "why": "The image is of a steadier ground beneath a still-present discomfort — a quiet self-trust rather than triumph or disappointment."
+        }
+      ]
+    },
+    {
+      "title": "The Volatile Market",
+      "targets": ["volatile", "decimate", "frenzy", "panic", "retaliate", "ramification", "avaricious", "mishandle", "fatal", "foresee", "predicament", "abreast", "compress", "sabotage", "covet", "brusque", "surrender", "tumultuous", "distribution", "filter", "block", "approximate", "erroneous", "purview", "undercut"],
+      "text": "Currency markets are, by design, volatile. The traders who keep abreast of them learn early that yesterday's signals will be erroneous tomorrow, and that the predicament of any given week is unlikely to predict the predicament of the next. What this professional norm fails to capture, however, is the human distribution of risk during a tumultuous trading day. The volatility is statistical; the panic is not.\n\nIn the spring of last year, an emerging-market currency lost twenty percent of its value over four sessions. Most of the loss occurred in the final ninety minutes of the second day, when a frenzy of selling decimated the order book. Foreign investors, fearing further compression of their positions, began to retaliate against earlier purchases by liquidating other holdings; domestic investors, who had less ability to filter the signal from the noise, mishandled the sequence of news releases that followed. The ramifications, by Friday, had begun to extend beyond the currency itself, blocking ordinary trade financing and undercutting the central bank's rapidly drafted response.\n\nWhat outside observers failed to foresee — and what subsequent reporting would, eventually, document — was that one large hedge fund had, in the months before the collapse, deliberately positioned itself to profit from precisely this scenario. The fund's behavior was not, on its own, fatal to the currency. The fund had merely placed a series of approximate bets that would, in the event of trouble, pay off handsomely. Whether this counted as sabotage or as the ordinary business of speculation depended, in subsequent debate, on whether one believed the fund had had access to information outside the public's purview.\n\nRegulators, brusque about such distinctions, opened an investigation that would last eighteen months. Their final report stopped short of accusing the fund of avaricious wrongdoing. It found, instead, that the fund had merely coveted an opportunity that the prevailing rules had failed to forbid. The recommendation was not to surrender the existing framework but to update it: to compress the time between trade and disclosure, and to require firms above a certain size to provide regulators with positions that would otherwise remain private. Whether such recommendations would, in the next crisis, prove sufficient was a question the report, with characteristic restraint, declined to settle.",
+      "questions": [
+        {
+          "q": "The passage's analysis distinguishes most sharply between",
+          "opts": [
+            "ethical and unethical hedge funds.",
+            "domestic investors and foreign investors.",
+            "statistical volatility and the human panic that volatility provokes.",
+            "currency markets and equity markets."
+          ],
+          "ans": 2,
+          "why": "The opening paragraph names the central distinction: \"The volatility is statistical; the panic is not.\""
+        },
+        {
+          "q": "Which of the following statements about the hedge fund is best supported by the passage?",
+          "opts": [
+            "It directly caused the currency's collapse through coordinated sales.",
+            "It positioned itself to profit from a possible collapse but did not, on its own, cause it.",
+            "It was found to have used information illegally obtained from regulators.",
+            "It was forced into bankruptcy after the collapse."
+          ],
+          "ans": 1,
+          "why": "The third paragraph specifies that the fund's behavior was \"not, on its own, fatal\" and that it had merely placed bets that would pay off in the event of trouble — positioned but not causal."
+        },
+        {
+          "q": "The recommendations in the regulators' final report can be best characterized as",
+          "opts": [
+            "an effort to abolish hedge funds outright.",
+            "modest reforms intended to narrow the information gap exploited in this case.",
+            "a confession that no further regulation is possible.",
+            "a transfer of authority from the central bank to private firms."
+          ],
+          "ans": 1,
+          "why": "The recommendations compress the trade-disclosure window and require large firms to share positions with regulators — modest reforms targeted at the information asymmetry the case exposed."
+        }
+      ]
     }
   ]
 }

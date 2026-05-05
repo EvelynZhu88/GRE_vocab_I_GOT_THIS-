@@ -10,24 +10,36 @@
 </head>
 <body>
 
-<header class="topbar">
-  <h1>GRE Vocab</h1>
-  <div class="list-selector">
-    <label for="listPicker">List</label>
-    <select id="listPicker"></select>
-  </div>
+<header class="topbar" id="topbar">
+  <button class="back-btn" id="backBtn" aria-label="Back" hidden>‹</button>
+  <h1 id="headerTitle">GRE Vocab</h1>
+  <div class="topbar-right" id="topbarRight"></div>
 </header>
-
-<nav class="tabs">
-  <button class="tab active" data-mode="browse">Browse</button>
-  <button class="tab" data-mode="quiz">Quiz</button>
-  <button class="tab" data-mode="read">Read</button>
-  <button class="tab" data-mode="stats">Stats</button>
-</nav>
 
 <main id="view"></main>
 
+<nav class="bottom-nav">
+  <a href="#/" class="nav-link" data-route="lists">
+    <span class="nav-icon">≡</span>
+    <span class="nav-label">Lists</span>
+  </a>
+  <a href="#/review" class="nav-link" data-route="review">
+    <span class="nav-icon">↻</span>
+    <span class="nav-label">Review</span>
+  </a>
+  <a href="#/stats" class="nav-link" data-route="stats">
+    <span class="nav-icon">▤</span>
+    <span class="nav-label">Stats</span>
+  </a>
+</nav>
+
 <div id="toast" class="toast"></div>
+<div id="popover" class="popover" hidden>
+  <button class="pop-close" aria-label="Close">×</button>
+  <div class="pop-word"></div>
+  <div class="pop-zh"></div>
+  <div class="pop-en"></div>
+</div>
 
 <script src="app.js"></script>
 </body>
