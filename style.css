@@ -502,3 +502,45 @@ main {
   color: var(--muted);
   margin: 16px 0 8px;
 }
+
+/* === Mixed Review banner on home === */
+.review-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, var(--card), var(--card-2));
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-decoration: none;
+  color: var(--text);
+}
+.review-banner.empty {
+  border-color: #2c4068;
+  background: var(--card);
+}
+.review-banner:active { background: var(--card-2); }
+.review-banner-body { flex: 1; min-width: 0; }
+.review-banner .rb-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent-2);
+  margin-bottom: 4px;
+}
+.review-banner .rb-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.review-banner-cta { flex-shrink: 0; }
+.review-banner-cta .btn-primary {
+  padding: 10px 14px;
+  font-size: 13.5px;
+  min-height: 0;
+}
+.review-banner-cta .disabled { opacity: 0.5; }
+@media (max-width: 480px) {
+  .review-banner { flex-direction: column; align-items: stretch; }
+  .review-banner-cta { display: flex; justify-content: stretch; }
+  .review-banner-cta .btn-primary { width: 100%; text-align: center; }
+}

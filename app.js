@@ -175,7 +175,6 @@ function renderLists() {
   const lists = Object.keys(VOCAB).sort((a, b) => +a - +b);
   let totalMature = 0, totalLearning = 0, totalFresh = 0, totalWords = 0;
   const html = [];
-  // top summary
   for (const n of lists) {
     const s = listSummary(+n);
     totalMature += s.mature; totalLearning += s.learning; totalFresh += s.fresh; totalWords += s.total;
@@ -185,6 +184,8 @@ function renderLists() {
     <div class="summary-card"><div class="v">${totalLearning}</div><div class="l">Learning</div></div>
     <div class="summary-card"><div class="v">${totalWords - totalMature - totalLearning}</div><div class="l">New</div></div>
   </div>`);
+
+  html.push('<div class="section-heading">Lists</div>');
   html.push('<div class="lists-grid">');
   for (const n of lists) {
     const s = listSummary(+n);
@@ -202,7 +203,53 @@ function renderLists() {
     </a>`);
   }
   html.push('</div>');
+
+  // Mixed Review banner — appears below lists, expands automatically
+  html.push(renderReviewBanner());
+
   $('#view').innerHTML = html.join('');
+}
+
+function renderReviewBanner() {
+  const active = activeListNumbers();
+  const now = Date.now();
+  let dueCount = 0, poolCount = 0;
+  for (const n of active) {
+    for (const w of VOCAB[String(n)]) {
+      const c = getCard(n, w.word);
+      if (isFresh(c)) continue;
+      poolCount++;
+      if (c.due <= now) dueCount++;
+    }
+  }
+  if (active.length === 0) {
+    return `
+      <div class="section-heading">Mixed Review</div>
+      <div class="review-banner empty">
+        <div class="review-banner-body">
+          <div class="rb-title">No lists active yet</div>
+          <div class="rb-desc">Take a Unit Test on any list to start cumulative review. The pool grows automatically as you complete more units.</div>
+        </div>
+      </div>`;
+  }
+  const rangeLabel = active.length === 1
+    ? `list ${active[0]}`
+    : (active.length <= 4
+        ? `lists ${active.join(', ')}`
+        : `lists ${active[0]}–${active[active.length - 1]} (${active.length} units)`);
+  const ctaText = dueCount > 0 ? `Start review (${dueCount} due)` : 'Start review';
+  const ctaDisabled = dueCount === 0 ? 'disabled' : '';
+  return `
+    <div class="section-heading">Mixed Review · ${rangeLabel}</div>
+    <a class="review-banner" href="#/review">
+      <div class="review-banner-body">
+        <div class="rb-title">${dueCount > 0 ? `${dueCount} word${dueCount === 1 ? '' : 's'} due for review` : 'All caught up'}</div>
+        <div class="rb-desc">${poolCount} word${poolCount === 1 ? '' : 's'} in your review pool across ${active.length} unit${active.length === 1 ? '' : 's'}. Pool grows automatically as you take more Unit Tests.</div>
+      </div>
+      <div class="review-banner-cta">
+        <span class="btn-primary ${ctaDisabled}" style="pointer-events:none">${ctaText}</span>
+      </div>
+    </a>`;
 }
 
 // =====================================================
@@ -236,7 +283,7 @@ function renderListDetail(n) {
         <div class="icon">✎</div>
         <div class="body">
           <div class="title">Unit Test</div>
-          <div class="desc">${SETTINGS.unitTestSize}-question test on this list.</div>
+          <div class="desc">Test all ${s.total} words in this list.</div>
         </div>
       </a>
       <a class="action-card ${passagesAvailable ? '' : 'disabled'}" href="#/list/${n}/passages">
@@ -285,10 +332,8 @@ function tagFor(c) {
 function renderUnitTest(n) {
   setHeader(`List ${n} · Unit Test`);
   const words = VOCAB[String(n)] || [];
-  const size = Math.min(SETTINGS.unitTestSize, words.length);
-  // Pick a random sample, weighted slightly toward unseen words
-  const pool = shuffle([...words]);
-  const session = pool.slice(0, size);
+  // Test every word in the list, in randomized order
+  const session = shuffle([...words]);
   startUnitTest(n, session);
 }
 
