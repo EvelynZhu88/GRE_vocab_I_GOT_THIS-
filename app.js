@@ -40,8 +40,8 @@ const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 async function init() {
   try {
     [VOCAB, PASSAGES] = await Promise.all([
-      fetch('vocab.json?v=3').then(r => r.json()),
-      fetch('passages.json?v=3').then(r => r.json()).catch(() => ({})),
+      fetch('vocab.json?v=4').then(r => r.json()),
+      fetch('passages.json?v=4').then(r => r.json()).catch(() => ({})),
     ]);
   } catch (e) {
     $('#view').innerHTML = `<div class="empty-state"><h2>Couldn't load data</h2><p>${escHtml(String(e))}</p></div>`;
@@ -305,18 +305,40 @@ function renderWords(n) {
   setHeader(`List ${n} · Words`);
   const words = VOCAB[String(n)];
   const html = [];
-  for (const w of words) {
+  html.push(`<div class="words-controls">
+    <span class="words-hint">Tap a card to reveal its meaning</span>
+    <button class="btn-secondary" id="revealAll" type="button">Reveal all</button>
+  </div>`);
+  for (let i = 0; i < words.length; i++) {
+    const w = words[i];
     const c = getCard(n, w.word);
-    html.push(`<div class="word-card">
+    html.push(`<div class="word-card hidden-meaning" data-i="${i}">
       <div class="head"><span class="word">${escHtml(w.word)}</span><span class="ipa">${escHtml(w.ipa)}</span></div>
-      <div class="zh">${escHtml(w.def_zh)}</div>
-      <div class="en">${escHtml(w.def_en)}</div>
-      ${w.synonym ? `<div class="syn">≈ ${escHtml(w.synonym)}</div>` : ''}
-      ${w.ex_en ? `<div class="ex">${escHtml(w.ex_en)}<div class="ex-zh">${escHtml(w.ex_zh)}</div></div>` : ''}
+      <div class="reveal-prompt">tap to reveal</div>
+      <div class="card-body">
+        <div class="zh">${escHtml(w.def_zh)}</div>
+        <div class="en">${escHtml(w.def_en)}</div>
+        ${w.synonym ? `<div class="syn">≈ ${escHtml(w.synonym)}</div>` : ''}
+        ${w.ex_en ? `<div class="ex">${escHtml(w.ex_en)}<div class="ex-zh">${escHtml(w.ex_zh)}</div></div>` : ''}
+      </div>
       <div class="row-bottom">${tagFor(c)}<span>${c.last ? new Date(c.last).toLocaleDateString() : ''}</span></div>
     </div>`);
   }
   $('#view').innerHTML = html.join('');
+
+  $$('.word-card').forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('hidden-meaning');
+    });
+  });
+
+  let allShown = false;
+  $('#revealAll').addEventListener('click', (e) => {
+    e.stopPropagation();
+    allShown = !allShown;
+    $$('.word-card').forEach(c => c.classList.toggle('hidden-meaning', !allShown));
+    e.currentTarget.textContent = allShown ? 'Hide all' : 'Reveal all';
+  });
 }
 
 function tagFor(c) {
