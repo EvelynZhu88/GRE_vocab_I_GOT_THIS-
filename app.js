@@ -22,8 +22,8 @@ const STORE_KEY = 'gre.progress';
 const UNITS_KEY = 'gre.units';
 const SETTINGS_KEY = 'gre.settings';
 const DEFAULTS = {
-  unitTestSize: 20,
-  reviewSize: 20,
+  unitTestSize: 20,    // not used (unit test = full list)
+  reviewSize: 80,      // mixed-review session size
   mixRatio: 0.35,
 };
 
@@ -40,8 +40,8 @@ const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 async function init() {
   try {
     [VOCAB, PASSAGES] = await Promise.all([
-      fetch('vocab.json?v=5').then(r => r.json()),
-      fetch('passages.json?v=5').then(r => r.json()).catch(() => ({})),
+      fetch('vocab.json?v=6').then(r => r.json()),
+      fetch('passages.json?v=6').then(r => r.json()).catch(() => ({})),
     ]);
   } catch (e) {
     $('#view').innerHTML = `<div class="empty-state"><h2>Couldn't load data</h2><p>${escHtml(String(e))}</p></div>`;
@@ -227,18 +227,6 @@ function renderLists() {
 
 function renderReviewBanner() {
   const active = activeListNumbers();
-  let dueCount = 0, poolCount = 0, starredDue = 0;
-  for (const n of active) {
-    for (const w of VOCAB[String(n)]) {
-      const c = getCard(n, w.word);
-      if (isFresh(c)) continue;
-      poolCount++;
-      if (isReviewDue(c)) {
-        dueCount++;
-        if (c.starred) starredDue++;
-      }
-    }
-  }
   if (active.length === 0) {
     return `
       <div class="section-heading">Mixed Review</div>
@@ -249,23 +237,30 @@ function renderReviewBanner() {
         </div>
       </div>`;
   }
+  let poolCount = 0, starredCount = 0;
+  for (const n of active) {
+    for (const w of VOCAB[String(n)]) {
+      const c = getCard(n, w.word);
+      poolCount++;
+      if (c.starred) starredCount++;
+    }
+  }
   const rangeLabel = active.length === 1
     ? `list ${active[0]}`
     : (active.length <= 4
         ? `lists ${active.join(', ')}`
         : `lists ${active[0]}–${active[active.length - 1]} (${active.length} units)`);
-  const ctaText = dueCount > 0 ? `Start review (${dueCount} due)` : 'Start review';
-  const ctaDisabled = dueCount === 0 ? 'disabled' : '';
-  const starredBlurb = starredDue > 0 ? ` · ${starredDue} starred` : '';
+  const sessionSize = Math.min(SETTINGS.reviewSize, poolCount);
+  const starredBlurb = starredCount > 0 ? ` · ${starredCount} starred ★ guaranteed` : '';
   return `
     <div class="section-heading">Mixed Review · ${rangeLabel}</div>
     <a class="review-banner" href="#/review">
       <div class="review-banner-body">
-        <div class="rb-title">${dueCount > 0 ? `${dueCount} word${dueCount === 1 ? '' : 's'} due${starredBlurb}` : 'All caught up'}</div>
-        <div class="rb-desc">${poolCount} word${poolCount === 1 ? '' : 's'} in your review pool across ${active.length} unit${active.length === 1 ? '' : 's'}. Starred words ★ surface here daily until you un-star them.</div>
+        <div class="rb-title">${sessionSize}-question random review</div>
+        <div class="rb-desc">${poolCount} word${poolCount === 1 ? '' : 's'} in pool across ${active.length} unit${active.length === 1 ? '' : 's'}${starredBlurb}. New random sample every time you start.</div>
       </div>
       <div class="review-banner-cta">
-        <span class="btn-primary ${ctaDisabled}" style="pointer-events:none">${ctaText}</span>
+        <span class="btn-primary" style="pointer-events:none">Start review</span>
       </div>
     </a>`;
 }
@@ -576,39 +571,31 @@ function renderReview() {
     </div>`;
     return;
   }
-
   const session = buildReviewSession(active, SETTINGS.reviewSize);
-  if (session.length === 0) {
-    $('#view').innerHTML = `<div class="empty-state">
-      <h2>All caught up</h2>
-      <p>No words from your active lists are due right now.</p>
-      <p>Active: lists ${active.join(', ')}.</p>
-      <a class="btn-secondary" href="#/">Back to lists</a>
-    </div>`;
-    return;
-  }
   startReview(session, active);
 }
 
 function buildReviewSession(activeLists, size) {
-  const now = Date.now();
-  const due = [];
+  // Always available. Pull a random sample across all active lists, with
+  // starred words guaranteed to be included first. Re-randomized each call,
+  // so consecutive sessions cover different parts of the active range.
+  const starred = [];
+  const rest = [];
   for (const n of activeLists) {
     for (const w of VOCAB[String(n)]) {
       const c = getCard(n, w.word);
-      if (!isReviewDue(c)) continue;
-      const overdue = c.starred
-        ? Math.max(1, (now - (c.last || 0)) / DAY)
-        : Math.max(0, (now - c.due) / DAY);
-      due.push({ n, w, overdue, starred: c.starred });
+      if (c.starred) starred.push({ n, w, starred: true });
+      else rest.push({ n, w, starred: false });
     }
   }
-  // Sort: starred words first, then most overdue
-  due.sort((a, b) => {
-    if (a.starred !== b.starred) return a.starred ? -1 : 1;
-    return b.overdue - a.overdue;
-  });
-  return due.slice(0, size);
+  shuffle(starred);
+  shuffle(rest);
+  const total = Math.min(size, starred.length + rest.length);
+  const starQuota = Math.min(starred.length, total);
+  const restQuota = Math.max(0, total - starQuota);
+  const session = [...starred.slice(0, starQuota), ...rest.slice(0, restQuota)];
+  shuffle(session);
+  return session;
 }
 
 function startReview(session, active) {
