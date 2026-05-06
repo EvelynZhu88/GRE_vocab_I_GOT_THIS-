@@ -40,8 +40,8 @@ const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 async function init() {
   try {
     [VOCAB, PASSAGES] = await Promise.all([
-      fetch('vocab.json?v=4').then(r => r.json()),
-      fetch('passages.json?v=4').then(r => r.json()).catch(() => ({})),
+      fetch('vocab.json?v=5').then(r => r.json()),
+      fetch('passages.json?v=5').then(r => r.json()).catch(() => ({})),
     ]);
   } catch (e) {
     $('#view').innerHTML = `<div class="empty-state"><h2>Couldn't load data</h2><p>${escHtml(String(e))}</p></div>`;
@@ -65,13 +65,28 @@ function saveUnits() { save(UNITS_KEY, UNITS); }
 function key(n, w) { return `${n}::${w.toLowerCase()}`; }
 function getCard(n, w) {
   const k = key(n, w);
-  if (!PROGRESS[k]) PROGRESS[k] = { ef: 2.5, interval: 0, reps: 0, due: 0, lapses: 0, last: 0 };
+  if (!PROGRESS[k]) PROGRESS[k] = { ef: 2.5, interval: 0, reps: 0, due: 0, lapses: 0, last: 0, starred: false };
+  if (PROGRESS[k].starred === undefined) PROGRESS[k].starred = false;
   return PROGRESS[k];
+}
+function toggleStar(n, word) {
+  const c = getCard(n, word);
+  c.starred = !c.starred;
+  saveProgress();
+  return c.starred;
 }
 function isFresh(c) { return c.reps === 0 && c.last === 0; }
 function isMature(c) { return c.interval >= 21; }
 function isLearning(c) { return !isFresh(c) && !isMature(c); }
 function isDue(c) { return c.due <= Date.now(); }
+// Starred words act as if they're due whenever it's been ~1 day since last
+// review, regardless of the SM-2 interval — so words you always forget keep
+// cycling back into the review pool until you un-star them.
+function isReviewDue(c) {
+  if (isFresh(c)) return false;
+  if (c.starred) return c.last === 0 || (Date.now() - c.last) >= DAY;
+  return c.due <= Date.now();
+}
 
 // --- SM-2 ---
 function rateCard(n, w, q) {
@@ -212,14 +227,16 @@ function renderLists() {
 
 function renderReviewBanner() {
   const active = activeListNumbers();
-  const now = Date.now();
-  let dueCount = 0, poolCount = 0;
+  let dueCount = 0, poolCount = 0, starredDue = 0;
   for (const n of active) {
     for (const w of VOCAB[String(n)]) {
       const c = getCard(n, w.word);
       if (isFresh(c)) continue;
       poolCount++;
-      if (c.due <= now) dueCount++;
+      if (isReviewDue(c)) {
+        dueCount++;
+        if (c.starred) starredDue++;
+      }
     }
   }
   if (active.length === 0) {
@@ -239,12 +256,13 @@ function renderReviewBanner() {
         : `lists ${active[0]}–${active[active.length - 1]} (${active.length} units)`);
   const ctaText = dueCount > 0 ? `Start review (${dueCount} due)` : 'Start review';
   const ctaDisabled = dueCount === 0 ? 'disabled' : '';
+  const starredBlurb = starredDue > 0 ? ` · ${starredDue} starred` : '';
   return `
     <div class="section-heading">Mixed Review · ${rangeLabel}</div>
     <a class="review-banner" href="#/review">
       <div class="review-banner-body">
-        <div class="rb-title">${dueCount > 0 ? `${dueCount} word${dueCount === 1 ? '' : 's'} due for review` : 'All caught up'}</div>
-        <div class="rb-desc">${poolCount} word${poolCount === 1 ? '' : 's'} in your review pool across ${active.length} unit${active.length === 1 ? '' : 's'}. Pool grows automatically as you take more Unit Tests.</div>
+        <div class="rb-title">${dueCount > 0 ? `${dueCount} word${dueCount === 1 ? '' : 's'} due${starredBlurb}` : 'All caught up'}</div>
+        <div class="rb-desc">${poolCount} word${poolCount === 1 ? '' : 's'} in your review pool across ${active.length} unit${active.length === 1 ? '' : 's'}. Starred words ★ surface here daily until you un-star them.</div>
       </div>
       <div class="review-banner-cta">
         <span class="btn-primary ${ctaDisabled}" style="pointer-events:none">${ctaText}</span>
@@ -306,13 +324,14 @@ function renderWords(n) {
   const words = VOCAB[String(n)];
   const html = [];
   html.push(`<div class="words-controls">
-    <span class="words-hint">Tap a card to reveal its meaning</span>
+    <span class="words-hint">Tap a card to reveal · ★ to star</span>
     <button class="btn-secondary" id="revealAll" type="button">Reveal all</button>
   </div>`);
   for (let i = 0; i < words.length; i++) {
     const w = words[i];
     const c = getCard(n, w.word);
-    html.push(`<div class="word-card hidden-meaning" data-i="${i}">
+    html.push(`<div class="word-card hidden-meaning" data-i="${i}" data-word="${escAttr(w.word)}">
+      <button class="star-btn ${c.starred ? 'on' : ''}" data-word="${escAttr(w.word)}" aria-label="Toggle star" type="button">${c.starred ? '★' : '☆'}</button>
       <div class="head"><span class="word">${escHtml(w.word)}</span><span class="ipa">${escHtml(w.ipa)}</span></div>
       <div class="reveal-prompt">tap to reveal</div>
       <div class="card-body">
@@ -329,6 +348,16 @@ function renderWords(n) {
   $$('.word-card').forEach(card => {
     card.addEventListener('click', () => {
       card.classList.toggle('hidden-meaning');
+    });
+  });
+
+  $$('.star-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const word = btn.dataset.word;
+      const on = toggleStar(n, word);
+      btn.textContent = on ? '★' : '☆';
+      btn.classList.toggle('on', on);
     });
   });
 
@@ -458,12 +487,22 @@ function onUnitAnswer(state, q, btn) {
   // Reveal
   const reveal = $('#reveal');
   reveal.hidden = false;
+  const card = getCard(state.n, q.w.word);
   reveal.innerHTML = `
-    <div class="word">${escHtml(q.w.word)} <span style="color:var(--muted);font-weight:normal">${escHtml(q.w.ipa || '')}</span></div>
+    <div class="reveal-head">
+      <div class="word">${escHtml(q.w.word)} <span style="color:var(--muted);font-weight:normal">${escHtml(q.w.ipa || '')}</span></div>
+      <button class="star-btn ${card.starred ? 'on' : ''}" id="revealStar" type="button" aria-label="Star">${card.starred ? '★' : '☆'}</button>
+    </div>
     <div>${escHtml(q.w.def_zh)}</div>
     <div style="color:var(--muted);font-size:13px;margin-top:4px">${escHtml(q.w.def_en)}</div>
     ${q.w.ex_en ? `<div class="ex">${escHtml(q.w.ex_en)}<br>${escHtml(q.w.ex_zh)}</div>` : ''}
   `;
+  $('#revealStar').addEventListener('click', () => {
+    const on = toggleStar(state.n, q.w.word);
+    const btn = $('#revealStar');
+    btn.textContent = on ? '★' : '☆';
+    btn.classList.toggle('on', on);
+  });
   $('#nextWrap').hidden = false;
   $('#nextBtn').addEventListener('click', () => {
     state.idx += 1;
@@ -557,12 +596,18 @@ function buildReviewSession(activeLists, size) {
   for (const n of activeLists) {
     for (const w of VOCAB[String(n)]) {
       const c = getCard(n, w.word);
-      if (isFresh(c)) continue;     // skip never-tested words in review
-      if (c.due > now) continue;    // not due yet
-      due.push({ n, w, overdue: (now - c.due) / DAY });
+      if (!isReviewDue(c)) continue;
+      const overdue = c.starred
+        ? Math.max(1, (now - (c.last || 0)) / DAY)
+        : Math.max(0, (now - c.due) / DAY);
+      due.push({ n, w, overdue, starred: c.starred });
     }
   }
-  due.sort((a, b) => b.overdue - a.overdue);
+  // Sort: starred words first, then most overdue
+  due.sort((a, b) => {
+    if (a.starred !== b.starred) return a.starred ? -1 : 1;
+    return b.overdue - a.overdue;
+  });
   return due.slice(0, size);
 }
 
@@ -625,12 +670,22 @@ function onReviewAnswer(state, q, btn) {
     else if (b === btn) b.classList.add('wrong');
   });
   rateCard(q.n, q.w.word, correct ? 4 : 0);
+  const card = getCard(q.n, q.w.word);
   $('#reveal').hidden = false;
   $('#reveal').innerHTML = `
-    <div class="word">${escHtml(q.w.word)}</div>
+    <div class="reveal-head">
+      <div class="word">${escHtml(q.w.word)}</div>
+      <button class="star-btn ${card.starred ? 'on' : ''}" id="revealStar" type="button" aria-label="Star">${card.starred ? '★' : '☆'}</button>
+    </div>
     <div>${escHtml(q.w.def_zh)}</div>
     <div style="color:var(--muted);font-size:13px;margin-top:4px">${escHtml(q.w.def_en)}</div>
   `;
+  $('#revealStar').addEventListener('click', () => {
+    const on = toggleStar(q.n, q.w.word);
+    const btn = $('#revealStar');
+    btn.textContent = on ? '★' : '☆';
+    btn.classList.toggle('on', on);
+  });
   $('#nextWrap').hidden = false;
   $('#nextBtn').addEventListener('click', () => {
     state.idx += 1;
