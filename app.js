@@ -40,8 +40,8 @@ const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 async function init() {
   try {
     [VOCAB, PASSAGES] = await Promise.all([
-      fetch('vocab.json?v=6').then(r => r.json()),
-      fetch('passages.json?v=6').then(r => r.json()).catch(() => ({})),
+      fetch('vocab.json?v=7').then(r => r.json()),
+      fetch('passages.json?v=7').then(r => r.json()).catch(() => ({})),
     ]);
   } catch (e) {
     $('#view').innerHTML = `<div class="empty-state"><h2>Couldn't load data</h2><p>${escHtml(String(e))}</p></div>`;
