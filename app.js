@@ -40,8 +40,8 @@ const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 async function init() {
   try {
     [VOCAB, PASSAGES] = await Promise.all([
-      fetch('vocab.json?v=7').then(r => r.json()),
-      fetch('passages.json?v=7').then(r => r.json()).catch(() => ({})),
+      fetch('vocab.json?v=8').then(r => r.json()),
+      fetch('passages.json?v=8').then(r => r.json()).catch(() => ({})),
     ]);
   } catch (e) {
     $('#view').innerHTML = `<div class="empty-state"><h2>Couldn't load data</h2><p>${escHtml(String(e))}</p></div>`;
@@ -149,12 +149,14 @@ function router() {
   $$('.nav-link').forEach(a => a.classList.remove('active'));
   if (segs.length === 0) $('.nav-link[data-route="lists"]').classList.add('active');
   else if (segs[0] === 'review') $('.nav-link[data-route="review"]').classList.add('active');
+  else if (segs[0] === 'starred') $('.nav-link[data-route="starred"]').classList.add('active');
   else if (segs[0] === 'stats') $('.nav-link[data-route="stats"]').classList.add('active');
   else if (segs[0] === 'list') $('.nav-link[data-route="lists"]').classList.add('active');
 
   // Dispatch
   if (segs.length === 0) return renderLists();
   if (segs[0] === 'review') return renderReview();
+  if (segs[0] === 'starred') return renderStarred();
   if (segs[0] === 'stats') return renderStats();
   if (segs[0] === 'list') {
     const n = +segs[1];
@@ -910,6 +912,94 @@ function gradePassageQuiz(n, i, qs) {
     </div>
   `;
   $('#submitQuiz').replaceWith(summary);
+}
+
+// =====================================================
+// VIEW: Starred words (across all lists)
+// =====================================================
+function renderStarred() {
+  setHeader('Starred ★');
+  const starred = [];
+  for (const [n, words] of Object.entries(VOCAB)) {
+    for (const w of words) {
+      const c = getCard(+n, w.word);
+      if (c.starred) starred.push({ n: +n, w });
+    }
+  }
+  if (starred.length === 0) {
+    $('#view').innerHTML = `<div class="empty-state">
+      <h2>No starred words yet</h2>
+      <p>Tap ★ on any word card or quiz reveal to mark words you keep forgetting. They'll show up here, and they'll be guaranteed-in every Mixed Review session until you un-star them.</p>
+      <a class="btn-primary" href="#/">Browse lists</a>
+    </div>`;
+    return;
+  }
+  starred.sort((a, b) => a.n - b.n || a.w.word.localeCompare(b.w.word));
+
+  const html = [];
+  html.push(`<div class="words-controls">
+    <span class="words-hint">${starred.length} starred · tap to reveal · ★ to unstar</span>
+    <button class="btn-secondary" id="revealAll" type="button">Reveal all</button>
+  </div>`);
+
+  // Group by list
+  const byList = {};
+  for (const item of starred) {
+    if (!byList[item.n]) byList[item.n] = [];
+    byList[item.n].push(item.w);
+  }
+  for (const n of Object.keys(byList).sort((a, b) => +a - +b)) {
+    html.push(`<div class="section-heading">List ${n} · ${byList[n].length} starred</div>`);
+    for (const w of byList[n]) {
+      const c = getCard(+n, w.word);
+      html.push(`<div class="word-card hidden-meaning" data-list="${n}" data-word="${escAttr(w.word)}">
+        <button class="star-btn ${c.starred ? 'on' : ''}" data-list="${n}" data-word="${escAttr(w.word)}" aria-label="Toggle star" type="button">${c.starred ? '★' : '☆'}</button>
+        <div class="head"><span class="word">${escHtml(w.word)}</span><span class="ipa">${escHtml(w.ipa)}</span></div>
+        <div class="reveal-prompt">tap to reveal</div>
+        <div class="card-body">
+          <div class="zh">${escHtml(w.def_zh)}</div>
+          <div class="en">${escHtml(w.def_en)}</div>
+          ${w.synonym ? `<div class="syn">≈ ${escHtml(w.synonym)}</div>` : ''}
+          ${w.ex_en ? `<div class="ex">${escHtml(w.ex_en)}<div class="ex-zh">${escHtml(w.ex_zh)}</div></div>` : ''}
+        </div>
+        <div class="row-bottom">${tagFor(c)}<span>${c.last ? new Date(c.last).toLocaleDateString() : ''}</span></div>
+      </div>`);
+    }
+  }
+  $('#view').innerHTML = html.join('');
+
+  $$('.word-card').forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('hidden-meaning');
+    });
+  });
+
+  $$('.star-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const n = +btn.dataset.list;
+      const word = btn.dataset.word;
+      const on = toggleStar(n, word);
+      if (!on) {
+        // Unstarred — remove this card with a fade
+        const card = btn.closest('.word-card');
+        card.style.transition = 'opacity 0.2s';
+        card.style.opacity = '0';
+        setTimeout(() => renderStarred(), 220);
+      } else {
+        btn.textContent = '★';
+        btn.classList.add('on');
+      }
+    });
+  });
+
+  let allShown = false;
+  $('#revealAll').addEventListener('click', (e) => {
+    e.stopPropagation();
+    allShown = !allShown;
+    $$('.word-card').forEach(c => c.classList.toggle('hidden-meaning', !allShown));
+    e.currentTarget.textContent = allShown ? 'Hide all' : 'Reveal all';
+  });
 }
 
 // =====================================================

@@ -59,7 +59,7 @@ button { font-family: inherit; cursor: pointer; }
   position: fixed;
   left: 0; right: 0; bottom: 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   background: var(--bg-2);
   border-top: 1px solid #1f2a44;
   padding-bottom: env(safe-area-inset-bottom, 0);
