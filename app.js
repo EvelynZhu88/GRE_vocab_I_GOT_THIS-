@@ -39,6 +39,10 @@ let SETTINGS = loadJson(SETTINGS_KEY, DEFAULTS);
 let PROGRESS = loadJson(STORE_KEY, {});
 let UNITS = loadJson(UNITS_KEY, {});
 
+// "Reveal all" preference for Words / Starred lists — persists across
+// in-app tab switches but resets on page reload (intentional default).
+let REVEAL_ALL = false;
+
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 
@@ -46,8 +50,8 @@ const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 async function init() {
   try {
     [VOCAB, PASSAGES] = await Promise.all([
-      fetch('vocab.json?v=13').then(r => r.json()),
-      fetch('passages.json?v=13').then(r => r.json()).catch(() => ({})),
+      fetch('vocab.json?v=14').then(r => r.json()),
+      fetch('passages.json?v=14').then(r => r.json()).catch(() => ({})),
     ]);
   } catch (e) {
     $('#view').innerHTML = `<div class="empty-state"><h2>Couldn't load data</h2><p>${escHtml(String(e))}</p></div>`;
@@ -455,14 +459,16 @@ function renderWords(n) {
   setHeader(`List ${n} · Words`);
   const words = VOCAB[String(n)];
   const html = [];
+  const hiddenCls = REVEAL_ALL ? '' : 'hidden-meaning';
+  const btnLabel  = REVEAL_ALL ? 'Hide all' : 'Reveal all';
   html.push(`<div class="words-controls">
     <span class="words-hint">Tap a card to reveal · ★ to star</span>
-    <button class="btn-secondary" id="revealAll" type="button">Reveal all</button>
+    <button class="btn-secondary" id="revealAll" type="button">${btnLabel}</button>
   </div>`);
   for (let i = 0; i < words.length; i++) {
     const w = words[i];
     const c = getCard(n, w.word);
-    html.push(`<div class="word-card hidden-meaning" data-i="${i}" data-word="${escAttr(w.word)}">
+    html.push(`<div class="word-card ${hiddenCls}" data-i="${i}" data-word="${escAttr(w.word)}">
       <button class="star-btn ${c.starred ? 'on' : ''}" data-word="${escAttr(w.word)}" aria-label="Toggle star" type="button">${c.starred ? '★' : '☆'}</button>
       <div class="head"><span class="word">${escHtml(w.word)}</span><span class="ipa">${escHtml(w.ipa)}</span></div>
       <div class="reveal-prompt">tap to reveal</div>
@@ -493,12 +499,11 @@ function renderWords(n) {
     });
   });
 
-  let allShown = false;
   $('#revealAll').addEventListener('click', (e) => {
     e.stopPropagation();
-    allShown = !allShown;
-    $$('.word-card').forEach(c => c.classList.toggle('hidden-meaning', !allShown));
-    e.currentTarget.textContent = allShown ? 'Hide all' : 'Reveal all';
+    REVEAL_ALL = !REVEAL_ALL;
+    $$('.word-card').forEach(c => c.classList.toggle('hidden-meaning', !REVEAL_ALL));
+    e.currentTarget.textContent = REVEAL_ALL ? 'Hide all' : 'Reveal all';
   });
 }
 
@@ -1107,11 +1112,13 @@ function renderStarred() {
   starred.sort((a, b) => a.n - b.n || a.w.word.localeCompare(b.w.word));
 
   const html = [];
+  const hiddenCls = REVEAL_ALL ? '' : 'hidden-meaning';
+  const btnLabel  = REVEAL_ALL ? 'Hide all' : 'Reveal all';
   // Starred Test banner — top of the Starred section
   html.push(renderStarredTestBanner());
   html.push(`<div class="words-controls">
     <span class="words-hint">${starred.length} starred · tap to reveal · ★ to unstar</span>
-    <button class="btn-secondary" id="revealAll" type="button">Reveal all</button>
+    <button class="btn-secondary" id="revealAll" type="button">${btnLabel}</button>
   </div>`);
 
   // Group by list
@@ -1124,7 +1131,7 @@ function renderStarred() {
     html.push(`<div class="section-heading">List ${n} · ${byList[n].length} starred</div>`);
     for (const w of byList[n]) {
       const c = getCard(+n, w.word);
-      html.push(`<div class="word-card hidden-meaning" data-list="${n}" data-word="${escAttr(w.word)}">
+      html.push(`<div class="word-card ${hiddenCls}" data-list="${n}" data-word="${escAttr(w.word)}">
         <button class="star-btn ${c.starred ? 'on' : ''}" data-list="${n}" data-word="${escAttr(w.word)}" aria-label="Toggle star" type="button">${c.starred ? '★' : '☆'}</button>
         <div class="head"><span class="word">${escHtml(w.word)}</span><span class="ipa">${escHtml(w.ipa)}</span></div>
         <div class="reveal-prompt">tap to reveal</div>
@@ -1165,12 +1172,11 @@ function renderStarred() {
     });
   });
 
-  let allShown = false;
   $('#revealAll').addEventListener('click', (e) => {
     e.stopPropagation();
-    allShown = !allShown;
-    $$('.word-card').forEach(c => c.classList.toggle('hidden-meaning', !allShown));
-    e.currentTarget.textContent = allShown ? 'Hide all' : 'Reveal all';
+    REVEAL_ALL = !REVEAL_ALL;
+    $$('.word-card').forEach(c => c.classList.toggle('hidden-meaning', !REVEAL_ALL));
+    e.currentTarget.textContent = REVEAL_ALL ? 'Hide all' : 'Reveal all';
   });
 }
 
