@@ -573,6 +573,33 @@ main {
   background: linear-gradient(135deg, #2a2410, #3a2f15);
 }
 .review-banner.starred-test .rb-title { color: #ffd866; }
+
+/* === Account / sync box on Stats === */
+.account-box {
+  background: var(--card);
+  border: 1px solid #2c4068;
+  border-radius: var(--radius);
+  padding: 14px 16px;
+}
+.account-box .rb-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+.account-box .rb-desc  { font-size: 13px; color: var(--muted); line-height: 1.4; }
+.account-box code      { background: rgba(255,255,255,0.06); padding: 1px 5px; border-radius: 4px; font-size: 12px; }
+.account-form {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px;
+}
+.account-form input[type="email"] {
+  flex: 1; min-width: 180px;
+  padding: 10px 12px;
+  background: var(--card-2);
+  border: 1px solid #2c4068;
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 14px;
+}
+.account-form input[type="email"]:focus { outline: none; border-color: var(--accent); }
+.account-msg {
+  margin-top: 10px; font-size: 13px; color: var(--muted);
+}
 .review-banner:active { background: var(--card-2); }
 .review-banner-body { flex: 1; min-width: 0; }
 .review-banner .rb-title {

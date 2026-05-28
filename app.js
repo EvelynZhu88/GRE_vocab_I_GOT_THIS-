@@ -10,12 +10,17 @@
  *   #/list/N/passages/I/quiz Comprehension quiz for passage I
  *   #/review                 Cumulative spaced-repetition review (excludes starred)
  *   #/starred-test           50-question test drawn only from starred words
- *   #/stats                  Stats overview
+ *   #/stats                  Stats overview (also: sign-in for cross-device sync)
  *
  * Storage:
- *   gre.progress -> { [listN::word]: { ef, interval, reps, due, lapses, last } }
- *   gre.units    -> { [listN]: { tested, lastScore, lastTested } }
- *   gre.settings -> { unitTestSize, reviewSize, mixRatio }
+ *   gre.progress         -> { [listN::word]: { ef, interval, reps, due, lapses, last, starred } }
+ *   gre.units            -> { [listN]: { tested, lastScore, lastTested } }
+ *   gre.settings         -> { unitTestSize, reviewSize, mixRatio }
+ *   gre.localUpdatedAt   -> epoch ms of last local mutation (for Supabase sync)
+ *
+ * Optional sync: window.SupaSync (supabase-sync.js) — when configured, all
+ * three blobs are mirrored to a per-user row in the Supabase user_state
+ * table, with debounced last-write-wins.
  */
 
 const DAY = 86400000;
@@ -41,8 +46,8 @@ const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 async function init() {
   try {
     [VOCAB, PASSAGES] = await Promise.all([
-      fetch('vocab.json?v=10').then(r => r.json()),
-      fetch('passages.json?v=10').then(r => r.json()).catch(() => ({})),
+      fetch('vocab.json?v=11').then(r => r.json()),
+      fetch('passages.json?v=11').then(r => r.json()).catch(() => ({})),
     ]);
   } catch (e) {
     $('#view').innerHTML = `<div class="empty-state"><h2>Couldn't load data</h2><p>${escHtml(String(e))}</p></div>`;
@@ -52,6 +57,44 @@ async function init() {
   $('#backBtn').addEventListener('click', () => history.back());
   if (!location.hash) location.hash = '#/';
   router();
+
+  // Supabase sync (no-op when not configured or not signed in)
+  bootstrapSync();
+  if (window.SupaSync && SupaSync.isConfigured()) {
+    SupaSync.onAuthChange(() => {
+      // After magic-link return or sign-in / sign-out, re-sync and re-render.
+      bootstrapSync().then(() => router());
+    });
+  }
+}
+
+// Pull server state if newer than local; otherwise push local to server.
+async function bootstrapSync() {
+  if (!window.SupaSync || !SupaSync.isConfigured()) return;
+  const user = await SupaSync.currentUser();
+  if (!user) return;
+  const server = await SupaSync.pullState();
+  const localTs  = +localStorage.getItem('gre.localUpdatedAt') || 0;
+  if (!server) {
+    // First time on this account — push whatever local state we have.
+    SupaSync.pushNow({ progress: PROGRESS, units: UNITS, settings: SETTINGS });
+    return;
+  }
+  const serverTs = server.updated_at ? new Date(server.updated_at).getTime() : 0;
+  if (serverTs > localTs) {
+    // Server is newer — replace local state, then re-render.
+    PROGRESS = server.progress || {};
+    UNITS    = server.units    || {};
+    SETTINGS = Object.assign({}, DEFAULTS, server.settings || {});
+    localStorage.setItem(STORE_KEY, JSON.stringify(PROGRESS));
+    localStorage.setItem(UNITS_KEY, JSON.stringify(UNITS));
+    localStorage.setItem(SETTINGS_KEY, JSON.stringify(SETTINGS));
+    localStorage.setItem('gre.localUpdatedAt', String(serverTs));
+    router();
+  } else if (localTs > serverTs) {
+    // Local has unsynced changes — push them up.
+    SupaSync.pushNow({ progress: PROGRESS, units: UNITS, settings: SETTINGS });
+  }
 }
 
 // --- storage helpers ---
@@ -59,9 +102,16 @@ function loadJson(k, fallback) {
   try { return Object.assign({}, fallback, JSON.parse(localStorage.getItem(k)) || {}); }
   catch { return { ...fallback }; }
 }
-function save(k, v) { localStorage.setItem(k, JSON.stringify(v)); }
+function save(k, v) {
+  localStorage.setItem(k, JSON.stringify(v));
+  localStorage.setItem('gre.localUpdatedAt', String(Date.now()));
+  if (window.SupaSync && SupaSync.isConfigured()) {
+    SupaSync.schedulePush({ progress: PROGRESS, units: UNITS, settings: SETTINGS });
+  }
+}
 function saveProgress() { save(STORE_KEY, PROGRESS); }
-function saveUnits() { save(UNITS_KEY, UNITS); }
+function saveUnits()    { save(UNITS_KEY, UNITS); }
+function saveSettings() { save(SETTINGS_KEY, SETTINGS); }
 
 function key(n, w) { return `${n}::${w.toLowerCase()}`; }
 function getCard(n, w) {
@@ -1100,6 +1150,8 @@ function renderStats() {
     </div>`);
   }
   html.push('</div>');
+  html.push(`<div class="section-heading">Account</div>`);
+  html.push(`<div id="accountBox" class="account-box">Loading…</div>`);
   html.push(`<div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
     <button class="btn-secondary" id="resetBtn">Reset all progress</button>
   </div>`);
@@ -1111,6 +1163,61 @@ function renderStats() {
       toast('Progress reset.');
       router();
     }
+  });
+  renderAccountBox();
+}
+
+async function renderAccountBox() {
+  const box = $('#accountBox');
+  if (!box) return;
+  if (!window.SupaSync || !SupaSync.isConfigured()) {
+    box.innerHTML = `
+      <div class="rb-title">Cross-device sync not configured</div>
+      <div class="rb-desc">Paste your Supabase URL and anon key into <code>supabase-sync.js</code> to enable sign-in and automatic sync across devices. Progress will keep saving locally in the meantime.</div>`;
+    return;
+  }
+  const user = await SupaSync.currentUser();
+  if (!user) {
+    box.innerHTML = `
+      <div class="rb-title">Sign in to sync across devices</div>
+      <div class="rb-desc">Enter your email. We'll send you a magic link — no password.</div>
+      <div class="account-form">
+        <input id="signinEmail" type="email" inputmode="email" placeholder="you@example.com" autocomplete="email">
+        <button class="btn-primary" id="signinBtn" type="button">Send magic link</button>
+      </div>
+      <div id="signinMsg" class="account-msg" hidden></div>`;
+    $('#signinBtn').addEventListener('click', async () => {
+      const email = ($('#signinEmail').value || '').trim();
+      const msg = $('#signinMsg');
+      msg.hidden = false;
+      if (!email.includes('@')) { msg.textContent = 'Please enter a valid email.'; return; }
+      $('#signinBtn').disabled = true;
+      msg.textContent = 'Sending…';
+      try {
+        await SupaSync.signInWithEmail(email);
+        msg.textContent = `Magic link sent to ${email}. Open it on this device to finish signing in.`;
+      } catch (e) {
+        msg.textContent = 'Sign-in failed: ' + (e?.message || e);
+      } finally {
+        $('#signinBtn').disabled = false;
+      }
+    });
+    return;
+  }
+  const syncedAt = SupaSync.lastSyncedAt();
+  const syncedLabel = syncedAt
+    ? new Date(syncedAt).toLocaleTimeString()
+    : 'on next change';
+  box.innerHTML = `
+    <div class="rb-title">Signed in as ${escHtml(user.email || user.id)}</div>
+    <div class="rb-desc">Cross-device sync is on. Last pushed: ${syncedLabel}.</div>
+    <div class="account-form">
+      <button class="btn-secondary" id="signoutBtn" type="button">Sign out (keep local data)</button>
+    </div>`;
+  $('#signoutBtn').addEventListener('click', async () => {
+    await SupaSync.signOut();
+    toast('Signed out.');
+    renderAccountBox();
   });
 }
 
