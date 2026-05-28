@@ -8,7 +8,8 @@
  *   #/list/N/passages        Passage list for list N
  *   #/list/N/passages/I      Read passage I
  *   #/list/N/passages/I/quiz Comprehension quiz for passage I
- *   #/review                 Cumulative spaced-repetition review
+ *   #/review                 Cumulative spaced-repetition review (excludes starred)
+ *   #/starred-test           50-question test drawn only from starred words
  *   #/stats                  Stats overview
  *
  * Storage:
@@ -40,8 +41,8 @@ const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 async function init() {
   try {
     [VOCAB, PASSAGES] = await Promise.all([
-      fetch('vocab.json?v=9').then(r => r.json()),
-      fetch('passages.json?v=9').then(r => r.json()).catch(() => ({})),
+      fetch('vocab.json?v=10').then(r => r.json()),
+      fetch('passages.json?v=10').then(r => r.json()).catch(() => ({})),
     ]);
   } catch (e) {
     $('#view').innerHTML = `<div class="empty-state"><h2>Couldn't load data</h2><p>${escHtml(String(e))}</p></div>`;
@@ -149,7 +150,7 @@ function router() {
   $$('.nav-link').forEach(a => a.classList.remove('active'));
   if (segs.length === 0) $('.nav-link[data-route="lists"]').classList.add('active');
   else if (segs[0] === 'review') $('.nav-link[data-route="review"]').classList.add('active');
-  else if (segs[0] === 'starred') $('.nav-link[data-route="starred"]').classList.add('active');
+  else if (segs[0] === 'starred' || segs[0] === 'starred-test') $('.nav-link[data-route="starred"]').classList.add('active');
   else if (segs[0] === 'stats') $('.nav-link[data-route="stats"]').classList.add('active');
   else if (segs[0] === 'list') $('.nav-link[data-route="lists"]').classList.add('active');
 
@@ -157,6 +158,7 @@ function router() {
   if (segs.length === 0) return renderLists();
   if (segs[0] === 'review') return renderReview();
   if (segs[0] === 'starred') return renderStarred();
+  if (segs[0] === 'starred-test') return renderStarredTest();
   if (segs[0] === 'stats') return renderStats();
   if (segs[0] === 'list') {
     const n = +segs[1];
@@ -196,6 +198,10 @@ function renderLists() {
     const s = listSummary(+n);
     totalMature += s.mature; totalLearning += s.learning; totalFresh += s.fresh; totalWords += s.total;
   }
+
+  // Starred Test banner — top of the page, only if there are starred words
+  html.push(renderStarredTestBanner());
+
   html.push(`<div class="lists-summary">
     <div class="summary-card"><div class="v">${totalMature}</div><div class="l">Mature</div></div>
     <div class="summary-card"><div class="v">${totalLearning}</div><div class="l">Learning</div></div>
@@ -239,12 +245,14 @@ function renderReviewBanner() {
         </div>
       </div>`;
   }
+  // Mixed review now excludes starred words — those are tested separately
+  // through the Starred Test banner at the top of the page.
   let poolCount = 0, starredCount = 0;
   for (const n of active) {
     for (const w of VOCAB[String(n)]) {
       const c = getCard(n, w.word);
+      if (c.starred) { starredCount++; continue; }
       poolCount++;
-      if (c.starred) starredCount++;
     }
   }
   const rangeLabel = active.length === 1
@@ -253,16 +261,40 @@ function renderReviewBanner() {
         ? `lists ${active.join(', ')}`
         : `lists ${active[0]}–${active[active.length - 1]} (${active.length} units)`);
   const sessionSize = Math.min(SETTINGS.reviewSize, poolCount);
-  const starredBlurb = starredCount > 0 ? ` · ${starredCount} starred ★ guaranteed` : '';
+  const starredBlurb = starredCount > 0
+    ? ` · ${starredCount} starred ★ tested separately above.`
+    : '';
   return `
     <div class="section-heading">Mixed Review · ${rangeLabel}</div>
     <a class="review-banner" href="#/review">
       <div class="review-banner-body">
         <div class="rb-title">${sessionSize}-question random review</div>
-        <div class="rb-desc">${poolCount} word${poolCount === 1 ? '' : 's'} in pool across ${active.length} unit${active.length === 1 ? '' : 's'}${starredBlurb}. New random sample every time you start.</div>
+        <div class="rb-desc">${poolCount} non-starred word${poolCount === 1 ? '' : 's'} in pool across ${active.length} unit${active.length === 1 ? '' : 's'}.${starredBlurb} New random sample every time you start.</div>
       </div>
       <div class="review-banner-cta">
         <span class="btn-primary" style="pointer-events:none">Start review</span>
+      </div>
+    </a>`;
+}
+
+function renderStarredTestBanner() {
+  let starredCount = 0;
+  for (const [n, words] of Object.entries(VOCAB)) {
+    for (const w of words) {
+      if (getCard(+n, w.word).starred) starredCount++;
+    }
+  }
+  if (starredCount === 0) return '';
+  const sessionSize = Math.min(50, starredCount);
+  return `
+    <div class="section-heading">Starred Test ★</div>
+    <a class="review-banner starred-test" href="#/starred-test">
+      <div class="review-banner-body">
+        <div class="rb-title">★ ${sessionSize}-question test from your starred words</div>
+        <div class="rb-desc">${starredCount} starred word${starredCount === 1 ? '' : 's'} in your pool. Up to 50 are drawn at random each session.</div>
+      </div>
+      <div class="review-banner-cta">
+        <span class="btn-primary" style="pointer-events:none">Start test</span>
       </div>
     </a>`;
 }
@@ -578,26 +610,20 @@ function renderReview() {
 }
 
 function buildReviewSession(activeLists, size) {
-  // Always available. Pull a random sample across all active lists, with
-  // starred words guaranteed to be included first. Re-randomized each call,
-  // so consecutive sessions cover different parts of the active range.
-  const starred = [];
-  const rest = [];
+  // Pull a random sample of non-starred words across all active lists.
+  // Starred words are excluded here because they get their own dedicated
+  // Starred Test (see renderStarredTest), so mixed review concentrates on
+  // the words that aren't already being tested individually.
+  const pool = [];
   for (const n of activeLists) {
     for (const w of VOCAB[String(n)]) {
       const c = getCard(n, w.word);
-      if (c.starred) starred.push({ n, w, starred: true });
-      else rest.push({ n, w, starred: false });
+      if (c.starred) continue;
+      pool.push({ n, w });
     }
   }
-  shuffle(starred);
-  shuffle(rest);
-  const total = Math.min(size, starred.length + rest.length);
-  const starQuota = Math.min(starred.length, total);
-  const restQuota = Math.max(0, total - starQuota);
-  const session = [...starred.slice(0, starQuota), ...rest.slice(0, restQuota)];
-  shuffle(session);
-  return session;
+  shuffle(pool);
+  return pool.slice(0, Math.min(size, pool.length));
 }
 
 function startReview(session, active) {
@@ -607,6 +633,41 @@ function startReview(session, active) {
     answers: [],
     isReview: true,
     activeLists: active,
+  };
+  renderReviewQ(state);
+}
+
+// =====================================================
+// VIEW: Starred Test (up to 50 questions, only starred words)
+// =====================================================
+function renderStarredTest() {
+  setHeader('Starred Test ★');
+  const starred = [];
+  for (const [n, words] of Object.entries(VOCAB)) {
+    for (const w of words) {
+      const c = getCard(+n, w.word);
+      if (c.starred) starred.push({ n: +n, w });
+    }
+  }
+  if (starred.length === 0) {
+    $('#view').innerHTML = `<div class="empty-state">
+      <h2>No starred words yet</h2>
+      <p>Star the words you keep forgetting by tapping ★ on any word card or quiz reveal. Once you have some, this test will draw up to 50 of them at random.</p>
+      <a class="btn-primary" href="#/">Back to lists</a>
+    </div>`;
+    return;
+  }
+  shuffle(starred);
+  const session = starred.slice(0, 50);
+  const activeLists = [...new Set(session.map(s => s.n))].sort((a, b) => a - b);
+  const state = {
+    qs: session.map(({ n, w }) => ({ n, ...buildTestQ(n, w) })),
+    idx: 0,
+    answers: [],
+    isReview: true,
+    isStarredTest: true,
+    activeLists,
+    totalStarred: starred.length,
   };
   renderReviewQ(state);
 }
@@ -686,14 +747,20 @@ function finishReview(state) {
   const total = state.qs.length;
   const correct = state.answers.filter(a => a.correct).length;
   const pct = total ? Math.round((correct / total) * 100) : 0;
-  setHeader('Review · Results');
+  const isStarred = !!state.isStarredTest;
+  setHeader(isStarred ? 'Starred Test · Results' : 'Review · Results');
   const wrong = state.answers.filter(a => !a.correct);
   const html = [];
+  const breakdown = isStarred
+    ? `${correct} of ${total} correct · ${state.totalStarred} starred in pool`
+    : `${correct} of ${total} correct · ${state.activeLists.length} lists in pool`;
+  const againHref = isStarred ? '#/starred-test' : '#/review';
+  const againLabel = isStarred ? 'Another starred round' : 'Another round';
   html.push(`<div class="results">
     <div class="score">${pct}%</div>
-    <div class="breakdown">${correct} of ${total} correct · ${state.activeLists.length} lists in pool</div>
+    <div class="breakdown">${breakdown}</div>
     <div class="actions">
-      <a class="btn-primary" href="#/review">Another round</a>
+      <a class="btn-primary" href="${againHref}">${againLabel}</a>
       <a class="btn-secondary" href="#/">Back to lists</a>
     </div>
   </div>`);

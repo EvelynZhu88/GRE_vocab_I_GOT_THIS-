@@ -568,6 +568,11 @@ main {
   border-color: #2c4068;
   background: var(--card);
 }
+.review-banner.starred-test {
+  border-color: #d4a017;
+  background: linear-gradient(135deg, #2a2410, #3a2f15);
+}
+.review-banner.starred-test .rb-title { color: #ffd866; }
 .review-banner:active { background: var(--card-2); }
 .review-banner-body { flex: 1; min-width: 0; }
 .review-banner .rb-title {
