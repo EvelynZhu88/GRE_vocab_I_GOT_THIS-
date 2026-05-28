@@ -16,8 +16,8 @@
  * The anon key is PUBLIC by design — Row-Level Security in the database
  * is what actually protects data. Safe to commit.
  */
-const SUPABASE_URL  = 'PASTE_SUPABASE_URL_HERE';   // e.g. https://abcd1234.supabase.co
-const SUPABASE_ANON = 'PASTE_SUPABASE_ANON_KEY_HERE'; // long eyJ... string
+const SUPABASE_URL  = 'https://mibcrghrwxsyknbmdzpm.supabase.co';   // e.g. https://abcd1234.supabase.co
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1pYmNyZ2hyd3hzeWtuYm1kenBtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk5MzcyMDAsImV4cCI6MjA5NTUxMzIwMH0.EcC3O5ghLwzZzLSvSMxos15zVpLbhK7N4tYumLpqHc8'; // long eyJ... string
 
 const LOCAL_TS_KEY = 'gre.localUpdatedAt';
 
