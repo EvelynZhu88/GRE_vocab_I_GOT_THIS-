@@ -600,6 +600,11 @@ main {
 .account-msg {
   margin-top: 10px; font-size: 13px; color: var(--muted);
 }
+.account-meta {
+  margin-top: 10px; font-size: 12px; color: var(--muted);
+  padding-top: 10px; border-top: 1px solid #2c4068;
+}
+.account-meta b { color: var(--text); font-weight: 600; }
 .review-banner:active { background: var(--card-2); }
 .review-banner-body { flex: 1; min-width: 0; }
 .review-banner .rb-title {

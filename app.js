@@ -46,8 +46,8 @@ const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 async function init() {
   try {
     [VOCAB, PASSAGES] = await Promise.all([
-      fetch('vocab.json?v=11').then(r => r.json()),
-      fetch('passages.json?v=11').then(r => r.json()).catch(() => ({})),
+      fetch('vocab.json?v=12').then(r => r.json()),
+      fetch('passages.json?v=12').then(r => r.json()).catch(() => ({})),
     ]);
   } catch (e) {
     $('#view').innerHTML = `<div class="empty-state"><h2>Couldn't load data</h2><p>${escHtml(String(e))}</p></div>`;
@@ -57,6 +57,13 @@ async function init() {
   $('#backBtn').addEventListener('click', () => history.back());
   if (!location.hash) location.hash = '#/';
   router();
+
+  // Ask the browser to mark our localStorage as persistent so iOS Safari /
+  // Chrome don't evict it under storage pressure or after long inactivity.
+  // Silent if granted; silent if denied (the app still works either way).
+  if (navigator.storage && navigator.storage.persist) {
+    navigator.storage.persist().catch(() => {});
+  }
 
   // Supabase sync (no-op when not configured or not signed in)
   bootstrapSync();
@@ -248,9 +255,6 @@ function renderLists() {
     const s = listSummary(+n);
     totalMature += s.mature; totalLearning += s.learning; totalFresh += s.fresh; totalWords += s.total;
   }
-
-  // Starred Test banner — top of the page, only if there are starred words
-  html.push(renderStarredTestBanner());
 
   html.push(`<div class="lists-summary">
     <div class="summary-card"><div class="v">${totalMature}</div><div class="l">Mature</div></div>
@@ -1046,7 +1050,7 @@ function renderStarred() {
   if (starred.length === 0) {
     $('#view').innerHTML = `<div class="empty-state">
       <h2>No starred words yet</h2>
-      <p>Tap ★ on any word card or quiz reveal to mark words you keep forgetting. They'll show up here, and they'll be guaranteed-in every Mixed Review session until you un-star them.</p>
+      <p>Tap ★ on any word card or quiz reveal to mark words you keep forgetting. They'll show up here, and you'll get a dedicated Starred Test once you have some.</p>
       <a class="btn-primary" href="#/">Browse lists</a>
     </div>`;
     return;
@@ -1054,6 +1058,8 @@ function renderStarred() {
   starred.sort((a, b) => a.n - b.n || a.w.word.localeCompare(b.w.word));
 
   const html = [];
+  // Starred Test banner — top of the Starred section
+  html.push(renderStarredTestBanner());
   html.push(`<div class="words-controls">
     <span class="words-hint">${starred.length} starred · tap to reveal · ★ to unstar</span>
     <button class="btn-secondary" id="revealAll" type="button">Reveal all</button>
@@ -1167,13 +1173,26 @@ function renderStats() {
   renderAccountBox();
 }
 
+async function storageStatus() {
+  if (!(navigator.storage && navigator.storage.persisted)) return null;
+  try { return await navigator.storage.persisted(); }
+  catch { return null; }
+}
+
 async function renderAccountBox() {
   const box = $('#accountBox');
   if (!box) return;
+  const persisted = await storageStatus();
+  const persistLine = persisted === true
+    ? `<div class="account-meta">Local storage: <b>persistent</b> — the browser will not evict your progress.</div>`
+    : persisted === false
+      ? `<div class="account-meta">Local storage: not persistent yet. The browser may grant it after a few sessions, or on PWA install (Add to Home Screen).</div>`
+      : '';
   if (!window.SupaSync || !SupaSync.isConfigured()) {
     box.innerHTML = `
       <div class="rb-title">Cross-device sync not configured</div>
-      <div class="rb-desc">Paste your Supabase URL and anon key into <code>supabase-sync.js</code> to enable sign-in and automatic sync across devices. Progress will keep saving locally in the meantime.</div>`;
+      <div class="rb-desc">Paste your Supabase URL and anon key into <code>supabase-sync.js</code> to enable sign-in and automatic sync across devices. Progress will keep saving locally in the meantime.</div>
+      ${persistLine}`;
     return;
   }
   const user = await SupaSync.currentUser();
@@ -1185,7 +1204,8 @@ async function renderAccountBox() {
         <input id="signinEmail" type="email" inputmode="email" placeholder="you@example.com" autocomplete="email">
         <button class="btn-primary" id="signinBtn" type="button">Send magic link</button>
       </div>
-      <div id="signinMsg" class="account-msg" hidden></div>`;
+      <div id="signinMsg" class="account-msg" hidden></div>
+      ${persistLine}`;
     $('#signinBtn').addEventListener('click', async () => {
       const email = ($('#signinEmail').value || '').trim();
       const msg = $('#signinMsg');
@@ -1213,7 +1233,8 @@ async function renderAccountBox() {
     <div class="rb-desc">Cross-device sync is on. Last pushed: ${syncedLabel}.</div>
     <div class="account-form">
       <button class="btn-secondary" id="signoutBtn" type="button">Sign out (keep local data)</button>
-    </div>`;
+    </div>
+    ${persistLine}`;
   $('#signoutBtn').addEventListener('click', async () => {
     await SupaSync.signOut();
     toast('Signed out.');
