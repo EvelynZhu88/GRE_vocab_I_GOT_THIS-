@@ -9,11 +9,11 @@ const CACHE_VERSION = 'gre-vocab-v12';
 const SHELL = [
   './',
   './index.html',
-  './style.css?v=12',
-  './app.js?v=12',
-  './supabase-sync.js?v=12',
-  './vocab.json?v=12',
-  './passages.json?v=12',
+  './style.css?v=13',
+  './app.js?v=13',
+  './supabase-sync.js?v=13',
+  './vocab.json?v=13',
+  './passages.json?v=13',
   './manifest.webmanifest',
 ];
 

@@ -46,8 +46,8 @@ const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 async function init() {
   try {
     [VOCAB, PASSAGES] = await Promise.all([
-      fetch('vocab.json?v=12').then(r => r.json()),
-      fetch('passages.json?v=12').then(r => r.json()).catch(() => ({})),
+      fetch('vocab.json?v=13').then(r => r.json()),
+      fetch('passages.json?v=13').then(r => r.json()).catch(() => ({})),
     ]);
   } catch (e) {
     $('#view').innerHTML = `<div class="empty-state"><h2>Couldn't load data</h2><p>${escHtml(String(e))}</p></div>`;
@@ -75,32 +75,81 @@ async function init() {
   }
 }
 
-// Pull server state if newer than local; otherwise push local to server.
+// Merge per-card by `last` timestamp so a newer empty side cannot wipe
+// the older fuller side. Bug fix for the original blob-level
+// last-write-wins, which let a freshly-signed-in device with no local
+// data push an empty state that then overwrote an active device.
+function mergeByLast(localObj, serverObj, tsField) {
+  const out = {};
+  const l = localObj || {};
+  const s = serverObj || {};
+  const keys = new Set([...Object.keys(l), ...Object.keys(s)]);
+  for (const k of keys) {
+    const a = l[k], b = s[k];
+    if (!a) { out[k] = b; continue; }
+    if (!b) { out[k] = a; continue; }
+    const aTs = +(a[tsField] || 0);
+    const bTs = +(b[tsField] || 0);
+    out[k] = aTs >= bTs ? a : b;
+  }
+  return out;
+}
+
+function stableStringify(o) {
+  const keys = Object.keys(o || {}).sort();
+  return JSON.stringify(o, keys);
+}
+
+// Pull server state and merge with local per-card. Either side may have
+// entries the other lacks; for shared keys we keep the more recently
+// touched record. Then push the merged result if it differs from server.
 async function bootstrapSync() {
   if (!window.SupaSync || !SupaSync.isConfigured()) return;
   const user = await SupaSync.currentUser();
   if (!user) return;
   const server = await SupaSync.pullState();
-  const localTs  = +localStorage.getItem('gre.localUpdatedAt') || 0;
   if (!server) {
-    // First time on this account — push whatever local state we have.
+    // No row yet for this account — push whatever local state we have.
     SupaSync.pushNow({ progress: PROGRESS, units: UNITS, settings: SETTINGS });
     return;
   }
-  const serverTs = server.updated_at ? new Date(server.updated_at).getTime() : 0;
-  if (serverTs > localTs) {
-    // Server is newer — replace local state, then re-render.
-    PROGRESS = server.progress || {};
-    UNITS    = server.units    || {};
-    SETTINGS = Object.assign({}, DEFAULTS, server.settings || {});
-    localStorage.setItem(STORE_KEY, JSON.stringify(PROGRESS));
-    localStorage.setItem(UNITS_KEY, JSON.stringify(UNITS));
+  const sP = server.progress || {};
+  const sU = server.units    || {};
+  const sS = server.settings || {};
+
+  // Per-card merge for progress (SM-2 cards have `last`)
+  // Per-list merge for units (unit-test rows have `lastTested`)
+  // For settings (a single small blob), prefer whichever side has any keys;
+  // if both do, prefer server (settings change rarely and don't carry per-key timestamps).
+  const mergedProgress = mergeByLast(PROGRESS, sP, 'last');
+  const mergedUnits    = mergeByLast(UNITS,    sU, 'lastTested');
+  const mergedSettings = Object.keys(sS).length
+    ? Object.assign({}, DEFAULTS, sS, Object.keys(SETTINGS).length ? SETTINGS : {})
+    : (Object.keys(SETTINGS).length ? SETTINGS : DEFAULTS);
+
+  const localKeyP = stableStringify(PROGRESS);
+  const localKeyU = stableStringify(UNITS);
+  const localKeyS = stableStringify(SETTINGS);
+  const newKeyP   = stableStringify(mergedProgress);
+  const newKeyU   = stableStringify(mergedUnits);
+  const newKeyS   = stableStringify(mergedSettings);
+
+  if (newKeyP !== localKeyP || newKeyU !== localKeyU || newKeyS !== localKeyS) {
+    PROGRESS = mergedProgress;
+    UNITS    = mergedUnits;
+    SETTINGS = Object.assign({}, DEFAULTS, mergedSettings);
+    localStorage.setItem(STORE_KEY,    JSON.stringify(PROGRESS));
+    localStorage.setItem(UNITS_KEY,    JSON.stringify(UNITS));
     localStorage.setItem(SETTINGS_KEY, JSON.stringify(SETTINGS));
-    localStorage.setItem('gre.localUpdatedAt', String(serverTs));
+    localStorage.setItem('gre.localUpdatedAt', String(Date.now()));
     router();
-  } else if (localTs > serverTs) {
-    // Local has unsynced changes — push them up.
-    SupaSync.pushNow({ progress: PROGRESS, units: UNITS, settings: SETTINGS });
+  }
+
+  const serverKeyP = stableStringify(sP);
+  const serverKeyU = stableStringify(sU);
+  const serverKeyS = stableStringify(sS);
+  if (newKeyP !== serverKeyP || newKeyU !== serverKeyU || newKeyS !== serverKeyS) {
+    SupaSync.pushNow({ progress: mergedProgress, units: mergedUnits, settings: mergedSettings });
   }
 }
 
