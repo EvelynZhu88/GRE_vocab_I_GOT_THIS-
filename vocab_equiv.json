@@ -5,7 +5,7 @@
       "ipa": "",
       "def_en": "",
       "def_zh": "缓和",
-      "synonym": "",
+      "synonym": "abate, curtail, temper, ameliorate",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -176,7 +176,7 @@
       "ipa": "",
       "def_en": "",
       "def_zh": "灵活性，适应性",
-      "synonym": "",
+      "synonym": "adaptability, suppleness, malleability",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -509,7 +509,7 @@
       "ipa": "",
       "def_en": "",
       "def_zh": "虚假的",
-      "synonym": "",
+      "synonym": "artificial, forged, fabricated, spurious",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -3789,7 +3789,7 @@
       "ipa": "",
       "def_en": "",
       "def_zh": "热情的，狂热的",
-      "synonym": "",
+      "synonym": "impassioned, fervent, fiery, passionate",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -5258,7 +5258,7 @@
       "ipa": "",
       "def_en": "",
       "def_zh": "新颖的",
-      "synonym": "",
+      "synonym": "original, unexampled, unprecedented",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -5807,7 +5807,7 @@
       "ipa": "",
       "def_en": "",
       "def_zh": "基本的，未完全发布的",
-      "synonym": "elemental",
+      "synonym": "primitive, sketchy, embryonic, sketchy, elemental",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -5915,7 +5915,7 @@
       "ipa": "",
       "def_en": "",
       "def_zh": "多才多艺的，多功能的",
-      "synonym": "capricious",
+      "synonym": "protean, fickle, volatile, flighty, erratic, capricious",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -7672,7 +7672,7 @@
       "ipa": "",
       "def_en": "",
       "def_zh": "镇定的",
-      "synonym": "",
+      "synonym": "unperturbed, collected, coolheaded",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -7681,7 +7681,7 @@
       "ipa": "",
       "def_en": "",
       "def_zh": "变化无常的",
-      "synonym": "versatile, volatile",
+      "synonym": "unpredictable, impulsive, cavalier, versatile, volatile",
       "ex_en": "",
       "ex_zh": ""
     },

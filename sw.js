@@ -5,18 +5,18 @@
  * Bump CACHE_VERSION when you ship new vocab.json / passages.json / app.js
  * so users get the updated data on next launch.
  */
-const CACHE_VERSION = 'gre-vocab-v16';
+const CACHE_VERSION = 'gre-vocab-v17';
 const SHELL = [
   './',
   './index.html',
-  './style.css?v=16',
-  './app.js?v=16',
-  './supabase-sync.js?v=16',
-  './vocab.json?v=16',
-  './passages.json?v=16',
-  './vocab_v7.json?v=16',
-  './vocab_equiv.json?v=16',
-  './vocab_reading.json?v=16',
+  './style.css?v=17',
+  './app.js?v=17',
+  './supabase-sync.js?v=17',
+  './vocab.json?v=17',
+  './passages.json?v=17',
+  './vocab_v7.json?v=17',
+  './vocab_equiv.json?v=17',
+  './vocab_reading.json?v=17',
   './manifest.webmanifest',
 ];
 

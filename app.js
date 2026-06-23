@@ -38,17 +38,21 @@ const DEFAULTS = {
 const BOOKS = [
   { id: 'v1',      label: 'GRE 镇考 3000词',           vocab: 'vocab.json',         passages: 'passages.json' },
   { id: 'v7',      label: 'GRE 镇考机经词 7.0',        vocab: 'vocab_v7.json',      passages: 'passages_v7.json' },
-  { id: 'equiv',   label: '真经 GRE 等价词',            vocab: 'vocab_equiv.json',   passages: 'passages_equiv.json' },
+  { id: 'equiv',   label: '真经 GRE 等价词',            vocab: 'vocab_equiv.json',   passages: 'passages_equiv.json', testMode: 'equiv' },
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '16';
+const ASSET_VERSION = '17';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
 
 // Cache of fetched book payloads: { bookId: { vocab, passages } }
 const BOOK_CACHE = {};
+
+// For books with testMode === 'equiv', a precomputed index built from the
+// synonym graph: { byWord: {wordLower: [equivWordLower, ...]}, allWords: [...] }
+let EQUIV_INDEX = null;
 
 let ACTIVE_BOOK_ID = localStorage.getItem(ACTIVE_BOOK_KEY) || DEFAULT_BOOK_ID;
 let VOCAB = null;
@@ -268,6 +272,41 @@ async function loadBook(bookId) {
   PASSAGES = BOOK_CACHE[bookId].passages;
   PROGRESS = loadJson(progressKey(bookId), {});
   UNITS    = loadJson(unitsKey(bookId),    {});
+  EQUIV_INDEX = book.testMode === 'equiv' ? buildEquivIndex(VOCAB) : null;
+}
+
+// Union-find: every row (word, syn1, syn2, ...) is one equivalence edge set.
+// Returns { byWord: {w: [equivs]}, allWords: [w...] } where words are lowercased.
+function buildEquivIndex(vocab) {
+  const parent = Object.create(null);
+  const find = (x) => { let r = x; while (parent[r] !== r) r = parent[r]; while (parent[x] !== r) { const n = parent[x]; parent[x] = r; x = n; } return r; };
+  const link = (a, b) => { const ra = find(a), rb = find(b); if (ra !== rb) parent[ra] = rb; };
+  const splitSyns = (s) => (s || '').split(/[,，;；/]| or | and /i).map(t => t.trim().toLowerCase()).filter(t => /^[a-z][a-z'\- ]*$/.test(t));
+  const allSet = new Set();
+  const rows = [];
+  for (const list of Object.values(vocab || {})) {
+    for (const e of list) {
+      const w = (e.word || '').toLowerCase().trim();
+      if (!/^[a-z]/.test(w)) continue;
+      const syns = splitSyns(e.synonym);
+      allSet.add(w);
+      syns.forEach(s => allSet.add(s));
+      rows.push([w, syns]);
+    }
+  }
+  for (const w of allSet) parent[w] = w;
+  for (const [w, syns] of rows) for (const s of syns) link(w, s);
+  const byClass = {};
+  for (const w of allSet) {
+    const r = find(w);
+    (byClass[r] = byClass[r] || []).push(w);
+  }
+  const byWord = {};
+  for (const cls of Object.values(byClass)) {
+    if (cls.length < 2) continue;
+    for (const w of cls) byWord[w] = cls.filter(x => x !== w);
+  }
+  return { byWord, allWords: [...allSet] };
 }
 
 async function switchBook(bookId) {
@@ -660,11 +699,93 @@ function startUnitTest(n, session) {
 }
 
 function buildTestQ(n, w) {
+  // Equivalence-mode books test "pick the equivalent word" instead of
+  // word↔Chinese. Falls back to en2zh for words that have no equivalents
+  // in the index (rare; would mean an isolated entry with empty synonym).
+  const book = bookById(ACTIVE_BOOK_ID);
+  if (book.testMode === 'equiv' && EQUIV_INDEX) {
+    const eq = buildEquivQ(w);
+    if (eq) return eq;
+  }
   // 50/50 between en->zh and zh->en
   const dir = Math.random() < 0.5 ? 'en2zh' : 'zh2en';
   const distractors = pickDistractors(n, w, 3, dir);
   const opts = shuffle([w, ...distractors]);
   return { w, dir, opts };
+}
+
+function buildRevealHtml(q, card, compact = false) {
+  const w = q.w;
+  const star = `<button class="star-btn ${card.starred ? 'on' : ''}" id="revealStar" type="button" aria-label="Star">${card.starred ? '★' : '☆'}</button>`;
+  const head = `<div class="reveal-head">
+    <div class="word">${escHtml(w.word)} ${w.ipa ? `<span style="color:var(--muted);font-weight:normal">${escHtml(w.ipa)}</span>` : ''}</div>
+    ${star}
+  </div>`;
+  if (q.dir === 'equiv') {
+    const others = (EQUIV_INDEX && EQUIV_INDEX.byWord[w.word.toLowerCase()] || []).filter(x => x !== q.correctWord);
+    const otherLine = others.length
+      ? `<div style="font-size:12.5px;color:var(--muted);margin-top:4px">Also equivalent: ${others.map(escHtml).join(', ')}</div>`
+      : '';
+    return `${head}
+      <div style="margin-top:6px">≡ <b>${escHtml(q.correctWord)}</b></div>
+      ${otherLine}
+      ${w.def_zh ? `<div style="color:var(--muted);font-size:13px;margin-top:6px">${escHtml(w.def_zh)}</div>` : ''}`;
+  }
+  return `${head}
+    <div>${escHtml(w.def_zh || '')}</div>
+    ${w.def_en ? `<div style="color:var(--muted);font-size:13px;margin-top:4px">${escHtml(w.def_en)}</div>` : ''}
+    ${!compact && w.ex_en ? `<div class="ex">${escHtml(w.ex_en)}<br>${escHtml(w.ex_zh || '')}</div>` : ''}`;
+}
+
+function renderTestPrompt(q, w) {
+  if (q.dir === 'equiv') {
+    return `<div class="prompt-label">Pick the equivalent word</div>
+            <div class="prompt">${escHtml(w.word)}</div>
+            ${w.def_zh ? `<div class="ipa">${escHtml(w.def_zh)}</div>` : ''}`;
+  }
+  if (q.dir === 'en2zh') {
+    return `<div class="prompt-label">What does this mean?</div>
+            <div class="prompt">${escHtml(w.word)}</div>
+            <div class="ipa">${escHtml(w.ipa || '')}</div>`;
+  }
+  return `<div class="prompt-label">Which English word?</div>
+          <div class="prompt">${escHtml(w.def_zh)}</div>`;
+}
+
+function renderTestOptions(q, w) {
+  return q.opts.map((o, i) => {
+    let text, isCorrect;
+    if (q.dir === 'equiv') {
+      text = o.word;
+      isCorrect = !!o.equiv;
+    } else if (q.dir === 'en2zh') {
+      text = o.def_zh;
+      isCorrect = o.word === w.word;
+    } else {
+      text = o.word;
+      isCorrect = o.word === w.word;
+    }
+    return `<button data-i="${i}" data-correct="${isCorrect ? '1' : '0'}">${escHtml(text)}</button>`;
+  }).join('');
+}
+
+function buildEquivQ(w) {
+  if (!EQUIV_INDEX) return null;
+  const wl = w.word.toLowerCase();
+  const equivs = EQUIV_INDEX.byWord[wl] || [];
+  if (!equivs.length) return null;
+  const correct = equivs[Math.floor(Math.random() * equivs.length)];
+  const equivSet = new Set([wl, ...equivs]);
+  const pool = EQUIV_INDEX.allWords.filter(x => !equivSet.has(x));
+  shuffle(pool);
+  const distractors = pool.slice(0, 3);
+  // If we somehow lack enough distractors (tiny book), bail out
+  if (distractors.length < 3) return null;
+  const opts = shuffle([
+    { word: correct, equiv: true },
+    ...distractors.map(d => ({ word: d, equiv: false })),
+  ]);
+  return { w, dir: 'equiv', opts, correctWord: correct };
 }
 
 function pickDistractors(n, target, k, dir) {
@@ -695,18 +816,8 @@ function renderUnitTestQ(state) {
   const total = state.qs.length;
   const pct = Math.round((state.idx / total) * 100);
 
-  const promptHtml = q.dir === 'en2zh'
-    ? `<div class="prompt-label">What does this mean?</div>
-       <div class="prompt">${escHtml(w.word)}</div>
-       <div class="ipa">${escHtml(w.ipa || '')}</div>`
-    : `<div class="prompt-label">Which English word?</div>
-       <div class="prompt">${escHtml(w.def_zh)}</div>`;
-
-  const optsHtml = q.opts.map((o, i) => {
-    const text = q.dir === 'en2zh' ? o.def_zh : o.word;
-    const isCorrect = o.word === w.word;
-    return `<button data-i="${i}" data-correct="${isCorrect ? '1' : '0'}">${escHtml(text)}</button>`;
-  }).join('');
+  const promptHtml = renderTestPrompt(q, w);
+  const optsHtml   = renderTestOptions(q, w);
 
   $('#view').innerHTML = `
     <div class="quiz-stage">
@@ -749,15 +860,7 @@ function onUnitAnswer(state, q, btn) {
   const reveal = $('#reveal');
   reveal.hidden = false;
   const card = getCard(state.n, q.w.word);
-  reveal.innerHTML = `
-    <div class="reveal-head">
-      <div class="word">${escHtml(q.w.word)} <span style="color:var(--muted);font-weight:normal">${escHtml(q.w.ipa || '')}</span></div>
-      <button class="star-btn ${card.starred ? 'on' : ''}" id="revealStar" type="button" aria-label="Star">${card.starred ? '★' : '☆'}</button>
-    </div>
-    <div>${escHtml(q.w.def_zh)}</div>
-    <div style="color:var(--muted);font-size:13px;margin-top:4px">${escHtml(q.w.def_en)}</div>
-    ${q.w.ex_en ? `<div class="ex">${escHtml(q.w.ex_en)}<br>${escHtml(q.w.ex_zh)}</div>` : ''}
-  `;
+  reveal.innerHTML = buildRevealHtml(q, card);
   $('#revealStar').addEventListener('click', () => {
     const on = toggleStar(state.n, q.w.word);
     const btn = $('#revealStar');
@@ -910,18 +1013,8 @@ function renderReviewQ(state) {
   const w = q.w;
   const pct = Math.round((state.idx / state.qs.length) * 100);
 
-  const promptHtml = q.dir === 'en2zh'
-    ? `<div class="prompt-label">What does this mean?</div>
-       <div class="prompt">${escHtml(w.word)}</div>
-       <div class="ipa">${escHtml(w.ipa || '')}</div>`
-    : `<div class="prompt-label">Which English word?</div>
-       <div class="prompt">${escHtml(w.def_zh)}</div>`;
-
-  const optsHtml = q.opts.map((o, i) => {
-    const text = q.dir === 'en2zh' ? o.def_zh : o.word;
-    const isCorrect = o.word === w.word;
-    return `<button data-i="${i}" data-correct="${isCorrect ? '1' : '0'}">${escHtml(text)}</button>`;
-  }).join('');
+  const promptHtml = renderTestPrompt(q, w);
+  const optsHtml   = renderTestOptions(q, w);
 
   $('#view').innerHTML = `
     <div class="quiz-stage">
@@ -954,14 +1047,7 @@ function onReviewAnswer(state, q, btn) {
   rateCard(q.n, q.w.word, correct ? 4 : 0);
   const card = getCard(q.n, q.w.word);
   $('#reveal').hidden = false;
-  $('#reveal').innerHTML = `
-    <div class="reveal-head">
-      <div class="word">${escHtml(q.w.word)}</div>
-      <button class="star-btn ${card.starred ? 'on' : ''}" id="revealStar" type="button" aria-label="Star">${card.starred ? '★' : '☆'}</button>
-    </div>
-    <div>${escHtml(q.w.def_zh)}</div>
-    <div style="color:var(--muted);font-size:13px;margin-top:4px">${escHtml(q.w.def_en)}</div>
-  `;
+  $('#reveal').innerHTML = buildRevealHtml(q, card, /*compact=*/true);
   $('#revealStar').addEventListener('click', () => {
     const on = toggleStar(q.n, q.w.word);
     const btn = $('#revealStar');
