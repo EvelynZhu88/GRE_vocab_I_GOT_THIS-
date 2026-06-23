@@ -28,7 +28,7 @@ const SETTINGS_KEY = 'gre.settings';
 const ACTIVE_BOOK_KEY = 'gre.activeBook';
 const DEFAULTS = {
   unitTestSize: 20,    // not used (unit test = full list)
-  reviewSize: 80,      // mixed-review session size
+  reviewSize: 200,     // mixed-review session size
   mixRatio: 0.35,
 };
 
@@ -42,7 +42,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '15';
+const ASSET_VERSION = '16';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -243,6 +243,12 @@ function migrateLegacyStorage() {
   }
   if (oldU && !localStorage.getItem(unitsKey('v1'))) {
     localStorage.setItem(unitsKey('v1'), oldU);
+  }
+  // Bump anyone still on the previous default reviewSize=80 up to the
+  // new default of 200. Custom non-default values are left alone.
+  if (SETTINGS.reviewSize === 80) {
+    SETTINGS.reviewSize = 200;
+    localStorage.setItem(SETTINGS_KEY, JSON.stringify(SETTINGS));
   }
 }
 
