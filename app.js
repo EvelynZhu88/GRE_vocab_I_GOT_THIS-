@@ -24,20 +24,38 @@
  */
 
 const DAY = 86400000;
-const STORE_KEY = 'gre.progress';
-const UNITS_KEY = 'gre.units';
 const SETTINGS_KEY = 'gre.settings';
+const ACTIVE_BOOK_KEY = 'gre.activeBook';
 const DEFAULTS = {
   unitTestSize: 20,    // not used (unit test = full list)
   reviewSize: 80,      // mixed-review session size
   mixRatio: 0.35,
 };
 
+// Registry of every vocab book the app knows about. Each book has its own
+// vocab.json + (optional) passages.json and its own SRS progress / unit
+// state, persisted under per-book localStorage keys.
+const BOOKS = [
+  { id: 'v1',      label: 'GRE 镇考 3000词',           vocab: 'vocab.json',         passages: 'passages.json' },
+  { id: 'v7',      label: 'GRE 镇考机经词 7.0',        vocab: 'vocab_v7.json',      passages: 'passages_v7.json' },
+  { id: 'equiv',   label: '真经 GRE 等价词',            vocab: 'vocab_equiv.json',   passages: 'passages_equiv.json' },
+  { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
+];
+const DEFAULT_BOOK_ID = 'v1';
+const ASSET_VERSION = '15';
+function progressKey(bookId) { return 'gre.progress.' + bookId; }
+function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
+function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
+
+// Cache of fetched book payloads: { bookId: { vocab, passages } }
+const BOOK_CACHE = {};
+
+let ACTIVE_BOOK_ID = localStorage.getItem(ACTIVE_BOOK_KEY) || DEFAULT_BOOK_ID;
 let VOCAB = null;
 let PASSAGES = null;
 let SETTINGS = loadJson(SETTINGS_KEY, DEFAULTS);
-let PROGRESS = loadJson(STORE_KEY, {});
-let UNITS = loadJson(UNITS_KEY, {});
+let PROGRESS = {};
+let UNITS    = {};
 
 // "Reveal all" preference for Words / Starred lists — persists across
 // in-app tab switches but resets on page reload (intentional default).
@@ -48,17 +66,16 @@ const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 
 // --- bootstrap ---
 async function init() {
+  migrateLegacyStorage();
   try {
-    [VOCAB, PASSAGES] = await Promise.all([
-      fetch('vocab.json?v=14').then(r => r.json()),
-      fetch('passages.json?v=14').then(r => r.json()).catch(() => ({})),
-    ]);
+    await loadBook(ACTIVE_BOOK_ID);
   } catch (e) {
     $('#view').innerHTML = `<div class="empty-state"><h2>Couldn't load data</h2><p>${escHtml(String(e))}</p></div>`;
     return;
   }
   window.addEventListener('hashchange', router);
   $('#backBtn').addEventListener('click', () => history.back());
+  renderBookPicker();
   if (!location.hash) location.hash = '#/';
   router();
 
@@ -104,55 +121,81 @@ function stableStringify(o) {
   return JSON.stringify(o, keys);
 }
 
-// Pull server state and merge with local per-card. Either side may have
-// entries the other lacks; for shared keys we keep the more recently
-// touched record. Then push the merged result if it differs from server.
+// Treat a server blob that has flat `{listN::word: card}` keys (the pre
+// multi-book schema) as if it were the v1 book's state. This lets users
+// who pushed in the old format still recover via merge.
+function normalizeServerBookBlob(blob) {
+  if (!blob || typeof blob !== 'object') return {};
+  const looksFlat = Object.keys(blob).some(k => /::/.test(k));
+  if (looksFlat) return { v1: blob };
+  return blob;
+}
+
+// Pull server state and merge with local per-book, per-card. Each side may
+// have books or entries the other lacks; for shared keys we keep the more
+// recently touched record. Then push the merged result if it differs.
 async function bootstrapSync() {
   if (!window.SupaSync || !SupaSync.isConfigured()) return;
   const user = await SupaSync.currentUser();
   if (!user) return;
   const server = await SupaSync.pullState();
   if (!server) {
-    // No row yet for this account — push whatever local state we have.
-    SupaSync.pushNow({ progress: PROGRESS, units: UNITS, settings: SETTINGS });
+    SupaSync.pushNow(buildSyncSnapshot());
     return;
   }
-  const sP = server.progress || {};
-  const sU = server.units    || {};
+  const sP = normalizeServerBookBlob(server.progress || {});
+  const sU = normalizeServerBookBlob(server.units    || {});
   const sS = server.settings || {};
 
-  // Per-card merge for progress (SM-2 cards have `last`)
-  // Per-list merge for units (unit-test rows have `lastTested`)
-  // For settings (a single small blob), prefer whichever side has any keys;
-  // if both do, prefer server (settings change rarely and don't carry per-key timestamps).
-  const mergedProgress = mergeByLast(PROGRESS, sP, 'last');
-  const mergedUnits    = mergeByLast(UNITS,    sU, 'lastTested');
+  const local = buildSyncSnapshot();
+  const lP = local.progress, lU = local.units;
+
+  const bookIds = new Set([...Object.keys(lP), ...Object.keys(sP), ...Object.keys(lU), ...Object.keys(sU)]);
+  const mergedProgress = {}, mergedUnits = {};
+  for (const id of bookIds) {
+    mergedProgress[id] = mergeByLast(lP[id] || {}, sP[id] || {}, 'last');
+    mergedUnits[id]    = mergeByLast(lU[id] || {}, sU[id] || {}, 'lastTested');
+  }
   const mergedSettings = Object.keys(sS).length
     ? Object.assign({}, DEFAULTS, sS, Object.keys(SETTINGS).length ? SETTINGS : {})
     : (Object.keys(SETTINGS).length ? SETTINGS : DEFAULTS);
 
-  const localKeyP = stableStringify(PROGRESS);
-  const localKeyU = stableStringify(UNITS);
-  const localKeyS = stableStringify(SETTINGS);
-  const newKeyP   = stableStringify(mergedProgress);
-  const newKeyU   = stableStringify(mergedUnits);
-  const newKeyS   = stableStringify(mergedSettings);
-
-  if (newKeyP !== localKeyP || newKeyU !== localKeyU || newKeyS !== localKeyS) {
-    PROGRESS = mergedProgress;
-    UNITS    = mergedUnits;
+  // Write merged per-book results back to localStorage and pull the active
+  // book's state into the live variables.
+  let localChanged = false;
+  for (const id of Object.keys(mergedProgress)) {
+    const prev = stableStringify(loadJson(progressKey(id), {}));
+    const next = stableStringify(mergedProgress[id]);
+    if (prev !== next) {
+      localStorage.setItem(progressKey(id), JSON.stringify(mergedProgress[id]));
+      localChanged = true;
+    }
+  }
+  for (const id of Object.keys(mergedUnits)) {
+    const prev = stableStringify(loadJson(unitsKey(id), {}));
+    const next = stableStringify(mergedUnits[id]);
+    if (prev !== next) {
+      localStorage.setItem(unitsKey(id), JSON.stringify(mergedUnits[id]));
+      localChanged = true;
+    }
+  }
+  if (stableStringify(SETTINGS) !== stableStringify(mergedSettings)) {
     SETTINGS = Object.assign({}, DEFAULTS, mergedSettings);
-    localStorage.setItem(STORE_KEY,    JSON.stringify(PROGRESS));
-    localStorage.setItem(UNITS_KEY,    JSON.stringify(UNITS));
     localStorage.setItem(SETTINGS_KEY, JSON.stringify(SETTINGS));
+    localChanged = true;
+  }
+  if (localChanged) {
     localStorage.setItem('gre.localUpdatedAt', String(Date.now()));
+    // Reload the active book's in-memory state from its (potentially updated) key
+    PROGRESS = loadJson(progressKey(ACTIVE_BOOK_ID), {});
+    UNITS    = loadJson(unitsKey(ACTIVE_BOOK_ID),    {});
     router();
   }
 
-  const serverKeyP = stableStringify(sP);
-  const serverKeyU = stableStringify(sU);
-  const serverKeyS = stableStringify(sS);
-  if (newKeyP !== serverKeyP || newKeyU !== serverKeyU || newKeyS !== serverKeyS) {
+  // Push merged result if the server's view differs from what we computed
+  const serverNorm = { progress: sP, units: sU, settings: sS };
+  if (stableStringify({ progress: mergedProgress, units: mergedUnits, settings: mergedSettings })
+      !== stableStringify(serverNorm)) {
     SupaSync.pushNow({ progress: mergedProgress, units: mergedUnits, settings: mergedSettings });
   }
 }
@@ -166,12 +209,87 @@ function save(k, v) {
   localStorage.setItem(k, JSON.stringify(v));
   localStorage.setItem('gre.localUpdatedAt', String(Date.now()));
   if (window.SupaSync && SupaSync.isConfigured()) {
-    SupaSync.schedulePush({ progress: PROGRESS, units: UNITS, settings: SETTINGS });
+    SupaSync.schedulePush(buildSyncSnapshot());
   }
 }
-function saveProgress() { save(STORE_KEY, PROGRESS); }
-function saveUnits()    { save(UNITS_KEY, UNITS); }
+function saveProgress() { save(progressKey(ACTIVE_BOOK_ID), PROGRESS); }
+function saveUnits()    { save(unitsKey(ACTIVE_BOOK_ID),    UNITS); }
 function saveSettings() { save(SETTINGS_KEY, SETTINGS); }
+
+// Build the multi-book snapshot we send to Supabase: progress and units
+// are nested by book id so adding a book never erases another book's state.
+function buildSyncSnapshot() {
+  const progress = {}, units = {};
+  for (const b of BOOKS) {
+    const p = loadJson(progressKey(b.id), {});
+    const u = loadJson(unitsKey(b.id),    {});
+    if (Object.keys(p).length) progress[b.id] = p;
+    if (Object.keys(u).length) units[b.id]    = u;
+  }
+  // Ensure the in-memory active book's state is the latest snapshot
+  progress[ACTIVE_BOOK_ID] = PROGRESS;
+  units[ACTIVE_BOOK_ID]    = UNITS;
+  return { progress, units, settings: SETTINGS };
+}
+
+// Copy pre-multi-book localStorage keys (gre.progress, gre.units) into the
+// per-book keys for v1 so existing users keep their recovered data. We do
+// NOT delete the old keys — they sit there as a last-resort backup.
+function migrateLegacyStorage() {
+  const oldP = localStorage.getItem('gre.progress');
+  const oldU = localStorage.getItem('gre.units');
+  if (oldP && !localStorage.getItem(progressKey('v1'))) {
+    localStorage.setItem(progressKey('v1'), oldP);
+  }
+  if (oldU && !localStorage.getItem(unitsKey('v1'))) {
+    localStorage.setItem(unitsKey('v1'), oldU);
+  }
+}
+
+async function loadBook(bookId) {
+  const book = bookById(bookId);
+  if (!BOOK_CACHE[bookId]) {
+    const v = `?v=${ASSET_VERSION}`;
+    const [vocab, passages] = await Promise.all([
+      fetch(book.vocab + v).then(r => r.json()),
+      fetch(book.passages + v).then(r => r.json()).catch(() => ({})),
+    ]);
+    BOOK_CACHE[bookId] = { vocab, passages };
+  }
+  ACTIVE_BOOK_ID = bookId;
+  localStorage.setItem(ACTIVE_BOOK_KEY, bookId);
+  VOCAB    = BOOK_CACHE[bookId].vocab;
+  PASSAGES = BOOK_CACHE[bookId].passages;
+  PROGRESS = loadJson(progressKey(bookId), {});
+  UNITS    = loadJson(unitsKey(bookId),    {});
+}
+
+async function switchBook(bookId) {
+  if (bookId === ACTIVE_BOOK_ID) return;
+  try {
+    await loadBook(bookId);
+  } catch (e) {
+    toast('Failed to load book');
+    console.warn('switchBook', e);
+    return;
+  }
+  REVEAL_ALL = false;
+  renderBookPicker();
+  // Route back to the lists overview because the current route may not
+  // make sense in the new book (e.g. List 16 doesn't exist in a 5-list book).
+  location.hash = '#/';
+  router();
+}
+
+function renderBookPicker() {
+  const slot = $('#topbarRight');
+  if (!slot) return;
+  const opts = BOOKS.map(b =>
+    `<option value="${b.id}"${b.id === ACTIVE_BOOK_ID ? ' selected' : ''}>${escHtml(b.label)}</option>`
+  ).join('');
+  slot.innerHTML = `<select class="book-picker" id="bookPicker" aria-label="Choose vocab book">${opts}</select>`;
+  $('#bookPicker').addEventListener('change', (e) => switchBook(e.target.value));
+}
 
 function key(n, w) { return `${n}::${w.toLowerCase()}`; }
 function getCard(n, w) {
@@ -291,9 +409,9 @@ function notFound() {
   $('#view').innerHTML = `<div class="empty-state"><h2>Page not found</h2><p><a class="btn-secondary" href="#/">Go home</a></p></div>`;
 }
 
-function setHeader(title, rightHtml = '') {
+function setHeader(title) {
   $('#headerTitle').textContent = title;
-  $('#topbarRight').innerHTML = rightHtml;
+  // #topbarRight is owned by renderBookPicker; do not clobber it here.
 }
 
 // =====================================================

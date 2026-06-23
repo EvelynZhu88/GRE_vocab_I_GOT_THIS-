@@ -1,0 +1,3325 @@
+{
+  "1": [
+    {
+      "word": "reclamation",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "开垦；收回；再利⽤；矫正 · GRE语境：复兴",
+      "synonym": "rehabilitation",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "comfortable",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "舒适的 · GRE语境：运⽤熟练的",
+      "synonym": "agreeable",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "turn to",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "转向；变成；求助于归功于；把…记⼊贷⽅；认为或相信(某 · GRE语境：求助于",
+      "synonym": "resort to",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "credit with",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "⼈)有(某种性质或成就等) · GRE语境：归功于",
+      "synonym": "applaud for",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "evoke",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "引起，唤起；博得 · GRE语境：引起，诱发",
+      "synonym": "elicit",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "complexion",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "肤⾊；⾯⾊；情况；局⾯ · GRE语境：看起来的内容",
+      "synonym": "appearance",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "distribute",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "分配；散布；分开；把…分类 · GRE语境：分散；传播告知（固定⽤法：impart",
+      "synonym": "disperse",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "convey",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "传达；运输；让与以书画（或图表）形式；形象地，逼真 · GRE语境：knowledge传播知识）",
+      "synonym": "impart",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "graphically",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "地；清晰详细地 · GRE语境：形象地",
+      "synonym": "vividly",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "discursive",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "散漫的；经过分析的 · GRE语境：经过分析的",
+      "synonym": "analytical",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "manipulate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "操纵；操作；巧妙地处理；篡改 · GRE语境：⽀配；战胜",
+      "synonym": "outmaneuver",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "foray",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "袭击；劫掠 · GRE语境：游⾛",
+      "synonym": "trip",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "determine",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "决定；确定；终⽌；使做决定孤⽴的；偏远的；绝缘的 · GRE语境：控制；决定不容易越界到达",
+      "synonym": "control relatively",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "counterpart to",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "副本；配对物；极相似的⼈或物 · GRE语境：补充",
+      "synonym": "complement to",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "simply",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "简单地；仅仅；坦⽩地 · GRE语境：仅仅",
+      "synonym": "just",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "formula",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "公式，准则；配⽅；婴⼉⻝品谦虚的，谦逊的；适度的；端庄的；羞怯 · GRE语境：公式，准则",
+      "synonym": "recipe=pattern",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "modest",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "的鉴定的；[核]临界的；批评的，爱挑剔 · GRE语境：谦逊的",
+      "synonym": "unambitious",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "critical",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "的；危险的；决定性的；评论的优良的；细⼩的，精美的；健康的；晴朗 · GRE语境：重要的",
+      "synonym": "crucial",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "fine",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "的 · GRE语境：细⼩的",
+      "synonym": "small",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "ordered",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "有序的；整⻬的；安排好的 · GRE语境：有规律顺序的",
+      "synonym": "regular",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "dead",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "⽆⽣命的；呆板的；废弃的 · GRE语境：没有活动的",
+      "synonym": "inert",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "exceed",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "超过；超越 · GRE语境：超过",
+      "synonym": "outstrip",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "tone",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "增强；⽤某种调⼦说 · GRE语境：⾳⾊",
+      "synonym": "timbre",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "appreciation of",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "欣赏，鉴别；增值；感谢带电的；充满感情的；⽓氛紧张的；vt. · GRE语境：评价",
+      "synonym": "appraisal of",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "charged",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "填充 · GRE语境：充满",
+      "synonym": "fraught",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "apparent",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "显⽽易⻅的，表⾯的 · GRE语境：表⾯的",
+      "synonym": "ostensible",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "abolition",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.废除；废⽌ · GRE语境：词根：abolish",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "adept",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.熟练的；擅⻓…的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "admonish",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.告诫；劝告 · GRE语境：联想：add+money罚款",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "affiliation",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.友好关系；加⼊；联盟 · GRE语境：词根：affiliate",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "aggression",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.侵略；进攻 · GRE语境：词根：aggress",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "albeit",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "conj.虽然，尽管 · GRE语境：alleviative减轻的；缓解",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "alleviate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.减轻，缓和 · GRE语境：的alliance n.联盟，联合；",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "ally",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.同盟国；伙伴 · GRE语境：联姻",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "aloof",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.冷淡的；远离的；冷漠的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "ameliorate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.改善；减轻（痛苦等） · GRE语境：amelioration改进，改善",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "amid",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "prep.在……过程中",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "amorphous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.⽆定形的；⽆组织的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "analogous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.类似的 · GRE语境：词根：ana相似+log语⾔",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "analogy",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.类⽐；类推 · GRE语境：词根：analog",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "ancestral",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.祖先的；祖传的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "annotate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.注释 · GRE语境：n. [脊椎]猿；傻⽠；模仿",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "ape",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.模仿；抢台词；adj.狂热的 · GRE语境：者",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "apex",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.顶点；尖端",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "apprentice",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.学徒；⽣⼿",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "archaic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.古代的；陈旧的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "archive",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.档案馆；档案⽂件 · GRE语境：vt.把…存档",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "aristocracy",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.贵族；贵族统治 · GRE语境：词根：aristocrat",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "assail",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.攻击；质问；着⼿解决 · GRE语境：assailant袭击的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "astute",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.机敏的；狡猾的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "attenuate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.（使）减弱",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "attest",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.证明；证实；为…作证 · GRE语境：attestation证明；证据",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "avant-garde",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.前卫的，激进的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "avaricious",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.贪婪的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "bestow",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.使⽤；授予；放置 · GRE语境：bestowal赠与；给与",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "biting",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.刺痛的；⾟辣的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "blur",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.使模糊不清；使暗淡；玷污",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "bourgeoisie",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.资产阶级；中产阶级",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "bridle",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.缰绳；约束物 · GRE语境：unbridled不受限制的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "brusque",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.唐突的；直率的；⽆礼的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "bulk",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.体积，容量；⼤多数 · GRE语境：bulky体积⼤的；庞⼤的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "camouflage",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.伪装，掩饰",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "candid",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.公正的；坦⽩的；率直的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "candour",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.正直，公正；直率 · GRE语境：词根：candor",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "canopy",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.天篷；华盖；遮篷 · GRE语境：词根：capital⾸都的；",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "capitalize",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.使资本化；估值；利⽤；积累资本adj.遭遗弃的；丢失的 · GRE语境：重要的；⼤写的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "cast off",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.遗弃的东⻄ · GRE语境：cast扔",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "castigation",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.惩罚；苛评；修订 · GRE语境：词根：castigate",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "catastrophe",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.⼤灾难；⼤祸",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "caveat",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.警告",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "censor",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.审查，检查 · GRE语境：censorial监察的词根：chaste纯洁的；",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "chastity",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.贞洁；纯洁；简洁 · GRE语境：贞洁的；有道德的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "check",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.制⽌",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "chore",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.讨厌的或累⼈的⼯作",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "chronicle",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.编年史 · GRE语境：vt.记录；chronologize",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "circumstantial",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.依照情况的；详细的 · GRE语境：词根：circumstance",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "civic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.市的；公⺠的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "clause",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.条款",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "coalition",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.联合；结合 · GRE语境：词根：coalesce",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "coerce",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.强制，迫使v.铸造（货币）；杜撰，创造（新词，短",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "coin",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "语） · GRE语境：coinage造币；新造的字",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "colloquial",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.⽩话的；通俗的 · GRE语境：combustible易燃的；易",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "combustion",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.燃烧，氧化；骚动 · GRE语境：激动的;combust燃烧；消耗",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "concede",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.承认；退让",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "conciliatory",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.安抚的；调和的 · GRE语境：词根：conciliate",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "condemn",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.谴责；判刑，定罪；声讨 · GRE语境：联想：demn=damn骂⼈contagious感染性的；",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "contagion",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.传染病；蔓延；触染 · GRE语境：会蔓延的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "contempt",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.轻视，蔑视adj.偶然（发⽣）的；（损失、责任等）",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "contingent",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "附带的；以事实为依据的 · GRE语境：continuate持续的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "contrarians",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.违反⺠意的 · GRE语境：词根：contraryconvoluted复杂的；费",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "convolute",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.回旋；盘旋 · GRE语境：解的；旋绕的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "corollary",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.推论；必然的结果",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "corporeal",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.物质的，有形的 · GRE语境：词根：corporal",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "crass",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.愚钝的；粗鲁的；⾮常的 · GRE语境：crassitude愚钝；粗糙",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "cultivate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.培养；陶冶；耕作",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "curb",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.控制；勒住",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "cursory",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.粗略的；草率的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "cynical",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.愤世嫉俗的；冷嘲的 · GRE语境：词根：cynic",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "debris",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.碎⽚，残骸",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "decadent",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.颓废的；衰微的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "decipher",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.破译，译解；辨认，解释",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "decorous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.有礼貌的，⾼雅的；端正的 · GRE语境：词根：decorum",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "defiance",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.蔑视；挑战；反抗",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "defoliation",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.落叶，去叶 · GRE语境：词根：defoliate",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "delimit",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.划界；定界限",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "delve",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.钻研；探究；挖",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "denigrate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.诋毁；使变⿊；玷污 · GRE语境：参考：deny+degrade",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "dense",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.稠密的；浓厚的；愚钝的；难懂的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "depict",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.描述 · GRE语境：depictive",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "depiction",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.描写，叙述 · GRE语境：词根：depictderisive嘲笑的;derision",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "deride",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.嘲笑；嘲弄 · GRE语境：嘲笑",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "derivation",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.起源；推导；导数 · GRE语境：词根：derive词根：detriment参考：",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "detrimental",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.不利的；有害的 · GRE语境：de+treat读⾳",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "dexterity",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.灵巧；敏捷；机敏 · GRE语境：词根：dexterousdichotomous叉状分枝",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "dichotomy",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.⼆分法；两分；分裂 · GRE语境：的；分成两个的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "didactic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.说教的；教诲的 · GRE语境：词根：di分割+minu微⼩",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "diminutive",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.⼩的，⼩型的，微⼩的 · GRE语境：的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "discrepancy",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.不符；⽭盾；相差 · GRE语境：词根：discrepantdiscretion⾃由裁量权；",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "discrete",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.离散的，不连续的 · GRE语境：谨慎；判断⼒",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "disdain",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.蔑视；vt.鄙弃 · GRE语境：词根：dis解除+enchant",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "disenchant",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.使清醒；使不抱幻想 · GRE语境：魔法",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "disgruntle",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.使……不⾼兴，使愠怒 · GRE语境：disparity n.不同；不⼀",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "disparate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.不同的 · GRE语境：致；不等",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "distort",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.扭曲；使失真；曲解 · GRE语境：distortion误差；曲解",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "doctrine",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.主义；学说；教义；信条 · GRE语境：dubitable可疑的；不确",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "dubious",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.可疑的；暧昧的 · GRE语境：定的联想：do+well想做得好",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "dwell",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vi.居住；存在于；细想某事 · GRE语境：⼀般要多仔细想",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "dwindle",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vi.减少；使缩⼩adj.衰⽼的；疲惫的；（⼟地）贫瘠的；",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "effete",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "（动植物）不育的 · GRE语境：联想：effect少了",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "effusive",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "dj.流露感激之情的 · GRE语境：effuse流出；涌出",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "elastic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.有弹性的；灵活的adj.挽歌的；哀悼的，哀伤的 · GRE语境：词根：elegyvi. elegize作哀歌；同近",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "elegiac",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "挽歌，哀歌n. · GRE语境：义词：monodic,condolent",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "elicit",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.抽出，引出",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "elide",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.省略；取消；删去；不予考虑删节 · GRE语境：词根：eli去除",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "elite",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.精英；精华",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "embellish",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.修饰；装饰",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "emblem",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.象征；徽章；符号 · GRE语境：emblematical象征的；",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "emblematic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.象征的 · GRE语境：典型的;emblem象征；⽤符号表示",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "encroachment",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.侵⼊，侵犯；侵蚀努⼒；尽⼒ · GRE语境：词根：encroacheffort, pain, struggle,",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "endeavor",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n./v. · GRE语境：trial, tryendemism特有现象；地",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "endemic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.地⽅性的；⻛⼟的 · GRE语境：⽅特殊性endowment n.捐赠；捐",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "endow",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.赋予；捐赠；天⽣具有 · GRE语境：助",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "enmesh",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.使绊住；使陷⼊ · GRE语境：套",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "enormous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.庞⼤的；凶暴的vt.铭记，珍藏；把…置于神龛内；把… · GRE语境：enormity巨⼤；暴⾏词根：en表加强+shrine",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "enshrine",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "奉为神圣 · GRE语境：神龛；联想：en当做+谐⾳神词根：equilibrize；参",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "equilibrium",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.均衡；平静 · GRE语境：考：equal",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "eradicate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.根除，根绝；消灭v.逐步增强；（使）加剧；升级；（使） · GRE语境：区分：eradiateescalator（美）⾃动扶",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "escalate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "恶化 · GRE语境：梯",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "esoteric",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.秘传的；难懂的；神秘的 · GRE语境：espousal拥护；信奉；",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "espouse",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.⽀持；嫁娶；赞成 · GRE语境：订婚",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "excavation",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.挖掘，发掘 · GRE语境：词根：excavate",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "exemplify",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.例证；例示 · GRE语境：exertion发挥；运⽤；努",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "exert",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.运⽤，发挥；施以影响 · GRE语境：⼒",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "exile",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.放逐",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "extant",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.现存的；显著的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "extortionate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.敲诈的；过⾼的 · GRE语境：词根：extort",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "extralegal",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.不受法律⽀配的；法律管辖之外的 · GRE语境：词根：extra超出+legal",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "facet",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.⾯；⽅⾯",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "fastidious",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.挑剔的；苛求的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "fatal",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.致命的；重⼤的；毁灭性的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "fictitious",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.虚构的；假想的；编造的；假装的 · GRE语境：词根：fiction",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "flagrant",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.公然的；不能容忍的 · GRE语境：区分：fragrantflexible灵活的；",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "flex",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.折曲；使收缩 · GRE语境：flexuous动摇不定的；reflex反射",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "folklore",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.⺠俗 · GRE语境：词根：fore前⾯+ground",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "foreground",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.前景；最显著的位置 · GRE语境：位置",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "foster",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.促进；抚育",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "fragmentary",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.碎⽚的；不完全的；断断续续的 · GRE语境：词根：fragment",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "fraternal",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.兄弟般的；友好的adj.充满……的；焦虑的，担⼼的；注定 · GRE语境：联想：friend+eternal",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "fraught",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "导致的；造成紧张的；受忧虑影响的……",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "garment",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.⾐服，服装；外表，外观",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "gasp",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.喘⽓；渴望",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "gauge",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.测量；估计；给……定规格",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "genteel",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.有教养的，⽂雅的；上流社会的 · GRE语境：词根：gentle",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "germinate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.（使）发芽；（使）⽣⻓ · GRE语境：glamour vt.迷惑，迷",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "glamorously",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adv.令⼈向往地；富有魅⼒地 · GRE语境：住；glamorous迷⼈的，富有魅⼒的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "glimpse",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.瞥⻅",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "hamper",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.妨碍；束缚 · GRE语境：hinder",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "hegemony",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.霸权；领导权；盟主权",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "heighten",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.提⾼；增⾼ · GRE语境：词根：high",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "herbivorous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj. [动]⻝草的 · GRE语境：carnivorous",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "hereditary",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.遗传的；世袭的 · GRE语境：hierarchical分层的；等",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "hierarchy",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.层级；等级制度 · GRE语境：级体系的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "hitherto",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adv.迄今；⾄今vt.使均匀；使类同 · GRE语境：homogeneous均匀的；",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "homogenize",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "变均匀vi. · GRE语境：同种的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "idiosyncratic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.特质的；特殊的；异质的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "illiteracy",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.⽂盲；⽆知 · GRE语境：词根：literate",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "immense",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.巨⼤的，⼴⼤的；⾮常好的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "impasse",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.僵局 · GRE语境：dilemma n.两难境地",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "imperative",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.必要的，不可避免的；紧急的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "impetus",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.动⼒；促进v.对……有明显作⽤（或影响）；妨碍；",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "impinge",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "侵犯 · GRE语境：implicative含蓄的；连带",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "implicit",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.含蓄的；暗示的 · GRE语境：的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "impoverished",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.穷困的；⽤尽了的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "improvise",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.即兴创作 · GRE语境：词根：improve",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "incipient",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.初期的；初始的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "incontestable",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.⽆可争辩的；⽆可置疑的 · GRE语境：#NULL!",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "indigenous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.本⼟的；⼟著的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "indispensable",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.不可缺少的；绝对必要的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "inflate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.使充⽓；使通货膨胀 · GRE语境：夸⼤",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "innate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.先天的；固有的 · GRE语境：innateness天赋；天⽣",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "insipid",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.⽆味的；⽆趣的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "insurrection",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.暴动；叛乱",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "interval",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.间隔；间距；幕间休息",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "inundation",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.洪⽔；泛滥 · GRE语境：词根：inundate",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "jeopardize",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.危害；使陷危地",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "jurisdiction",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.司法权，审判权 · GRE语境：词根：juridic",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "leach",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.过滤，滤去；萃取",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "linger",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vi.徘徊；苟延残喘；vt.消磨；缓慢度过 · GRE语境：lingering拖延的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "longevity",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.⻓寿，⻓命；寿命",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "loophole",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.漏洞；枪眼",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "lucrative",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.获利多的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "lump",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.混在⼀起；使成块状；忍耐 · GRE语境：adv.很；⾮常",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "malnourished",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.营养不良的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "marshal",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.整理；引领；编列",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "mediate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.调解；传达 · GRE语境：adj.间接的；句间的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "metaphor",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.暗喻 · GRE语境：metaphorical⽐喻性的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "microbial",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.微⽣物的；由细菌引起的 · GRE语境：词根：micro+bio+al后缀",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "millennium",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.千年期（尤指公元纪年） · GRE语境：词根：millenary",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "mimetic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.模仿的；类似的 · GRE语境：mimic v.模仿n.模仿者",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "monarchist",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.君主主义者 · GRE语境：词根：monarch",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "monumental",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.不朽的；⾮常的 · GRE语境：词根：monument",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "moribund",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.垂死的；停滞不前的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "mutual",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.共同的；相互的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "myriad",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.⽆数的；种种的；n.⽆数，极⼤数量",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "nausea",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.恶⼼，晕船；极端的憎恶 · GRE语境：联想：闹死了",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "nebulous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.朦胧的 · GRE语境：词根：neo新的+natal",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "neonatal",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.新⽣的；初⽣的 · GRE语境：出⽣的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "nostalgia",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.乡愁；怀旧之情 · GRE语境：词根：nostalgia；同近",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "nostalgic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.怀旧的；乡愁的vt.迫使；强制；赐，施恩惠；责成；义 · GRE语境：义词：reminiscent,retrospective",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "oblige",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "务vi.帮忙；施恩惠 · GRE语境：obligationoblique斜的；不光明正",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "obliquity",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.倾斜；倾斜度；不正直 · GRE语境：⼤的adj.朦胧的；不清楚的；",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "obscure",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.使…模糊不清，掩盖 · GRE语境：隐蔽的；⽆名的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "omit",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.省略；遗漏；删除；疏忽",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "onset",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.开始；攻击",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "orthodox",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.正统的；传统的；惯常的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "oscillate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.（使）振荡；（使）振动；（使）动摇",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "overdue",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.过期的；迟到的；未兑的 · GRE语境：词根：palate味觉；趣",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "palatable",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.美味的，可⼝的；愉快的 · GRE语境：味",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "paradigm",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.范例 · GRE语境：para相⽐较；mount⾼",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "paramount",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.最重要的，主要的 · GRE语境：峰",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "paranormal",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.超常的；超过正常范围的 · GRE语境：词根：para⽐较超出",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "parody",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.拙劣的模仿；诙谐的改编诗⽂",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "partition",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.划分，分开 · GRE语境：vt. [数]分割；分隔",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "pathogenic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.致病的；病原的；发病的 · GRE语境：等于pathogenetic",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "patronize",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.以⾼⼈⼀等的态度对待；资助；保护 · GRE语境：词根：patron",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "paucity",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.缺乏；少数",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "pedagogical",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.教育学的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "pejorative",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.轻蔑的，贬损的 · GRE语境：n.贬义词",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "pension",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.退休⾦，抚恤⾦",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "perennial",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.多年⽣的；常年的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "periphery",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.外围，边缘；圆周 · GRE语境：permissive许可的；⾃",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "permit",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.许可；允许 · GRE语境：由的；宽容的;permission允许，许可",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "pernicious",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.有害的；恶性的；致命的 · GRE语境：词根：pervade；",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "pervasive",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.普遍的；到处渗透的；流⾏的 · GRE语境：pervious能被通过的词根pill药丸；弹丸，⼦",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "pillage",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.（尤指在战争中）掠夺，抢劫 · GRE语境：弹",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "pious",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.虔诚的；伪善的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "plague",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.使折磨，使苦恼；纠缠 · GRE语境：n.瘟疫；灾祸",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "plethora",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.过多；过剩；[医]多⾎症 · GRE语境：词根：plenty",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "poach",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.偷猎；侵犯；剽窃vt.假定；要求；视…为理所当然；n.基",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "postulate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "本条件；假定",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "predation",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.捕⻝；掠夺 · GRE语境：predator捕⻝者词根：pre预先+dis分配",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "predisposition",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.倾向；素质；易染病体质 · GRE语境：+position⻆⾊",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "prefatory",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.前⾔的；序⽂的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "premise",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.前提，假定",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "prerogative",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.有特权的 · GRE语境：prevalent adj.流⾏的；",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "prevalence",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.流⾏；普遍 · GRE语境：普遍的procurable可得到的；",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "procure",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.获得，取得；导致 · GRE语境：可实现的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "propaganda",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.宣传 · GRE语境：propagandize",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "propel",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.推进；驱使；激励",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "propensity",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.倾向，习性 · GRE语境：prototypical原型的；典",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "prototype",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.原型；标准，模范n.规定；条款；准备；[经]供应品 · GRE语境：型的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "provision",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.供给…⻝物及必需品 · GRE语境：词根：provide",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "proximity",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.接近，[数]邻近 · GRE语境：proximal最接近的词根：prudent谨慎的；",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "prudence",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.审慎 · GRE语境：精明的；节俭的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "purport",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.声称；意图 · GRE语境：purported传说的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "quaint",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.古雅的；奇怪的；离奇有趣的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "rapacity",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.贪婪；掠夺adj.⾼深精妙的，曲⾼和寡的；远离常⼈ · GRE语境：词根：rape",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "rarefied",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "⽣活的，怪异的 · GRE语境：词根：rare",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "ratified",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.批准的 · GRE语境：词根：ratify",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "rear",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.抚养；喂养",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "rebuke",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.斥责，指责；控制 · GRE语境：recap翻新胎⾯；扼要重",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "recapitulation",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.概括，重述要点 · GRE语境：述",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "reciprocal",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.互惠的；相互的；倒数的 · GRE语境：n. [数]倒数",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "regime",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.政权，政体；社会制度",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "reiteration",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.重复；反复 · GRE语境：reiterate重申；反复地做",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "relic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.遗迹；废墟；纪念物",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "reminiscent",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.怀旧的 · GRE语境：reminisce v.回忆",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "remnant",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.剩余的；n.剩余",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "render",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.致使；提供，回报；援助 · GRE语境：⾯给出的形容词判定含义",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "repel",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.击退；抵制；使厌恶",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "repudiate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.拒绝；否定；批判",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "resilient",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.弹回的；能复原的 · GRE语境：词根：resile",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "resurgence",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.复活；再现 · GRE语境：词根：resurge",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "retention",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.保留；扣留，滞留；记忆⼒ · GRE语境：retractable可取消的，",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "retraction",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.撤回，撤销 · GRE语境：可缩回的;retractive缩进的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "retroactively",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adv.追溯地；逆动地 · GRE语境：词根：retro复古",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "revile",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.辱骂；斥责 · GRE语境：v.反抗；违抗；（使）",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "revolt",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.违抗，反抗；起义，叛乱 · GRE语境：厌恶",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "rustic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.乡村的；纯朴的 · GRE语境：参考：rust⽣锈参考：Ruth⽐较传统的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "ruthless",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.⽆情的，残忍的 · GRE语境：⼥性名，慈祥的奶奶叫得⽐较多",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "salient",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.显著的；突出的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "salinity",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.盐度；盐分 · GRE语境：词根：saline",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "salutary",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.有益的，有⽤的 · GRE语境：salubrious清爽的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "sardonic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.讽刺的；嘲笑的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "scant",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.不⾜的；缺乏的；vt.减少；节省",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "scorching",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.讽刺的 · GRE语境：scrupulously严谨地；⼩",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "scruple",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.微量；顾虑；踌躇；v.有顾忌；踌躇 · GRE语境：⼼翼翼地",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "scrutinize",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.仔细检查 · GRE语境：词根：scrutiny n.",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "secession",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.脱离；分离 · GRE语境：secede脱离；退出",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "secular",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.世俗的；⻓期的；不朽的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "segregate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.使隔离；使分离 · GRE语境：种族分离",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "semblance",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.表象，假象；相似之处adj.有创造⼒的，对未来有影响的；重⼤",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "seminal",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "severity",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.严重；严格；猛烈 · GRE语境：词根：severe",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "shady",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.成荫的；阴暗的；名声不好的 · GRE语境：词根：shade",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "sheer",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.绝对的；透明的；adv.完全；陡峭地 · GRE语境：vt.使偏航；使急转向",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "solicit",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.征求；招揽；请求 · GRE语境：solicitor律师",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "sound",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.合理的；⽆损的；有能⼒的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "sovereign",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.⾄⾼⽆上的；有主权的；有效的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "spacious",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.宽敞的，⼴阔的n.跨度，跨距；范围 · GRE语境：词根：space",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "span",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "跨越；持续；以⼿指测量vt.",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "sparsely",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adv.稀疏地；贫乏地 · GRE语境：sparseness稀疏；稀少",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "spatial",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.空间的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "sphere",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.范围；球体",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "splendor",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.光彩；壮丽；显赫",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "staggering",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.惊⼈的，令⼈震惊的adj.荒凉的，朴实的；明显的；完全的；",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "stark",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "（诗/⽂）僵直的；结实的 · GRE语境：starkly严酷地；明显地",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "strenuously",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adv.勤奋地；费⼒地 · GRE语境：strenuosity费⼒；艰⾟",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "strife",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.冲突；争吵；不和 · GRE语境：联想：strike+fight",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "stringent",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.严格的；严厉的；紧缩的 · GRE语境：string",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "subservient",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.屈从的；奉承的 · GRE语境：词根：subserve联想：suc下级+comb梳",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "succumb",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vi.屈服；死；被压垮vt.使满⾜；⾜够…⽤；合格 · GRE语境：头发，给⼈家当丫头联想：service谐⾳；",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "suffice",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "⾜够；有能⼒vi. · GRE语境：sufficient",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "sumptuous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.华丽的，豪华的；奢侈的 · GRE语境：同根词：consumption",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "susceptible",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.易受影响的；易感动的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "sweeping",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.影响⼴泛的；笼统的；规模⼤的 · GRE语境：词根：sweep",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "synthesis",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.综合 · GRE语境：的，⼈造的taciturn adj.沉默寡⾔",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "tacit",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.缄默的；不⾔⽽喻的 · GRE语境：的；⽆⾔的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "tantamount",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.同等的；相当于…的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "taxa",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.分类群 · GRE语境：单数taxon",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "tedious",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.沉闷的；冗⻓乏味的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "tenancy",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.租期；租⽤adj.试验性的，暂定的；踌躇的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "tentative",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.假设，试验 · GRE语境：词根：tendthrusting有强⼤推进⼒",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "thrust",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.推⼒；要旨，重点；强攻 · GRE语境：的；有进取⼼的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "touchstone",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.试⾦⽯；（检验）标准 · GRE语境：词根：touch+stone",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "trait",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.特性，特点；品质",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "treacherous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.奸诈的；背叛的；危险的vt.把…分成三⻆形；使…成三⻆形； · GRE语境：词根：treachery",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "triangulates",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "对…作三⻆测量 · GRE语境：词根：triangle",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "trite",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.陈腐的；平庸的；⽼⼀套的 · GRE语境：词根：unanimous⽆异",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "unanimity",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.同意，全体⼀致 · GRE语境：议的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "underpin",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.巩固；⽀持",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "unleash",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "v.发泄；（使）爆发；放开",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "upheaval",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.剧变；隆起；举起 · GRE语境：词根：upheave；",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "utilitarian",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.实⽤的；功利的 · GRE语境：词根：utter完全的；彻",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "utterly",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adv.完全地；绝对地 · GRE语境：底的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "velocity",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.【物】速度",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "verisimilitude",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.逼真，貌似真实 · GRE语境：词根：veri+similar",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "vernacular",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.本国的；地⽅的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "versatility",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.多功能性 · GRE语境：词根：versatilevexatious令⼈烦恼的；",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "vexed",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.⽣⽓的，烦恼的 · GRE语境：麻烦的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "viability",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.⽣存能⼒；可⾏性 · GRE语境：词根：viable",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "vicinity",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n.邻近，附近 · GRE语境：词根：vicinalvigorous有⼒的；精⼒",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "vigor",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "n. [⽣物]活⼒，精⼒ · GRE语境：充沛的vigor = vitality词根：villain；同近义",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "villainous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.罪恶的；恶棍的；恶毒的 · GRE语境：词：criminal, poisonousvindicatory惩罚的；报",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "vindicate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "vt.维护；证明…⽆辜；证明…正确 · GRE语境：复的；辩护的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "virulent",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.剧毒的；恶性的；有恶意的 · GRE语境：联想：violent",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "weepy",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.要哭的；催⼈泪下的adj.锻造的；有特定⻛格的；加⼯的；精细的 · GRE语境：weep哭泣；眼泪；滴下",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "wrought",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "使发⽣；⼯作（的过去式和过去v.work分词）",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "wry",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "adj.歪斜的；揶揄的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    }
+  ]
+}

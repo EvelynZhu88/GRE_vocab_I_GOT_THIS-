@@ -53,6 +53,24 @@ button { font-family: inherit; cursor: pointer; }
   padding: 0 0 2px 0;
 }
 .topbar-right { font-size: 13px; color: var(--muted); }
+.book-picker {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid #2c4068;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-family: inherit;
+  padding: 6px 8px;
+  max-width: 180px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  text-overflow: ellipsis;
+}
+.book-picker:focus { outline: none; border-color: var(--accent); }
+@media (max-width: 480px) {
+  .book-picker { max-width: 140px; font-size: 12px; }
+}
 
 /* === bottom nav === */
 .bottom-nav {
