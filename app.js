@@ -42,7 +42,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '18';
+const ASSET_VERSION = '19';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -94,8 +94,10 @@ async function init() {
   bootstrapSync();
   if (window.SupaSync && SupaSync.isConfigured()) {
     SupaSync.onAuthChange(() => {
-      // After magic-link return or sign-in / sign-out, re-sync and re-render.
-      bootstrapSync().then(() => router());
+      // After magic-link return or sign-in / sign-out, re-sync. Only
+      // re-render if we're not in the middle of a quiz session — the
+      // freshly-pulled data will appear on the user's next navigation.
+      bootstrapSync().then(() => { if (!isStatefulRoute()) router(); });
     });
   }
 }
@@ -193,7 +195,10 @@ async function bootstrapSync() {
     // Reload the active book's in-memory state from its (potentially updated) key
     PROGRESS = loadJson(progressKey(ACTIVE_BOOK_ID), {});
     UNITS    = loadJson(unitsKey(ACTIVE_BOOK_ID),    {});
-    router();
+    // Don't re-render while the user is mid-quiz — that would reset
+    // their session to question 1. localStorage already has the merged
+    // data; the next navigation will pick it up.
+    if (!isStatefulRoute()) router();
   }
 
   // Push merged result if the server's view differs from what we computed
@@ -413,6 +418,19 @@ function parseRoute() {
   const h = location.hash.replace(/^#/, '') || '/';
   const segs = h.split('/').filter(Boolean);
   return segs;
+}
+
+// A "stateful" route holds an in-memory session (current question index,
+// the user's selections so far, etc.) that gets destroyed by a re-render.
+// Background events like sync pulls or auth token refreshes MUST NOT call
+// router() while we're on one of these screens — otherwise a unit test
+// or mixed review snaps back to question 1 mid-session.
+function isStatefulRoute() {
+  const segs = parseRoute();
+  if (segs[0] === 'review' || segs[0] === 'starred-test') return true;
+  if (segs[0] === 'list' && segs[2] === 'test') return true;
+  if (segs[0] === 'list' && segs[2] === 'passages' && segs[4] === 'quiz') return true;
+  return false;
 }
 
 function router() {
