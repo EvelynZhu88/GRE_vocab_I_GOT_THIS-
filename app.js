@@ -9,7 +9,7 @@
  *   #/list/N/passages/I      Read passage I
  *   #/list/N/passages/I/quiz Comprehension quiz for passage I
  *   #/review                 Cumulative spaced-repetition review (excludes starred)
- *   #/starred-test           100-question test drawn only from starred words
+ *   #/starred-test           200-question test drawn only from starred words
  *   #/stats                  Stats overview (also: sign-in for cross-device sync)
  *
  * Storage:
@@ -42,7 +42,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '19';
+const ASSET_VERSION = '20';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -573,13 +573,13 @@ function renderStarredTestBanner() {
     }
   }
   if (starredCount === 0) return '';
-  const sessionSize = Math.min(100, starredCount);
+  const sessionSize = Math.min(200, starredCount);
   return `
     <div class="section-heading">Starred Test ★</div>
     <a class="review-banner starred-test" href="#/starred-test">
       <div class="review-banner-body">
         <div class="rb-title">★ ${sessionSize}-question test from your starred words</div>
-        <div class="rb-desc">${starredCount} starred word${starredCount === 1 ? '' : 's'} in your pool. Up to 100 are drawn at random each session.</div>
+        <div class="rb-desc">${starredCount} starred word${starredCount === 1 ? '' : 's'} in your pool. Up to 200 are drawn at random each session.</div>
       </div>
       <div class="review-banner-cta">
         <span class="btn-primary" style="pointer-events:none">Start test</span>
@@ -991,7 +991,7 @@ function startReview(session, active) {
 }
 
 // =====================================================
-// VIEW: Starred Test (up to 100 questions, only starred words)
+// VIEW: Starred Test (up to 200 questions, only starred words)
 // =====================================================
 function renderStarredTest() {
   setHeader('Starred Test ★');
@@ -1005,13 +1005,13 @@ function renderStarredTest() {
   if (starred.length === 0) {
     $('#view').innerHTML = `<div class="empty-state">
       <h2>No starred words yet</h2>
-      <p>Star the words you keep forgetting by tapping ★ on any word card or quiz reveal. Once you have some, this test will draw up to 100 of them at random.</p>
+      <p>Star the words you keep forgetting by tapping ★ on any word card or quiz reveal. Once you have some, this test will draw up to 200 of them at random.</p>
       <a class="btn-primary" href="#/">Back to lists</a>
     </div>`;
     return;
   }
   shuffle(starred);
-  const session = starred.slice(0, 100);
+  const session = starred.slice(0, 200);
   const activeLists = [...new Set(session.map(s => s.n))].sort((a, b) => a - b);
   const state = {
     qs: session.map(({ n, w }) => ({ n, ...buildTestQ(n, w) })),
