@@ -42,7 +42,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '20';
+const ASSET_VERSION = '21';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -725,8 +725,9 @@ function buildTestQ(n, w) {
     const eq = buildEquivQ(w);
     if (eq) return eq;
   }
-  // 50/50 between en->zh and zh->en
-  const dir = Math.random() < 0.5 ? 'en2zh' : 'zh2en';
+  // Always test en→zh: on the real GRE you see the English word and have
+  // to recall its meaning, never the other direction.
+  const dir = 'en2zh';
   const distractors = pickDistractors(n, w, 3, dir);
   const opts = shuffle([w, ...distractors]);
   return { w, dir, opts };
