@@ -39,10 +39,11 @@ const BOOKS = [
   { id: 'v1',      label: 'GRE 镇考 3000词',           vocab: 'vocab.json',         passages: 'passages.json' },
   { id: 'v7',      label: 'GRE 镇考机经词 7.0',        vocab: 'vocab_v7.json',      passages: 'passages_v7.json' },
   { id: 'equiv',   label: '真经 GRE 等价词',            vocab: 'vocab_equiv.json',   passages: 'passages_equiv.json', testMode: 'equiv' },
+  { id: 'bb62',    label: 'BB 六选二词表',              vocab: 'vocab_bb62.json',    passages: 'passages_bb62.json',  testMode: 'equiv' },
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '22';
+const ASSET_VERSION = '23';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
