@@ -42,7 +42,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '21';
+const ASSET_VERSION = '22';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -442,6 +442,7 @@ function router() {
   if (segs.length === 0) $('.nav-link[data-route="lists"]').classList.add('active');
   else if (segs[0] === 'review') $('.nav-link[data-route="review"]').classList.add('active');
   else if (segs[0] === 'starred' || segs[0] === 'starred-test') $('.nav-link[data-route="starred"]').classList.add('active');
+  else if (segs[0] === 'missed') $('.nav-link[data-route="missed"]').classList.add('active');
   else if (segs[0] === 'stats') $('.nav-link[data-route="stats"]').classList.add('active');
   else if (segs[0] === 'list') $('.nav-link[data-route="lists"]').classList.add('active');
 
@@ -450,6 +451,7 @@ function router() {
   if (segs[0] === 'review') return renderReview();
   if (segs[0] === 'starred') return renderStarred();
   if (segs[0] === 'starred-test') return renderStarredTest();
+  if (segs[0] === 'missed') return renderMissed();
   if (segs[0] === 'stats') return renderStats();
   if (segs[0] === 'list') {
     const n = +segs[1];
@@ -1401,6 +1403,77 @@ function renderStarred() {
     });
   });
 
+  $('#revealAll').addEventListener('click', (e) => {
+    e.stopPropagation();
+    REVEAL_ALL = !REVEAL_ALL;
+    $$('.word-card').forEach(c => c.classList.toggle('hidden-meaning', !REVEAL_ALL));
+    e.currentTarget.textContent = REVEAL_ALL ? 'Hide all' : 'Reveal all';
+  });
+}
+
+// =====================================================
+// VIEW: Missed words (ranked by lapse count, active book only)
+// =====================================================
+function renderMissed() {
+  setHeader('Missed ✗');
+  const items = [];
+  for (const [n, words] of Object.entries(VOCAB)) {
+    for (const w of words) {
+      const c = getCard(+n, w.word);
+      if ((c.lapses || 0) > 0) items.push({ n: +n, w, lapses: c.lapses });
+    }
+  }
+  if (items.length === 0) {
+    $('#view').innerHTML = `<div class="empty-state">
+      <h2>No missed words yet</h2>
+      <p>Words you get wrong in a unit test, mixed review, or starred test appear here — ranked from most-missed to least. Perfect for a targeted review of the ones that keep tripping you up.</p>
+      <a class="btn-primary" href="#/">Back to lists</a>
+    </div>`;
+    return;
+  }
+  items.sort((a, b) => b.lapses - a.lapses || a.w.word.localeCompare(b.w.word));
+
+  const html = [];
+  const hiddenCls = REVEAL_ALL ? '' : 'hidden-meaning';
+  const btnLabel  = REVEAL_ALL ? 'Hide all' : 'Reveal all';
+  html.push(`<div class="words-controls">
+    <span class="words-hint">${items.length} missed · ranked by ✗ count</span>
+    <button class="btn-secondary" id="revealAll" type="button">${btnLabel}</button>
+  </div>`);
+  for (const it of items) {
+    const c = getCard(it.n, it.w.word);
+    html.push(`<div class="word-card ${hiddenCls}" data-list="${it.n}" data-word="${escAttr(it.w.word)}">
+      <button class="star-btn ${c.starred ? 'on' : ''}" data-list="${it.n}" data-word="${escAttr(it.w.word)}" aria-label="Toggle star" type="button">${c.starred ? '★' : '☆'}</button>
+      <div class="head">
+        <span class="word">${escHtml(it.w.word)}</span>
+        <span class="ipa">${escHtml(it.w.ipa || '')}</span>
+        <span class="miss-badge">✗ ${it.lapses} · list ${it.n}</span>
+      </div>
+      <div class="reveal-prompt">tap to reveal</div>
+      <div class="card-body">
+        <div class="zh">${escHtml(it.w.def_zh)}</div>
+        <div class="en">${escHtml(it.w.def_en)}</div>
+        ${it.w.synonym ? `<div class="syn">≈ ${escHtml(it.w.synonym)}</div>` : ''}
+        ${it.w.ex_en ? `<div class="ex">${escHtml(it.w.ex_en)}<div class="ex-zh">${escHtml(it.w.ex_zh || '')}</div></div>` : ''}
+      </div>
+      <div class="row-bottom">${tagFor(c)}<span>${c.last ? new Date(c.last).toLocaleDateString() : ''}</span></div>
+    </div>`);
+  }
+  $('#view').innerHTML = html.join('');
+
+  $$('.word-card').forEach(card => {
+    card.addEventListener('click', () => card.classList.toggle('hidden-meaning'));
+  });
+  $$('.star-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const n = +btn.dataset.list;
+      const word = btn.dataset.word;
+      const on = toggleStar(n, word);
+      btn.textContent = on ? '★' : '☆';
+      btn.classList.toggle('on', on);
+    });
+  });
   $('#revealAll').addEventListener('click', (e) => {
     e.stopPropagation();
     REVEAL_ALL = !REVEAL_ALL;
