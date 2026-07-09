@@ -43,7 +43,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '23';
+const ASSET_VERSION = '24';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -428,7 +428,7 @@ function parseRoute() {
 // or mixed review snaps back to question 1 mid-session.
 function isStatefulRoute() {
   const segs = parseRoute();
-  if (segs[0] === 'review' || segs[0] === 'starred-test') return true;
+  if (segs[0] === 'review' || segs[0] === 'starred-test' || segs[0] === 'random-test') return true;
   if (segs[0] === 'list' && segs[2] === 'test') return true;
   if (segs[0] === 'list' && segs[2] === 'passages' && segs[4] === 'quiz') return true;
   return false;
@@ -445,13 +445,14 @@ function router() {
   else if (segs[0] === 'starred' || segs[0] === 'starred-test') $('.nav-link[data-route="starred"]').classList.add('active');
   else if (segs[0] === 'missed') $('.nav-link[data-route="missed"]').classList.add('active');
   else if (segs[0] === 'stats') $('.nav-link[data-route="stats"]').classList.add('active');
-  else if (segs[0] === 'list') $('.nav-link[data-route="lists"]').classList.add('active');
+  else if (segs[0] === 'list' || segs[0] === 'random-test') $('.nav-link[data-route="lists"]').classList.add('active');
 
   // Dispatch
   if (segs.length === 0) return renderLists();
   if (segs[0] === 'review') return renderReview();
   if (segs[0] === 'starred') return renderStarred();
   if (segs[0] === 'starred-test') return renderStarredTest();
+  if (segs[0] === 'random-test') return renderRandomTest();
   if (segs[0] === 'missed') return renderMissed();
   if (segs[0] === 'stats') return renderStats();
   if (segs[0] === 'list') {
@@ -492,6 +493,10 @@ function renderLists() {
     const s = listSummary(+n);
     totalMature += s.mature; totalLearning += s.learning; totalFresh += s.fresh; totalWords += s.total;
   }
+
+  // Random Test banner — top of home page. Draws up to 200 random words
+  // from the whole active book, no unit-test gating required.
+  html.push(renderRandomTestBanner());
 
   html.push(`<div class="lists-summary">
     <div class="summary-card"><div class="v">${totalMature}</div><div class="l">Mature</div></div>
@@ -564,6 +569,25 @@ function renderReviewBanner() {
       </div>
       <div class="review-banner-cta">
         <span class="btn-primary" style="pointer-events:none">Start review</span>
+      </div>
+    </a>`;
+}
+
+function renderRandomTestBanner() {
+  const book = bookById(ACTIVE_BOOK_ID);
+  let poolCount = 0;
+  for (const words of Object.values(VOCAB)) poolCount += words.length;
+  if (poolCount === 0) return '';
+  const sessionSize = Math.min(200, poolCount);
+  return `
+    <div class="section-heading">Random Test</div>
+    <a class="review-banner random-test" href="#/random-test">
+      <div class="review-banner-body">
+        <div class="rb-title">${sessionSize}-question random test · ${escHtml(book.label)}</div>
+        <div class="rb-desc">${poolCount} word${poolCount === 1 ? '' : 's'} in the whole book. New random sample every time — no unit-test gating required.</div>
+      </div>
+      <div class="review-banner-cta">
+        <span class="btn-primary" style="pointer-events:none">Start test</span>
       </div>
     </a>`;
 }
@@ -997,6 +1021,34 @@ function startReview(session, active) {
 // =====================================================
 // VIEW: Starred Test (up to 200 questions, only starred words)
 // =====================================================
+function renderRandomTest() {
+  setHeader('Random Test');
+  const pool = [];
+  for (const [n, words] of Object.entries(VOCAB)) {
+    for (const w of words) pool.push({ n: +n, w });
+  }
+  if (pool.length === 0) {
+    $('#view').innerHTML = `<div class="empty-state">
+      <h2>This book is empty</h2>
+      <a class="btn-primary" href="#/">Back to lists</a>
+    </div>`;
+    return;
+  }
+  shuffle(pool);
+  const session = pool.slice(0, Math.min(200, pool.length));
+  const activeLists = [...new Set(session.map(s => s.n))].sort((a, b) => a - b);
+  const state = {
+    qs: session.map(({ n, w }) => ({ n, ...buildTestQ(n, w) })),
+    idx: 0,
+    answers: [],
+    isReview: true,
+    isRandomTest: true,
+    activeLists,
+    totalPool: pool.length,
+  };
+  renderReviewQ(state);
+}
+
 function renderStarredTest() {
   setHeader('Starred Test ★');
   const starred = [];
@@ -1088,14 +1140,17 @@ function finishReview(state) {
   const correct = state.answers.filter(a => a.correct).length;
   const pct = total ? Math.round((correct / total) * 100) : 0;
   const isStarred = !!state.isStarredTest;
-  setHeader(isStarred ? 'Starred Test · Results' : 'Review · Results');
+  const isRandom  = !!state.isRandomTest;
+  setHeader(isStarred ? 'Starred Test · Results' : (isRandom ? 'Random Test · Results' : 'Review · Results'));
   const wrong = state.answers.filter(a => !a.correct);
   const html = [];
   const breakdown = isStarred
     ? `${correct} of ${total} correct · ${state.totalStarred} starred in pool`
-    : `${correct} of ${total} correct · ${state.activeLists.length} lists in pool`;
-  const againHref = isStarred ? '#/starred-test' : '#/review';
-  const againLabel = isStarred ? 'Another starred round' : 'Another round';
+    : (isRandom
+        ? `${correct} of ${total} correct · drawn from ${state.totalPool} words in the book`
+        : `${correct} of ${total} correct · ${state.activeLists.length} lists in pool`);
+  const againHref  = isStarred ? '#/starred-test' : (isRandom ? '#/random-test' : '#/review');
+  const againLabel = isStarred ? 'Another starred round' : (isRandom ? 'Another random round' : 'Another round');
   html.push(`<div class="results">
     <div class="score">${pct}%</div>
     <div class="breakdown">${breakdown}</div>

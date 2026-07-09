@@ -591,6 +591,11 @@ main {
   background: linear-gradient(135deg, #2a2410, #3a2f15);
 }
 .review-banner.starred-test .rb-title { color: #ffd866; }
+.review-banner.random-test {
+  border-color: #5c8adf;
+  background: linear-gradient(135deg, #1a2540, #23345c);
+}
+.review-banner.random-test .rb-title { color: #cfe2ff; }
 
 /* === Account / sync box on Stats === */
 .account-box {
