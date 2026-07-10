@@ -2069,7 +2069,9 @@
       "synonym": "kinfolk",
       "ex_en": "",
       "ex_zh": ""
-    },
+    }
+  ],
+  "2": [
     {
       "word": "unlinked",
       "ipa": "",
@@ -2148,6 +2150,15 @@
       "def_en": "",
       "def_zh": "过剩",
       "synonym": "surfeit",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "surfeit",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "过量;过多;过剩",
+      "synonym": "glut",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -2310,6 +2321,15 @@
       "def_en": "",
       "def_zh": "不明智的",
       "synonym": "tactless",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "eliminate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "消除;淘汰",
+      "synonym": "put to rest",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -2548,6 +2568,15 @@
       "ex_zh": ""
     },
     {
+      "word": "secure",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "获得;安全的;保证",
+      "synonym": "earn",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "earn",
       "ipa": "",
       "def_en": "",
@@ -2670,6 +2699,15 @@
       "def_en": "",
       "def_zh": "决心;解决;决定",
       "synonym": "tenacity",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "capricious",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "任性;反复无常的",
+      "synonym": "impulsive",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -2823,6 +2861,15 @@
       "def_en": "",
       "def_zh": "公正;不偏不倚;无偏见;公平",
       "synonym": "neutrality",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "obscure",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "模糊的;晦涩的",
+      "synonym": "unknown",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -3124,11 +3171,29 @@
       "ex_zh": ""
     },
     {
+      "word": "disparage",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "贬低;轻视",
+      "synonym": "mock",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "mock",
       "ipa": "",
       "def_en": "",
       "def_zh": "嘲笑;嘲弄",
       "synonym": "disparage",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "simplicity",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "简单;单纯;简单性",
+      "synonym": "intelligibility",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -3156,6 +3221,15 @@
       "def_en": "",
       "def_zh": "稳定的;不大可能变动的",
       "synonym": "assured",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "prevalent",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "流行;普遍存在的;普遍的",
+      "synonym": "extensive",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -3709,6 +3783,15 @@
       "ex_zh": ""
     },
     {
+      "word": "innocuous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "无害的",
+      "synonym": "benign",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "disapprobation",
       "ipa": "",
       "def_en": "",
@@ -4033,6 +4116,15 @@
       "ex_zh": ""
     },
     {
+      "word": "utilitarian",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "实用主义;实用的;功利的",
+      "synonym": "pragmatic",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "pragmatic",
       "ipa": "",
       "def_en": "",
@@ -4058,7 +4150,9 @@
       "synonym": "imprecise",
       "ex_en": "",
       "ex_zh": ""
-    },
+    }
+  ],
+  "3": [
     {
       "word": "peripatetic",
       "ipa": "",
@@ -4231,6 +4325,15 @@
       "ex_zh": ""
     },
     {
+      "word": "slight",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "轻微的;微小的",
+      "synonym": "discount",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "discount",
       "ipa": "",
       "def_en": "",
@@ -4258,11 +4361,38 @@
       "ex_zh": ""
     },
     {
+      "word": "imitate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "模仿;仿效",
+      "synonym": "mimic",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "mimic",
       "ipa": "",
       "def_en": "",
       "def_zh": "模仿;模拟;和...相似",
       "synonym": "imitate",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "dearth",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "匮乏;缺乏的;吃紧",
+      "synonym": "paucity",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "paucity",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "匮乏;缺乏;稀缺;不足",
+      "synonym": "dearth",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -4303,6 +4433,15 @@
       "ex_zh": ""
     },
     {
+      "word": "staid",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "古板的;一本正经的;稳重的",
+      "synonym": "unadventurous",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "unadventurous",
       "ipa": "",
       "def_en": "",
@@ -4326,6 +4465,15 @@
       "def_en": "",
       "def_zh": "玷污",
       "synonym": "sully",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "flexibility",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "灵活性;柔韧性",
+      "synonym": "suppleness",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -4528,11 +4676,29 @@
       "ex_zh": ""
     },
     {
+      "word": "spread",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "传播",
+      "synonym": "propagate",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "ubiquitous",
       "ipa": "",
       "def_en": "",
       "def_zh": "无处不在的;普遍存在的",
       "synonym": "prevalent",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "prevalent",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "流行;普遍存在的;普遍的",
+      "synonym": "ubiquitous",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -4627,6 +4793,15 @@
       "ex_zh": ""
     },
     {
+      "word": "trivial",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "琐碎的;不重要的神秘的;谜一样的;难以捉摸",
+      "synonym": "superficial",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "superficial",
       "ipa": "",
       "def_en": "",
@@ -4636,11 +4811,29 @@
       "ex_zh": ""
     },
     {
+      "word": "enigmatic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "的;难以理解的",
+      "synonym": "inscrutable",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "inscrutable",
       "ipa": "",
       "def_en": "",
       "def_zh": "深不可测的;难以理解的",
       "synonym": "enigmatic",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "defy",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "违抗",
+      "synonym": "flout",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -4816,6 +5009,15 @@
       "ex_zh": ""
     },
     {
+      "word": "unpredictable",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "难以预测的",
+      "synonym": "fickleness",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "fickleness",
       "ipa": "",
       "def_en": "",
@@ -4861,6 +5063,15 @@
       "ex_zh": ""
     },
     {
+      "word": "artificial",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "人造的;人工的;虚假的",
+      "synonym": "contrived",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "bromide",
       "ipa": "",
       "def_en": "",
@@ -4893,6 +5104,15 @@
       "def_en": "",
       "def_zh": "未经证实的;无事实根据的无定形的;不明确的;不清晰",
       "synonym": "speculative",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "diffuse",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "扩散;弥漫;蔓延",
+      "synonym": "amorphous",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -5068,6 +5288,15 @@
       "ex_zh": ""
     },
     {
+      "word": "singular",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "独特的;单数的;奇异的",
+      "synonym": "anomalous",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "gauge",
       "ipa": "",
       "def_en": "",
@@ -5203,6 +5432,24 @@
       "ex_zh": ""
     },
     {
+      "word": "realism",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "现实主义;现实主义精神",
+      "synonym": "verisimilitude",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "verisimilitude",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "逼真",
+      "synonym": "realism",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "interested in",
       "ipa": "",
       "def_en": "",
@@ -5257,6 +5504,15 @@
       "ex_zh": ""
     },
     {
+      "word": "perennial",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "常年的;长久的;持续的",
+      "synonym": "constant",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "hauteur",
       "ipa": "",
       "def_en": "",
@@ -5298,6 +5554,15 @@
       "def_en": "",
       "def_zh": "忽视;不修理;忽略",
       "synonym": "dismiss",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "dismiss",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "忽视;解雇;不予考虑",
+      "synonym": "neglect",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -5437,6 +5702,24 @@
       "ex_zh": ""
     },
     {
+      "word": "canny",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "精明的;谨慎",
+      "synonym": "shrewd",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "shrewd",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "精明的;机敏的",
+      "synonym": "canny",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "modified",
       "ipa": "",
       "def_en": "",
@@ -5460,6 +5743,15 @@
       "def_en": "",
       "def_zh": "轻蔑五花八门;多种多样的;多样",
       "synonym": "disparage",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "disparage",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "贬低;轻视",
+      "synonym": "scorn",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -5572,6 +5864,24 @@
       "ex_zh": ""
     },
     {
+      "word": "convoluted",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "错综复杂的;曲折的",
+      "synonym": "intricate",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "intricate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "复杂的;错综复杂的",
+      "synonym": "convoluted",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "proscribe",
       "ipa": "",
       "def_en": "",
@@ -5608,6 +5918,15 @@
       "ex_zh": ""
     },
     {
+      "word": "onerous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "繁重的;费力的;艰巨的",
+      "synonym": "arduous",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "arduous",
       "ipa": "",
       "def_en": "",
@@ -5626,6 +5945,15 @@
       "ex_zh": ""
     },
     {
+      "word": "functional",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "功能性的;功能的",
+      "synonym": "serviceable",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "serviceable",
       "ipa": "",
       "def_en": "",
@@ -5635,11 +5963,29 @@
       "ex_zh": ""
     },
     {
+      "word": "belie",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "掩饰;掩盖;证明为假",
+      "synonym": "contradict",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "contradict",
       "ipa": "",
       "def_en": "",
       "def_zh": "顶撞;反驳;与...矛盾",
       "synonym": "belie",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "eliminate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "消除;淘汰",
+      "synonym": "foreclose",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -5676,6 +6022,15 @@
       "def_en": "",
       "def_zh": "的",
       "synonym": "salient",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "preclude",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "排除;阻止;妨碍",
+      "synonym": "frustrate",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -5725,6 +6080,15 @@
       "ex_zh": ""
     },
     {
+      "word": "gainsay",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "否认;反驳",
+      "synonym": "contravene",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "telescoping",
       "ipa": "",
       "def_en": "",
@@ -5759,6 +6123,26 @@
       "synonym": "lucid",
       "ex_en": "",
       "ex_zh": ""
+    }
+  ],
+  "4": [
+    {
+      "word": "forestall",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "垄断;预防;阻止",
+      "synonym": "prevent",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "prevent",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "防止;阻止;预防;制止",
+      "synonym": "forestall",
+      "ex_en": "",
+      "ex_zh": ""
     },
     {
       "word": "frugal",
@@ -5775,6 +6159,24 @@
       "def_en": "",
       "def_zh": "节约",
       "synonym": "frugal",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "analogous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "类似的;相似的",
+      "synonym": "comparable",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "comparable",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "可比;类似的;可比较的",
+      "synonym": "analogous",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -5802,6 +6204,15 @@
       "def_en": "",
       "def_zh": "排除狭隘的;岛屿的;心胸狭窄的;",
       "synonym": "preclude",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "preclude",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "排除;阻止;妨碍",
+      "synonym": "rule out",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -5838,6 +6249,24 @@
       "def_en": "",
       "def_zh": "支持;增强",
       "synonym": "reinforcement",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "undermine",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "破坏;削弱",
+      "synonym": "contradict",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "contradict",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "顶撞;反驳;与...矛盾",
+      "synonym": "undermine",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -5986,6 +6415,15 @@
       "ex_zh": ""
     },
     {
+      "word": "uncommon",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "不常见的;罕见的;不寻常的",
+      "synonym": "rare",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "rare",
       "ipa": "",
       "def_en": "",
@@ -6040,6 +6478,15 @@
       "ex_zh": ""
     },
     {
+      "word": "origin",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "原点;起源;来源",
+      "synonym": "source",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "enmity",
       "ipa": "",
       "def_en": "",
@@ -6067,6 +6514,15 @@
       "ex_zh": ""
     },
     {
+      "word": "elusive",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "难以达到的;难以捉摸的",
+      "synonym": "slippery",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "dynamic",
       "ipa": "",
       "def_en": "",
@@ -6081,6 +6537,15 @@
       "def_en": "",
       "def_zh": "正在进行的",
       "synonym": "dynamic",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "eschew",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "避开;避免",
+      "synonym": "shun",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -6166,6 +6631,24 @@
       "ex_zh": ""
     },
     {
+      "word": "dearth",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "匮乏;缺乏的;吃紧",
+      "synonym": "paucity",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "paucity",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "匮乏;缺乏;稀缺;不足",
+      "synonym": "dearth",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "abstruseness",
       "ipa": "",
       "def_en": "",
@@ -6193,6 +6676,24 @@
       "ex_zh": ""
     },
     {
+      "word": "prominence",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "突出;显著;名声",
+      "synonym": "celebrity",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "uniform",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "的",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "pulverize",
       "ipa": "",
       "def_en": "",
@@ -6207,6 +6708,15 @@
       "def_en": "",
       "def_zh": "无情拆解、狠批",
       "synonym": "pulverize",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "speculative",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "投机的;推测的;猜测的随意的;任意的;主观的;武断",
+      "synonym": "conjectural",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -6283,6 +6793,15 @@
       "ex_zh": ""
     },
     {
+      "word": "scant",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "不足的;缺乏的",
+      "synonym": "limited",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "limited",
       "ipa": "",
       "def_en": "",
@@ -6297,6 +6816,24 @@
       "def_en": "",
       "def_zh": "毫无根据的;无根据的",
       "synonym": "baseless",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "baseless",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "毫无根据的",
+      "synonym": "unfounded",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "obscure",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "模糊的;晦涩的",
+      "synonym": "opaque",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -6342,6 +6879,15 @@
       "def_en": "",
       "def_zh": "贪婪的",
       "synonym": "rapacious",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "circumscribed",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "受限的;局限的;被限制的",
+      "synonym": "restricted",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -6472,6 +7018,15 @@
       "ex_zh": ""
     },
     {
+      "word": "modest",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "的",
+      "synonym": "unassuming",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "quixotic",
       "ipa": "",
       "def_en": "",
@@ -6486,6 +7041,15 @@
       "def_en": "",
       "def_zh": "理想主义的强的;强大的;强烈的;（指力",
       "synonym": "quixotic",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "robust",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "强壮的;强健的;强劲的",
+      "synonym": "strong",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -6544,6 +7108,15 @@
       "ex_zh": ""
     },
     {
+      "word": "nebulous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "模糊的;不清楚的;不明朗的微不足道的;不值一提的;",
+      "synonym": "vague",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "vague",
       "ipa": "",
       "def_en": "",
@@ -6598,6 +7171,24 @@
       "ex_zh": ""
     },
     {
+      "word": "belie",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "掩饰;掩盖;证明为假",
+      "synonym": "mask",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "mask",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "掩盖;掩饰",
+      "synonym": "belie",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "abound",
       "ipa": "",
       "def_en": "",
@@ -6634,6 +7225,24 @@
       "ex_zh": ""
     },
     {
+      "word": "flexibility",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "灵活性;柔韧性",
+      "synonym": "suppleness",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "suppleness",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "柔软性;柔软",
+      "synonym": "flexibility",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "palliate",
       "ipa": "",
       "def_en": "",
@@ -6657,6 +7266,15 @@
       "def_en": "",
       "def_zh": "大胆的;鲁莽的",
       "synonym": "striking",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "striking",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "显著的;引人注目的",
+      "synonym": "audacious",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -6702,6 +7320,15 @@
       "def_en": "",
       "def_zh": "万能灵药",
       "synonym": "panacea",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "panacea",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "万灵药;灵丹妙药",
+      "synonym": "cure-all",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -6823,6 +7450,15 @@
       "ex_zh": ""
     },
     {
+      "word": "emblematic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "象征性的;象征的",
+      "synonym": "totemic",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "foster",
       "ipa": "",
       "def_en": "",
@@ -6882,6 +7518,15 @@
       "def_en": "",
       "def_zh": "分歧的;背离的;不同的",
       "synonym": "dissimilar",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "dissimilar",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "不相似的;不同的狭隘的;岛屿的;心胸狭窄的;",
+      "synonym": "divergent",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -6994,11 +7639,29 @@
       "ex_zh": ""
     },
     {
+      "word": "contravene",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "违反",
+      "synonym": "violate",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "eager",
       "ipa": "",
       "def_en": "",
       "def_zh": "渴望的",
       "synonym": "keen",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "keen",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "敏锐的;热衷的",
+      "synonym": "eager",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -7026,6 +7689,15 @@
       "def_en": "",
       "def_zh": "紧迫的",
       "synonym": "exigent",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "exigent",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "紧急的;迫切的",
+      "synonym": "pressing",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -7102,6 +7774,15 @@
       "ex_zh": ""
     },
     {
+      "word": "dismiss",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "忽视;解雇;不予考虑无可争议的;无可辩驳的;不",
+      "synonym": "dispel",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "indubitable",
       "ipa": "",
       "def_en": "",
@@ -7165,11 +7846,29 @@
       "ex_zh": ""
     },
     {
+      "word": "champion",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "冠军;支持",
+      "synonym": "support",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "counterpart",
       "ipa": "",
       "def_en": "",
       "def_zh": "对方;对应物",
       "synonym": "parallel",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "parallel",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "平行线;平行的;相似的",
+      "synonym": "counterpart",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -7224,6 +7923,15 @@
       "def_en": "",
       "def_zh": "保护措施",
       "synonym": "preserve",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "mitigate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "缓解;减轻;缓和",
+      "synonym": "curtail",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -7345,6 +8053,24 @@
       "ex_zh": ""
     },
     {
+      "word": "fitting",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "合适的",
+      "synonym": "apposite",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "apposite",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "贴切的",
+      "synonym": "fitting",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "unsettling",
       "ipa": "",
       "def_en": "",
@@ -7435,6 +8161,15 @@
       "ex_zh": ""
     },
     {
+      "word": "unwarranted",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "毫无根据的;没有理由的",
+      "synonym": "inapplicable",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "inapplicable",
       "ipa": "",
       "def_en": "",
@@ -7487,7 +8222,9 @@
       "synonym": "unambiguous",
       "ex_en": "",
       "ex_zh": ""
-    },
+    }
+  ],
+  "5": [
     {
       "word": "eclectic",
       "ipa": "",
@@ -7516,11 +8253,29 @@
       "ex_zh": ""
     },
     {
+      "word": "limited",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "有限",
+      "synonym": "incomplete",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "nurture",
       "ipa": "",
       "def_en": "",
       "def_zh": "培养;养育",
       "synonym": "foster",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "foster",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "促进;培养",
+      "synonym": "nurture",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -7642,6 +8397,15 @@
       "ex_zh": ""
     },
     {
+      "word": "support",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "支持;支撑",
+      "synonym": "abet",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "cynical",
       "ipa": "",
       "def_en": "",
@@ -7674,6 +8438,15 @@
       "def_en": "",
       "def_zh": "贪婪;极度需求",
       "synonym": "predation",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "stationary",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "静止的;没有移动的",
+      "synonym": "inert",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -7732,6 +8505,15 @@
       "ex_zh": ""
     },
     {
+      "word": "prodigious",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "惊人的;巨大的;异常的",
+      "synonym": "ample",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "ecstatic",
       "ipa": "",
       "def_en": "",
@@ -7768,6 +8550,15 @@
       "ex_zh": ""
     },
     {
+      "word": "interdependent",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "相互依赖的;相互依存的",
+      "synonym": "symbiotic",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "symbiotic",
       "ipa": "",
       "def_en": "",
@@ -7782,6 +8573,15 @@
       "def_en": "",
       "def_zh": "自我牺牲",
       "synonym": "altruism",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "altruism",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "利他主义;爱他人",
+      "synonym": "self-sacrifice",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -7831,6 +8631,15 @@
       "ex_zh": ""
     },
     {
+      "word": "mendacity",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "谎言;虚假;虚伪",
+      "synonym": "dissembling",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "charisma",
       "ipa": "",
       "def_en": "",
@@ -7867,6 +8676,15 @@
       "ex_zh": ""
     },
     {
+      "word": "mitigate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "缓解;减轻;缓和",
+      "synonym": "relieve",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "relieve",
       "ipa": "",
       "def_en": "",
@@ -7881,6 +8699,15 @@
       "def_en": "",
       "def_zh": "不变的;一贯的",
       "synonym": "constant",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "constant",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "持续的;常数",
+      "synonym": "invariable",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -7939,6 +8766,15 @@
       "ex_zh": ""
     },
     {
+      "word": "laconic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "简洁的;话少的",
+      "synonym": "spare",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "spare",
       "ipa": "",
       "def_en": "",
@@ -7953,6 +8789,15 @@
       "def_en": "",
       "def_zh": "站不住脚的;无可辩护的",
       "synonym": "untenable",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "untenable",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "能支持的",
+      "synonym": "indefensible",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -8029,6 +8874,24 @@
       "ex_zh": ""
     },
     {
+      "word": "trivial",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "琐碎的;不重要的",
+      "synonym": "inconsequential",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "inconsequential",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "关的",
+      "synonym": "trivial",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "expel",
       "ipa": "",
       "def_en": "",
@@ -8043,6 +8906,15 @@
       "def_en": "",
       "def_zh": "驱逐",
       "synonym": "expel",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "unconventional",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "不传统的;非传统的",
+      "synonym": "quirky",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -8065,11 +8937,38 @@
       "ex_zh": ""
     },
     {
+      "word": "archaic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "古老的;古旧过时的;古代的",
+      "synonym": "antediluvian",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "discern",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "辨别;分辨",
+      "synonym": "discover",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "discover",
       "ipa": "",
       "def_en": "",
       "def_zh": "发现;找到",
       "synonym": "discern",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "irrelevant",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "不相关的",
+      "synonym": "extraneous",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -8092,11 +8991,29 @@
       "ex_zh": ""
     },
     {
+      "word": "dilatory",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "拖延的",
+      "synonym": "remiss",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "encyclopedic",
       "ipa": "",
       "def_en": "",
       "def_zh": "全面的;百科全书式的",
       "synonym": "exhaustive",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "exhaustive",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "详尽的;彻底的;全面的",
+      "synonym": "encyclopedic",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -8164,6 +9081,24 @@
       "ex_zh": ""
     },
     {
+      "word": "controversial",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "争论的",
+      "synonym": "contentious",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "rudimentary",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "基础的;初级的;基本的",
+      "synonym": "sketchy",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "sketchy",
       "ipa": "",
       "def_en": "",
@@ -8178,6 +9113,24 @@
       "def_en": "",
       "def_zh": "发炎的;煽动性的",
       "synonym": "provocative",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "provocative",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "煽动性的不合理的;无理由的;无正当",
+      "synonym": "inflammatory",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "unfounded",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "毫无根据的;无根据的",
+      "synonym": "unjustified",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -8236,6 +9189,15 @@
       "ex_zh": ""
     },
     {
+      "word": "salient",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "突出的;显著的",
+      "synonym": "visible",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "faultlessness",
       "ipa": "",
       "def_en": "",
@@ -8259,6 +9221,15 @@
       "def_en": "",
       "def_zh": "不充分的;不足的无法调和的;难以安抚的;无",
       "synonym": "meager",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "meager",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "的",
+      "synonym": "insufficient",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -8326,6 +9297,24 @@
       "ex_zh": ""
     },
     {
+      "word": "forestall",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "垄断;预防;阻止",
+      "synonym": "avert",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "essential",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "的地方性的;某地特有的;常见",
+      "synonym": "indispensable",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "indispensable",
       "ipa": "",
       "def_en": "",
@@ -8353,11 +9342,74 @@
       "ex_zh": ""
     },
     {
+      "word": "itinerant",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "流动的;巡回的",
+      "synonym": "peripatetic",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "peripatetic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "流动的",
+      "synonym": "itinerant",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "buttress",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "支持;支撑",
+      "synonym": "bolster",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "bolster",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "支持;支撑;加强庄严的;受尊敬的;值得尊敬",
+      "synonym": "buttress",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "respected",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "受尊敬的",
+      "synonym": "venerable",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "venerable",
       "ipa": "",
       "def_en": "",
       "def_zh": "的",
       "synonym": "respected",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "analogous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "类似的;相似的显然的;明显的;显现的;显而",
+      "synonym": "comparable",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "comparable",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "可比;类似的;可比较的",
+      "synonym": "analogous",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -8425,6 +9477,15 @@
       "ex_zh": ""
     },
     {
+      "word": "cursory",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "粗略的;草率的",
+      "synonym": "perfunctory",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "perfunctory",
       "ipa": "",
       "def_en": "",
@@ -8439,6 +9500,24 @@
       "def_en": "",
       "def_zh": "博学的;全面的",
       "synonym": "encyclopedic",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "healthy",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "健康良好的;健康的;健壮的平庸的;普通的;平凡的;不例",
+      "synonym": "robust",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "robust",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "强壮的;强健的;强劲的不伦不类;无特征的;平凡的;",
+      "synonym": "healthy",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -8479,6 +9558,15 @@
       "ex_zh": ""
     },
     {
+      "word": "anomalous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "异常的;不规则的",
+      "synonym": "unusual",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "unusual",
       "ipa": "",
       "def_en": "",
@@ -8506,11 +9594,29 @@
       "ex_zh": ""
     },
     {
+      "word": "paltry",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "（数量）微小的;无价值的;",
+      "synonym": "meager",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "cheerless",
       "ipa": "",
       "def_en": "",
       "def_zh": "阴郁的;悲伤的",
       "synonym": "gloomy",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "gloomy",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "阴沉;忧郁的;阴沉的;阴暗的",
+      "synonym": "cheerless",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -8556,6 +9662,24 @@
       "def_en": "",
       "def_zh": "公正;公平;公正性",
       "synonym": "impartiality",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "impartiality",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "公正;不偏不倚;无偏见;公平",
+      "synonym": "evenhandedness",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "sanction",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "制裁;批准",
+      "synonym": "endorse",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -8677,6 +9801,15 @@
       "ex_zh": ""
     },
     {
+      "word": "vitiate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "使之变质;削弱;损害",
+      "synonym": "undercut",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "undercut",
       "ipa": "",
       "def_en": "",
@@ -8691,6 +9824,15 @@
       "def_en": "",
       "def_zh": "紧要的",
       "synonym": "trivial",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "superficial",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "粗略的;肤浅的;表面的",
+      "synonym": "sketchy",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -8740,6 +9882,15 @@
       "ex_zh": ""
     },
     {
+      "word": "lambaste",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "严厉斥责;痛斥",
+      "synonym": "deride",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "deride",
       "ipa": "",
       "def_en": "",
@@ -8772,6 +9923,15 @@
       "def_en": "",
       "def_zh": "简单的;愚蠢的",
       "synonym": "unsophisticated",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "unsophisticated",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "不复杂的;朴素的;不老练的",
+      "synonym": "simpleminded",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -8812,6 +9972,24 @@
       "ex_zh": ""
     },
     {
+      "word": "stymie",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "阻碍;妨碍",
+      "synonym": "confound",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "confound",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "惑",
+      "synonym": "stymie",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "attributed to",
       "ipa": "",
       "def_en": "",
@@ -8830,6 +10008,15 @@
       "ex_zh": ""
     },
     {
+      "word": "original",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "的",
+      "synonym": "unconventional",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "waver",
       "ipa": "",
       "def_en": "",
@@ -8844,6 +10031,24 @@
       "def_en": "",
       "def_zh": "摇摆",
       "synonym": "waver",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "understandable",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "可以理解的;合情理的",
+      "synonym": "transparent",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "transparent",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "透明的;易懂的",
+      "synonym": "understandable",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -8884,11 +10089,65 @@
       "ex_zh": ""
     },
     {
+      "word": "reflexive",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "的;反身的",
+      "synonym": "automatic",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "automatic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "自动的;不假思索的",
+      "synonym": "reflexive",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "exceptional",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "异常的;非凡的",
+      "synonym": "rare",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "rare",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "稀有的;罕见的",
+      "synonym": "exceptional",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "resolve",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "决心;解决;决定",
+      "synonym": "determination",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "determination",
       "ipa": "",
       "def_en": "",
       "def_zh": "决心;决定",
       "synonym": "resolve",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "counterpart",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "对方;对应物深不可测的;难以理解的;不",
+      "synonym": "correlative",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -8907,6 +10166,15 @@
       "def_en": "",
       "def_zh": "可思议的",
       "synonym": "inscrutable",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "inscrutable",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "深不可测的;难以理解的",
+      "synonym": "unfathomable",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -8961,6 +10229,24 @@
       "def_en": "",
       "def_zh": "依赖于",
       "synonym": "undergirded by",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "pervasive",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "无处不在的无道德原则的;肆无忌惮的;",
+      "synonym": "ubiquitous",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "ubiquitous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "无处不在的;普遍存在的",
+      "synonym": "pervasive",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -9028,6 +10314,35 @@
       "ex_zh": ""
     },
     {
+      "word": "tendentious",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "见的",
+      "synonym": "prejudicial",
+      "ex_en": "",
+      "ex_zh": ""
+    }
+  ],
+  "6": [
+    {
+      "word": "dearth",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "匮乏;缺乏的;吃紧",
+      "synonym": "paucity",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "paucity",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "匮乏;缺乏;稀缺;不足",
+      "synonym": "dearth",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "skirt",
       "ipa": "",
       "def_en": "",
@@ -9037,11 +10352,38 @@
       "ex_zh": ""
     },
     {
+      "word": "circumvent",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "规避;绕过",
+      "synonym": "skirt",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "cursory",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "粗略的;草率的",
+      "synonym": "fleeting",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "fleeting",
       "ipa": "",
       "def_en": "",
       "def_zh": "短暂的榨取;勒索物品（或金钱）;",
       "synonym": "cursory",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "rapacity",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "贪婪;极度需求",
+      "synonym": "exaction",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -9100,6 +10442,24 @@
       "ex_zh": ""
     },
     {
+      "word": "pristine",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "原始的;未触动过的;新的",
+      "synonym": "untouched",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "contingent",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "依情况而定的;取决于",
+      "synonym": "uncertain",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "uncertain",
       "ipa": "",
       "def_en": "",
@@ -9154,6 +10514,24 @@
       "ex_zh": ""
     },
     {
+      "word": "trivial",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "琐碎的;不重要的",
+      "synonym": "imperceptible",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "straightforward",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "直接的;坦率的",
+      "synonym": "unproblematic",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "unproblematic",
       "ipa": "",
       "def_en": "",
@@ -9177,6 +10555,15 @@
       "def_en": "",
       "def_zh": "持续不断的;不懈的",
       "synonym": "continuous",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "discerning",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "有辨识能力的；眼光敏锐的",
+      "synonym": "accurate",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -9213,6 +10600,15 @@
       "def_en": "",
       "def_zh": "使均等",
       "synonym": "leveling",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "ubiquitous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "无处不在的;普遍存在的",
+      "synonym": "omnipresent",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -9276,6 +10672,33 @@
       "def_en": "",
       "def_zh": "消除;排除逍遥的;巡游的;四处游历的;",
       "synonym": "exclude",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "itinerant",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "流动的;巡回的",
+      "synonym": "peripatetic",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "peripatetic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "流动的",
+      "synonym": "itinerant",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "hinder",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "阻碍",
+      "synonym": "inhibit",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -9352,6 +10775,15 @@
       "ex_zh": ""
     },
     {
+      "word": "attenuate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "减弱;减弱的",
+      "synonym": "mute",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "boon",
       "ipa": "",
       "def_en": "",
@@ -9388,6 +10820,24 @@
       "ex_zh": ""
     },
     {
+      "word": "dynamic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "动态的势不可挡的;压倒性的;令人",
+      "synonym": "mutable",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "mutable",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "可变的;会变的;变异物",
+      "synonym": "dynamic",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "overwhelming",
       "ipa": "",
       "def_en": "",
@@ -9402,6 +10852,33 @@
       "def_en": "",
       "def_zh": "不可抗拒的;诱人的",
       "synonym": "overwhelming",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "untenable",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "能支持的",
+      "synonym": "indefensible",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "indefensible",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "站不住脚的;无可辩护的",
+      "synonym": "untenable",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "tenacity",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "韧性;坚韧;固执;坚毅穿透性的;透彻的;敏锐的;有",
+      "synonym": "doggedness",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -9487,6 +10964,24 @@
       "ex_zh": ""
     },
     {
+      "word": "anticipate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "预期",
+      "synonym": "prefigure",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "prefigure",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "预示;预兆",
+      "synonym": "anticipate",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "penitent",
       "ipa": "",
       "def_en": "",
@@ -9505,11 +11000,38 @@
       "ex_zh": ""
     },
     {
+      "word": "recalcitrant",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "的",
+      "synonym": "restive",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "restive",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "焦躁的",
+      "synonym": "recalcitrant",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "extoll",
       "ipa": "",
       "def_en": "",
       "def_zh": "赞美;赞颂",
       "synonym": "acclaim",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "acclaim",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "欢呼;赞扬",
+      "synonym": "extoll",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -9631,6 +11153,15 @@
       "ex_zh": ""
     },
     {
+      "word": "indispensable",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "少的",
+      "synonym": "consequential",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "protocol",
       "ipa": "",
       "def_en": "",
@@ -9676,6 +11207,15 @@
       "ex_zh": ""
     },
     {
+      "word": "favorable",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "有利的;赞同的",
+      "synonym": "propitious",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "privileged",
       "ipa": "",
       "def_en": "",
@@ -9703,11 +11243,56 @@
       "ex_zh": ""
     },
     {
+      "word": "puzzle",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "困惑;谜;难题",
+      "synonym": "enigma",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "enigma",
       "ipa": "",
       "def_en": "",
       "def_zh": "谜;难以理解的事物",
       "synonym": "puzzle",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "indifference",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "漠不关心;",
+      "synonym": "apathy",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "apathy",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "冷漠",
+      "synonym": "indifference",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "transitory",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "暂时的;短暂的",
+      "synonym": "ephemeral",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "ephemeral",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "短暂的;瞬息的",
+      "synonym": "transitory",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -9748,6 +11333,42 @@
       "ex_zh": ""
     },
     {
+      "word": "cumbersome",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "笨重的",
+      "synonym": "unwieldy",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "unwieldy",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "笨重的;复杂的;难处理的",
+      "synonym": "cumbersome",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "tenuous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "脆弱的",
+      "synonym": "improbable",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "improbable",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "不可能的;不太可能的",
+      "synonym": "tenuous",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "paradigmatic",
       "ipa": "",
       "def_en": "",
@@ -9771,6 +11392,24 @@
       "def_en": "",
       "def_zh": "支柱",
       "synonym": "foundation",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "foundation",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "创建;基础;根基",
+      "synonym": "mainstay",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "atypical",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "非代表性的;非典型性的",
+      "synonym": "idiosyncratic",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -9838,6 +11477,15 @@
       "ex_zh": ""
     },
     {
+      "word": "conceivable",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "可以想象的",
+      "synonym": "possible",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "possible",
       "ipa": "",
       "def_en": "",
@@ -9865,6 +11513,15 @@
       "ex_zh": ""
     },
     {
+      "word": "complex",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "复杂的",
+      "synonym": "confounding",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "confounding",
       "ipa": "",
       "def_en": "",
@@ -9883,6 +11540,24 @@
       "ex_zh": ""
     },
     {
+      "word": "undermine",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "破坏;削弱",
+      "synonym": "upend",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "salient",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "突出的;显著的",
+      "synonym": "palpable",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "palpable",
       "ipa": "",
       "def_en": "",
@@ -9892,11 +11567,38 @@
       "ex_zh": ""
     },
     {
+      "word": "abstruse",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "深奥的;难懂的不合理的;无理由的;无正当",
+      "synonym": "esoteric",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "esoteric",
       "ipa": "",
       "def_en": "",
       "def_zh": "难懂的",
       "synonym": "abstruse",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "unjustified",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "理由的",
+      "synonym": "baseless",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "baseless",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "毫无根据的",
+      "synonym": "unjustified",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -9964,6 +11666,24 @@
       "ex_zh": ""
     },
     {
+      "word": "irascibility",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "肝火;易怒;暴躁",
+      "synonym": "petulance",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "nebulous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "模糊的;不清楚的;不明朗的",
+      "synonym": "incoherent",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "incoherent",
       "ipa": "",
       "def_en": "",
@@ -9973,11 +11693,47 @@
       "ex_zh": ""
     },
     {
+      "word": "surfeit",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "过量;过多;过剩",
+      "synonym": "excess",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "excess",
       "ipa": "",
       "def_en": "",
       "def_zh": "过多;过剩",
       "synonym": "surfeit",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "prodigious",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "惊人的;巨大的;异常的",
+      "synonym": "voracious",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "voracious",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "贪婪的",
+      "synonym": "prodigious",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "muddled",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "混乱的",
+      "synonym": "turbid",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -10135,11 +11891,65 @@
       "ex_zh": ""
     },
     {
+      "word": "anomaly",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "异常;异常现象",
+      "synonym": "inconsistency",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "inconsistency",
       "ipa": "",
       "def_en": "",
       "def_zh": "不一致;矛盾;不一致性",
       "synonym": "anomaly",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "discern",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "辨别;分辨",
+      "synonym": "detect",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "detect",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "探测;察觉;发现",
+      "synonym": "discern",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "slippery",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "滑;滑动的;难以应付的",
+      "synonym": "elusive",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "elusive",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "难以达到的;难以捉摸的",
+      "synonym": "slippery",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "glut",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "过剩",
+      "synonym": "surfeit",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -10153,11 +11963,29 @@
       "ex_zh": ""
     },
     {
+      "word": "perilous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "危险的",
+      "synonym": "precarious",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "displace",
       "ipa": "",
       "def_en": "",
       "def_zh": "替换;移动",
       "synonym": "obviate",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "conundrum",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "难题;谜题",
+      "synonym": "puzzle",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -10234,11 +12062,29 @@
       "ex_zh": ""
     },
     {
+      "word": "captivated by",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "被……吸引",
+      "synonym": "enamored of",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "enamored of",
       "ipa": "",
       "def_en": "",
       "def_zh": "迷恋于",
       "synonym": "captivated by",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "acerbic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "尖刻的;尖酸的;尖酸刻薄的",
+      "synonym": "vitriolic",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -10351,6 +12197,15 @@
       "ex_zh": ""
     },
     {
+      "word": "perfunctory",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "敷衍的;漫不经心的",
+      "synonym": "cursory",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "sympathetic",
       "ipa": "",
       "def_en": "",
@@ -10378,6 +12233,15 @@
       "ex_zh": ""
     },
     {
+      "word": "dubious",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "可疑的;令人怀疑的",
+      "synonym": "questionable",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "hesitancy",
       "ipa": "",
       "def_en": "",
@@ -10396,11 +12260,40 @@
       "ex_zh": ""
     },
     {
+      "word": "onerous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "繁重的；艰巨的",
+      "synonym": "wearisome",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "wearisome",
       "ipa": "",
       "def_en": "",
       "def_zh": "烦的",
       "synonym": "onerous",
+      "ex_en": "",
+      "ex_zh": ""
+    }
+  ],
+  "7": [
+    {
+      "word": "innocuous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "无害的",
+      "synonym": "harmless",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "harmless",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "无害的",
+      "synonym": "innocuous",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -10423,6 +12316,24 @@
       "ex_zh": ""
     },
     {
+      "word": "elision",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "省略",
+      "synonym": "omission",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "omission",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "省略",
+      "synonym": "elision",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "pigeonhole",
       "ipa": "",
       "def_en": "",
@@ -10437,6 +12348,24 @@
       "def_en": "",
       "def_zh": "刻板印象",
       "synonym": "pigeonhole",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "temper",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "调节;使缓和;脾气;缓和",
+      "synonym": "mitigate",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "mitigate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "缓解;减轻;缓和",
+      "synonym": "temper",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -10459,6 +12388,24 @@
       "ex_zh": ""
     },
     {
+      "word": "laconic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "简洁的;话少的",
+      "synonym": "taciturn",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "taciturn",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "沉默寡言的",
+      "synonym": "laconic",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "dismissive of",
       "ipa": "",
       "def_en": "",
@@ -10473,6 +12420,24 @@
       "def_en": "",
       "def_zh": "蔑视……的",
       "synonym": "dismissive of",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "unwarranted",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "毫无根据的;没有理由的",
+      "synonym": "dubious",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "dubious",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "可疑的;令人怀疑的",
+      "synonym": "unwarranted",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -10500,6 +12465,15 @@
       "def_en": "",
       "def_zh": "平凡的;世俗的;普通的容易的;轻率的;肤浅的;轻松",
       "synonym": "commonplace",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "commonplace",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "普通的;普遍的过分简化的;简单化;简单主",
+      "synonym": "mundane",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -10558,11 +12532,29 @@
       "ex_zh": ""
     },
     {
+      "word": "impartial",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "客观公正的;公正的;中立的",
+      "synonym": "evenhanded",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "evenhanded",
       "ipa": "",
       "def_en": "",
       "def_zh": "不偏不倚;公平的;公正的",
       "synonym": "impartial",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "disparity",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "差异;不同",
+      "synonym": "imbalance",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -10648,11 +12640,29 @@
       "ex_zh": ""
     },
     {
+      "word": "malleable",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "可塑性的;可塑的",
+      "synonym": "pliant",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "downplay",
       "ipa": "",
       "def_en": "",
       "def_zh": "淡化;不予重视;贬低",
       "synonym": "minimize",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "minimize",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "最小化;减少",
+      "synonym": "downplay",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -10675,6 +12685,15 @@
       "ex_zh": ""
     },
     {
+      "word": "predilection",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "爱好",
+      "synonym": "partiality",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "partiality",
       "ipa": "",
       "def_en": "",
@@ -10693,6 +12712,15 @@
       "ex_zh": ""
     },
     {
+      "word": "futile",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "无用的;徒劳的",
+      "synonym": "unsuccessful",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "assert",
       "ipa": "",
       "def_en": "",
@@ -10707,6 +12735,51 @@
       "def_en": "",
       "def_zh": "断言;声称",
       "synonym": "assert",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "confound",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "惑",
+      "synonym": "belie",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "belie",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "掩饰;掩盖;证明为假",
+      "synonym": "confound",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "ignore",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "忽略;忽视;无视",
+      "synonym": "discount",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "discount",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "折扣;打折",
+      "synonym": "ignore",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "burgeoning",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "迅速发展的",
+      "synonym": "thriving",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -10738,11 +12811,29 @@
       "ex_zh": ""
     },
     {
+      "word": "self-control",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "自控力",
+      "synonym": "moderation",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "moderation",
       "ipa": "",
       "def_en": "",
       "def_zh": "适度;自我节制;节制",
       "synonym": "self-control",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "concision",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "简洁;简明扼要",
+      "synonym": "pithiness",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -10810,6 +12901,15 @@
       "ex_zh": ""
     },
     {
+      "word": "uncertainty",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "不确定性",
+      "synonym": "ambiguity",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "ambiguity",
       "ipa": "",
       "def_en": "",
@@ -10819,11 +12919,38 @@
       "ex_zh": ""
     },
     {
+      "word": "inhibited",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "抑制的;受抑制的",
+      "synonym": "restrained",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "restrained",
       "ipa": "",
       "def_en": "",
       "def_zh": "克制的",
       "synonym": "inhibited",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "precarious",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "不稳定的;危险的",
+      "synonym": "uncertain",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "uncertain",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "不确定;不确定的",
+      "synonym": "precarious",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -10855,11 +12982,38 @@
       "ex_zh": ""
     },
     {
+      "word": "diffuse",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "扩散;弥漫;蔓延",
+      "synonym": "unfocused",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "reject",
       "ipa": "",
       "def_en": "",
       "def_zh": "拒绝;否决",
       "synonym": "dismiss",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "dismiss",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "忽视;解雇;不予考虑",
+      "synonym": "reject",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "upend",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "倒置",
+      "synonym": "invert",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -10909,6 +13063,24 @@
       "ex_zh": ""
     },
     {
+      "word": "exacerbate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "恶化;加剧症状",
+      "synonym": "aggravate",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "aggravate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "使恶化;加重;恶化",
+      "synonym": "exacerbate",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "pillory",
       "ipa": "",
       "def_en": "",
@@ -10932,6 +13104,15 @@
       "def_en": "",
       "def_zh": "的",
       "synonym": "elevated",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "perceptive",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "有洞察力的;敏锐的",
+      "synonym": "astute",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -10968,6 +13149,15 @@
       "def_en": "",
       "def_zh": "不明智的",
       "synonym": "misguided",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "misguided",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "误导的",
+      "synonym": "unwise",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -11017,6 +13207,15 @@
       "ex_zh": ""
     },
     {
+      "word": "intelligibility",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "可懂度;容易理解;可理解性",
+      "synonym": "lucidity",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "guarded with",
       "ipa": "",
       "def_en": "",
@@ -11035,6 +13234,33 @@
       "ex_zh": ""
     },
     {
+      "word": "scarce",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "稀缺的",
+      "synonym": "rare",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "rare",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "稀有的;罕见的",
+      "synonym": "scarce",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "relieve",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "缓解",
+      "synonym": "mitigate",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "promising",
       "ipa": "",
       "def_en": "",
@@ -11049,6 +13275,24 @@
       "def_en": "",
       "def_zh": "吸引人的",
       "synonym": "promising",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "relative",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "相对的;相关的;亲属",
+      "synonym": "contingent",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "contingent",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "依情况而定的;取决于",
+      "synonym": "relative",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -11107,6 +13351,15 @@
       "ex_zh": ""
     },
     {
+      "word": "consistent",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "持续的;一致的",
+      "synonym": "compatible",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "compatible",
       "ipa": "",
       "def_en": "",
@@ -11139,6 +13392,69 @@
       "def_en": "",
       "def_zh": "冒险的;有风险的",
       "synonym": "speculative",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "speculative",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "投机的;推测的;猜测的渗透的;全面的;普遍存在的;",
+      "synonym": "risky",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "ubiquitous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "无处不在的;普遍存在的",
+      "synonym": "pervasive",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "pervasive",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "无处不在的",
+      "synonym": "ubiquitous",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "inclusive",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "包括的;包容的",
+      "synonym": "comprehensive",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "comprehensive",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "综合的;全面的柔韧的;易弯曲的;柔软的;顺",
+      "synonym": "inclusive",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "plastic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "可塑的;塑料的",
+      "synonym": "pliable",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "pliable",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "从的严守纪律的人;严格执行纪律",
+      "synonym": "plastic",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -11179,11 +13495,56 @@
       "ex_zh": ""
     },
     {
+      "word": "ephemeral",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "短暂的;瞬息的模糊的;模棱两可的;含糊其",
+      "synonym": "transitory",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "transitory",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "暂时的;短暂的",
+      "synonym": "ephemeral",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "equivocal",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "辞的教条主义的;武断的;固执己",
+      "synonym": "ambiguous",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "ambiguous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "模棱两可的",
+      "synonym": "equivocal",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "dogmatic",
       "ipa": "",
       "def_en": "",
       "def_zh": "见的",
       "synonym": "orthodox",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "orthodox",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "正统;正统的;振荡的",
+      "synonym": "dogmatic",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -11242,11 +13603,38 @@
       "ex_zh": ""
     },
     {
+      "word": "enigma",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "谜;难以理解的事物",
+      "synonym": "mystery",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "mystery",
       "ipa": "",
       "def_en": "",
       "def_zh": "神秘;神秘之事",
       "synonym": "enigma",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "extirpate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "根除;消灭",
+      "synonym": "destroy",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "destroy",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "摧毁;毁灭",
+      "synonym": "extirpate",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -11305,6 +13693,24 @@
       "ex_zh": ""
     },
     {
+      "word": "esoteric",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "难懂的深奥的;只有少数人理解的;",
+      "synonym": "abstruse",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "abstruse",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "深奥的;难懂的",
+      "synonym": "esoteric",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "workaday",
       "ipa": "",
       "def_en": "",
@@ -11319,6 +13725,33 @@
       "def_en": "",
       "def_zh": "平凡的;常见的;日常的",
       "synonym": "workaday",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "anomalous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "异常的;不规则的",
+      "synonym": "exceptional",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "exceptional",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "异常的;非凡的",
+      "synonym": "anomalous",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "dependent on",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "依赖于",
+      "synonym": "sustained by",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -11341,6 +13774,15 @@
       "ex_zh": ""
     },
     {
+      "word": "frustrate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "挫败;使沮丧狭隘主义;狭小主义;地方观",
+      "synonym": "thwart",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "insularity",
       "ipa": "",
       "def_en": "",
@@ -11355,6 +13797,24 @@
       "def_en": "",
       "def_zh": "念不拘一格的;折中的;兼收并",
       "synonym": "insularity",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "wide-ranging",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "广泛的",
+      "synonym": "eclectic",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "eclectic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "蓄的;折衷的",
+      "synonym": "wide-ranging",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -11382,6 +13842,15 @@
       "def_en": "",
       "def_zh": "印记，弄脏沉思的;严肃的;深沉的;深思",
       "synonym": "taint",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "taint",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "玷污",
+      "synonym": "mar",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -11458,6 +13927,51 @@
       "ex_zh": ""
     },
     {
+      "word": "enigmatic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "的;难以理解的",
+      "synonym": "inscrutable",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "inscrutable",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "深不可测的;难以理解的",
+      "synonym": "enigmatic",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "rudimentary",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "基础的;初级的;基本的",
+      "synonym": "unsophisticated",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "unsophisticated",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "不复杂的;朴素的;不老练的",
+      "synonym": "rudimentary",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "decisive",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "决定性;决定性的;果断的",
+      "synonym": "marked",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "marked",
       "ipa": "",
       "def_en": "",
@@ -11494,11 +14008,47 @@
       "ex_zh": ""
     },
     {
+      "word": "champion",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "冠军;支持",
+      "synonym": "espouse",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "bound",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "约束;跃过",
+      "synonym": "circumscribed",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "circumscribed",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "受限的;局限的;被限制的",
+      "synonym": "bound",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "sensitive",
       "ipa": "",
       "def_en": "",
       "def_zh": "敏感的;感性的",
       "synonym": "discerning",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "discerning",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "有辨识能力的；眼光敏锐的",
+      "synonym": "sensitive",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -11530,11 +14080,29 @@
       "ex_zh": ""
     },
     {
+      "word": "adulation",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "吹捧;称赞;崇拜;奉承狭隘的;岛屿的;心胸狭窄的;",
+      "synonym": "sycophancy",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "provincial",
       "ipa": "",
       "def_en": "",
       "def_zh": "地方的",
       "synonym": "insular",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "insular",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "与世隔绝的;独自的",
+      "synonym": "provincial",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -11562,6 +14130,24 @@
       "def_en": "",
       "def_zh": "不均匀;不平衡",
       "synonym": "inconsistency",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "inconsistency",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "不一致;矛盾;不一致性",
+      "synonym": "unevenness",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "renounce",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "放弃;抛弃",
+      "synonym": "disavow",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -11602,6 +14188,33 @@
       "ex_zh": ""
     },
     {
+      "word": "calculated",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "精心策划的;蓄意的",
+      "synonym": "purposeful",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "peripheral",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "外围的;边缘的",
+      "synonym": "extraneous",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "extraneous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "无关的;多余的",
+      "synonym": "peripheral",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "hackneyed",
       "ipa": "",
       "def_en": "",
@@ -11625,6 +14238,15 @@
       "def_en": "",
       "def_zh": "破坏;中断;妨碍",
       "synonym": "perturbation",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "proliferate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "增生;激增;扩散",
+      "synonym": "multiply",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -11656,6 +14278,15 @@
       "ex_zh": ""
     },
     {
+      "word": "implacable",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "法和解的;无法改变的有争议的;引起争议的;引起",
+      "synonym": "relentless",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "relentless",
       "ipa": "",
       "def_en": "",
@@ -11665,11 +14296,67 @@
       "ex_zh": ""
     },
     {
+      "word": "controversial",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "争论的流动的;不稳定的;流转的;流",
+      "synonym": "polarizing",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "polarizing",
       "ipa": "",
       "def_en": "",
       "def_zh": "引发分裂的;极具争议的",
       "synonym": "controversial",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "fluid",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "体的;不固定的",
+      "synonym": "mutable",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "mutable",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "可变的;会变的;变异物",
+      "synonym": "fluid",
+      "ex_en": "",
+      "ex_zh": ""
+    }
+  ],
+  "8": [
+    {
+      "word": "competing",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "竞相的;竞争的逍遥的;巡游的;四处游历的;",
+      "synonym": "antagonistic",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "antagonistic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "敌对的;对抗性的",
+      "synonym": "competing",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "peripatetic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "流动的",
+      "synonym": "mobile",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -11701,11 +14388,29 @@
       "ex_zh": ""
     },
     {
+      "word": "prodigious",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "惊人的;巨大的;异常的",
+      "synonym": "colossal",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "colossal",
       "ipa": "",
       "def_en": "",
       "def_zh": "巨大的",
       "synonym": "prodigious",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "quiescent",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "静止的;平静的",
+      "synonym": "invariant",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -11728,11 +14433,29 @@
       "ex_zh": ""
     },
     {
+      "word": "wane",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "衰落;消失",
+      "synonym": "fade",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "complaisant",
       "ipa": "",
       "def_en": "",
       "def_zh": "乐于助人的",
       "synonym": "deferential",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "deferential",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "恭敬的",
+      "synonym": "complaisant",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -11782,6 +14505,15 @@
       "ex_zh": ""
     },
     {
+      "word": "generous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "慷慨的",
+      "synonym": "magnanimous",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "insightful",
       "ipa": "",
       "def_en": "",
@@ -11805,6 +14537,15 @@
       "def_en": "",
       "def_zh": "未被打破的",
       "synonym": "whole",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "emblematic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "象征性的;象征的",
+      "synonym": "quintessential",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -11836,11 +14577,38 @@
       "ex_zh": ""
     },
     {
+      "word": "displace",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "替换;移动",
+      "synonym": "supplant",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "supplant",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "取代流动的;不稳定的;流转的;流",
+      "synonym": "displace",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "variable",
       "ipa": "",
       "def_en": "",
       "def_zh": "多变的;可变的;变量",
       "synonym": "fluid",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "fluid",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "体的;不固定的",
+      "synonym": "variable",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -11863,11 +14631,47 @@
       "ex_zh": ""
     },
     {
+      "word": "altruism",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "利他主义;爱他人",
+      "synonym": "beneficence",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "hodgepodge",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "大杂烩",
+      "synonym": "patchwork",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "patchwork",
       "ipa": "",
       "def_en": "",
       "def_zh": "拼凑;拼缀",
       "synonym": "hodgepodge",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "heterogeneous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "异质;异质的",
+      "synonym": "disparate",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "disparate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "不同的;迥然不同的",
+      "synonym": "heterogeneous",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -11908,11 +14712,65 @@
       "ex_zh": ""
     },
     {
+      "word": "speculative",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "投机的;推测的;猜测的",
+      "synonym": "conjectural",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "conjectural",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "推测的;揣测的",
+      "synonym": "speculative",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "bypass",
       "ipa": "",
       "def_en": "",
       "def_zh": "绕过",
       "synonym": "circumvent",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "circumvent",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "规避;绕过",
+      "synonym": "bypass",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "hierarchical",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "等级制的;等级的",
+      "synonym": "stratified",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "stratified",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "分层的",
+      "synonym": "hierarchical",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "assert",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "断言;声明",
+      "synonym": "maintain",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -11953,6 +14811,15 @@
       "ex_zh": ""
     },
     {
+      "word": "impair",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "妨害;损害;削弱棘手的;难以处理的;难以对",
+      "synonym": "hamstring",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "stubborn",
       "ipa": "",
       "def_en": "",
@@ -11962,11 +14829,29 @@
       "ex_zh": ""
     },
     {
+      "word": "intractable",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "付",
+      "synonym": "stubborn",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "mixed",
       "ipa": "",
       "def_en": "",
       "def_zh": "混合的;杂糅的",
       "synonym": "inconsistent",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "inconsistent",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "不一致的;矛盾的",
+      "synonym": "mixed",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -12052,6 +14937,24 @@
       "ex_zh": ""
     },
     {
+      "word": "rudimentary",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "基础的;初级的;基本的",
+      "synonym": "elemental",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "heterogeneity",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "多样性;异质性不可侵犯的;神圣不可侵犯",
+      "synonym": "disparateness",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "disparateness",
       "ipa": "",
       "def_en": "",
@@ -12133,6 +15036,42 @@
       "ex_zh": ""
     },
     {
+      "word": "tantamount to",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "等同于",
+      "synonym": "synonymous with",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "synonymous with",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "与...同义",
+      "synonym": "tantamount to",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "preclude",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "排除;阻止;妨碍敏锐;洞察力;聪慧;锐利的智",
+      "synonym": "rule out",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "rule out",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "排除",
+      "synonym": "preclude",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "perspicacity",
       "ipa": "",
       "def_en": "",
@@ -12151,6 +15090,24 @@
       "ex_zh": ""
     },
     {
+      "word": "sound",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "声音;合理的;可靠的;健康的unassailable",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "temper",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "调节;使缓和;脾气;缓和",
+      "synonym": "modulate",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "modulate",
       "ipa": "",
       "def_en": "",
@@ -12165,6 +15122,15 @@
       "def_en": "",
       "def_zh": "前所未有的;无前例的",
       "synonym": "novel",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "novel",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "新颖的;新的;小说;新奇的",
+      "synonym": "unexampled",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -12205,6 +15171,15 @@
       "ex_zh": ""
     },
     {
+      "word": "deleterious",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "有害的",
+      "synonym": "counterproductive",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "counterproductive",
       "ipa": "",
       "def_en": "",
@@ -12214,11 +15189,56 @@
       "ex_zh": ""
     },
     {
+      "word": "ceded to",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "让与;割让给",
+      "synonym": "left to",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "left to",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "留给",
+      "synonym": "ceded to",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "stringent",
       "ipa": "",
       "def_en": "",
       "def_zh": "严格的;紧迫的",
       "synonym": "exacting",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "exacting",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "苛求的;要求严格的;严格的",
+      "synonym": "stringent",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "contradict",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "顶撞;反驳;与...矛盾",
+      "synonym": "gainsay",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "gainsay",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "否认;反驳",
+      "synonym": "contradict",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -12255,6 +15275,15 @@
       "def_en": "",
       "def_zh": "供应者;供应商",
       "synonym": "purveyor",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "opprobrium",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "众人的责骂;公开谴责流动的;不稳定的;流转的;流",
+      "synonym": "infamy",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -12313,6 +15342,24 @@
       "ex_zh": ""
     },
     {
+      "word": "capricious",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "任性;反复无常的",
+      "synonym": "cavalier",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "cavalier",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "漫不经心的;傲慢的",
+      "synonym": "capricious",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "rebuke",
       "ipa": "",
       "def_en": "",
@@ -12322,11 +15369,38 @@
       "ex_zh": ""
     },
     {
+      "word": "mockery",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "嘲弄;嘲笑;嘲讽",
+      "synonym": "rebuke",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "moderate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "温和的;适度的",
+      "synonym": "temper",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "caustic",
       "ipa": "",
       "def_en": "",
       "def_zh": "腐蚀性的;刻薄的",
       "synonym": "acerbic",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "acerbic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "尖刻的;尖酸的;尖酸刻薄的打破旧观念的;攻击传统的;",
+      "synonym": "caustic",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -12376,6 +15450,24 @@
       "ex_zh": ""
     },
     {
+      "word": "specious",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "造的;华而不实的",
+      "synonym": "spurious",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "spurious",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "虚假的;虚构的;伪造的",
+      "synonym": "specious",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "insist",
       "ipa": "",
       "def_en": "",
@@ -12394,11 +15486,47 @@
       "ex_zh": ""
     },
     {
+      "word": "duplicity",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "表里不一;欺骗;欺诈;双重性",
+      "synonym": "fraud",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "cerebral",
       "ipa": "",
       "def_en": "",
       "def_zh": "大脑的;脑力的",
       "synonym": "dispassionate",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "dispassionate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "冷静的;客观的",
+      "synonym": "cerebral",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "invariable",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "不变的;一贯的",
+      "synonym": "static",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "static",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "静止的;静态的;不变的;静电",
+      "synonym": "invariable",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -12457,11 +15585,38 @@
       "ex_zh": ""
     },
     {
+      "word": "commonplace",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "普通的;普遍的随意的;任意的;主观的;武断",
+      "synonym": "unremarkable",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "haphazard",
       "ipa": "",
       "def_en": "",
       "def_zh": "的",
       "synonym": "arbitrary",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "arbitrary",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "的纯净的;没有混合物的;整洁",
+      "synonym": "haphazard",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "unalloyed",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "非合金的;纯粹的;不掺杂的无懈可击的;不可动摇的;坚",
+      "synonym": "neat",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -12493,11 +15648,38 @@
       "ex_zh": ""
     },
     {
+      "word": "presage",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "预示;预兆;预测",
+      "synonym": "foretell",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "foretell",
       "ipa": "",
       "def_en": "",
       "def_zh": "预言",
       "synonym": "presage",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "exhaustive",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "详尽的;彻底的;全面的各种各样的;不同的;多种多",
+      "synonym": "comprehensive",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "comprehensive",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "综合的;全面的",
+      "synonym": "exhaustive",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -12547,6 +15729,15 @@
       "ex_zh": ""
     },
     {
+      "word": "economy",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "经济;简洁;简练奄奄一息的;即将消亡的;濒",
+      "synonym": "brevity",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "doomed",
       "ipa": "",
       "def_en": "",
@@ -12592,6 +15783,24 @@
       "ex_zh": ""
     },
     {
+      "word": "augment",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "扩大;增加",
+      "synonym": "supplement",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "unique to",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "独有于",
+      "synonym": "characteristic of",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "characteristic of",
       "ipa": "",
       "def_en": "",
@@ -12615,6 +15824,42 @@
       "def_en": "",
       "def_zh": "辅助的;附属的",
       "synonym": "subsidiary",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "subsidiary",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "附属的显然的;明显的;显现的;显而",
+      "synonym": "ancillary",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "patent",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "明显的;专利",
+      "synonym": "manifest",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "manifest",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "易见的;表现出逍遥的;巡游的;四处游历的;",
+      "synonym": "patent",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "itinerant",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "流动的;巡回的",
+      "synonym": "peripatetic",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -12682,11 +15927,47 @@
       "ex_zh": ""
     },
     {
+      "word": "complex",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "复杂的",
+      "synonym": "nuanced",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "decry",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "谴责",
+      "synonym": "disparage",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "disparage",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "贬低;轻视",
+      "synonym": "decry",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "peculiar",
       "ipa": "",
       "def_en": "",
       "def_zh": "奇特的;古怪的",
       "synonym": "idiosyncratic",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "idiosyncratic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "特殊的;独特的",
+      "synonym": "peculiar",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -12727,11 +16008,29 @@
       "ex_zh": ""
     },
     {
+      "word": "apogee",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "远地点;顶点;最高点",
+      "synonym": "pinnacle",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "pinnacle",
       "ipa": "",
       "def_en": "",
       "def_zh": "顶点;高峰",
       "synonym": "apogee",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "flexibility",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "灵活性;柔韧性",
+      "synonym": "malleability",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -12768,6 +16067,15 @@
       "def_en": "",
       "def_zh": "可选择的;选择性的",
       "synonym": "discerning",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "discerning",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "有辨识能力的；眼光敏锐的",
+      "synonym": "selective",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -12880,6 +16188,24 @@
       "ex_zh": ""
     },
     {
+      "word": "salient",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "突出的;显著的",
+      "synonym": "evident",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "evident",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "明显的;显而易见的",
+      "synonym": "salient",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "imaginable",
       "ipa": "",
       "def_en": "",
@@ -12889,11 +16215,65 @@
       "ex_zh": ""
     },
     {
+      "word": "conceivable",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "可以想象的",
+      "synonym": "imaginable",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "pervasive",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "无处不在的",
+      "synonym": "ubiquitous",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "ubiquitous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "无处不在的;普遍存在的",
+      "synonym": "pervasive",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "incipient",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "初期的",
+      "synonym": "nascent",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "nascent",
       "ipa": "",
       "def_en": "",
       "def_zh": "起初的;初期的",
       "synonym": "incipient",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "fractious",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "脾气暴躁的",
+      "synonym": "irascible",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "irascible",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "容易生气的;易怒的;暴躁的",
+      "synonym": "fractious",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -12916,6 +16296,15 @@
       "ex_zh": ""
     },
     {
+      "word": "champion",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "冠军;支持",
+      "synonym": "promoter",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "deceptive",
       "ipa": "",
       "def_en": "",
@@ -12925,11 +16314,31 @@
       "ex_zh": ""
     },
     {
+      "word": "unexceptional",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "外的",
+      "synonym": "commonplace",
+      "ex_en": "",
+      "ex_zh": ""
+    }
+  ],
+  "9": [
+    {
       "word": "eradicate",
       "ipa": "",
       "def_en": "",
       "def_zh": "根除;消灭",
       "synonym": "extirpate",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "extirpate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "根除;消灭",
+      "synonym": "eradicate",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -12961,6 +16370,15 @@
       "ex_zh": ""
     },
     {
+      "word": "novel",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "新颖的;新的;小说;新奇的",
+      "synonym": "unprecedented",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "elucidate",
       "ipa": "",
       "def_en": "",
@@ -12979,11 +16397,47 @@
       "ex_zh": ""
     },
     {
+      "word": "contentious",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "有争议的;引起争议的",
+      "synonym": "tendentious",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "tendentious",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "见的",
+      "synonym": "contentious",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "careful",
       "ipa": "",
       "def_en": "",
       "def_zh": "小心的;细致的",
       "synonym": "circumspect",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "circumspect",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "慎重的;谨慎的;小心的",
+      "synonym": "careful",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "acrimony",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "尖刻;刻薄",
+      "synonym": "bitterness",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -13002,6 +16456,33 @@
       "def_en": "",
       "def_zh": "托辞",
       "synonym": "contrivance",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "contrivance",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "发明创造;计谋;设计",
+      "synonym": "pretext",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "judicious",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "明智的;有见识的",
+      "synonym": "sensible",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "sensible",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "明智的",
+      "synonym": "judicious",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -13078,11 +16559,38 @@
       "ex_zh": ""
     },
     {
+      "word": "abate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "减弱",
+      "synonym": "dissipate",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "dissipate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "消散;散失",
+      "synonym": "abate",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "inscrutability",
       "ipa": "",
       "def_en": "",
       "def_zh": "难以捉摸",
       "synonym": "mystery",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "mystery",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "神秘;神秘之事",
+      "synonym": "inscrutability",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -13123,11 +16631,38 @@
       "ex_zh": ""
     },
     {
+      "word": "extravagant",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "奢侈的;过分的",
+      "synonym": "excessive",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "excessive",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "的",
+      "synonym": "extravagant",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "paragon",
       "ipa": "",
       "def_en": "",
       "def_zh": "完美无缺的;模范",
       "synonym": "exemplar",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "exemplar",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "典范;榜样;模范",
+      "synonym": "paragon",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -13155,6 +16690,33 @@
       "def_en": "",
       "def_zh": "法进入的",
       "synonym": "opaque",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "opaque",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "不透明的",
+      "synonym": "inaccessible",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "dearth",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "匮乏;缺乏的;吃紧",
+      "synonym": "paucity",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "paucity",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "匮乏;缺乏;稀缺;不足",
+      "synonym": "dearth",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -13213,6 +16775,15 @@
       "ex_zh": ""
     },
     {
+      "word": "prudent",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "审慎的",
+      "synonym": "circumspect",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "stilted",
       "ipa": "",
       "def_en": "",
@@ -13245,6 +16816,24 @@
       "def_en": "",
       "def_zh": "多愁善感的不可侵犯的;神圣不可侵犯",
       "synonym": "saccharine",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "sacrosanct",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "神圣不可侵犯的",
+      "synonym": "inviolable",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "inviolable",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "的;绝对不可轻视;不可冒犯",
+      "synonym": "sacrosanct",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -13285,11 +16874,47 @@
       "ex_zh": ""
     },
     {
+      "word": "outmoded",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "陈旧;过时的",
+      "synonym": "unfashionable",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "unfashionable",
       "ipa": "",
       "def_en": "",
       "def_zh": "不流行的;过时的",
       "synonym": "outmoded",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "shun",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "回避;避开",
+      "synonym": "eschew",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "eschew",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "避开;避免",
+      "synonym": "shun",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "engender",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "产生;引起",
+      "synonym": "induce",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -13312,11 +16937,101 @@
       "ex_zh": ""
     },
     {
+      "word": "trepidation",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "不安;担忧;恐惧;惊恐;恐慌",
+      "synonym": "misgivings",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "opprobrium",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "众人的责骂;公开谴责",
+      "synonym": "disdain",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "disdain",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "蔑视;鄙视;轻蔑",
+      "synonym": "opprobrium",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "bolster",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "支持;支撑;加强",
+      "synonym": "buttress",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "buttress",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "支持;支撑",
+      "synonym": "bolster",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "speculative",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "投机的;推测的;猜测的显然的;明显的;显现的;显而",
+      "synonym": "conjectural",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "conjectural",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "推测的;揣测的",
+      "synonym": "speculative",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "manifest",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "易见的;表现出",
+      "synonym": "obvious",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "obvious",
       "ipa": "",
       "def_en": "",
       "def_zh": "明显的;显而易见的",
       "synonym": "manifest",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "thorough",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "彻底的;详尽的",
+      "synonym": "exhaustive",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "exhaustive",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "详尽的;彻底的;全面的",
+      "synonym": "thorough",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -13335,6 +17050,15 @@
       "def_en": "",
       "def_zh": "借",
       "synonym": "appropriate",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "iconoclastic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "偶像破坏者",
+      "synonym": "subversive",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -13411,6 +17135,15 @@
       "ex_zh": ""
     },
     {
+      "word": "improbable",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "不可能的;不太可能的",
+      "synonym": "incredible",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "venerating",
       "ipa": "",
       "def_en": "",
@@ -13456,6 +17189,15 @@
       "ex_zh": ""
     },
     {
+      "word": "prescient",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "有先见之明的;有预知能力的",
+      "synonym": "foresighted",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "cloying",
       "ipa": "",
       "def_en": "",
@@ -13488,6 +17230,15 @@
       "def_en": "",
       "def_zh": "异国的",
       "synonym": "anomalous",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "anomalous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "异常的;不规则的",
+      "synonym": "exotic",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -13528,6 +17279,15 @@
       "ex_zh": ""
     },
     {
+      "word": "rudimentary",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "基础的;初级的;基本的",
+      "synonym": "elementary",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "elementary",
       "ipa": "",
       "def_en": "",
@@ -13537,11 +17297,29 @@
       "ex_zh": ""
     },
     {
+      "word": "sustain",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "维持;支撑",
+      "synonym": "perpetuate",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "perpetuate",
       "ipa": "",
       "def_en": "",
       "def_zh": "续;使永存",
       "synonym": "sustain",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "ceded to",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "让与;割让给",
+      "synonym": "surrendered to",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -13560,6 +17338,33 @@
       "def_en": "",
       "def_zh": "外行的;非专业的;放置;产卵avocational",
       "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "lacking",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "缺乏",
+      "synonym": "wanting",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "wanting",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "不足;缺乏",
+      "synonym": "lacking",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "expedient",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "权宜之计",
+      "synonym": "convenient",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -13627,11 +17432,56 @@
       "ex_zh": ""
     },
     {
+      "word": "indispensable",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "少的",
+      "synonym": "essential",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "essential",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "的",
+      "synonym": "indispensable",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "intelligible",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "易懂的;可理解的",
+      "synonym": "readable",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "readable",
       "ipa": "",
       "def_en": "",
       "def_zh": "易读的;易懂的;可读的",
       "synonym": "intelligible",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "comprehensive",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "综合的;全面的",
+      "synonym": "exhaustive",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "confound",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "惑",
+      "synonym": "perplex",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -13681,6 +17531,33 @@
       "ex_zh": ""
     },
     {
+      "word": "divorced from",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "脱离",
+      "synonym": "untethered from",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "proliferate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "增生;激增;扩散",
+      "synonym": "abound",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "abound",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "大量存在;充满",
+      "synonym": "proliferate",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "check",
       "ipa": "",
       "def_en": "",
@@ -13708,6 +17585,15 @@
       "ex_zh": ""
     },
     {
+      "word": "imperceptible",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "不易察觉的;察觉不出的",
+      "synonym": "gradual",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "pedigree",
       "ipa": "",
       "def_en": "",
@@ -13717,11 +17603,65 @@
       "ex_zh": ""
     },
     {
+      "word": "origin",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "原点;起源;来源",
+      "synonym": "pedigree",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "distinct",
       "ipa": "",
       "def_en": "",
       "def_zh": "的",
       "synonym": "idiosyncratic",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "idiosyncratic",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "特殊的;独特的",
+      "synonym": "distinct",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "belie",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "掩饰;掩盖;证明为假",
+      "synonym": "contradict",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "contradict",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "顶撞;反驳;与...矛盾",
+      "synonym": "belie",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "truculent",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "好斗的",
+      "synonym": "pugnacious",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "pugnacious",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "好斗的;好战的",
+      "synonym": "truculent",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -13753,6 +17693,15 @@
       "ex_zh": ""
     },
     {
+      "word": "ancillary",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "辅助的;附属的细致入微的;微妙的;有细微",
+      "synonym": "supplementary",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "supplementary",
       "ipa": "",
       "def_en": "",
@@ -13762,11 +17711,29 @@
       "ex_zh": ""
     },
     {
+      "word": "nuanced",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "差别的",
+      "synonym": "subtle",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "subtle",
       "ipa": "",
       "def_en": "",
       "def_zh": "巧妙的",
       "synonym": "nuanced",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "lambaste",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "严厉斥责;痛斥",
+      "synonym": "excoriate",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -13794,6 +17761,15 @@
       "def_en": "",
       "def_zh": "减弱;抑制;阻尼;削弱平淡的;平凡的;乏味的;平淡",
       "synonym": "impede",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "impede",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "阻碍;妨碍",
+      "synonym": "dampen",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -13852,6 +17828,33 @@
       "ex_zh": ""
     },
     {
+      "word": "conspicuous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "明显的",
+      "synonym": "prominent",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "prominent",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "的",
+      "synonym": "conspicuous",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "deleterious",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "有害的",
+      "synonym": "pernicious",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "pernicious",
       "ipa": "",
       "def_en": "",
@@ -13870,11 +17873,29 @@
       "ex_zh": ""
     },
     {
+      "word": "decry",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "谴责",
+      "synonym": "reprehend",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "transmit",
       "ipa": "",
       "def_en": "",
       "def_zh": "传递;传输",
       "synonym": "propagate",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "propagate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "传播",
+      "synonym": "transmit",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -13888,11 +17909,65 @@
       "ex_zh": ""
     },
     {
+      "word": "supplant",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "取代",
+      "synonym": "replace",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "replace",
       "ipa": "",
       "def_en": "",
       "def_zh": "替换",
       "synonym": "supplant",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "circumvent",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "规避;绕过",
+      "synonym": "eschew",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "insular",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "与世隔绝的;独自的",
+      "synonym": "parochial",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "parochial",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "地方观念的;狭隘的;教区的",
+      "synonym": "insular",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "avoid",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "避免",
+      "synonym": "eschew",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "perfunctory",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "敷衍的;漫不经心的",
+      "synonym": "brief",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -13906,11 +17981,65 @@
       "ex_zh": ""
     },
     {
+      "word": "uncertain",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "不确定;不确定的",
+      "synonym": "tenuous",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "tenuous",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "脆弱的",
+      "synonym": "uncertain",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "insightful",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "有深刻见解的;富有洞察力的discriminating",
+      "synonym": "",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "sidestep",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "回避;规避",
+      "synonym": "eschew",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "verify",
       "ipa": "",
       "def_en": "",
       "def_zh": "核实;证实似是而非的;貌似有理的;伪",
       "synonym": "corroborate",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "corroborate",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "证实;支持",
+      "synonym": "verify",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "specious",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "造的;华而不实的",
+      "synonym": "fallacious",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -13960,6 +18089,15 @@
       "ex_zh": ""
     },
     {
+      "word": "extoll",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "赞美;赞颂",
+      "synonym": "applaud",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
       "word": "reinforce",
       "ipa": "",
       "def_en": "",
@@ -14001,6 +18139,33 @@
       "def_en": "",
       "def_zh": "乡村的;纯朴的",
       "synonym": "bucolic",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "deride",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "嘲笑;揶揄;嘲弄",
+      "synonym": "scorn",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "scorn",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "轻蔑",
+      "synonym": "deride",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "hackneyed",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "陈腐的",
+      "synonym": "pedestrian",
       "ex_en": "",
       "ex_zh": ""
     },
@@ -14055,6 +18220,15 @@
       "def_en": "",
       "def_zh": "无意义原来的;原始的;原创的;独创",
       "synonym": "futility",
+      "ex_en": "",
+      "ex_zh": ""
+    },
+    {
+      "word": "original",
+      "ipa": "",
+      "def_en": "",
+      "def_zh": "的",
+      "synonym": "novel",
       "ex_en": "",
       "ex_zh": ""
     },
