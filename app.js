@@ -43,7 +43,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '27';
+const ASSET_VERSION = '28';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -281,37 +281,55 @@ async function loadBook(bookId) {
   EQUIV_INDEX = book.testMode === 'equiv' ? buildEquivIndex(VOCAB) : null;
 }
 
-// Union-find: every row (word, syn1, syn2, ...) is one equivalence edge set.
-// Returns { byWord: {w: [equivs]}, allWords: [w...] } where words are lowercased.
+// Per-row equivalence index. Each row (A, [B1, B2, ...]) contributes:
+//   A ↔ B1, A ↔ B2, ..., and B1 ↔ B2 ↔ ... within the row.
+// We deliberately do NOT do transitive union-find across rows: BB六选二
+// treats each row as one atomic pair, and chaining rows through shared
+// words (e.g. singular↔unique, singular↔anomalous, anomalous↔rare,
+// rare↔scarce, scarce↔inadequate) would falsely make singular and
+// inadequate equivalents. The GRE test only accepts direct row-level
+// equivalence, so this per-row model matches the source.
+//
+// A word that appears as the target of multiple rows still accumulates
+// all its per-row equivalents (union of adjacent words, not their
+// downstream neighbors).
 function buildEquivIndex(vocab) {
-  const parent = Object.create(null);
-  const find = (x) => { let r = x; while (parent[r] !== r) r = parent[r]; while (parent[x] !== r) { const n = parent[x]; parent[x] = r; x = n; } return r; };
-  const link = (a, b) => { const ra = find(a), rb = find(b); if (ra !== rb) parent[ra] = rb; };
-  const splitSyns = (s) => (s || '').split(/[,，;；/]| or | and /i).map(t => t.trim().toLowerCase()).filter(t => /^[a-z][a-z'\- ]*$/.test(t));
+  const equivs = Object.create(null);   // wordLower -> Set of equivalent wordLower
   const allSet = new Set();
-  const rows = [];
+  const add = (a, b) => {
+    if (!a || !b || a === b) return;
+    if (!equivs[a]) equivs[a] = new Set();
+    equivs[a].add(b);
+  };
+  const splitSyns = (s) => (s || '')
+    .split(/[,，;；/]| or | and /i)
+    .map(t => t.trim().toLowerCase())
+    .filter(t => /^[a-z][a-z'\- ]*$/.test(t));
   for (const list of Object.values(vocab || {})) {
     for (const e of list) {
       const w = (e.word || '').toLowerCase().trim();
       if (!/^[a-z]/.test(w)) continue;
       const syns = splitSyns(e.synonym);
+      if (!syns.length) continue;
       allSet.add(w);
-      syns.forEach(s => allSet.add(s));
-      rows.push([w, syns]);
+      // A ↔ each B
+      for (const s of syns) {
+        allSet.add(s);
+        add(w, s);
+        add(s, w);
+      }
+      // Also link B_i ↔ B_j within this row (真经等价词 rows list multiple
+      // co-equivalents that are all mutually equivalent by design).
+      for (let i = 0; i < syns.length; i++) {
+        for (let j = i + 1; j < syns.length; j++) {
+          add(syns[i], syns[j]);
+          add(syns[j], syns[i]);
+        }
+      }
     }
   }
-  for (const w of allSet) parent[w] = w;
-  for (const [w, syns] of rows) for (const s of syns) link(w, s);
-  const byClass = {};
-  for (const w of allSet) {
-    const r = find(w);
-    (byClass[r] = byClass[r] || []).push(w);
-  }
   const byWord = {};
-  for (const cls of Object.values(byClass)) {
-    if (cls.length < 2) continue;
-    for (const w of cls) byWord[w] = cls.filter(x => x !== w);
-  }
+  for (const w of Object.keys(equivs)) byWord[w] = [...equivs[w]];
   return { byWord, allWords: [...allSet] };
 }
 
