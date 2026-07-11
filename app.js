@@ -43,7 +43,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '28';
+const ASSET_VERSION = '29';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -783,9 +783,12 @@ function buildRevealHtml(q, card, compact = false) {
     ${star}
   </div>`;
   if (q.dir === 'equiv') {
-    const others = (EQUIV_INDEX && EQUIV_INDEX.byWord[w.word.toLowerCase()] || []).filter(x => x !== q.correctWord);
+    // "Also equivalent" only lists the OTHER synonyms from this specific
+    // row — never cross-row equivalents, which may belong to a different
+    // sense of the prompt word.
+    const others = (q.rowSyns || []).filter(x => x !== q.correctWord);
     const otherLine = others.length
-      ? `<div style="font-size:12.5px;color:var(--muted);margin-top:4px">Also equivalent: ${others.map(escHtml).join(', ')}</div>`
+      ? `<div style="font-size:12.5px;color:var(--muted);margin-top:4px">Also equivalent in this row: ${others.map(escHtml).join(', ')}</div>`
       : '';
     return `${head}
       <div style="margin-top:6px">≡ <b>${escHtml(q.correctWord)}</b></div>
@@ -833,20 +836,32 @@ function renderTestOptions(q, w) {
 function buildEquivQ(w) {
   if (!EQUIV_INDEX) return null;
   const wl = w.word.toLowerCase();
-  const equivs = EQUIV_INDEX.byWord[wl] || [];
-  if (!equivs.length) return null;
-  const correct = equivs[Math.floor(Math.random() * equivs.length)];
-  const equivSet = new Set([wl, ...equivs]);
-  const pool = EQUIV_INDEX.allWords.filter(x => !equivSet.has(x));
+  // Strictly per-ROW: the correct answer comes from THIS entry's own
+  // synonym field only. A word like "relative" can appear in multiple
+  // rows with different partners (list 1: kinfolk; list 7: contingent)
+  // representing different senses — the quiz must test the row's
+  // specific sense, not aggregate them.
+  const rowSyns = (w.synonym || '')
+    .split(/[,，;；/]| or | and /i)
+    .map(t => t.trim().toLowerCase())
+    .filter(t => /^[a-z][a-z'\- ]*$/.test(t));
+  if (!rowSyns.length) return null;
+  const correct = rowSyns[Math.floor(Math.random() * rowSyns.length)];
+  // Distractors: exclude the prompt, this row's synonyms, AND every
+  // cross-row equivalent of the prompt — otherwise a legitimate
+  // equivalent from a different row could appear as a "wrong" option
+  // and mislead the user.
+  const crossRowEquivs = (EQUIV_INDEX.byWord[wl] || []);
+  const forbidden = new Set([wl, ...rowSyns, ...crossRowEquivs]);
+  const pool = EQUIV_INDEX.allWords.filter(x => !forbidden.has(x));
   shuffle(pool);
   const distractors = pool.slice(0, 3);
-  // If we somehow lack enough distractors (tiny book), bail out
   if (distractors.length < 3) return null;
   const opts = shuffle([
     { word: correct, equiv: true },
     ...distractors.map(d => ({ word: d, equiv: false })),
   ]);
-  return { w, dir: 'equiv', opts, correctWord: correct };
+  return { w, dir: 'equiv', opts, correctWord: correct, rowSyns };
 }
 
 function pickDistractors(n, target, k, dir) {
