@@ -43,7 +43,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '26';
+const ASSET_VERSION = '27';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -541,31 +541,28 @@ function renderReviewBanner() {
         </div>
       </div>`;
   }
-  // Mixed review now excludes starred words — those are tested separately
-  // through the Starred Test banner at the top of the page.
-  let poolCount = 0, starredCount = 0;
-  for (const n of active) {
-    for (const w of VOCAB[String(n)]) {
-      const c = getCard(n, w.word);
-      if (c.starred) { starredCount++; continue; }
-      poolCount++;
-    }
-  }
+  // Mixed review is driven by SM-2 spaced repetition. The banner shows how
+  // many cards are due today so you know how much the algorithm thinks
+  // you need to review; the session first exhausts those, then fills any
+  // remaining slots with least-recently-seen cards.
+  const { dueCount, soonCount, restCount, starredCount } = reviewPoolStats(active);
+  const learnedTotal = dueCount + soonCount + restCount;
   const rangeLabel = active.length === 1
     ? `list ${active[0]}`
     : (active.length <= 4
         ? `lists ${active.join(', ')}`
         : `lists ${active[0]}–${active[active.length - 1]} (${active.length} units)`);
-  const sessionSize = Math.min(SETTINGS.reviewSize, poolCount);
-  const starredBlurb = starredCount > 0
-    ? ` · ${starredCount} starred ★ tested separately above.`
-    : '';
+  const sessionSize = Math.min(SETTINGS.reviewSize, Math.max(dueCount, learnedTotal));
+  const starredBlurb = starredCount > 0 ? ` · ${starredCount} starred ★ tested separately above.` : '';
+  const dueLine = dueCount > 0
+    ? `<b>${dueCount}</b> due today · ${soonCount} coming up in ~3 days · ${restCount} well-learned resting.`
+    : `All caught up — nothing due today! Session will pull ${sessionSize} least-recently-seen words to keep old vocab warm.`;
   return `
     <div class="section-heading">Mixed Review · ${rangeLabel}</div>
     <a class="review-banner" href="#/review">
       <div class="review-banner-body">
-        <div class="rb-title">${sessionSize}-question random review</div>
-        <div class="rb-desc">${poolCount} non-starred word${poolCount === 1 ? '' : 's'} in pool across ${active.length} unit${active.length === 1 ? '' : 's'}.${starredBlurb} New random sample every time you start.</div>
+        <div class="rb-title">${sessionSize}-question smart review</div>
+        <div class="rb-desc">${dueLine}${starredBlurb}</div>
       </div>
       <div class="review-banner-cta">
         <span class="btn-primary" style="pointer-events:none">Start review</span>
@@ -991,20 +988,62 @@ function renderReview() {
 }
 
 function buildReviewSession(activeLists, size) {
-  // Pull a random sample of non-starred words across all active lists.
-  // Starred words are excluded here because they get their own dedicated
-  // Starred Test (see renderStarredTest), so mixed review concentrates on
-  // the words that aren't already being tested individually.
-  const pool = [];
+  // Smart SM-2-driven scheduling: prioritize cards whose spaced-repetition
+  // interval has come due, then fill any remaining slots with cards not
+  // reviewed in a while. As you master a word, SM-2 pushes its due date
+  // further into the future, so the daily pool naturally shrinks — old
+  // vocab doesn't pile up.
+  //
+  // Starred words are excluded — they have their own dedicated test.
+  // Fresh (never-studied) words are excluded — they haven't been introduced
+  // in a unit test yet, so the algorithm has nothing to schedule from.
+  const now = Date.now();
+  const due = [], soon = [], rest = [];
+  const SOON_WINDOW = 3 * DAY;
   for (const n of activeLists) {
     for (const w of VOCAB[String(n)]) {
       const c = getCard(n, w.word);
       if (c.starred) continue;
-      pool.push({ n, w });
+      if (isFresh(c)) continue;
+      const delta = c.due - now;
+      if (delta <= 0)          due.push({ n, w, key: delta });        // most-overdue first
+      else if (delta <= SOON_WINDOW) soon.push({ n, w, key: delta });
+      else                     rest.push({ n, w, key: c.last });      // least-recently-seen first
     }
   }
-  shuffle(pool);
-  return pool.slice(0, Math.min(size, pool.length));
+  due.sort((a, b) => a.key - b.key);
+  soon.sort((a, b) => a.key - b.key);
+  rest.sort((a, b) => a.key - b.key);
+  const out = [];
+  for (const bucket of [due, soon, rest]) {
+    for (const item of bucket) {
+      if (out.length >= size) break;
+      out.push({ n: item.n, w: item.w });
+    }
+    if (out.length >= size) break;
+  }
+  shuffle(out);
+  return out;
+}
+
+// Counts used by the Mixed Review banner to give a clearer picture of
+// what the algorithm sees today.
+function reviewPoolStats(activeLists) {
+  const now = Date.now();
+  let dueCount = 0, soonCount = 0, restCount = 0, freshCount = 0, starredCount = 0;
+  const SOON_WINDOW = 3 * DAY;
+  for (const n of activeLists) {
+    for (const w of VOCAB[String(n)]) {
+      const c = getCard(n, w.word);
+      if (c.starred) { starredCount++; continue; }
+      if (isFresh(c)) { freshCount++; continue; }
+      const delta = c.due - now;
+      if (delta <= 0) dueCount++;
+      else if (delta <= SOON_WINDOW) soonCount++;
+      else restCount++;
+    }
+  }
+  return { dueCount, soonCount, restCount, freshCount, starredCount };
 }
 
 function startReview(session, active) {
