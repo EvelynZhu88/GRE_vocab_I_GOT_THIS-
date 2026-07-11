@@ -43,7 +43,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '29';
+const ASSET_VERSION = '30';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -764,7 +764,7 @@ function buildTestQ(n, w) {
   // in the index (rare; would mean an isolated entry with empty synonym).
   const book = bookById(ACTIVE_BOOK_ID);
   if (book.testMode === 'equiv' && EQUIV_INDEX) {
-    const eq = buildEquivQ(w);
+    const eq = buildEquivQ(n, w);
     if (eq) return eq;
   }
   // Always test en→zh: on the real GRE you see the English word and have
@@ -833,7 +833,7 @@ function renderTestOptions(q, w) {
   }).join('');
 }
 
-function buildEquivQ(w) {
+function buildEquivQ(n, w) {
   if (!EQUIV_INDEX) return null;
   const wl = w.word.toLowerCase();
   // Strictly per-ROW: the correct answer comes from THIS entry's own
@@ -847,13 +847,22 @@ function buildEquivQ(w) {
     .filter(t => /^[a-z][a-z'\- ]*$/.test(t));
   if (!rowSyns.length) return null;
   const correct = rowSyns[Math.floor(Math.random() * rowSyns.length)];
-  // Distractors: exclude the prompt, this row's synonyms, AND every
-  // cross-row equivalent of the prompt — otherwise a legitimate
-  // equivalent from a different row could appear as a "wrong" option
-  // and mislead the user.
-  const crossRowEquivs = (EQUIV_INDEX.byWord[wl] || []);
+  // Distractors are drawn from words in the CURRENT list only. Otherwise
+  // a unit-1 test would surface list-7 words the user hasn't studied yet.
+  // Also exclude the prompt itself, this row's synonyms, and every
+  // cross-row equivalent of the prompt (avoid ambiguous "wrong" options).
+  const crossRowEquivs = EQUIV_INDEX.byWord[wl] || [];
   const forbidden = new Set([wl, ...rowSyns, ...crossRowEquivs]);
-  const pool = EQUIV_INDEX.allWords.filter(x => !forbidden.has(x));
+  const listWords = new Set();
+  for (const e of (VOCAB[String(n)] || [])) {
+    const lw = (e.word || '').toLowerCase();
+    if (lw && !forbidden.has(lw)) listWords.add(lw);
+    for (const s of (e.synonym || '').split(/[,，;；/]| or | and /i)) {
+      const ls = s.trim().toLowerCase();
+      if (/^[a-z][a-z'\- ]*$/.test(ls) && !forbidden.has(ls)) listWords.add(ls);
+    }
+  }
+  const pool = [...listWords];
   shuffle(pool);
   const distractors = pool.slice(0, 3);
   if (distractors.length < 3) return null;
