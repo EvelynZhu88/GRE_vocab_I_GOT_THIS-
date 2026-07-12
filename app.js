@@ -43,7 +43,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '31';
+const ASSET_VERSION = '32';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -804,8 +804,7 @@ function buildRevealHtml(q, card, compact = false) {
 function renderTestPrompt(q, w) {
   if (q.dir === 'equiv') {
     return `<div class="prompt-label">Pick the equivalent word</div>
-            <div class="prompt">${escHtml(w.word)}</div>
-            ${w.def_zh ? `<div class="ipa">${escHtml(w.def_zh)}</div>` : ''}`;
+            <div class="prompt">${escHtml(w.word)}</div>`;
   }
   if (q.dir === 'en2zh') {
     return `<div class="prompt-label">What does this mean?</div>
