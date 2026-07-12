@@ -6,11 +6,10 @@ Each content row is a 4-column pair of equivalent English words:
   x≈302 : word B (English, equivalent to A)
   x≈431 : Chinese meaning of B
 
-Both A and B are legitimate GRE prompts (the exam might show either),
-so we emit two vocab entries per row — one keyed on A with B as its
-synonym, one keyed on B with A as its synonym. The union-find in
-buildEquivIndex on the client side then merges them into a single
-equivalence class.
+Each row emits ONE entry only: word=A, synonym=B. The reverse (B→A)
+is skipped so the user tests each pair in a single direction — cuts
+the pool roughly in half and matches the way the source PDF lists
+each pair only once.
 
 Content starts on page 4 (content page 1); pages 1-3 are cover /
 instructions. The 36 content pages are grouped into 9 lists of 4
@@ -119,21 +118,20 @@ def parse():
                 wB = clean_word(''.join(r['wordB']))
                 zhA = clean_zh(''.join(r['zhA']))
                 zhB = clean_zh(''.join(r['zhB']))
-                for w, zh, other in ((wA, zhA, wB), (wB, zhB, wA)):
-                    if not w or not WORD_RE.match(w):
-                        continue
-                    wl = w.lower()
-                    # Dedup within the list; but let the same word appear in
-                    # a later list too, because a subsequent pair might use
-                    # it against a new equivalent.
-                    if wl in local_seen:
-                        continue
-                    local_seen.add(wl)
-                    seen_global.add(wl)
-                    entries.append({
-                        'word': w, 'ipa': '', 'def_en': '', 'def_zh': zh,
-                        'synonym': other, 'ex_en': '', 'ex_zh': '',
-                    })
+                # One-way only: word A with synonym B. Skip B→A.
+                if not wA or not WORD_RE.match(wA):
+                    continue
+                wl = wA.lower()
+                # Dedup within the list; the same word can still show up in
+                # a later list with a different partner.
+                if wl in local_seen:
+                    continue
+                local_seen.add(wl)
+                seen_global.add(wl)
+                entries.append({
+                    'word': wA, 'ipa': '', 'def_en': '', 'def_zh': zhA,
+                    'synonym': wB, 'ex_en': '', 'ex_zh': '',
+                })
         lists[str(list_num)] = entries
         pdf_range = f'PDF pp. {chunk[0]+1}-{chunk[-1]+1}'
         content_range = f'content pp. {chunk[0]-CONTENT_START_PAGE+1}-{chunk[-1]-CONTENT_START_PAGE+1}'
