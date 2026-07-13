@@ -43,7 +43,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '32';
+const ASSET_VERSION = '33';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -983,13 +983,15 @@ function finishUnitTest(state) {
     </div>
   </div>`);
 
+  const isEquiv = bookById(ACTIVE_BOOK_ID).testMode === 'equiv';
+  const gloss = (a) => isEquiv ? (a.w.synonym || '') : (a.w.def_zh || '');
   const wrong = state.answers.filter(a => !a.correct);
   if (wrong.length) {
     html.push(`<div class="section-heading">Missed (${wrong.length})</div>`);
     html.push('<div class="results-list">');
     for (const a of wrong) {
       html.push(`<div class="results-row miss">
-        <div class="head"><span class="w">${escHtml(a.w.word)}</span><span class="gloss">${escHtml(a.w.def_zh)}</span></div>
+        <div class="head"><span class="w">${escHtml(a.w.word)}</span><span class="gloss">${escHtml(gloss(a))}</span></div>
         <div class="your">your answer: ${escHtml(a.picked)}</div>
       </div>`);
     }
@@ -1002,7 +1004,7 @@ function finishUnitTest(state) {
     html.push('<div class="results-list">');
     for (const a of right) {
       html.push(`<div class="results-row hit">
-        <div class="head"><span class="w">${escHtml(a.w.word)}</span><span class="gloss">${escHtml(a.w.def_zh)}</span></div>
+        <div class="head"><span class="w">${escHtml(a.w.word)}</span><span class="gloss">${escHtml(gloss(a))}</span></div>
       </div>`);
     }
     html.push('</div>');
@@ -1240,10 +1242,12 @@ function finishReview(state) {
     </div>
   </div>`);
   if (wrong.length) {
+    const isEquivBook = bookById(ACTIVE_BOOK_ID).testMode === 'equiv';
     html.push(`<div class="section-heading">Missed</div><div class="results-list">`);
     for (const a of wrong) {
+      const gl = isEquivBook ? (a.w.synonym || '') : (a.w.def_zh || '');
       html.push(`<div class="results-row miss">
-        <div class="head"><span class="w">${escHtml(a.w.word)}</span><span class="gloss">${escHtml(a.w.def_zh)} <em style="color:var(--muted)">· list ${a.n}</em></span></div>
+        <div class="head"><span class="w">${escHtml(a.w.word)}</span><span class="gloss">${escHtml(gl)} <em style="color:var(--muted)">· list ${a.n}</em></span></div>
       </div>`);
     }
     html.push('</div>');
