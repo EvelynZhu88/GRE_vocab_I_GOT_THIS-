@@ -28,9 +28,17 @@ const SETTINGS_KEY = 'gre.settings';
 const ACTIVE_BOOK_KEY = 'gre.activeBook';
 const DEFAULTS = {
   unitTestSize: 20,    // not used (unit test = full list)
-  reviewSize: 100,     // mixed-review session size
+  reviewSize: 100,     // legacy, kept for back-compat; Mixed Review is now adaptive
   mixRatio: 0.35,
 };
+
+// Adaptive Mixed Review tuning.
+//   REVIEW_DUE_CAP    — never surface more than this many due cards in one
+//                       session. Overflow simply rolls into tomorrow's pool.
+//   REVIEW_IDLE_FILL  — when nothing is due, pull this many least-recently-
+//                       seen cards to keep old vocab from drifting silently.
+const REVIEW_DUE_CAP   = 200;
+const REVIEW_IDLE_FILL = 30;
 
 // Registry of every vocab book the app knows about. Each book has its own
 // vocab.json + (optional) passages.json and its own SRS progress / unit
@@ -43,7 +51,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '33';
+const ASSET_VERSION = '34';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -559,22 +567,26 @@ function renderReviewBanner() {
         </div>
       </div>`;
   }
-  // Mixed review is driven by SM-2 spaced repetition. The banner shows how
-  // many cards are due today so you know how much the algorithm thinks
-  // you need to review; the session first exhausts those, then fills any
-  // remaining slots with least-recently-seen cards.
+  // Mixed review is driven by SM-2 spaced repetition. Session length is
+  // adaptive: it's whatever the algorithm says is due today (capped at
+  // REVIEW_DUE_CAP so a large day doesn't turn into a 500-question sitting).
+  // When nothing is due, we pull a small IDLE_FILL of least-recently-seen
+  // cards to keep old vocab from silently drifting past its schedule.
   const { dueCount, soonCount, restCount, starredCount } = reviewPoolStats(active);
-  const learnedTotal = dueCount + soonCount + restCount;
   const rangeLabel = active.length === 1
     ? `list ${active[0]}`
     : (active.length <= 4
         ? `lists ${active.join(', ')}`
         : `lists ${active[0]}–${active[active.length - 1]} (${active.length} units)`);
-  const sessionSize = Math.min(SETTINGS.reviewSize, Math.max(dueCount, learnedTotal));
+  const sessionSize = dueCount > 0
+    ? Math.min(dueCount, REVIEW_DUE_CAP)
+    : Math.min(REVIEW_IDLE_FILL, dueCount + soonCount + restCount);
   const starredBlurb = starredCount > 0 ? ` · ${starredCount} starred ★ tested separately above.` : '';
   const dueLine = dueCount > 0
-    ? `<b>${dueCount}</b> due today · ${soonCount} coming up in ~3 days · ${restCount} well-learned resting.`
-    : `All caught up — nothing due today! Session will pull ${sessionSize} least-recently-seen words to keep old vocab warm.`;
+    ? (dueCount > REVIEW_DUE_CAP
+        ? `<b>${dueCount}</b> due today · session will do ${REVIEW_DUE_CAP} — the rest carries into tomorrow. ${soonCount} coming up in ~3 days.`
+        : `<b>${dueCount}</b> due today · ${soonCount} coming up in ~3 days · ${restCount} well-learned resting.`)
+    : `All caught up — nothing due today! Pulling ${sessionSize} least-recently-seen words to keep old vocab warm.`;
   return `
     <div class="section-heading">Mixed Review · ${rangeLabel}</div>
     <a class="review-banner" href="#/review">
@@ -1026,7 +1038,11 @@ function renderReview() {
     </div>`;
     return;
   }
-  const session = buildReviewSession(active, SETTINGS.reviewSize);
+  // Adaptive size: honor the algorithm's actual due count (capped) so a
+  // small day is a short session and a big day is a big-but-bounded one.
+  const { dueCount } = reviewPoolStats(active);
+  const size = dueCount > 0 ? Math.min(dueCount, REVIEW_DUE_CAP) : REVIEW_IDLE_FILL;
+  const session = buildReviewSession(active, size);
   startReview(session, active);
 }
 
