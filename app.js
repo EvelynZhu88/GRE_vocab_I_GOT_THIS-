@@ -33,11 +33,11 @@ const DEFAULTS = {
 };
 
 // Adaptive Mixed Review tuning.
-//   REVIEW_DUE_CAP    — never surface more than this many due cards in one
-//                       session. Overflow simply rolls into tomorrow's pool.
 //   REVIEW_IDLE_FILL  — when nothing is due, pull this many least-recently-
 //                       seen cards to keep old vocab from drifting silently.
-const REVIEW_DUE_CAP   = 200;
+// No cap on due sessions: if SM-2 says N are due, you do N. Quit mid-way
+// if you want; per-answer progress is written immediately and unrated
+// cards simply come back tomorrow.
 const REVIEW_IDLE_FILL = 30;
 
 // Registry of every vocab book the app knows about. Each book has its own
@@ -51,7 +51,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '34';
+const ASSET_VERSION = '35';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -568,10 +568,10 @@ function renderReviewBanner() {
       </div>`;
   }
   // Mixed review is driven by SM-2 spaced repetition. Session length is
-  // adaptive: it's whatever the algorithm says is due today (capped at
-  // REVIEW_DUE_CAP so a large day doesn't turn into a 500-question sitting).
-  // When nothing is due, we pull a small IDLE_FILL of least-recently-seen
-  // cards to keep old vocab from silently drifting past its schedule.
+  // whatever the algorithm says is due today — no cap. Quit mid-way if
+  // you run out of time; per-answer state is written immediately and any
+  // unrated cards simply come back tomorrow. When nothing is due, pull a
+  // small IDLE_FILL of least-recently-seen cards to keep old vocab warm.
   const { dueCount, soonCount, restCount, starredCount } = reviewPoolStats(active);
   const rangeLabel = active.length === 1
     ? `list ${active[0]}`
@@ -579,13 +579,11 @@ function renderReviewBanner() {
         ? `lists ${active.join(', ')}`
         : `lists ${active[0]}–${active[active.length - 1]} (${active.length} units)`);
   const sessionSize = dueCount > 0
-    ? Math.min(dueCount, REVIEW_DUE_CAP)
+    ? dueCount
     : Math.min(REVIEW_IDLE_FILL, dueCount + soonCount + restCount);
   const starredBlurb = starredCount > 0 ? ` · ${starredCount} starred ★ tested separately above.` : '';
   const dueLine = dueCount > 0
-    ? (dueCount > REVIEW_DUE_CAP
-        ? `<b>${dueCount}</b> due today · session will do ${REVIEW_DUE_CAP} — the rest carries into tomorrow. ${soonCount} coming up in ~3 days.`
-        : `<b>${dueCount}</b> due today · ${soonCount} coming up in ~3 days · ${restCount} well-learned resting.`)
+    ? `<b>${dueCount}</b> due today · ${soonCount} coming up in ~3 days · ${restCount} well-learned resting.`
     : `All caught up — nothing due today! Pulling ${sessionSize} least-recently-seen words to keep old vocab warm.`;
   return `
     <div class="section-heading">Mixed Review · ${rangeLabel}</div>
@@ -1038,10 +1036,10 @@ function renderReview() {
     </div>`;
     return;
   }
-  // Adaptive size: honor the algorithm's actual due count (capped) so a
-  // small day is a short session and a big day is a big-but-bounded one.
+  // Session length = exactly what SM-2 says is due today, no cap. On a
+  // day with nothing due, pull IDLE_FILL least-recently-seen cards.
   const { dueCount } = reviewPoolStats(active);
-  const size = dueCount > 0 ? Math.min(dueCount, REVIEW_DUE_CAP) : REVIEW_IDLE_FILL;
+  const size = dueCount > 0 ? dueCount : REVIEW_IDLE_FILL;
   const session = buildReviewSession(active, size);
   startReview(session, active);
 }
