@@ -51,7 +51,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '36';
+const ASSET_VERSION = '37';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -384,17 +384,27 @@ function toggleStar(n, word) {
 function isFresh(c) { return c.reps === 0 && c.last === 0; }
 function isMature(c) { return c.interval >= 21; }
 function isLearning(c) { return !isFresh(c) && !isMature(c); }
-function isDue(c) { return c.due <= Date.now(); }
+// "Due today" = the card's due timestamp falls at or before the end of
+// today's local day. Together with day-boundary scheduling in rateCard,
+// this makes "learned yesterday → reviewable anytime today" work.
+function isDue(c) { return c.due < startOfLocalDay() + DAY; }
 // Starred words act as if they're due whenever it's been ~1 day since last
 // review, regardless of the SM-2 interval — so words you always forget keep
 // cycling back into the review pool until you un-star them.
 function isReviewDue(c) {
   if (isFresh(c)) return false;
   if (c.starred) return c.last === 0 || (Date.now() - c.last) >= DAY;
-  return c.due <= Date.now();
+  return c.due < startOfLocalDay() + DAY;
 }
 
 // --- SM-2 ---
+// Return midnight of the local calendar day, in epoch ms.
+function startOfLocalDay(ts = Date.now()) {
+  const d = new Date(ts);
+  d.setHours(0, 0, 0, 0);
+  return d.getTime();
+}
+
 function rateCard(n, w, q) {
   const c = getCard(n, w);
   if (q < 3) {
@@ -409,7 +419,11 @@ function rateCard(n, w, q) {
   }
   c.ef = Math.max(1.3, c.ef + (0.1 - (5 - q) * (0.08 + (5 - q) * 0.02)));
   c.last = Date.now();
-  c.due = Date.now() + c.interval * DAY;
+  // Anki-style day-boundary scheduling: a 1-day interval means "due at the
+  // start of tomorrow (local calendar time)", not "24 hours from this exact
+  // moment". Otherwise a card learned at 6 PM Monday wouldn't show up in
+  // Tuesday morning's review because 24h hasn't elapsed.
+  c.due = startOfLocalDay() + c.interval * DAY;
   saveProgress();
 }
 
@@ -1054,18 +1068,18 @@ function buildReviewSession(activeLists, size) {
   // Starred words are excluded — they have their own dedicated test.
   // Fresh (never-studied) words are excluded — they haven't been introduced
   // in a unit test yet, so the algorithm has nothing to schedule from.
-  const now = Date.now();
+  const startToday = startOfLocalDay();
+  const endToday   = startToday + DAY;
+  const soonEnd    = startToday + 4 * DAY;   // "coming up" = today+1..today+3
   const due = [], soon = [], rest = [];
-  const SOON_WINDOW = 3 * DAY;
   for (const n of activeLists) {
     for (const w of VOCAB[String(n)]) {
       const c = getCard(n, w.word);
       if (c.starred) continue;
       if (isFresh(c)) continue;
-      const delta = c.due - now;
-      if (delta <= 0)          due.push({ n, w, key: delta });        // most-overdue first
-      else if (delta <= SOON_WINDOW) soon.push({ n, w, key: delta });
-      else                     rest.push({ n, w, key: c.last });      // least-recently-seen first
+      if (c.due < endToday)      due.push({ n, w, key: c.due });      // most-overdue first
+      else if (c.due < soonEnd)  soon.push({ n, w, key: c.due });
+      else                       rest.push({ n, w, key: c.last });     // least-recently-seen first
     }
   }
   due.sort((a, b) => a.key - b.key);
@@ -1086,17 +1100,17 @@ function buildReviewSession(activeLists, size) {
 // Counts used by the Mixed Review banner to give a clearer picture of
 // what the algorithm sees today.
 function reviewPoolStats(activeLists) {
-  const now = Date.now();
+  const startToday = startOfLocalDay();
+  const endToday   = startToday + DAY;
+  const soonEnd    = startToday + 4 * DAY;
   let dueCount = 0, soonCount = 0, restCount = 0, freshCount = 0, starredCount = 0;
-  const SOON_WINDOW = 3 * DAY;
   for (const n of activeLists) {
     for (const w of VOCAB[String(n)]) {
       const c = getCard(n, w.word);
       if (c.starred) { starredCount++; continue; }
       if (isFresh(c)) { freshCount++; continue; }
-      const delta = c.due - now;
-      if (delta <= 0) dueCount++;
-      else if (delta <= SOON_WINDOW) soonCount++;
+      if (c.due < endToday) dueCount++;
+      else if (c.due < soonEnd) soonCount++;
       else restCount++;
     }
   }
