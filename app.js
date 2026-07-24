@@ -51,7 +51,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '37';
+const ASSET_VERSION = '38';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -573,11 +573,11 @@ function renderReviewBanner() {
   const active = activeListNumbers();
   if (active.length === 0) {
     return `
-      <div class="section-heading">Mixed Review</div>
+      <div class="section-heading">Smart Review</div>
       <div class="review-banner empty">
         <div class="review-banner-body">
           <div class="rb-title">No lists active yet</div>
-          <div class="rb-desc">Take a Unit Test on any list to start cumulative review. The pool grows automatically as you complete more units.</div>
+          <div class="rb-desc">Take a Unit Test on any list to start SM-2 spaced repetition. The pool grows automatically as you complete more units.</div>
         </div>
       </div>`;
   }
@@ -600,10 +600,10 @@ function renderReviewBanner() {
     ? `<b>${dueCount}</b> due today · ${soonCount} coming up in ~3 days · ${restCount} well-learned resting.`
     : `All caught up — nothing due today! Pulling ${sessionSize} least-recently-seen words to keep old vocab warm.`;
   return `
-    <div class="section-heading">Mixed Review · ${rangeLabel}</div>
+    <div class="section-heading">Smart Review · ${rangeLabel}</div>
     <a class="review-banner" href="#/review">
       <div class="review-banner-body">
-        <div class="rb-title">${sessionSize}-question smart review</div>
+        <div class="rb-title">${sessionSize}-question smart review · SM-2 spaced repetition</div>
         <div class="rb-desc">${dueLine}${starredBlurb}</div>
       </div>
       <div class="review-banner-cta">
@@ -1040,7 +1040,7 @@ function finishUnitTest(state) {
 // VIEW: Cumulative Review
 // =====================================================
 function renderReview() {
-  setHeader('Mixed Review');
+  setHeader('Smart Review');
   const active = activeListNumbers();
   if (active.length === 0) {
     $('#view').innerHTML = `<div class="empty-state">
