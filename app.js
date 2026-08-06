@@ -51,7 +51,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '38';
+const ASSET_VERSION = '39';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -586,7 +586,7 @@ function renderReviewBanner() {
   // you run out of time; per-answer state is written immediately and any
   // unrated cards simply come back tomorrow. When nothing is due, pull a
   // small IDLE_FILL of least-recently-seen cards to keep old vocab warm.
-  const { dueCount, soonCount, restCount, starredCount } = reviewPoolStats(active);
+  const { dueCount, soonCount, restCount, starredDueCount } = reviewPoolStats(active);
   const rangeLabel = active.length === 1
     ? `list ${active[0]}`
     : (active.length <= 4
@@ -595,16 +595,16 @@ function renderReviewBanner() {
   const sessionSize = dueCount > 0
     ? dueCount
     : Math.min(REVIEW_IDLE_FILL, dueCount + soonCount + restCount);
-  const starredBlurb = starredCount > 0 ? ` · ${starredCount} starred ★ tested separately above.` : '';
+  const starredBlurb = starredDueCount > 0 ? ` <em style="color:#ffd866">★ ${starredDueCount} of them are starred.</em>` : '';
   const dueLine = dueCount > 0
-    ? `<b>${dueCount}</b> due today · ${soonCount} coming up in ~3 days · ${restCount} well-learned resting.`
+    ? `<b>${dueCount}</b> due today · ${soonCount} coming up in ~3 days · ${restCount} well-learned resting.${starredBlurb}`
     : `All caught up — nothing due today! Pulling ${sessionSize} least-recently-seen words to keep old vocab warm.`;
   return `
     <div class="section-heading">Smart Review · ${rangeLabel}</div>
     <a class="review-banner" href="#/review">
       <div class="review-banner-body">
         <div class="rb-title">${sessionSize}-question smart review · SM-2 spaced repetition</div>
-        <div class="rb-desc">${dueLine}${starredBlurb}</div>
+        <div class="rb-desc">${dueLine}</div>
       </div>
       <div class="review-banner-cta">
         <span class="btn-primary" style="pointer-events:none">Start review</span>
@@ -1065,9 +1065,11 @@ function buildReviewSession(activeLists, size) {
   // further into the future, so the daily pool naturally shrinks — old
   // vocab doesn't pile up.
   //
-  // Starred words are excluded — they have their own dedicated test.
-  // Fresh (never-studied) words are excluded — they haven't been introduced
-  // in a unit test yet, so the algorithm has nothing to schedule from.
+  // Starred words ARE included (they're words you keep forgetting — exactly
+  // what SM-2 exists to loop back to you). The Starred Test stays as a
+  // separate bonus drill for extra practice. Fresh (never-studied) words
+  // are excluded — they haven't been introduced yet, so the algorithm has
+  // nothing to schedule from.
   const startToday = startOfLocalDay();
   const endToday   = startToday + DAY;
   const soonEnd    = startToday + 4 * DAY;   // "coming up" = today+1..today+3
@@ -1075,7 +1077,6 @@ function buildReviewSession(activeLists, size) {
   for (const n of activeLists) {
     for (const w of VOCAB[String(n)]) {
       const c = getCard(n, w.word);
-      if (c.starred) continue;
       if (isFresh(c)) continue;
       if (c.due < endToday)      due.push({ n, w, key: c.due });      // most-overdue first
       else if (c.due < soonEnd)  soon.push({ n, w, key: c.due });
@@ -1103,18 +1104,19 @@ function reviewPoolStats(activeLists) {
   const startToday = startOfLocalDay();
   const endToday   = startToday + DAY;
   const soonEnd    = startToday + 4 * DAY;
-  let dueCount = 0, soonCount = 0, restCount = 0, freshCount = 0, starredCount = 0;
+  let dueCount = 0, soonCount = 0, restCount = 0, freshCount = 0, starredDueCount = 0;
   for (const n of activeLists) {
     for (const w of VOCAB[String(n)]) {
       const c = getCard(n, w.word);
-      if (c.starred) { starredCount++; continue; }
       if (isFresh(c)) { freshCount++; continue; }
-      if (c.due < endToday) dueCount++;
+      const isDueToday = c.due < endToday;
+      if (isDueToday) dueCount++;
       else if (c.due < soonEnd) soonCount++;
       else restCount++;
+      if (c.starred && isDueToday) starredDueCount++;
     }
   }
-  return { dueCount, soonCount, restCount, freshCount, starredCount };
+  return { dueCount, soonCount, restCount, freshCount, starredDueCount };
 }
 
 function startReview(session, active) {
