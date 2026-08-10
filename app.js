@@ -24,12 +24,14 @@
  */
 
 const DAY = 86400000;
+const HOUR = 3600000;
 const SETTINGS_KEY = 'gre.settings';
 const ACTIVE_BOOK_KEY = 'gre.activeBook';
 const DEFAULTS = {
   unitTestSize: 20,    // not used (unit test = full list)
-  reviewSize: 100,     // legacy, kept for back-compat; Mixed Review is now adaptive
+  reviewSize: 100,     // legacy, kept for back-compat; Smart Review is now adaptive
   mixRatio: 0.35,
+  cramMode: false,     // when true, use much shorter SRS intervals for exam-week cramming
 };
 
 // Adaptive Mixed Review tuning.
@@ -51,7 +53,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '39';
+const ASSET_VERSION = '40';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -384,17 +386,20 @@ function toggleStar(n, word) {
 function isFresh(c) { return c.reps === 0 && c.last === 0; }
 function isMature(c) { return c.interval >= 21; }
 function isLearning(c) { return !isFresh(c) && !isMature(c); }
-// "Due today" = the card's due timestamp falls at or before the end of
-// today's local day. Together with day-boundary scheduling in rateCard,
-// this makes "learned yesterday → reviewable anytime today" work.
-function isDue(c) { return c.due < startOfLocalDay() + DAY; }
+// "Is this card due?" — hybrid check:
+//   Sub-day intervals (cram mode) use wall-clock: due if c.due <= now.
+//   Day-plus intervals snap to today's boundary: due if c.due < end-of-today.
+function isDue(c) {
+  if ((c.interval || 0) < 1) return c.due <= Date.now();
+  return c.due < startOfLocalDay() + DAY;
+}
 // Starred words act as if they're due whenever it's been ~1 day since last
 // review, regardless of the SM-2 interval — so words you always forget keep
 // cycling back into the review pool until you un-star them.
 function isReviewDue(c) {
   if (isFresh(c)) return false;
   if (c.starred) return c.last === 0 || (Date.now() - c.last) >= DAY;
-  return c.due < startOfLocalDay() + DAY;
+  return isDue(c);
 }
 
 // --- SM-2 ---
@@ -405,25 +410,49 @@ function startOfLocalDay(ts = Date.now()) {
   return d.getTime();
 }
 
+// Cram-mode interval sequence (in days). Sub-day values (< 1) trigger
+// wall-clock scheduling instead of day-boundary scheduling so a wrong
+// answer at 3 PM can come back at 5 PM the same day.
+//   wrong:            2h        (0.083 day)
+//   1st correct:      6h        (0.25 day)
+//   2nd correct:      1 day
+//   3rd correct:      2 days
+//   4th+ correct:     min(prev * ef, 7 days)   — capped for exam-week focus
+const CRAM_WRONG_HOURS   = 2;
+const CRAM_FIRST_HOURS   = 6;
+const CRAM_CAP_DAYS      = 7;
+
 function rateCard(n, w, q) {
   const c = getCard(n, w);
+  const cram = !!SETTINGS.cramMode;
+
   if (q < 3) {
+    // Wrong answer
     c.reps = 0;
-    c.interval = 1;
     c.lapses += 1;
+    c.interval = cram ? (CRAM_WRONG_HOURS / 24) : 1;
   } else {
-    if (c.reps === 0) c.interval = 1;
-    else if (c.reps === 1) c.interval = 6;
-    else c.interval = Math.round(c.interval * c.ef);
+    // Correct answer
+    if (cram) {
+      if (c.reps === 0)      c.interval = CRAM_FIRST_HOURS / 24;
+      else if (c.reps === 1) c.interval = 1;
+      else if (c.reps === 2) c.interval = 2;
+      else                   c.interval = Math.min(CRAM_CAP_DAYS, Math.round(c.interval * c.ef));
+    } else {
+      if (c.reps === 0)      c.interval = 1;
+      else if (c.reps === 1) c.interval = 6;
+      else                   c.interval = Math.round(c.interval * c.ef);
+    }
     c.reps += 1;
   }
   c.ef = Math.max(1.3, c.ef + (0.1 - (5 - q) * (0.08 + (5 - q) * 0.02)));
   c.last = Date.now();
-  // Anki-style day-boundary scheduling: a 1-day interval means "due at the
-  // start of tomorrow (local calendar time)", not "24 hours from this exact
-  // moment". Otherwise a card learned at 6 PM Monday wouldn't show up in
-  // Tuesday morning's review because 24h hasn't elapsed.
-  c.due = startOfLocalDay() + c.interval * DAY;
+  // Sub-day intervals schedule from now (exact time). Day-plus intervals
+  // snap to local day boundaries so "learned yesterday → shows up any time
+  // today" still works.
+  c.due = c.interval < 1
+    ? Date.now() + c.interval * DAY
+    : startOfLocalDay() + c.interval * DAY;
   saveProgress();
 }
 
@@ -603,7 +632,7 @@ function renderReviewBanner() {
     <div class="section-heading">Smart Review · ${rangeLabel}</div>
     <a class="review-banner" href="#/review">
       <div class="review-banner-body">
-        <div class="rb-title">${sessionSize}-question smart review · SM-2 spaced repetition</div>
+        <div class="rb-title">${sessionSize}-question smart review · ${SETTINGS.cramMode ? '🔥 Cram Mode (short intervals)' : 'SM-2 spaced repetition'}</div>
         <div class="rb-desc">${dueLine}</div>
       </div>
       <div class="review-banner-cta">
@@ -1070,15 +1099,13 @@ function buildReviewSession(activeLists, size) {
   // separate bonus drill for extra practice. Fresh (never-studied) words
   // are excluded — they haven't been introduced yet, so the algorithm has
   // nothing to schedule from.
-  const startToday = startOfLocalDay();
-  const endToday   = startToday + DAY;
-  const soonEnd    = startToday + 4 * DAY;   // "coming up" = today+1..today+3
+  const soonEnd    = startOfLocalDay() + 4 * DAY;   // "coming up" = today+1..today+3
   const due = [], soon = [], rest = [];
   for (const n of activeLists) {
     for (const w of VOCAB[String(n)]) {
       const c = getCard(n, w.word);
       if (isFresh(c)) continue;
-      if (c.due < endToday)      due.push({ n, w, key: c.due });      // most-overdue first
+      if (isDue(c))              due.push({ n, w, key: c.due });      // most-overdue first
       else if (c.due < soonEnd)  soon.push({ n, w, key: c.due });
       else                       rest.push({ n, w, key: c.last });     // least-recently-seen first
     }
@@ -1101,19 +1128,17 @@ function buildReviewSession(activeLists, size) {
 // Counts used by the Mixed Review banner to give a clearer picture of
 // what the algorithm sees today.
 function reviewPoolStats(activeLists) {
-  const startToday = startOfLocalDay();
-  const endToday   = startToday + DAY;
-  const soonEnd    = startToday + 4 * DAY;
+  const soonEnd = startOfLocalDay() + 4 * DAY;
   let dueCount = 0, soonCount = 0, restCount = 0, freshCount = 0, starredDueCount = 0;
   for (const n of activeLists) {
     for (const w of VOCAB[String(n)]) {
       const c = getCard(n, w.word);
       if (isFresh(c)) { freshCount++; continue; }
-      const isDueToday = c.due < endToday;
-      if (isDueToday) dueCount++;
+      const isDueNow = isDue(c);
+      if (isDueNow) dueCount++;
       else if (c.due < soonEnd) soonCount++;
       else restCount++;
-      if (c.starred && isDueToday) starredDueCount++;
+      if (c.starred && isDueNow) starredDueCount++;
     }
   }
   return { dueCount, soonCount, restCount, freshCount, starredDueCount };
@@ -1683,12 +1708,28 @@ function renderStats() {
     </div>`);
   }
   html.push('</div>');
+  html.push(`<div class="section-heading">Study mode</div>`);
+  html.push(`<div class="account-box">
+    <div class="rb-title">${SETTINGS.cramMode ? '🔥 Cram Mode' : 'Standard SM-2'}</div>
+    <div class="rb-desc">${SETTINGS.cramMode
+      ? 'Short intervals for exam-week cramming: wrong → 2h, 1st correct → 6h, 2nd → 1 day, 3rd → 2 days, 4th+ capped at 7 days. Words come back much faster.'
+      : 'Default SM-2 intervals (1 → 6 → 15 → 38 → 95 → 240 days). Best for long-term retention.'}</div>
+    <div class="account-form">
+      <button class="btn-secondary" id="cramToggleBtn" type="button">${SETTINGS.cramMode ? 'Switch to Standard' : 'Switch to Cram Mode'}</button>
+    </div>
+  </div>`);
   html.push(`<div class="section-heading">Account</div>`);
   html.push(`<div id="accountBox" class="account-box">Loading…</div>`);
   html.push(`<div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
     <button class="btn-secondary" id="resetBtn">Reset all progress</button>
   </div>`);
   $('#view').innerHTML = html.join('');
+  $('#cramToggleBtn').addEventListener('click', () => {
+    SETTINGS.cramMode = !SETTINGS.cramMode;
+    saveSettings();
+    toast(SETTINGS.cramMode ? 'Cram Mode ON — short intervals' : 'Cram Mode OFF — standard SM-2');
+    router();
+  });
   $('#resetBtn').addEventListener('click', () => {
     if (confirm('This erases all study progress and unit-test results. Continue?')) {
       PROGRESS = {}; UNITS = {};
