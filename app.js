@@ -24,7 +24,6 @@
  */
 
 const DAY = 86400000;
-const HOUR = 3600000;
 const SETTINGS_KEY = 'gre.settings';
 const ACTIVE_BOOK_KEY = 'gre.activeBook';
 const DEFAULTS = {
@@ -53,7 +52,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '40';
+const ASSET_VERSION = '41';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -386,13 +385,10 @@ function toggleStar(n, word) {
 function isFresh(c) { return c.reps === 0 && c.last === 0; }
 function isMature(c) { return c.interval >= 21; }
 function isLearning(c) { return !isFresh(c) && !isMature(c); }
-// "Is this card due?" — hybrid check:
-//   Sub-day intervals (cram mode) use wall-clock: due if c.due <= now.
-//   Day-plus intervals snap to today's boundary: due if c.due < end-of-today.
-function isDue(c) {
-  if ((c.interval || 0) < 1) return c.due <= Date.now();
-  return c.due < startOfLocalDay() + DAY;
-}
+// "Is this card due?" — the card's due timestamp falls at or before the
+// end of today's local day. Together with day-boundary scheduling in
+// rateCard, this makes "learned yesterday → reviewable anytime today" work.
+function isDue(c) { return c.due < startOfLocalDay() + DAY; }
 // Starred words act as if they're due whenever it's been ~1 day since last
 // review, regardless of the SM-2 interval — so words you always forget keep
 // cycling back into the review pool until you un-star them.
@@ -410,34 +406,33 @@ function startOfLocalDay(ts = Date.now()) {
   return d.getTime();
 }
 
-// Cram-mode interval sequence (in days). Sub-day values (< 1) trigger
-// wall-clock scheduling instead of day-boundary scheduling so a wrong
-// answer at 3 PM can come back at 5 PM the same day.
-//   wrong:            2h        (0.083 day)
-//   1st correct:      6h        (0.25 day)
-//   2nd correct:      1 day
-//   3rd correct:      2 days
-//   4th+ correct:     min(prev * ef, 7 days)   — capped for exam-week focus
-const CRAM_WRONG_HOURS   = 2;
-const CRAM_FIRST_HOURS   = 6;
-const CRAM_CAP_DAYS      = 7;
+// Cram-mode interval progression (all in days, no sub-day intervals since
+// study happens once per day). Everything is capped at CRAM_CAP_DAYS so
+// even well-mastered words come back within a week — no long silences.
+//   wrong:            1 day
+//   1st correct:      1 day
+//   2nd correct:      2 days
+//   3rd correct:      3 days
+//   4th correct:      5 days
+//   5th+ correct:     7 days (cap)
+const CRAM_CAP_DAYS = 7;
+const CRAM_SEQUENCE = [1, 2, 3, 5];   // reps 1, 2, 3, 4 → these intervals; reps 5+ → cap
 
 function rateCard(n, w, q) {
   const c = getCard(n, w);
   const cram = !!SETTINGS.cramMode;
 
   if (q < 3) {
-    // Wrong answer
+    // Wrong answer — always resets to 1 day (comes back tomorrow, keeps
+    // reappearing until she gets it right multiple times in a row).
     c.reps = 0;
     c.lapses += 1;
-    c.interval = cram ? (CRAM_WRONG_HOURS / 24) : 1;
+    c.interval = 1;
   } else {
     // Correct answer
     if (cram) {
-      if (c.reps === 0)      c.interval = CRAM_FIRST_HOURS / 24;
-      else if (c.reps === 1) c.interval = 1;
-      else if (c.reps === 2) c.interval = 2;
-      else                   c.interval = Math.min(CRAM_CAP_DAYS, Math.round(c.interval * c.ef));
+      const step = CRAM_SEQUENCE[c.reps];   // may be undefined for reps >= sequence.length
+      c.interval = step !== undefined ? step : CRAM_CAP_DAYS;
     } else {
       if (c.reps === 0)      c.interval = 1;
       else if (c.reps === 1) c.interval = 6;
@@ -447,12 +442,8 @@ function rateCard(n, w, q) {
   }
   c.ef = Math.max(1.3, c.ef + (0.1 - (5 - q) * (0.08 + (5 - q) * 0.02)));
   c.last = Date.now();
-  // Sub-day intervals schedule from now (exact time). Day-plus intervals
-  // snap to local day boundaries so "learned yesterday → shows up any time
-  // today" still works.
-  c.due = c.interval < 1
-    ? Date.now() + c.interval * DAY
-    : startOfLocalDay() + c.interval * DAY;
+  // Day-boundary scheduling — "learned yesterday → reviewable any time today".
+  c.due = startOfLocalDay() + c.interval * DAY;
   saveProgress();
 }
 
@@ -1113,13 +1104,32 @@ function buildReviewSession(activeLists, size) {
   due.sort((a, b) => a.key - b.key);
   soon.sort((a, b) => a.key - b.key);
   rest.sort((a, b) => a.key - b.key);
+
   const out = [];
-  for (const bucket of [due, soon, rest]) {
-    for (const item of bucket) {
+  // Fill due cards first (up to the requested size)
+  for (const item of due) {
+    if (out.length >= size) break;
+    out.push({ n: item.n, w: item.w });
+  }
+  // Reserve ~15% of the session for a maintenance blend from the "rest"
+  // bucket — well-mastered words the user hasn't seen in a while. Ensures
+  // old memories keep getting a quiet refresh even on heavy-due days.
+  const maintenanceGoal = Math.max(0, Math.min(rest.length, Math.round(size * 0.15)));
+  const roomForMaintenance = Math.max(0, size - out.length);
+  const maintenance = rest.slice(0, Math.min(maintenanceGoal, roomForMaintenance));
+  out.push(...maintenance.map(item => ({ n: item.n, w: item.w })));
+  // Fill any remaining slack from soon-bucket, then the remaining rest
+  if (out.length < size) {
+    for (const item of soon) {
       if (out.length >= size) break;
       out.push({ n: item.n, w: item.w });
     }
-    if (out.length >= size) break;
+  }
+  if (out.length < size) {
+    for (const item of rest.slice(maintenance.length)) {
+      if (out.length >= size) break;
+      out.push({ n: item.n, w: item.w });
+    }
   }
   shuffle(out);
   return out;
@@ -1712,8 +1722,8 @@ function renderStats() {
   html.push(`<div class="account-box">
     <div class="rb-title">${SETTINGS.cramMode ? '🔥 Cram Mode' : 'Standard SM-2'}</div>
     <div class="rb-desc">${SETTINGS.cramMode
-      ? 'Short intervals for exam-week cramming: wrong → 2h, 1st correct → 6h, 2nd → 1 day, 3rd → 2 days, 4th+ capped at 7 days. Words come back much faster.'
-      : 'Default SM-2 intervals (1 → 6 → 15 → 38 → 95 → 240 days). Best for long-term retention.'}</div>
+      ? 'Short-interval mode for exam-week cramming. Wrong → back tomorrow. Correct sequence: 1 → 2 → 3 → 5 → 7 days (capped). Every word cycles back within a week; nothing drifts out for months. Wrong words keep looping until you nail them.'
+      : 'Default SM-2 intervals (1 → 6 → 15 → 38 → 95 → 240 days). Best for long-term retention over many months.'}</div>
     <div class="account-form">
       <button class="btn-secondary" id="cramToggleBtn" type="button">${SETTINGS.cramMode ? 'Switch to Standard' : 'Switch to Cram Mode'}</button>
     </div>
