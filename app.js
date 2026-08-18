@@ -52,7 +52,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '45';
+const ASSET_VERSION = '46';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -981,13 +981,21 @@ function onUnitAnswer(state, q, btn) {
 
   // SRS update policy:
   //   Standard mode — every rating updates the card (classic Anki behavior).
-  //   Cram Mode     — Unit Test is pure practice: it only touches SRS for
-  //                   FRESH cards (to introduce them). After a card is in
-  //                   SRS, only Smart Review updates it. Right / wrong in
-  //                   Unit Test are still shown in results, but do not
-  //                   compete with Smart Review's own schedule.
+  //   Cram Mode     — Unit Test feeds SRS for the cases that matter, but
+  //                   won't yank an already-scheduled correct card back to
+  //                   the 1-day bucket. Rules:
+  //                     • Wrong answer                → rate (loop it back)
+  //                     • Fresh card (never rated)    → rate (initialize)
+  //                     • Correct + already due today → rate (that IS the
+  //                                                     scheduled review)
+  //                     • Correct + not-yet-due       → SKIP (preserve
+  //                                                     Smart Review's own
+  //                                                     schedule for it)
   const existing = getCard(state.n, q.w.word);
-  const shouldUpdate = !SETTINGS.cramMode || isFresh(existing);
+  const shouldUpdate = !SETTINGS.cramMode
+    || !correct
+    || isFresh(existing)
+    || isDue(existing);
   if (shouldUpdate) rateCard(state.n, q.w.word, correct ? 4 : 0);
 
   // Reveal
@@ -1728,7 +1736,7 @@ function renderStats() {
   html.push(`<div class="account-box">
     <div class="rb-title">${SETTINGS.cramMode ? '🔥 Cram Mode' : 'Standard SM-2'}</div>
     <div class="rb-desc">${SETTINGS.cramMode
-      ? 'Standard SM-2 progression capped at 10 days — every mastered card resurfaces at least once more before your exam. Wrong words in Smart Review come back tomorrow and loop until nailed. Unit Tests become pure practice: they only initialize brand-new cards, then never touch the SRS again, so re-drilling a list any number of times does not disturb Smart Review’s own schedule.'
+      ? 'Standard SM-2 progression capped at 10 days — every mastered card resurfaces at least once more before your exam. Wrong words come back tomorrow. Unit Test still feeds Smart Review on misses and on new / already-due cards, but a correct answer on a card that Smart Review has already scheduled for later is left alone — so re-drilling a list does not reset the schedule for words you already know.'
       : 'Default SM-2 intervals (1 → 6 → 15 → 38 → 95 → 240 days). Best for long-term retention over many months.'}</div>
     <div class="account-form">
       <button class="btn-secondary" id="cramToggleBtn" type="button">${SETTINGS.cramMode ? 'Switch to Standard' : 'Switch to Cram Mode'}</button>
