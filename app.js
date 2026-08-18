@@ -52,7 +52,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '42';
+const ASSET_VERSION = '43';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -414,7 +414,10 @@ function startOfLocalDay(ts = Date.now()) {
 //   1st correct:      1 day
 //   2nd correct:      6 days
 //   3rd+ correct:     min(prev * ef, CRAM_CAP_DAYS)
-const CRAM_CAP_DAYS = 14;
+// 10 days is tuned for the "~12 days until exam" case: every mastered
+// card is guaranteed to appear at least once more before the test,
+// with 2 days of buffer.
+const CRAM_CAP_DAYS = 10;
 
 function rateCard(n, w, q) {
   const c = getCard(n, w);
@@ -1717,7 +1720,7 @@ function renderStats() {
   html.push(`<div class="account-box">
     <div class="rb-title">${SETTINGS.cramMode ? '🔥 Cram Mode' : 'Standard SM-2'}</div>
     <div class="rb-desc">${SETTINGS.cramMode
-      ? 'Standard SM-2 progression (1 → 6 → 15 …) but capped at 14 days so nothing drifts past two weeks. Wrong words come back tomorrow and keep looping until you nail them. Intervals still react to your actual performance — the cap just prevents long silences.'
+      ? 'Standard SM-2 progression (1 → 6 → …) but capped at 10 days so every mastered card is guaranteed to appear at least once more before your exam. Wrong words come back tomorrow and keep looping until you nail them.'
       : 'Default SM-2 intervals (1 → 6 → 15 → 38 → 95 → 240 days). Best for long-term retention over many months.'}</div>
     <div class="account-form">
       <button class="btn-secondary" id="cramToggleBtn" type="button">${SETTINGS.cramMode ? 'Switch to Standard' : 'Switch to Cram Mode'}</button>
