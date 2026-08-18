@@ -52,7 +52,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '43';
+const ASSET_VERSION = '44';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -979,8 +979,20 @@ function onUnitAnswer(state, q, btn) {
     else if (b === btn) b.classList.add('wrong');
   });
 
-  // Update SRS for this word
-  rateCard(state.n, q.w.word, correct ? 4 : 0);
+  // Update SRS for this word — but under Cram Mode, don't reset the
+  // clock on cards that are already scheduled for later. Otherwise
+  // re-running unit tests every day would compete with Smart Review by
+  // constantly pulling correctly-known cards back into the 1-day bucket.
+  //   - Wrong answers always update (needs to come back tomorrow)
+  //   - Fresh cards always update (introducing to SRS)
+  //   - Correct + already-due today: update (this is the scheduled review)
+  //   - Correct + not-yet-due: SKIP (respect the existing schedule)
+  const existing = getCard(state.n, q.w.word);
+  const shouldUpdate = !SETTINGS.cramMode
+    || !correct
+    || isFresh(existing)
+    || isDue(existing);
+  if (shouldUpdate) rateCard(state.n, q.w.word, correct ? 4 : 0);
 
   // Reveal
   const reveal = $('#reveal');
@@ -1720,7 +1732,7 @@ function renderStats() {
   html.push(`<div class="account-box">
     <div class="rb-title">${SETTINGS.cramMode ? '🔥 Cram Mode' : 'Standard SM-2'}</div>
     <div class="rb-desc">${SETTINGS.cramMode
-      ? 'Standard SM-2 progression (1 → 6 → …) but capped at 10 days so every mastered card is guaranteed to appear at least once more before your exam. Wrong words come back tomorrow and keep looping until you nail them.'
+      ? 'Standard SM-2 progression capped at 10 days — every mastered card resurfaces at least once more before your exam. Wrong words come back tomorrow. Unit Tests only re-rate wrong answers and not-yet-due cards, so re-taking a list every day no longer resets the schedule for words you already know.'
       : 'Default SM-2 intervals (1 → 6 → 15 → 38 → 95 → 240 days). Best for long-term retention over many months.'}</div>
     <div class="account-form">
       <button class="btn-secondary" id="cramToggleBtn" type="button">${SETTINGS.cramMode ? 'Switch to Standard' : 'Switch to Cram Mode'}</button>
