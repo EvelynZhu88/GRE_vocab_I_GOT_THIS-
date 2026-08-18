@@ -52,7 +52,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '41';
+const ASSET_VERSION = '42';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -406,17 +406,15 @@ function startOfLocalDay(ts = Date.now()) {
   return d.getTime();
 }
 
-// Cram-mode interval progression (all in days, no sub-day intervals since
-// study happens once per day). Everything is capped at CRAM_CAP_DAYS so
-// even well-mastered words come back within a week — no long silences.
+// Cram Mode = standard SM-2 progression, but capped so no card drifts
+// past CRAM_CAP_DAYS. Intervals still react to your actual performance
+// (ease factor grows/shrinks with rights/wrongs); the cap just prevents
+// long silences so old vocab stays warm.
 //   wrong:            1 day
 //   1st correct:      1 day
-//   2nd correct:      2 days
-//   3rd correct:      3 days
-//   4th correct:      5 days
-//   5th+ correct:     7 days (cap)
-const CRAM_CAP_DAYS = 7;
-const CRAM_SEQUENCE = [1, 2, 3, 5];   // reps 1, 2, 3, 4 → these intervals; reps 5+ → cap
+//   2nd correct:      6 days
+//   3rd+ correct:     min(prev * ef, CRAM_CAP_DAYS)
+const CRAM_CAP_DAYS = 14;
 
 function rateCard(n, w, q) {
   const c = getCard(n, w);
@@ -429,15 +427,12 @@ function rateCard(n, w, q) {
     c.lapses += 1;
     c.interval = 1;
   } else {
-    // Correct answer
-    if (cram) {
-      const step = CRAM_SEQUENCE[c.reps];   // may be undefined for reps >= sequence.length
-      c.interval = step !== undefined ? step : CRAM_CAP_DAYS;
-    } else {
-      if (c.reps === 0)      c.interval = 1;
-      else if (c.reps === 1) c.interval = 6;
-      else                   c.interval = Math.round(c.interval * c.ef);
-    }
+    // Correct answer — standard SM-2 sequence
+    if (c.reps === 0)      c.interval = 1;
+    else if (c.reps === 1) c.interval = 6;
+    else                   c.interval = Math.round(c.interval * c.ef);
+    // Cram Mode: cap the interval so nothing sits idle for months
+    if (cram) c.interval = Math.min(c.interval, CRAM_CAP_DAYS);
     c.reps += 1;
   }
   c.ef = Math.max(1.3, c.ef + (0.1 - (5 - q) * (0.08 + (5 - q) * 0.02)));
@@ -1722,7 +1717,7 @@ function renderStats() {
   html.push(`<div class="account-box">
     <div class="rb-title">${SETTINGS.cramMode ? '🔥 Cram Mode' : 'Standard SM-2'}</div>
     <div class="rb-desc">${SETTINGS.cramMode
-      ? 'Short-interval mode for exam-week cramming. Wrong → back tomorrow. Correct sequence: 1 → 2 → 3 → 5 → 7 days (capped). Every word cycles back within a week; nothing drifts out for months. Wrong words keep looping until you nail them.'
+      ? 'Standard SM-2 progression (1 → 6 → 15 …) but capped at 14 days so nothing drifts past two weeks. Wrong words come back tomorrow and keep looping until you nail them. Intervals still react to your actual performance — the cap just prevents long silences.'
       : 'Default SM-2 intervals (1 → 6 → 15 → 38 → 95 → 240 days). Best for long-term retention over many months.'}</div>
     <div class="account-form">
       <button class="btn-secondary" id="cramToggleBtn" type="button">${SETTINGS.cramMode ? 'Switch to Standard' : 'Switch to Cram Mode'}</button>
