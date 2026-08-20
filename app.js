@@ -30,8 +30,7 @@ const DEFAULTS = {
   unitTestSize: 20,      // not used (unit test = full list)
   reviewSize: 100,       // legacy, kept for back-compat; Smart Review is now adaptive
   mixRatio: 0.35,
-  cramMode: false,       // when true, use shorter SRS intervals + a daily cap for cramming
-  smartSessionCap: 300,  // max cards per Smart Review session; 0 = unlimited. Only enforced in Cram Mode.
+  cramMode: false,       // when true, use shorter SRS intervals for cramming
 };
 
 // Adaptive Mixed Review tuning.
@@ -53,7 +52,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '49';
+const ASSET_VERSION = '50';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -611,23 +610,12 @@ function renderReviewBanner() {
     : (active.length <= 4
         ? `lists ${active.join(', ')}`
         : `lists ${active[0]}–${active[active.length - 1]} (${active.length} units)`);
-  // Apply the daily session cap regardless of mode. Overflow rolls into
-  // tomorrow's pool and stays sorted by overdueness, so the most-important
-  // cards always make it into today's session.
-  const capForToday = SETTINGS.smartSessionCap > 0
-    ? SETTINGS.smartSessionCap
-    : Infinity;
-  const cappedDue = Math.min(dueCount, capForToday);
   const sessionSize = dueCount > 0
-    ? cappedDue
+    ? dueCount
     : Math.min(REVIEW_IDLE_FILL, dueCount + soonCount + restCount);
-  const overflow = Math.max(0, dueCount - cappedDue);
   const starredBlurb = starredDueCount > 0 ? ` <em style="color:#ffd866">★ ${starredDueCount} of them are starred.</em>` : '';
-  const overflowBlurb = overflow > 0
-    ? ` Session shows ${cappedDue} (most-overdue first); the other ${overflow} roll into tomorrow.`
-    : '';
   const dueLine = dueCount > 0
-    ? `<b>${dueCount}</b> due today · ${soonCount} coming up in ~3 days · ${restCount} well-learned resting.${overflowBlurb}${starredBlurb}`
+    ? `<b>${dueCount}</b> due today · ${soonCount} coming up in ~3 days · ${restCount} well-learned resting.${starredBlurb}`
     : `All caught up — nothing due today! Pulling ${sessionSize} least-recently-seen words to keep old vocab warm.`;
   return `
     <div class="section-heading">Smart Review · ${rangeLabel}</div>
@@ -1096,16 +1084,10 @@ function renderReview() {
     </div>`;
     return;
   }
-  // Session length: exactly what SM-2 says is due today, unless Cram Mode
-  // has a smartSessionCap set — then honor that cap and let overflow roll
-  // into tomorrow. Idle-day fallback: IDLE_FILL least-recently-seen cards.
+  // Session length: exactly what SM-2 says is due today, no cap.
+  // Idle-day fallback: REVIEW_IDLE_FILL least-recently-seen cards.
   const { dueCount } = reviewPoolStats(active);
-  const capForToday = SETTINGS.smartSessionCap > 0
-    ? SETTINGS.smartSessionCap
-    : Infinity;
-  const size = dueCount > 0
-    ? Math.min(dueCount, capForToday)
-    : REVIEW_IDLE_FILL;
+  const size = dueCount > 0 ? dueCount : REVIEW_IDLE_FILL;
   const session = buildReviewSession(active, size);
   startReview(session, active);
 }
@@ -1759,24 +1741,10 @@ function renderStats() {
     <div class="account-form">
       <button class="btn-secondary" id="cramToggleBtn" type="button">${SETTINGS.cramMode ? 'Switch to Standard' : 'Switch to Cram Mode'}</button>
     </div>
-    <div class="account-meta">
-      <div style="margin-bottom:6px">Daily Smart Review cap: <b>${SETTINGS.smartSessionCap > 0 ? SETTINGS.smartSessionCap + ' questions' : 'unlimited'}</b> — most-overdue first; extras roll into tomorrow.</div>
-      <div class="account-form">
-        <select id="capSelect" class="book-picker">
-          <option value="0" ${SETTINGS.smartSessionCap === 0 ? 'selected' : ''}>Unlimited (do all due)</option>
-          <option value="200" ${SETTINGS.smartSessionCap === 200 ? 'selected' : ''}>200 per day</option>
-          <option value="300" ${SETTINGS.smartSessionCap === 300 ? 'selected' : ''}>300 per day</option>
-          <option value="400" ${SETTINGS.smartSessionCap === 400 ? 'selected' : ''}>400 per day</option>
-          <option value="500" ${SETTINGS.smartSessionCap === 500 ? 'selected' : ''}>500 per day</option>
-          <option value="700" ${SETTINGS.smartSessionCap === 700 ? 'selected' : ''}>700 per day</option>
-        </select>
-      </div>
-    </div>
   </div>`);
   html.push(`<div class="section-heading">Account</div>`);
   html.push(`<div id="accountBox" class="account-box">Loading…</div>`);
   html.push(`<div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
-    <button class="btn-secondary" id="catchUpBtn">Skip backlog (${bookById(ACTIVE_BOOK_ID).label})</button>
     <button class="btn-secondary" id="resetBtn">Reset all progress</button>
   </div>`);
   $('#view').innerHTML = html.join('');
@@ -1784,38 +1752,6 @@ function renderStats() {
     SETTINGS.cramMode = !SETTINGS.cramMode;
     saveSettings();
     toast(SETTINGS.cramMode ? 'Cram Mode ON — short intervals' : 'Cram Mode OFF — standard SM-2');
-    router();
-  });
-  const capSel = $('#capSelect');
-  if (capSel) {
-    capSel.addEventListener('change', (e) => {
-      SETTINGS.smartSessionCap = +e.target.value;
-      saveSettings();
-      toast(SETTINGS.smartSessionCap > 0
-        ? `Session cap set to ${SETTINGS.smartSessionCap}/day`
-        : 'Session cap removed');
-      router();
-    });
-  }
-  $('#catchUpBtn').addEventListener('click', () => {
-    const bookLabel = bookById(ACTIVE_BOOK_ID).label;
-    if (!confirm(`Skip the backlog for ${bookLabel}? Every overdue card will be rescheduled forward to (today + its current interval), so tomorrow's Smart Review starts fresh with only the naturally-coming-up words. Card intervals and ease factors are NOT changed — this only clears the "past due" pile.`)) return;
-    const startToday = startOfLocalDay();
-    const now = Date.now();
-    let moved = 0;
-    // PROGRESS holds only the active book's cards (per-book storage since
-    // the multi-book refactor), so every key here is a card in this book.
-    for (const key in PROGRESS) {
-      const c = PROGRESS[key];
-      if (!c || isFresh(c)) continue;
-      if (c.due < now && (c.interval || 0) > 0) {
-        c.due = startToday + c.interval * DAY;
-        c.last = now;
-        moved++;
-      }
-    }
-    saveProgress();
-    toast(`Pushed ${moved} overdue card${moved === 1 ? '' : 's'} forward. Tomorrow starts fresh.`);
     router();
   });
   $('#resetBtn').addEventListener('click', () => {
