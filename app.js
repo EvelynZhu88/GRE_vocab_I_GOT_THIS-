@@ -53,7 +53,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '47';
+const ASSET_VERSION = '48';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -611,10 +611,10 @@ function renderReviewBanner() {
     : (active.length <= 4
         ? `lists ${active.join(', ')}`
         : `lists ${active[0]}–${active[active.length - 1]} (${active.length} units)`);
-  // In Cram Mode, apply a daily session cap so exam-week days don't turn
-  // into 800-question marathons. Overflow rolls into tomorrow's pool. In
-  // Standard mode the natural due count stays small so no cap needed.
-  const capForToday = (SETTINGS.cramMode && SETTINGS.smartSessionCap > 0)
+  // Apply the daily session cap regardless of mode. Overflow rolls into
+  // tomorrow's pool and stays sorted by overdueness, so the most-important
+  // cards always make it into today's session.
+  const capForToday = SETTINGS.smartSessionCap > 0
     ? SETTINGS.smartSessionCap
     : Infinity;
   const cappedDue = Math.min(dueCount, capForToday);
@@ -1100,7 +1100,7 @@ function renderReview() {
   // has a smartSessionCap set — then honor that cap and let overflow roll
   // into tomorrow. Idle-day fallback: IDLE_FILL least-recently-seen cards.
   const { dueCount } = reviewPoolStats(active);
-  const capForToday = (SETTINGS.cramMode && SETTINGS.smartSessionCap > 0)
+  const capForToday = SETTINGS.smartSessionCap > 0
     ? SETTINGS.smartSessionCap
     : Infinity;
   const size = dueCount > 0
@@ -1759,9 +1759,8 @@ function renderStats() {
     <div class="account-form">
       <button class="btn-secondary" id="cramToggleBtn" type="button">${SETTINGS.cramMode ? 'Switch to Standard' : 'Switch to Cram Mode'}</button>
     </div>
-    ${SETTINGS.cramMode ? `
     <div class="account-meta">
-      <div style="margin-bottom:6px">Daily session cap: <b>${SETTINGS.smartSessionCap > 0 ? SETTINGS.smartSessionCap + ' questions' : 'unlimited'}</b> — extras roll into tomorrow.</div>
+      <div style="margin-bottom:6px">Daily Smart Review cap: <b>${SETTINGS.smartSessionCap > 0 ? SETTINGS.smartSessionCap + ' questions' : 'unlimited'}</b> — most-overdue first; extras roll into tomorrow.</div>
       <div class="account-form">
         <select id="capSelect" class="book-picker">
           <option value="0" ${SETTINGS.smartSessionCap === 0 ? 'selected' : ''}>Unlimited (do all due)</option>
@@ -1772,7 +1771,7 @@ function renderStats() {
           <option value="700" ${SETTINGS.smartSessionCap === 700 ? 'selected' : ''}>700 per day</option>
         </select>
       </div>
-    </div>` : ''}
+    </div>
   </div>`);
   html.push(`<div class="section-heading">Account</div>`);
   html.push(`<div id="accountBox" class="account-box">Loading…</div>`);
