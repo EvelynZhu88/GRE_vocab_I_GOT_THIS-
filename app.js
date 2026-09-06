@@ -52,7 +52,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '52';
+const ASSET_VERSION = '53';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -1830,21 +1830,28 @@ function renderStats() {
   });
   $('#catchUpBtn').addEventListener('click', () => {
     const bookLabel = bookById(ACTIVE_BOOK_ID).label;
-    if (!confirm(`Skip the backlog for ${bookLabel}? Every overdue card will be rescheduled forward to (today + its current interval), so today's Smart Review pool clears and tomorrow starts fresh with only the naturally-coming-up words. Card intervals, ease factors, lapses, and starred flags are all preserved.`)) return;
+    const SPREAD_DAYS = 7;
+    if (!confirm(`Skip the backlog for ${bookLabel}? Every overdue card will be spread evenly across the next ${SPREAD_DAYS} days (most-overdue cards come back first), so your daily Smart Review stays manageable. Intervals, ease factors, lapses, and starred flags are preserved.`)) return;
     const startToday = startOfLocalDay();
     const now = Date.now();
-    let moved = 0;
+    // Collect overdue cards, sorted most-overdue-first so they get the
+    // earliest slots and stay prioritized.
+    const overdue = [];
     for (const key in PROGRESS) {
       const c = PROGRESS[key];
       if (!c || isFresh(c)) continue;
-      if (c.due < now && (c.interval || 0) > 0) {
-        c.due = startToday + c.interval * DAY;
-        c.last = now;
-        moved++;
-      }
+      if (c.due < now && (c.interval || 0) > 0) overdue.push(c);
     }
+    overdue.sort((a, b) => a.due - b.due);
+    // Distribute evenly across days 1..SPREAD_DAYS from today
+    const perDay = Math.ceil(overdue.length / SPREAD_DAYS);
+    overdue.forEach((c, i) => {
+      const dayOffset = Math.min(SPREAD_DAYS, Math.floor(i / perDay) + 1);
+      c.due = startToday + dayOffset * DAY;
+      c.last = now;
+    });
     saveProgress();
-    toast(`Pushed ${moved} overdue card${moved === 1 ? '' : 's'} forward. Tomorrow starts fresh.`);
+    toast(`Spread ${overdue.length} overdue card${overdue.length === 1 ? '' : 's'} across ${SPREAD_DAYS} days (~${perDay}/day).`);
     router();
   });
   $('#resetBtn').addEventListener('click', () => {
