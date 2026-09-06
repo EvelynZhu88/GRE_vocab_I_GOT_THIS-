@@ -52,7 +52,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '51';
+const ASSET_VERSION = '52';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -1818,6 +1818,7 @@ function renderStats() {
   html.push(`<div class="section-heading">Account</div>`);
   html.push(`<div id="accountBox" class="account-box">Loading…</div>`);
   html.push(`<div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+    <button class="btn-secondary" id="catchUpBtn">Skip backlog (${bookById(ACTIVE_BOOK_ID).label})</button>
     <button class="btn-secondary" id="resetBtn">Reset all progress</button>
   </div>`);
   $('#view').innerHTML = html.join('');
@@ -1825,6 +1826,25 @@ function renderStats() {
     SETTINGS.cramMode = !SETTINGS.cramMode;
     saveSettings();
     toast(SETTINGS.cramMode ? 'Cram Mode ON — short intervals' : 'Cram Mode OFF — standard SM-2');
+    router();
+  });
+  $('#catchUpBtn').addEventListener('click', () => {
+    const bookLabel = bookById(ACTIVE_BOOK_ID).label;
+    if (!confirm(`Skip the backlog for ${bookLabel}? Every overdue card will be rescheduled forward to (today + its current interval), so today's Smart Review pool clears and tomorrow starts fresh with only the naturally-coming-up words. Card intervals, ease factors, lapses, and starred flags are all preserved.`)) return;
+    const startToday = startOfLocalDay();
+    const now = Date.now();
+    let moved = 0;
+    for (const key in PROGRESS) {
+      const c = PROGRESS[key];
+      if (!c || isFresh(c)) continue;
+      if (c.due < now && (c.interval || 0) > 0) {
+        c.due = startToday + c.interval * DAY;
+        c.last = now;
+        moved++;
+      }
+    }
+    saveProgress();
+    toast(`Pushed ${moved} overdue card${moved === 1 ? '' : 's'} forward. Tomorrow starts fresh.`);
     router();
   });
   $('#resetBtn').addEventListener('click', () => {
