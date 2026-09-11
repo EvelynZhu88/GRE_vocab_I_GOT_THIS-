@@ -52,7 +52,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '53';
+const ASSET_VERSION = '54';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -1002,23 +1002,16 @@ function onUnitAnswer(state, q, btn) {
     else if (b === btn) b.classList.add('wrong');
   });
 
-  // SRS update policy:
-  //   Standard mode — every rating updates the card (classic Anki behavior).
-  //   Cram Mode     — Unit Test feeds SRS for the cases that matter, but
-  //                   won't yank an already-scheduled correct card back to
-  //                   the 1-day bucket. Rules:
-  //                     • Wrong answer                → rate (loop it back)
-  //                     • Fresh card (never rated)    → rate (initialize)
-  //                     • Correct + already due today → rate (that IS the
-  //                                                     scheduled review)
-  //                     • Correct + not-yet-due       → SKIP (preserve
-  //                                                     Smart Review's own
-  //                                                     schedule for it)
+  // SRS update policy (applies in BOTH Standard and Cram modes now, so
+  // the user can freely re-run Unit Tests without inflating Smart Review):
+  //     • Wrong answer                → rate (comes back tomorrow)
+  //     • Fresh card (never rated)    → rate (initialize into SRS)
+  //     • Correct + already due today → rate (this IS the scheduled review)
+  //     • Correct + not-yet-due       → SKIP (preserve Smart Review's
+  //                                     own schedule; don't reset the
+  //                                     clock on cards you already own)
   const existing = getCard(state.n, q.w.word);
-  const shouldUpdate = !SETTINGS.cramMode
-    || !correct
-    || isFresh(existing)
-    || isDue(existing);
+  const shouldUpdate = !correct || isFresh(existing) || isDue(existing);
   if (shouldUpdate) rateCard(state.n, q.w.word, correct ? 4 : 0);
 
   // Reveal
