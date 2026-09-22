@@ -33,13 +33,13 @@ const DEFAULTS = {
   cramMode: false,       // when true, use shorter SRS intervals for cramming
 };
 
-// Adaptive Mixed Review tuning.
-//   REVIEW_IDLE_FILL  — when nothing is due, pull this many least-recently-
-//                       seen cards to keep old vocab from drifting silently.
-// No cap on due sessions: if SM-2 says N are due, you do N. Quit mid-way
-// if you want; per-answer progress is written immediately and unrated
-// cards simply come back tomorrow.
-const REVIEW_IDLE_FILL = 30;
+// Smart Review tuning.
+//   TARGET_SESSION_SIZE — fixed daily memory-drill size. Every session
+//                         serves exactly this many cards: most-overdue
+//                         first, padded with coming-up + least-recently-
+//                         seen if fewer than N are strictly due today.
+//                         Overflow (if dueCount > N) rolls into tomorrow.
+const TARGET_SESSION_SIZE = 300;
 
 // Registry of every vocab book the app knows about. Each book has its own
 // vocab.json + (optional) passages.json and its own SRS progress / unit
@@ -52,7 +52,7 @@ const BOOKS = [
   { id: 'reading', label: 'GRE 阅读机经核心词汇',       vocab: 'vocab_reading.json', passages: 'passages_reading.json' },
 ];
 const DEFAULT_BOOK_ID = 'v1';
-const ASSET_VERSION = '54';
+const ASSET_VERSION = '55';
 function progressKey(bookId) { return 'gre.progress.' + bookId; }
 function unitsKey(bookId)    { return 'gre.units.'    + bookId; }
 function bookById(id) { return BOOKS.find(b => b.id === id) || BOOKS[0]; }
@@ -611,13 +611,16 @@ function renderReviewBanner() {
     : (active.length <= 4
         ? `lists ${active.join(', ')}`
         : `lists ${active[0]}–${active[active.length - 1]} (${active.length} units)`);
-  const sessionSize = dueCount > 0
-    ? dueCount
-    : Math.min(REVIEW_IDLE_FILL, dueCount + soonCount + restCount);
+  const total = dueCount + soonCount + restCount;
+  const sessionSize = Math.min(TARGET_SESSION_SIZE, total);
+  const overflow = Math.max(0, dueCount - TARGET_SESSION_SIZE);
   const starredBlurb = starredDueCount > 0 ? ` <em style="color:#ffd866">★ ${starredDueCount} of them are starred.</em>` : '';
+  const overflowLine = overflow > 0
+    ? ` The other ${overflow} due cards roll into tomorrow.`
+    : '';
   const dueLine = dueCount > 0
-    ? `<b>${dueCount}</b> due today · ${soonCount} coming up in ~3 days · ${restCount} well-learned resting.${starredBlurb}`
-    : `All caught up — nothing due today! Pulling ${sessionSize} least-recently-seen words to keep old vocab warm.`;
+    ? `<b>${dueCount}</b> due today · ${soonCount} coming up in ~3 days · ${restCount} well-learned resting.${overflowLine}${starredBlurb}`
+    : `Nothing strictly due today. Session pulls ${sessionSize} least-recently-seen cards to keep old vocab warm.`;
   return `
     <div class="section-heading">Smart Review · ${rangeLabel}</div>
     <a class="review-banner" href="#/review">
@@ -1100,11 +1103,10 @@ function renderReview() {
     </div>`;
     return;
   }
-  // Session length: exactly what SM-2 says is due today, no cap.
-  // Idle-day fallback: REVIEW_IDLE_FILL least-recently-seen cards.
-  const { dueCount } = reviewPoolStats(active);
-  const size = dueCount > 0 ? dueCount : REVIEW_IDLE_FILL;
-  const session = buildReviewSession(active, size);
+  // Session length: fixed TARGET_SESSION_SIZE for a consistent daily drill.
+  // Most-overdue cards come first; if fewer than N are strictly due, the
+  // buildReviewSession helper pads from soon / rest to hit the target.
+  const session = buildReviewSession(active, TARGET_SESSION_SIZE);
   startReview(session, active);
 }
 
